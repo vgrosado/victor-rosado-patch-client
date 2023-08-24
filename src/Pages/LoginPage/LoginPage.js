@@ -1,41 +1,48 @@
 import '../LoginPage/LoginPage.scss'
 import backgroundVid from '../../Assets/LoginBackground3.mp4'
 import LoginForm from '../../Components/LoginForm/LoginForm'
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 
 
 
 
 function LoginPage() {
 
-	const [loginForm, setLoginForm] = useState(true);
-	const [signUpForm, setSignUpForm] = useState(false);
-	let navigateTo = useNavigate();
+	const navigateTo = useNavigate();
+	// function handleLogin(e){
+	// 	e.preventDefault();
+	// 	setLoginForm(true)
+	// 	setSignUpForm(false)
+	// }
+	
 
-	function handleLogin(e) => {
+	// function handleSignUp(e){
+	// 	e.preventDefault();
+	// 	setLoginForm(false)
+	// 	setSignUpForm(true)
+	// }
 
-		setLoginForm(false)
-		navigateTo('/')
+
+	function HandleLogin(){
+		navigateTo('/LoginPage');
 	}
 	
 
-	function handleSignUp() {
-		setSignUpForm(true)
-		navigateTo('/SignUp')
+	function HandleSignUp(){
+		navigateTo('/SignUpPage');
 	}
 
 	return (
 		<section className="login">
 			<video src={backgroundVid} id="background-video" autoPlay loop muted />
 			<div className="login__container">
-				<h1 className='login__header'>PATCH</h1>
+				<h1 className='login__header'>P<span className='login__flicker'>A</span>TCH</h1>
 				<LoginForm />
 					<div className='login__switch-container'>
-						{/* <Link to='/' className='login__link'><p>Login In</p></Link>
-						<Link to='/' className='login__link'><p>Register</p></Link> */}
-						<button onClick={} className='login__button' id='switch-button'>Login</button>
-						<button onClick={} className='login__button' id='switch-button'>Register</button>
+						<button onClick={HandleLogin}  className='login__button' id='switch-button'>Login</button>
+						<button onClick={HandleSignUp} className='login__button' id='switch-button'>Register</button>
 					</div>
 			</div>
 		</section>
