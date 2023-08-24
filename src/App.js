@@ -1,10 +1,15 @@
 import './App.scss';
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './Pages/LoginPage/LoginPage';
 
 function App() {
   return (
-   <LoginPage/>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<LoginPage/>} />
+      <Route path="/SignUp" element={<LoginPage/>} />
+    </Routes>
+  </BrowserRouter>
   );
 }
 

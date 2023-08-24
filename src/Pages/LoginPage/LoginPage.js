@@ -1,45 +1,42 @@
 import '../LoginPage/LoginPage.scss'
 import backgroundVid from '../../Assets/LoginBackground3.mp4'
-import { AiFillEye } from 'react-icons/ai'
+import LoginForm from '../../Components/LoginForm/LoginForm'
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
 
 
 
 function LoginPage() {
+
+	const [loginForm, setLoginForm] = useState(true);
+	const [signUpForm, setSignUpForm] = useState(false);
+	let navigateTo = useNavigate();
+
+	function handleLogin(e) => {
+
+		setLoginForm(false)
+		navigateTo('/')
+	}
+	
+
+	function handleSignUp() {
+		setSignUpForm(true)
+		navigateTo('/SignUp')
+	}
+
 	return (
 		<section className="login">
 			<video src={backgroundVid} id="background-video" autoPlay loop muted />
 			<div className="login__container">
 				<h1 className='login__header'>PATCH</h1>
-				<form className="login__form">
-					<div className='login__input-div'>
-						<input
-							className="login__input"
-							type="text"
-							id="email"
-							placeholder='Email'>
-						</input>
+				<LoginForm />
+					<div className='login__switch-container'>
+						{/* <Link to='/' className='login__link'><p>Login In</p></Link>
+						<Link to='/' className='login__link'><p>Register</p></Link> */}
+						<button onClick={} className='login__button' id='switch-button'>Login</button>
+						<button onClick={} className='login__button' id='switch-button'>Register</button>
 					</div>
-					<div className='login__input-div'>
-						<input
-							className="login__input"
-							type="password"
-							id="password"
-							placeholder='Password'>
-						</input>
-						<div className='login__icon'>
-							<AiFillEye />
-						</div>
-					</div>
-					<div className='login__rememberme-div'>
-						<input
-							className='login__remember-me'
-							type='checkbox'
-							id='remember-me'>
-						</input>
-						<label className='login__rememberme-label'>Remember Me</label>
-					</div>
-					<button className="login__button" type="submit">Sign In</button>
-				</form>
 			</div>
 		</section>
 	)
