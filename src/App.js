@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter } from 'react-router-dom';
+import './App.scss';
+// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoginPage from './Pages/LoginPage/LoginPage';
 
 function App() {
   return (
-    <>
-    </>
+   <LoginPage/>
   );
 }
 
