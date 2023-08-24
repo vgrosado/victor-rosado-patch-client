@@ -17,14 +17,14 @@
 		@keyframes flicker {
             0%, 18%, 22%, 25%, 53%, 57%, 100% {
             text-shadow:
-                0 0 4px #fff,
-                0 0 11px #fff,
-                0 0 19px #fff,
-                0 0 40px rgb(255, 123, 0),
-                0 0 80px rgb(255, 123, 0),
-                0 0 80px rgb(255, 123, 0),
-                0 0 75px rgb(255, 123, 0),
-                0 0 50px rgb(255, 123, 0);
+            0 0 4px #fff,
+            0 0 11px #fff,
+            0 0 19px #fff,
+            0 0 40px rgb(255, 123, 0),
+            0 0 80px rgb(255, 123, 0),
+            0 0 80px rgb(255, 123, 0),
+            0 0 75px rgb(255, 123, 0),
+            0 0 50px rgb(255, 123, 0);
             }
             20%, 24%, 55% {       
             text-shadow: none;
@@ -44,28 +44,28 @@
 	}
 
     &__container {
-    backdrop-filter: blur(50px);
-	opacity: .9;
-	background: linear-gradient(50deg, #000000, #000000);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 145vw;
-    width: 85vw;
+        backdrop-filter: blur(50px);
+        opacity: .9;
+        background: linear-gradient(50deg, #000000, #000000);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 145vw;
+        width: 85vw;
+        padding: 0rem 1rem;
 	}
 
 
 
 
     &__form {
-    // border: 1px solid blue;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 35%;
-    width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 35%;
+        width: 100%;
     
     }
 
@@ -80,9 +80,9 @@
         padding: 0rem .5rem;
     }
 
-    &__icon {
+    // &__icon {
         
-    }
+    // }
 
 	&__input {
         height: 100%;
@@ -115,7 +115,6 @@
 		border: none;
         border-radius: 4px;
         padding: 0.4rem;
-
     }
 }
 
