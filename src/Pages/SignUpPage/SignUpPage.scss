@@ -1,0 +1,93 @@
+.signup{
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+	height: 100%;
+	
+	
+
+	&__header {
+        color: #fff;
+        text-shadow: 
+        0 0 0.033em #fff, 
+        0 0 0.08em #fff, 
+        0 0 0.1em #ff7b00,
+        0 0 0.2em #ff7b00, 
+        0 0 0.3em #ff7b00, 
+        0 0 1em #ff7b00, 
+        0 0 1.5em #ff7b00;
+        font-size: 5rem;
+        }
+
+    &__flicker {
+        animation: flicker 3s linear forwards alternate infinite;
+        @keyframes flicker {
+        0%, 19.999%, 22%, 62.999%,64%, 64.999%, 72%, 100% {opacity: 1;}
+        20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
+        }
+    }
+
+	#background-video {
+		width: 100vw;
+		height: 100%;
+		object-fit: cover;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+
+    &__container {
+        backdrop-filter: blur(50px);
+        opacity: .9;
+        background: linear-gradient(50deg, #000000, #000000);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 145vw;
+        width: 85vw;
+        padding: 2rem 1rem;
+	}
+
+    &__switch-container {
+        display: flex;
+        width: 100%;
+        height: 10%;
+        justify-content: space-between;
+        align-items: center;
+        backdrop-filter: blur(50px);
+        opacity: .9;
+        background: linear-gradient(50deg, #000000, #000000);
+        border-radius: 10px;
+    }
+
+    &__button-1 {
+        font-weight: bold;
+        font-size: 1rem;
+        border: none;
+        width: 100%;
+        height: 100%;
+        color: white;
+        border: 2px solid white;
+        border-radius: .25rem;
+        padding: 0.4em;
+        background-color: black;
+        box-shadow: 0 0 .2rem #fff,
+        0 0 .2rem #fff,
+        0 0 2rem #ff7b00,
+        0 0 0.8rem #ff7b00,
+        0 0 2.8rem #ff7b00,
+        inset 0 0 1.3rem #ff7b00;
+    }
+
+    &__button-2 {
+        display: none;
+    }
+
+}
