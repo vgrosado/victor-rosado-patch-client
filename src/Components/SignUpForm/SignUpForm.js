@@ -3,44 +3,44 @@ import { AiFillEye } from 'react-icons/ai'
 
 function SignUpForm() {
     return (
-        <form className="form">
+        <form className="signup-form">
 
-                    <div className='form__input-div'>
+                    <div className='signup-form__input-div'>
 						<input
-							className="form__input"
+							className="signup-form__input"
 							type="text"
 							id="username"
-							placeholder='Username'>
+							placeholder='Enter your username'>
 						</input>
 					</div>
-					<div className='form__input-div'>
+					<div className='signup-form__input-div'>
 						<input
-							className="form__input"
+							className="signup-form__input"
 							type="text"
 							id="email"
-							placeholder='Email'>
+							placeholder='Enter your email address'>
 						</input>
 					</div>
-					<div className='form__input-div'>
+					<div className='signup-form__input-div'>
 						<input
-							className="form__input"
+							className="signup-form__input"
 							type="password"
 							id="password"
-							placeholder='Password'>
+							placeholder='Enter your password'>
 						</input>
-						<div className='form__icon'>
+						<div className='signup-form__icon'>
                         <AiFillEye/>
 						</div>
 					</div>
-					<div className='form__rememberme-div'>
+					<div className='signup-form__rememberme-div'>
 						<input
-							className='form__remember-me'
+							className='signup-form__remember-me'
 							type='checkbox'
 							id='remember-me'>
 						</input>
-						<label className='form__rememberme-label'>Remember Me</label>
+						<label className='signup-form__rememberme-label'>Remember Me</label>
 					</div>
-					<button className="form__button" type="submit">Sign Up</button>
+					<button className="signup-form__button" type="submit">Sign Up</button>
 				</form>
     )
 }

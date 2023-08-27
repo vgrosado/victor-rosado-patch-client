@@ -9,7 +9,7 @@ function LoginForm() {
 							className="form__input"
 							type="text"
 							id="email"
-							placeholder='Email'>
+							placeholder='Enter your email'>
 						</input>
 					</div>
 					<div className='form__input-div'>
@@ -17,7 +17,7 @@ function LoginForm() {
 							className="form__input"
 							type="password"
 							id="password"
-							placeholder='Password'>
+							placeholder='Enter your password'>
 						</input>
 						<div className='form__icon'>
                         <AiFillEye/>

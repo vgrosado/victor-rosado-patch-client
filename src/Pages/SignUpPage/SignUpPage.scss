@@ -52,7 +52,7 @@
         align-items: center;
         height: 145vw;
         width: 85vw;
-        padding: 0rem 1rem;
+        padding: 2rem 1rem;
 	}
 
     &__switch-container {
@@ -67,16 +67,27 @@
         border-radius: 10px;
     }
 
-    &__button {
-        font-size: 1rem;
+    &__button-1 {
         font-weight: bold;
+        font-size: 1rem;
         border: none;
-        width: 40%;
-        height: 15%;
+        width: 100%;
+        height: 100%;
         color: white;
-        background-color: #ff7b00;
+        border: 2px solid white;
         border-radius: .25rem;
-        box-shadow: 2px 0px 12px rgba(0, 0, 0, 0.1);
+        padding: 0.4em;
+        background-color: black;
+        box-shadow: 0 0 .2rem #fff,
+        0 0 .2rem #fff,
+        0 0 2rem #ff7b00,
+        0 0 0.8rem #ff7b00,
+        0 0 2.8rem #ff7b00,
+        inset 0 0 1.3rem #ff7b00;
+    }
+
+    &__button-2 {
+        display: none;
     }
 
 }

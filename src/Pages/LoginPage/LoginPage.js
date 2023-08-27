@@ -41,8 +41,8 @@ function LoginPage() {
 				<h1 className='login__header'>P<span className='login__flicker'>A</span>TCH</h1>
 				<LoginForm />
 					<div className='login__switch-container'>
-						<button onClick={HandleLogin}  className='login__button' id='switch-button'>Login</button>
-						<button onClick={HandleSignUp} className='login__button' id='switch-button'>Register</button>
+						<button onClick={HandleLogin}  className='login__button-1' id='switch-button'>Login</button>
+						<button onClick={HandleSignUp} className='login__button-2' id='switch-button'>Register</button>
 					</div>
 			</div>
 		</section>

@@ -39,10 +39,6 @@ function SignUpPage() {
 			<div className="signup__container">
 				<h1 className='signup__header'>P<span className='signup__flicker'>A</span>TCH</h1>
 				<SignUpForm />
-					<div className='signup__switch-container'>
-						<button onClick={HandleLogin}  className='signup__button' id='switch-button'>Login</button>
-						<button onClick={HandleSignUp} className='signup__button' id='switch-button'>Register</button>
-					</div>
 			</div>
 		</section>
 	)
