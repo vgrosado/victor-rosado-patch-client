@@ -18,7 +18,14 @@
 
 
 @font-face {
-    font-family: 'inter';
+    font-family: 'worksans';
     src: url('../../Assets/Fonts/WorkSans/WorkSans-SemiBold.ttf') format('TrueType');
     font-weight: bold;
+}
+
+
+@font-face {
+    font-family: 'worksans';
+    src: url('../../Assets/Fonts/WorkSans/WorkSans-ExtraBold.ttf') format('TrueType');
+    font-weight: bolder;
 }
