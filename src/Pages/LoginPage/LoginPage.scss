@@ -1,3 +1,9 @@
+@use '../../Styles/Partials/typography' as*;
+
+*{
+    font-family: 'workingsans';
+}
+
 .login{
     display: flex;
     justify-content: center;
@@ -18,7 +24,6 @@
         0 0 1em #ff7b00, 
         0 0 1.5em #ff7b00;
         font-size: 5rem;
-        margin-top: 0vw;
         }
 
         &__flicker {
@@ -28,6 +33,28 @@
             20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
             }
         }
+
+    &__subheader-div {
+        height: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
+
+    &__subheader {
+        align-self: start;
+        width: 80%;
+        color: rgba(255, 255, 255, 0.2);
+        font-size: 3rem;
+        font-weight: bolder;
+        &:hover {
+            text-shadow: 0px 0px 11px rgb(166, 166, 166);
+            color: white;
+            }
+    }
+        // margin-bottom: -45vw;
+
 
 	#background-video {
 		width: 100vw;
@@ -51,33 +78,58 @@
         justify-content: space-around;
         align-items: center;
         height: 100%;
-        width: 100%;
+        padding: 0rem 1rem;
 	}
+
 
     &__switch-container {
         display: flex;
         width: 100%;
-        height: 10%;
+        height: 25%;
         justify-content: space-between;
         align-items: center;
-        backdrop-filter: blur(50px);
         opacity: .9;
-        background: linear-gradient(50deg, #000000, #000000);
         border-radius: 10px;
+        // margin-bottom: -15vw;
     }
 
     &__button-1 {
-        display: none;
-    }
+        font-weight: bold;
+        font-size: 1rem;
+        border: none;
+        width: 45%;
+        height: 90%;
+        color: rgba(255, 255, 255, 0.201);
+        border: 2px solid rgba(255, 255, 255, 0.201);
+        border-radius: .25rem;
+        padding: 0.4em;
+        background-color: black;
+        &:hover {
+        animation: flicker 1.5s infinite alternate;
+        color: white;
+        border: 2px solid white;
+        box-shadow: 0 0 .2rem #fff,
+        0 0 .2rem #fff,
+        0 0 2rem #ff7b00,
+        0 0 0.8rem #ff7b00,
+        0 0 2.8rem #ff7b00,
+        inset 0 0 1.3rem #ff7b00;
+        @keyframes flicker {
+            100% {
+                }
+        
+            }       
+        }  
+        }
 
     &__button-2 {
         font-weight: bold;
         font-size: 1rem;
         border: none;
-        width: 100%;
+        width: 45%;
         height: 90%;
-        color: grey;
-        border: 2px solid grey;
+        color: rgba(255, 255, 255, 0.201);
+        border: 2px solid rgba(255, 255, 255, 0.201);
         border-radius: .25rem;
         padding: 0.4em;
         background-color: black;

@@ -39,11 +39,13 @@ function LoginPage() {
 			<video src={backgroundVid} id="background-video" autoPlay loop muted />
 			<div className="login__container">
 				<h1 className='login__header'>P<span className='login__flicker'>A</span>TCH</h1>
-				{/* <LoginForm /> */}
-					{/* <div className='login__switch-container'>
+				<div className='login__subheader-div'>
+					<h2 className='login__subheader'>Make The Connection.</h2>
+					<div className='login__switch-container'>
 						<button onClick={HandleLogin}  className='login__button-1' id='switch-button'>Login</button>
 						<button onClick={HandleSignUp} className='login__button-2' id='switch-button'>Register</button>
-					</div> */}
+					</div>
+				</div>
 			</div>
 		</section>
 	)
