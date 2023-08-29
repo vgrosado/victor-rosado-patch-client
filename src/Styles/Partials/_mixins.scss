@@ -1,0 +1,60 @@
+@use '../Partials/variable' as *;
+
+@mixin NeonText {
+    animation: flicker 3s linear forwards alternate infinite;
+    @keyframes flicker {
+    0%, 19.999%, 22%, 62.999%,64%, 64.999%, 72%, 100% {opacity: 1;}
+    20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
+    }
+    color: #fff;
+    text-shadow: 
+    0 0 0.033em #fff, 
+    0 0 0.08em #fff, 
+    0 0 0.1em #ff7b00,
+    0 0 0.2em #ff7b00, 
+    0 0 0.3em #ff7b00, 
+    0 0 1em #ff7b00, 
+    0 0 1.5em #ff7b00;
+    font-size: 5rem;
+} 
+
+@mixin NeonButton {
+    animation: flicker 1.5s infinite alternate;
+    border: 2px solid white;
+    color: white;
+    box-shadow: 0 0 .2rem #fff,
+    0 0 .2rem #fff,
+    0 0 2rem #ff7b00,
+    0 0 0.8rem #ff7b00,
+    0 0 2.8rem #ff7b00,
+    inset 0 0 1.3rem #ff7b00;
+    @keyframes flicker {
+    100% {
+        }
+    }       
+}  
+
+@mixin CardContainer {
+    backdrop-filter: blur(50px);
+    opacity: .9;
+    background: linear-gradient(50deg, #000000, #000000);
+}
+
+@mixin CardContainerHome {
+    backdrop-filter: blur(50px);
+    opacity: .9;
+    background: linear-gradient(50deg, #666666, #000000);
+}
+
+@mixin Inputs {
+    background-color: $PatchGrey;
+    border: none;
+    border-radius: .25rem;
+    color: grey;
+    outline: none;
+    &:hover {
+        border: 2px solid lightgray;
+        box-shadow: 0px 0px 11px rgb(166, 166, 166);
+        color: white;
+        }
+}
