@@ -50,10 +50,10 @@
     background-color: $PatchGrey;
     border: none;
     border-radius: .25rem;
-    color: grey;
+    color: white;
     outline: none;
     &::placeholder {
         font-weight: 300;
-        color: white;
+        color: grey;
     }
 }
