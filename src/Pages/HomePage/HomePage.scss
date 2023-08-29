@@ -1,29 +1,211 @@
-.homepage {
+@use '../../Styles//Partials/mixins' as*;
+@use '../../Styles/Partials/variable' as*;
+@use '../../Styles/Partials/typography' as*;
 
+*{
+    font-family: 'worksans';
+}
+.homepage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(31, 31, 31, 1);
+    
+
+    &__search-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__avatar {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 50px;
+        background-color: $PatchGrey;
+    }
+
+    &__search-input {
+        @include Inputs;
+        height: 12vw;
+        width: 55%;
+        box-shadow: 0px 5px 8px 1px #0000004f;
+        padding: 0rem 1rem;
+    }
+
+    &__header-div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 15%;
+    }
+
+    &__heading {
+        font-weight: 200;
+        color: white;
+    }
+
+    &__subheading {
+        font-weight: 400;
+        font-size: 12px;
+        color: white;
+    }
+
+    &__select {
+        color: $PatchOrange;
+        border-radius: 1.25rem;
+        border: none;
+        outline: none;
+        background-color: $PatchGrey;
+    }
+
+    &__select-div {
+        text-align: center;
+        background-color: $PatchGrey;
+        border-radius: 1.25rem ;
+        width: 50%;
+        padding: .3rem;
+    }
+
+    &__main-container {
+        padding: 1.5rem 2rem 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 87%;
+    }
 
     &__container {
-        height: 176vw;
-        width: 100vw;
-        border: 2px solid red;
+        background: rgba(31, 31, 31, 1);
+        height: 100vh;
+        width: 100%;
         display: flex;
+        justify-content: space-between;
+        overflow-x: auto;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     &__container-1 {
         display: flex;
         flex-direction: column;
-
+        justify-content: space-between;
+        width: 45%;
+        height: 200vh;
     }
 
     &__container-2 {
         display: flex;
         flex-direction: column;
-
+        justify-content: space-between;
+        width: 45%;
+        height: 200vh;
     }
 
-    &__artist-div {
-        border: 2px solid blue;
+    &__name {
+        color: white;
+        font-weight: light;
+        font-size: 10px;
+        padding: .5rem 0rem;
+        text-align: center;
+    }
+
+    &__artist-div-1 {
         border-radius: .625rem;
-        height: 50vw;
-        width: 50vw;
+        height: 25%;
+        width: 100%;
+        background-color: #ffffff14;
+        background-image: url('../../Assets/Images/RichieHawtin.jpeg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0px 5px 8px 1px #000000;
+    }
+    &__artist-div-2 {
+        border-radius: .625rem;
+        height: 25%;
+        width: 100%;
+        background-color: #ffffff14;
+        background-image: url('../../Assets/Images/JeffMills.jpeg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0px 5px 8px 1px #000000;;
+    }
+    &__artist-div-3 {
+        border-radius: .625rem;
+        height: 25%;
+        width: 100%;
+        background-color: #ffffff14;
+        background-image: url('../../Assets/Images/Chlar.webp');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0px 5px 8px 1px #000000;;
+    }
+    &__artist-div-4 {
+        border-radius: .625rem;
+        height: 25%;
+        width: 100%;
+        background-color: #ffffff14;
+        background-image: url('../../Assets/Images/ihatemodels.jpeg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0px 5px 8px 1px #000000;;
+    }
+    &__artist-div-5 {
+        border-radius: .625rem;
+        height: 25%;
+        width: 100%;
+        background-color: #ffffff14;
+        background-image: url('../../Assets/Images/FJAAK.jpeg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0px 5px 8px 1px #000000;;
+    }
+    &__artist-div-6 {
+        border-radius: .625rem;
+        height: 25%;
+        width: 100%;
+        background-color: $PatchOrange;
+        background-image: url('../../Assets/Images/LocoDice.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0px 5px 8px 1px #000000;;
+    }
+    &__artist-div-7 {
+        border-radius: .625rem;
+        height: 25%;
+        width: 100%;
+        background-color: $PatchOrange;
+        background-image: url('../../Assets/Images/rebekah.jpeg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0px 5px 8px 1px #000000;;
+    }
+    &__artist-div-8 {
+        border-radius: .625rem;
+        height: 25%;
+        width: 100%;
+        background-color: #ffffff14;
+        background-image: url('../../Assets/Images/sweely.jpeg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0px 5px 8px 1px #000000;;
+    }
+    
+
+    &__nav {
+        height: 15.5vw;
+        background-color: $PatchGrey;
     }
 }

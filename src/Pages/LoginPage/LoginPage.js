@@ -1,5 +1,5 @@
 import '../LoginPage/LoginPage.scss'
-import backgroundVid from '../../Assets/LoginBackground3.mp4'
+import backgroundVid from '../../Assets/Videos/LoginBackground3.mp4'
 import LoginForm from '../../Components/LoginForm/LoginForm'
 import {useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -39,11 +39,11 @@ function LoginPage() {
 			<video src={backgroundVid} id="background-video" autoPlay loop muted />
 			<div className="login__container">
 				<h1 className='login__header'>P<span className='login__flicker'>A</span>TCH</h1>
-				<LoginForm />
-					<div className='login__switch-container'>
+				{/* <LoginForm /> */}
+					{/* <div className='login__switch-container'>
 						<button onClick={HandleLogin}  className='login__button-1' id='switch-button'>Login</button>
 						<button onClick={HandleSignUp} className='login__button-2' id='switch-button'>Register</button>
-					</div>
+					</div> */}
 			</div>
 		</section>
 	)

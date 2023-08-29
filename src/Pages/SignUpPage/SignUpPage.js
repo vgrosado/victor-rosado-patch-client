@@ -1,5 +1,5 @@
 import '../SignUpPage/SignUpPage.scss'
-import backgroundVid from '../../Assets/LoginBackground3.mp4'
+import backgroundVid from '../../Assets/Videos/LoginBackground3.mp4'
 import {useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
