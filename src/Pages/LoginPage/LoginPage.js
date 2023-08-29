@@ -26,12 +26,12 @@ function LoginPage() {
 
 
 	function HandleLogin(){
-		navigateTo('/LoginPage');
+		navigateTo('/Home');
 	}
 	
 
 	function HandleSignUp(){
-		navigateTo('/SignUpPage');
+		navigateTo('/SignUp');
 	}
 
 	return (
