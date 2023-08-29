@@ -92,13 +92,19 @@
         justify-content: space-between;
         align-items: center;
         height: 20%;
+        margin-bottom: .5rem;
     }
 
     &__heading {
-        font-weight: 200;
-        color: grey;
-        text-shadow: 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
-    }
+        font-weight: 300;
+        color: rgb(255, 255, 255);
+        text-shadow: 0px 0px 11px rgb(166, 166, 166);
+        animation: flicker 8s linear forwards alternate infinite;
+            @keyframes flicker {
+            0%, 19.999%, 22%, 62.999%,64%, 64.999%, 72%, 100% {opacity: 1;}
+            20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
+            }
+        }
 
     &__subheading {
         font-weight: 300;
