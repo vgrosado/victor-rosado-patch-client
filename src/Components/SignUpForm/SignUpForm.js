@@ -34,7 +34,7 @@ function SignUpForm() {
 					</div>
 					<div className='signup-form__rememberme-div'>
 						<input
-							className='signup-form__remember-me'
+							className='signup-form__rememberme'
 							type='checkbox'
 							id='remember-me'>
 						</input>
