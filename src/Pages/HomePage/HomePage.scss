@@ -14,11 +14,11 @@
     
 
     &__header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         width: 100%;
-        padding-bottom: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .5rem 0rem;
     }
 
     &__header {
@@ -30,6 +30,7 @@
         fill: grey;
         width: 20px;
         height: 40px;
+        padding: 0rem 0rem 0rem .5rem;
     }
 
     &__search-container {
@@ -40,16 +41,22 @@
         align-items: center;
     }
 
-    // &__avatar {
-    //     width: 18vw;
-    //     height: 18vw;
-    //     border-radius: 50px;
-    //     background-color: $PatchGrey;
-    //     background-image: url('../../Assets/Images/rickytinez.jpeg');
-    //     background-position: center;
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    // }
+    &__avatar {
+        width: 14vw;
+        height: 14vw;
+        border-radius: 50px;
+        background-color: $PatchGrey;
+        background-image: url('../../Assets/Images/rickytinez.jpeg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &__icons-container {
+        display: flex;
+        justify-content: space-between;
+        width: 25%;
+    }
 
     &__search-input {
         @include Inputs;
@@ -60,7 +67,7 @@
 
     &__search-icon {
         padding-right: 1rem;
-        fill: white;
+        fill: grey;
     }
 
 
@@ -71,16 +78,16 @@
         display: flex;
         align-items: center;
         background-color: $PatchGrey;
-        box-shadow: 0px 5px 8px 1px #0000004f;
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
         &:hover {
         border: 2px solid lightgray;
-        box-shadow: 0px 0px 11px rgb(166, 166, 166);
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
         color: white;
         }
     }
 
 
-    &__header-div {
+    &__subheader-div {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -89,7 +96,7 @@
 
     &__heading {
         font-weight: 200;
-        color: $PatchOrange;
+        color: grey;
         text-shadow: 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
     }
 
@@ -114,7 +121,7 @@
         border-radius: 1.25rem ;
         width: 50%;
         padding: .3rem;
-        box-shadow: 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
     }
 
     &__option {
@@ -122,7 +129,7 @@
     }
 
     &__main-container {
-        padding: 1.5rem 2rem 0rem;
+        padding: 1rem 2rem 0rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -147,7 +154,7 @@
         flex-direction: column;
         justify-content: space-between;
         width: 45%;
-        height: 200vh;
+        height: 145vh;
     }
 
     &__container-2 {
@@ -155,7 +162,7 @@
         flex-direction: column;
         justify-content: space-between;
         width: 45%;
-        height: 200vh;
+        height: 145vh;
     }
 
     &__name {
@@ -168,7 +175,7 @@
 
     &__artist-div-1 {
         border-radius: .625rem;
-        height: 25%;
+        height: 15%;
         width: 100%;
         background-color: #ffffff14;
         background-image: url('../../Assets/Images/RichieHawtin.jpeg');
@@ -179,7 +186,7 @@
     }
     &__artist-div-2 {
         border-radius: .625rem;
-        height: 25%;
+        height: 15%;
         width: 100%;
         background-color: #ffffff14;
         background-image: url('../../Assets/Images/JeffMills.jpeg');
@@ -190,7 +197,7 @@
     }
     &__artist-div-3 {
         border-radius: .625rem;
-        height: 25%;
+        height: 15%;
         width: 100%;
         background-color: #ffffff14;
         background-image: url('../../Assets/Images/Chlar.webp');
@@ -201,7 +208,7 @@
     }
     &__artist-div-4 {
         border-radius: .625rem;
-        height: 25%;
+        height: 15%;
         width: 100%;
         background-color: #ffffff14;
         background-image: url('../../Assets/Images/ihatemodels.jpeg');
@@ -212,7 +219,7 @@
     }
     &__artist-div-5 {
         border-radius: .625rem;
-        height: 25%;
+        height: 15%;
         width: 100%;
         background-color: #ffffff14;
         background-image: url('../../Assets/Images/FJAAK.jpeg');
@@ -223,7 +230,7 @@
     }
     &__artist-div-6 {
         border-radius: .625rem;
-        height: 25%;
+        height: 15%;
         width: 100%;
         background-color: $PatchOrange;
         background-image: url('../../Assets/Images/LocoDice.jpg');
@@ -234,7 +241,7 @@
     }
     &__artist-div-7 {
         border-radius: .625rem;
-        height: 25%;
+        height: 15%;
         width: 100%;
         background-color: $PatchOrange;
         background-image: url('../../Assets/Images/rebekah.jpeg');
@@ -245,7 +252,7 @@
     }
     &__artist-div-8 {
         border-radius: .625rem;
-        height: 25%;
+        height: 15%;
         width: 100%;
         background-color: #ffffff14;
         background-image: url('../../Assets/Images/sweely.jpeg');
@@ -261,14 +268,28 @@
         justify-content: space-between;
         align-items: center;
         background-color: $PatchGrey;
-        height: 15.5vw;
-        padding: 0rem 1rem;
+        height: 18.5vw;
+        padding: 0rem 1.5rem;
         
+    }
+
+    &__nav-div {
+        height: 55%;
+        display: flex;
+        flex-direction: column;        
+        align-items: center;
+    }
+
+    &__nav-label {
+        font-size: 12px;
+        color: grey;
+        font-weight: 300;
     }
 
     &__nav-icons {
         fill: grey;
-        width: 30px;
+        width: 24px;
         height: 40px;
+        padding-bottom: .1rem;
     }
 }

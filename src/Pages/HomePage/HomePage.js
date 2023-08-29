@@ -1,9 +1,13 @@
 import '../HomePage/HomePage.scss'
 import { AiOutlineSearch} from 'react-icons/ai';
 import {SlUser} from 'react-icons/sl';
-import {IoNotificationsOutline} from 'react-icons/io';
 import {SlHome} from 'react-icons/sl';
-import {PiBookBookmark} from 'react-icons/pi';
+import {PiBooks} from 'react-icons/pi';
+import {HiOutlineInbox} from 'react-icons/hi';
+import {BiBell} from 'react-icons/bi';
+import {BiEnvelope} from 'react-icons/bi';
+import {BiUpload} from 'react-icons/bi';
+
 
 
 
@@ -13,16 +17,18 @@ function HomePage() {
             <article className='homepage__main-container'>
             <div className='homepage__search-container'>
                 <div className='homepage__header-container'>
-                    <h3 className='homepage__header'>Home</h3>
-                    <IoNotificationsOutline className='homepage__header-icons'/>
+                        <div className='homepage__avatar'></div>
+                        <div className='homepage__icons-container'>
+                            <BiEnvelope className='homepage__header-icons'/>
+                            <BiBell className='homepage__header-icons'/>
+                    </div>
                 </div>
-                    <div className='homepage__avatar'></div>
                         <div className='homepage__input-div'>
                             <input className='homepage__search-input' placeholder='Search'></input>
                             <AiOutlineSearch className='homepage__search-icon'/>
                         </div>
             </div>
-            <div className='homepage__header-div'>
+            <div className='homepage__subheader-div'>
                 <h1 className='homepage__heading'>Discover</h1>
                     <div className='homepage__select-div'>
                         <label className='homepage__subheading'>Search By:</label>
@@ -73,9 +79,22 @@ function HomePage() {
             </section>
             </article>
             <div className='homepage__nav'>
-                <SlHome className='homepage__nav-icons'/>
-                <SlUser className='homepage__nav-icons'/>
-                <PiBookBookmark className='homepage__nav-icons'/>
+                <div className='homepage__nav-div'>
+                    <SlHome className='homepage__nav-icons'/>
+                    <p className='homepage__nav-label'>Home</p>
+                </div>
+                <div className='homepage__nav-div'>
+                    <SlUser className='homepage__nav-icons'/>
+                    <p className='homepage__nav-label'>Profile</p>
+                </div>  
+                <div className='homepage__nav-div'>
+                    <BiUpload className='homepage__nav-icons'/>
+                    <p className='homepage__nav-label'>Upload</p>
+                </div>
+                <div className='homepage__nav-div'>
+                    <PiBooks className='homepage__nav-icons'/>
+                    <p className='homepage__nav-label'>Bookings</p>
+                </div>
             </div>
         </main>
         
