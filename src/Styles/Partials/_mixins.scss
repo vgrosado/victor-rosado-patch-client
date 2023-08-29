@@ -52,9 +52,8 @@
     border-radius: .25rem;
     color: grey;
     outline: none;
-    &:hover {
-        border: 2px solid lightgray;
-        box-shadow: 0px 0px 11px rgb(166, 166, 166);
+    &::placeholder {
+        font-weight: 300;
         color: white;
-        }
+    }
 }

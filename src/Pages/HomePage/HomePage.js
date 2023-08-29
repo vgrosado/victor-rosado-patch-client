@@ -1,21 +1,35 @@
 import '../HomePage/HomePage.scss'
+import { AiOutlineSearch} from 'react-icons/ai';
+import {SlUser} from 'react-icons/sl';
+import {IoNotificationsOutline} from 'react-icons/io';
+import {SlHome} from 'react-icons/sl';
+import {PiBookBookmark} from 'react-icons/pi';
+
+
 
 function HomePage() {
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>
             <div className='homepage__search-container'>
-                <div className='homepage__avatar'></div>
-                <input className='homepage__search-input' placeholder='Search'></input>
+                <div className='homepage__header-container'>
+                    <h3 className='homepage__header'>Home</h3>
+                    <IoNotificationsOutline className='homepage__header-icons'/>
+                </div>
+                    <div className='homepage__avatar'></div>
+                        <div className='homepage__input-div'>
+                            <input className='homepage__search-input' placeholder='Search'></input>
+                            <AiOutlineSearch className='homepage__search-icon'/>
+                        </div>
             </div>
             <div className='homepage__header-div'>
                 <h1 className='homepage__heading'>Discover</h1>
                     <div className='homepage__select-div'>
                         <label className='homepage__subheading'>Search By:</label>
                         <select className='homepage__select'>
-                            <option value="" disabled selected hidden>Genre</option>
-                            <option>Genre</option>
-                            <option>Artist</option>
+                            <option className='homepage__option' value="" disabled selected hidden>Genre</option>
+                            <option className='homepage__option'>Genre</option>
+                            <option className='homepage__option'>Artist</option>
                         </select>
                     </div>
                 </div>
@@ -58,7 +72,11 @@ function HomePage() {
                 </div>
             </section>
             </article>
-            <div className='homepage__nav'></div>
+            <div className='homepage__nav'>
+                <SlHome className='homepage__nav-icons'/>
+                <SlUser className='homepage__nav-icons'/>
+                <PiBookBookmark className='homepage__nav-icons'/>
+            </div>
         </main>
         
     )
