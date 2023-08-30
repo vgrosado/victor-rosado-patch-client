@@ -3,15 +3,18 @@ import { AiOutlineSearch} from 'react-icons/ai';
 import {SlUser} from 'react-icons/sl';
 import {SlHome} from 'react-icons/sl';
 import {PiBooks} from 'react-icons/pi';
-import {HiOutlineInbox} from 'react-icons/hi';
 import {BiBell} from 'react-icons/bi';
 import {BiEnvelope} from 'react-icons/bi';
 import {BiUpload} from 'react-icons/bi';
+import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 
 
 
 
-function HomePage() {
+function HomePage({artists}) {
+console.log(artists)
+
+
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>
@@ -40,7 +43,10 @@ function HomePage() {
                     </div>
                 </div>
             <section className='homepage__container'>
-                <div className='homepage__container-1'>
+                {artists.map(artist => (
+                <ArtistDiv artists={artist}/>
+                ))}
+                {/* <div className='homepage__container-1'>
                     <div className='homepage__artist-div-1'></div>
                         <label className='homepage__name'>Richie Hawtin</label>
                     <div className='homepage__artist-div-2'></div>
@@ -75,7 +81,7 @@ function HomePage() {
                         <label className='homepage__name'>Rebekah</label>
                     <div className='homepage__artist-div-8'></div>
                         <label className='homepage__name'>Sweely</label>
-                </div>
+                </div> */}
             </section>
             </article>
             <div className='homepage__nav'>
