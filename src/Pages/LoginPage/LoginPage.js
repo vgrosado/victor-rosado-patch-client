@@ -36,7 +36,7 @@ function LoginPage() {
 
 	return (
 		<section className="login">
-			<video src={backgroundVid} id="background-video" autoPlay loop muted />
+			<video src={backgroundVid} id="background-video" autoPlay playsInline loop muted />
 			<div className="login__container">
 				<h1 className='login__header'>P<span className='login__flicker'>A</span>TCH</h1>
 				<div className='login__subheader-div'>

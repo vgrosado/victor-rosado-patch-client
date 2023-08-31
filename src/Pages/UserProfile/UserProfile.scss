@@ -1,0 +1,174 @@
+@use '../../Styles/Partials/variable' as*;
+
+.user {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+
+    &__background-container {
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        height: 40vw;
+        width: 100%;
+    }
+
+    &__header-background {
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__avatar-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__info-container {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 2rem 2rem 0rem 1rem;
+        align-items: center;
+    }
+
+    &__avatar {
+        border: 2px solid #191919;
+        width: 20vw;
+        height: 20vw;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__name {
+        color: white;
+        font-weight: 300;
+    }
+
+    &__stats-container {
+        position: absolute;
+        z-index: 1;
+        top: 34vw;
+        height: 25%;
+        width: 95%;
+        background-color: rgb(31, 31, 31);
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        box-sizing: border-box;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    &__details-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 65%;
+        // border-bottom: .0625rem solid $PatchOrange;
+    }
+
+    &__info-div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__stats-title {
+        color: grey;
+        font-weight: 300;
+        font-size: .75rem;
+    }   
+
+    &__stats {
+        height: 100%;
+        display: flex;
+        box-sizing: border-box;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__rating-div {
+        display: flex;
+        align-items: center;
+        width: 70%;
+        justify-content: space-between;
+    }
+
+    &__rating {
+        font-size: .75rem;
+        font-weight: 300;
+        color: white;
+    }
+
+    &__followers-div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        font-size: 12px;
+
+    }
+
+    &__followers {
+        font-size: .75rem;
+        font-weight: 300;
+        color: white;
+
+    }
+
+    &__button-div {
+        display: flex;
+        height: 75%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__button {
+        border-radius: 1.25rem;
+        font-weight: 300;
+        color: $PatchOrange;
+        background-color: $PatchGrey;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        box-sizing: border-box;
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__nav-item {
+        font-weight: 300;
+        font-size: 1rem;
+        color: grey;
+        &:hover {
+        color: rgb(255, 255, 255);
+        text-shadow: 0px 0px 11px rgb(166, 166, 166);
+        }
+    }
+
+    &__nav-div {
+        height: 85%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__booking-div {
+        display: flex;
+        height: 85%;
+        flex-direction: column;
+        justify-content: end;
+    }
+
+}
