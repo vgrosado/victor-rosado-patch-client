@@ -68,9 +68,9 @@
 
 
     &__container {
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(2px);
         opacity: .9;
-        background: linear-gradient(50deg, #00000082, #000000);
+        background: linear-gradient(50deg,rgba(0,0,0,.51),#0d0000);
         border-radius: 10px;
         position: absolute;
         display: flex;
@@ -88,7 +88,6 @@
         height: 25%;
         justify-content: space-between;
         align-items: center;
-        opacity: .9;
         border-radius: 10px;
     }
 
