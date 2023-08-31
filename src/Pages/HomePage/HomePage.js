@@ -10,10 +10,9 @@ import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 
 
 
-
 function HomePage({artists}) {
-console.log(artists)
 
+console.log(artists)
 
     return (
         <main className='homepage'>
@@ -36,7 +35,7 @@ console.log(artists)
                     <div className='homepage__select-div'>
                         <label className='homepage__subheading'>Search By:</label>
                         <select className='homepage__select'>
-                            <option className='homepage__option' value="" disabled selected hidden>Genre</option>
+                            <option className='homepage__option' value="" disabled hidden>Genre</option>
                             <option className='homepage__option'>Genre</option>
                             <option className='homepage__option'>Artist</option>
                         </select>
@@ -44,44 +43,8 @@ console.log(artists)
                 </div>
             <section className='homepage__container'>
                 {artists.map(artist => (
-                <ArtistDiv artists={artist}/>
+                <ArtistDiv key={artist.id} artists={artist}/>
                 ))}
-                {/* <div className='homepage__container-1'>
-                    <div className='homepage__artist-div-1'></div>
-                        <label className='homepage__name'>Richie Hawtin</label>
-                    <div className='homepage__artist-div-2'></div>
-                        <label className='homepage__name'>Jeff Mills</label>
-                    <div className='homepage__artist-div-3'></div>
-                        <label className='homepage__name'>Chlar</label>
-                    <div className='homepage__artist-div-4'></div>
-                        <label className='homepage__name'>IHateModels</label>
-                    <div className='homepage__artist-div-1'></div>
-                        <label className='homepage__name'>Richie Hawtin</label>
-                    <div className='homepage__artist-div-2'></div>
-                        <label className='homepage__name'>Jeff Mills</label>
-                    <div className='homepage__artist-div-3'></div>
-                        <label className='homepage__name'>Chlar</label>
-                    <div className='homepage__artist-div-4'></div>
-                        <label className='homepage__name'>IHateModels</label>
-                </div>
-                <div className='homepage__container-2'>
-                    <div className='homepage__artist-div-5'></div>
-                        <label className='homepage__name'>Fjaak</label>
-                    <div className='homepage__artist-div-6'></div>
-                        <label className='homepage__name'>LocoDice</label>
-                    <div className='homepage__artist-div-7'></div>
-                        <label className='homepage__name'>Rebekah</label>
-                    <div className='homepage__artist-div-8'></div>
-                        <label className='homepage__name'>Sweely</label>
-                    <div className='homepage__artist-div-5'></div>
-                        <label className='homepage__name'>Fjaak</label>
-                    <div className='homepage__artist-div-6'></div>
-                        <label className='homepage__name'>LocoDice</label>
-                    <div className='homepage__artist-div-7'></div>
-                        <label className='homepage__name'>Rebekah</label>
-                    <div className='homepage__artist-div-8'></div>
-                        <label className='homepage__name'>Sweely</label>
-                </div> */}
             </section>
             </article>
             <div className='homepage__nav'>
@@ -103,7 +66,6 @@ console.log(artists)
                 </div>
             </div>
         </main>
-        
     )
 };
 
