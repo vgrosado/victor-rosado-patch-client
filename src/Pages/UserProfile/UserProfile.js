@@ -26,24 +26,45 @@ function UserProfile() {
 
     return (
         <section className='user'>
-            <div className='user__header-container'>
-                <div className='user__info-div'>
-                    <img className='user__avatar' src={artist.image} />
-                    <p className='user__name'>{artist.name}</p>
-                    <p className='user__location'>{artist.location}</p>
-                </div>
-                <div className='user__stats'>
-                    <div className='user__followers-div'>
-                        <p className='user__followers'>{artist.followers}</p>
+            <div className='user__background-container'>
+                <img className='user__header-background' src={artist.backgroundimg} alt='user background'/>
+                    <div className='user__info-container'>
+                        <div className='user__avatar-div'>
+                            <img className='user__avatar' src={artist.image} />
+                        </div>
                     </div>
-                    <div className='user__rating-div'>
-                        <p className='user__rating'>{artist.rating}</p>
+        </div>
+            <article className='user__stats-container'>
+                <div className='user__details-container'>
+                    <div className='user__info-div'>
+                        <p className='user__name'>{artist.name}</p>
+                        <p className='user__followers'>@TheRealCarlCox</p>
+                        <p className='user__location'>{artist.location}</p>
                     </div>
                     <div className='user__button-div'>
-                        <button className='user__button'></button>
+                        <button className='user__button'>Follow</button>
                     </div>
                 </div>
-            </div>
+                    <div className='user__stats'>
+                        <div className='user__nav-div'>
+                            <div className='user__rating-div'>
+                                <p className='user__stats-title'>Voltage</p>
+                                <p className='user__rating'>{artist.rating}</p>
+                            </div>
+                            <p className='user__nav-item'>Music</p>
+                        </div>
+                    <div className='user__nav-div'>
+                        <div className='user__followers-div'>
+                            <p className='user__stats-title'>Followers</p>
+                            <p className='user__followers'>{artist.followers}</p>
+                        </div>
+                        <p className='user__nav-item'>Encore</p>
+                    </div>
+                    <div className='user__booking-div'>
+                    <p className='user__nav-item'>Booking</p>
+                    </div>
+                </div>
+            </article>
         </section>
 
     )
