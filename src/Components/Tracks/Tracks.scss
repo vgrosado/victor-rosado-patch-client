@@ -1,0 +1,15 @@
+@use '../../Styles/Partials/typography' as*;
+@use '../../Styles/Partials/variable' as*;
+
+.tracks {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    background-color: orange;
+
+    &__song-name{
+        font-size: 16px;
+        color: white;
+    }
+}

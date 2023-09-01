@@ -1,4 +1,5 @@
 @use '../../Styles/Partials/variable' as*;
+@use '../../Styles/Partials/typography' as*;
 
 .user {
     display: flex;
@@ -69,14 +70,14 @@
         flex-direction: column;
         padding: 1rem 2rem;
         box-sizing: border-box;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+        border-top-left-radius: 1.25rem;
+        border-top-right-radius: 1.25rem;
     }
 
     &__details-container {
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
         height: 65%;
     }
 
@@ -88,7 +89,7 @@
     &__stats-title {
         color: grey;
         font-weight: 300;
-        font-size: .75rem;
+        font-size: .8rem;
     }   
 
     &__stats {
@@ -105,7 +106,7 @@
     }
 
     &__rating {
-        font-size: .75rem;
+        font-size: .8rem;
         font-weight: 300;
         color: white;
         padding: 0rem .5rem;
@@ -159,7 +160,7 @@
     }
 
     &__nav-div {
-        height: 85%;
+        height: 100%;
         width: 38%;
         display: flex;
         flex-direction: column;
@@ -168,7 +169,7 @@
 
     &__booking-div {
         display: flex;
-        height: 85%;
+        height: 100%;
         flex-direction: column;
         justify-content: flex-end;
     }
