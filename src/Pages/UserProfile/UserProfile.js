@@ -25,7 +25,6 @@ function UserProfile() {
 }, [])
 
 
-
     return (
         <section className='user'>
             <div className='user__background-container'>
@@ -66,8 +65,9 @@ function UserProfile() {
                     <p className='user__nav-item'>Booking</p>
                     </div>
                 </div>
-                <MediaPlayer />
-                <Tracks artist={artist} />
+
+                <MediaPlayer artist={artist} />
+                {/* <Tracks artist={artist} /> */}
             </article>
         </section>
 
