@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import {doc, getDoc } from "firebase/firestore";
 import {db} from '../../Firebase';
 import { useParams } from 'react-router-dom';
+import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
+import Tracks from '../../Components/Tracks/Tracks';
 
 function UserProfile() {
     const {id} = useParams();
@@ -64,6 +66,8 @@ function UserProfile() {
                     <p className='user__nav-item'>Booking</p>
                     </div>
                 </div>
+                <MediaPlayer />
+                <Tracks artist={artist} />
             </article>
         </section>
 
