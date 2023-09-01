@@ -38,7 +38,7 @@ function UserProfile() {
                 <div className='user__details-container'>
                     <div className='user__info-div'>
                         <p className='user__name'>{artist.name}</p>
-                        <p className='user__followers'>@TheRealCarlCox</p>
+                        <p className='user__username'>@TheRealCarlCox</p>
                         <p className='user__location'>{artist.location}</p>
                     </div>
                     <div className='user__button-div'>
