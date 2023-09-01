@@ -3,8 +3,29 @@
 
     &__card {
         border: 2px solid red;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 1.25rem;
         background-color: white;
         height: 10vh;
         width: 100%;
+    }
+
+    &__icon-div {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icons {
+        height: 6vw;
+        width: 6vw;
+    }
+
+    &__play-pause {
+        height: 8vw;   
+        width: 8vw;
     }
 }
