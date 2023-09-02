@@ -63,7 +63,7 @@
         position: absolute;
         z-index: 1;
         top: 34vw;
-        height: 25%;
+        height: 55%;
         width: 95%;
         background-color: $PatchGrey;
         display: flex;
@@ -89,7 +89,7 @@
     &__stats-title {
         color: grey;
         font-weight: 300;
-        font-size: .8rem;
+        font-size: 1rem;
     }   
 
     &__stats {
@@ -106,7 +106,7 @@
     }
 
     &__rating {
-        font-size: .8rem;
+        font-size: .9rem;
         font-weight: 300;
         color: white;
         padding: 0rem .5rem;
@@ -120,7 +120,7 @@
     }
 
     &__followers {
-        font-size: .75rem;
+        font-size: .9rem;
         font-weight: 300;
         color: white;
         padding: 0rem .5rem;

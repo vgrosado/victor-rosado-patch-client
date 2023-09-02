@@ -1,7 +1,7 @@
 
 import '../UserProfile/UserProfile.scss';
 import { useEffect, useState } from 'react';
-import {doc, getDoc } from "firebase/firestore";
+import {doc, getDoc, getDocs, collection } from "firebase/firestore";
 import {db} from '../../Firebase';
 import { useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
@@ -23,6 +23,20 @@ function UserProfile() {
         console.log('error fetching video ID:s', error)
     });
 }, [])
+
+const [music, setMusic] = useState([]);
+
+useEffect(() => {
+    const getArtists = async () => {
+        const musicData = await getDocs(collection(db, "Artists", `${artistId}`, "Music",));
+        console.log(musicData)
+        setMusic(musicData.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        console.log(music)
+    };
+
+    getArtists();
+}, [])
+
 
 
     return (
@@ -66,8 +80,8 @@ function UserProfile() {
                     </div>
                 </div>
 
-                <MediaPlayer artist={artist} />
-                {/* <Tracks artist={artist} /> */}
+                <MediaPlayer music={music}  />
+                {/* <Tracks music={music}/> */}
             </article>
         </section>
 
