@@ -5,7 +5,7 @@ import {doc, getDoc, getDocs, collection } from "firebase/firestore";
 import {db} from '../../Firebase';
 import { useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
-import Tracks from '../../Components/Tracks/Tracks';
+// import Tracks from '../../Components/Tracks/Tracks';
 
 function UserProfile() {
     const {id} = useParams();
@@ -36,8 +36,6 @@ useEffect(() => {
 
     getArtists();
 }, [])
-
-
 
     return (
         <section className='user'>
@@ -79,9 +77,11 @@ useEffect(() => {
                     <p className='user__nav-item'>Booking</p>
                     </div>
                 </div>
-
                 <MediaPlayer music={music}  />
-                {/* <Tracks music={music}/> */}
+                {/* {music.map(song => (
+                <Tracks key={song.id} song={song}/>
+                ))} */}
+                
             </article>
         </section>
 

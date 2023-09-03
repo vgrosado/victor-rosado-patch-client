@@ -13,9 +13,65 @@
         padding: .5rem;
         border-radius: 1.25rem;
         background-color: $PatchGrey;
-        height: 30vh;
+        height: 25vh;
         width: 100%;
     }
+
+    &__controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__time-div {
+        display: flex;
+        justify-content: space-between;
+        padding-top: .5rem;
+        width: 100%;
+    }
+
+    &__time {
+        font-size: 12px;
+        font-weight: bold;
+        color: grey;
+    }
+
+    &__progress-bar {
+        -webkit-appearance: none;
+        --range-progress: 0;
+        background:#ccc;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        &:before {
+            content: '';
+            height: 2px;
+            background: $PatchOrange;
+            width: var(--range-progress);
+            border-bottom-left-radius: 2px;
+            border-top-left-radius: 2px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            border: none;
+            background-color: $PatchOrange;
+            cursor: pointer;
+            position: relative;
+        }
+        &:active::-webkit-slider-thumb {
+            transform: scale(1.2);
+        }
+    }
+
 
     &__song-div {
         display: flex;
@@ -46,13 +102,11 @@
         height: 10vw;
         width: 15vw;
         fill: white;
-        stroke-width: 1px;
     }
 
     &__play-pause {
         height: 15vw;   
         width: 15vw;
         fill: white;
-        stroke-width: 2.1875rem;
     }
 }
