@@ -63,8 +63,8 @@
         position: absolute;
         z-index: 1;
         top: 34vw;
-        height: 55%;
-        width: 95%;
+        height: 50%;
+        width: 100%;
         background-color: $PatchGrey;
         display: flex;
         flex-direction: column;
@@ -78,7 +78,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 65%;
+        height: 100%;
     }
 
     &__info-div {
