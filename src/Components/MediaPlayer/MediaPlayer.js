@@ -2,26 +2,8 @@ import '../MediaPlayer/MediaPlayer.scss';
 import { AiFillPlayCircle, AiFillPauseCircle } from 'react-icons/ai'
 import { BiSkipPrevious, BiSkipNext } from 'react-icons/bi'
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { collection, getDocs, getDoc, doc, query, where } from 'firebase/firestore';
-import { db } from '../../Firebase';
-import { useParams } from 'react-router-dom';
 
 function MediaPlayer({ music }) {
-
-
-    // useEffect(() => {
-    //     const musicRef = doc(db, "Music", "1")
-    //     getDoc(musicRef)
-    //     .then((doc) => {
-    //         setMusic(doc.data())
-    //         console.log(music)
-    //     })
-    //     .catch(error => {
-    //         console.log('error fetching video ID:s', error)
-    //     });
-    // }, [])
-
-
     const [isPlaying, setIsPlaying] = useState(false);
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -38,12 +20,12 @@ function MediaPlayer({ music }) {
         const seconds = audioRef.current.duration;
         setDuration(seconds);
         progressBarRef.current.max = seconds;
+        audioRef.current.currentTime = 0;
     };
 
     const togglePlay = () => {
         setIsPlaying(!isPlaying)
     }
-
 
     const formatTime = (time) => {
         if (time && !isNaN(time)) {
@@ -57,7 +39,6 @@ function MediaPlayer({ music }) {
         }
         return '00:00';
     };
-
 
     const repeat = useCallback(() => {
         const currentTime = audioRef.current.currentTime;
@@ -113,11 +94,6 @@ function MediaPlayer({ music }) {
                         <BiSkipNext className='mediaplayer__icons' />
                     </div>
                 </div>
-                {/* {artistMusic.map((track)=> (
-        <div key={track.id}> <p key={track.id} className='mediaplayer__song-title'>{track.title}</p> 
-        <audio key={track.id} controls typeof='audio/mp3' src={track.track}/>
-        </div>
-        ))} */}
             </div>
         </section>
     )
