@@ -5,6 +5,7 @@ import {doc, getDoc, getDocs, collection } from "firebase/firestore";
 import {db} from '../../Firebase';
 import { useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
+import Nav from '../../Components/Nav/Nav';
 // import Tracks from '../../Components/Tracks/Tracks';
 
 function UserProfile() {
@@ -38,6 +39,7 @@ useEffect(() => {
 }, [])
 
     return (
+        <>
         <section className='user'>
             <div className='user__background-container'>
                 <img className='user__header-background' src={artist.backgroundimg} alt='user background'/>
@@ -46,7 +48,7 @@ useEffect(() => {
                             <img className='user__avatar' src={artist.image} />
                         </div>
                     </div>
-        </div>
+            </div>
             <article className='user__stats-container'>
                 <div className='user__details-container'>
                     <div className='user__info-div'>
@@ -55,7 +57,7 @@ useEffect(() => {
                         <p className='user__location'>{artist.location}</p>
                     </div>
                     <div className='user__button-div'>
-                        <button className='user__button'>Follow</button>
+                        <button className='user__button'>+ Follow</button>
                     </div>
                 </div>
                 <p className='user__bio'>{artist.description}</p>
@@ -79,13 +81,10 @@ useEffect(() => {
                     </div>
                 </div>
                 <MediaPlayer music={music}  />
-                {/* {music.map(song => (
-                <Tracks key={song.id} song={song}/>
-                ))} */}
-                
             </article>
+            <Nav />
         </section>
-
+        </>
     )
 };
 export default UserProfile;

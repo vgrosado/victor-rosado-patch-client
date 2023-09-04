@@ -1,0 +1,10 @@
+@mixin iphone12Pro {
+    @media (min-width: 390px) {
+        @content;
+    }
+}
+// @mixin  {
+//     @media (min-width: 390px) {
+//         @content;
+//     }
+// }

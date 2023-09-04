@@ -1,7 +1,13 @@
 @use '../../Styles/Partials/variable' as*;
+@use '../../Styles/Partials/breakpoints' as*;
 
 .mediaplayer {
     padding-top: 1rem;
+    @include iphone12Pro {
+        display: flex;
+        flex-direction: column;
+        height: 100vw;
+    }
 
 
     &__card {
@@ -10,11 +16,28 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        padding: .5rem;
+        // padding: .5rem;
         border-radius: 1.25rem;
-        background-color: $PatchGrey;
-        height: 25vh;
+        // background-color: $PatchMedium-Grey;
+        // height: 25vh;
         width: 100%;
+        @include iphone12Pro {
+            height: 100%;
+        }
+    }
+
+    &__vid {
+        // height: 50vh;
+        width: 100%;
+        object-fit: cover;
+        padding: 0.5rem;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        // @include iphone12Pro {
+        //     height: 35vw;
+        // }
     }
 
     &__controls {
@@ -80,33 +103,43 @@
     }
 
     &__song-title {
-        align-self: flex-start;
-        font-size: 16px;
+        align-self: center;
+        font-size: 15px;
         font-weight: bold;
         color: white;
+        @include iphone12Pro {
+            font-size: 20px;
+        }
     }
 
     &__song-subtitle {
-        align-self: flex-start;
+        align-self: center;
         font-size: 12px;
         font-weight: bold;
         color: grey;
+        @include iphone12Pro {
+            font-size: 1rem;
+        }
     }
 
     &__icon-div {
         display: flex;
         align-items: center;
+        @include iphone12Pro {
+            width: 100%;
+            justify-content: space-evenly;
+        }
     }
 
     &__icons {
         height: 10vw;
         width: 15vw;
-        fill: white;
+        fill: $PatchOrange;
     }
 
     &__play-pause {
         height: 15vw;   
         width: 15vw;
-        fill: white;
+        fill: $PatchOrange;
     }
 }

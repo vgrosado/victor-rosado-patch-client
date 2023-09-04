@@ -1,0 +1,33 @@
+@use '../../Styles/Partials/variable' as*;
+@use '../../Styles/Partials/typography' as*;
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $PatchGrey;
+    height: 18.5vw;
+    padding: 0rem 1.5rem;
+    
+
+
+&__div {
+    height: 55%;
+    display: flex;
+    flex-direction: column;        
+    align-items: center;
+}
+
+&__label {
+    font-size: 11px;
+    color: white;
+    font-weight: 300;
+}
+
+&__icons {
+    fill: grey;
+    width: 6vw;
+    height: 6vw;
+    padding-bottom: .1rem;
+    }
+}

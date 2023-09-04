@@ -1,12 +1,13 @@
 import '../HomePage/HomePage.scss'
 import { AiOutlineSearch} from 'react-icons/ai';
-import {SlUser} from 'react-icons/sl';
-import {SlHome} from 'react-icons/sl';
-import {PiBooks} from 'react-icons/pi';
+// import {SlUser} from 'react-icons/sl';
+// import {SlHome} from 'react-icons/sl';
+// import {PiBooks} from 'react-icons/pi';
 import {BiBell} from 'react-icons/bi';
 import {BiEnvelope} from 'react-icons/bi';
-import {BiUpload} from 'react-icons/bi';
+// import {BiUpload} from 'react-icons/bi';
 import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
+import Nav from '../../Components/Nav/Nav';
 
 
 
@@ -47,7 +48,8 @@ console.log(artists)
                 ))}
             </section>
             </article>
-            <div className='homepage__nav'>
+            <Nav/>
+            {/* <div className='homepage__nav'>
                 <div className='homepage__nav-div'>
                     <SlHome className='homepage__nav-icons'/>
                     <p className='homepage__nav-label'>Home</p>
@@ -64,7 +66,7 @@ console.log(artists)
                     <PiBooks className='homepage__nav-icons'/>
                     <p className='homepage__nav-label'>Bookings</p>
                 </div>
-            </div>
+            </div> */}
         </main>
     )
 };

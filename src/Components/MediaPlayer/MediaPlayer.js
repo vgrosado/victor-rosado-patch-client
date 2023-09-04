@@ -76,7 +76,7 @@ function MediaPlayer({ music }) {
                     <p className='mediaplayer__song-title'>{music[0].title}</p>
                     <p className='mediaplayer__song-subtitle'>{music[0].artist}</p>
                 </div>
-
+                <video className='mediaplayer__vid' src={music[0].video} autoPlay loop muted />
                 <div className="mediaplayer__controls">
                     <input className='mediaplayer__progress-bar' ref={progressBarRef}
                         type="range"
