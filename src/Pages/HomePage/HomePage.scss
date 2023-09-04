@@ -28,8 +28,8 @@
 
     &__header-icons {
         fill: grey;
-        width: 20px;
-        height: 40px;
+        width: 6vw;
+        height: 6vw;
         padding: 0rem 0rem 0rem .5rem;
     }
 
@@ -68,6 +68,8 @@
     &__search-icon {
         padding-right: 1rem;
         fill: grey;
+        height: 8vw;
+        width: 8vw;
     }
 
 
@@ -97,14 +99,14 @@
 
     &__heading {
         font-weight: 300;
-        color: rgb(255, 255, 255);
-        text-shadow: 0px 0px 11px rgb(166, 166, 166);
-        animation: flicker 8s linear forwards alternate infinite;
-            @keyframes flicker {
-            0%, 19.999%, 22%, 62.999%,64%, 64.999%, 72%, 100% {opacity: 1;}
-            20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
-            }
-        }
+        color: $PatchOrange;
+        text-shadow: 0px 0px 11px  $PatchOrange;
+        // animation: flicker 8s linear forwards alternate infinite;
+        //     @keyframes flicker {
+        //     0%, 19.999%, 22%, 62.999%,64%, 64.999%, 72%, 100% {opacity: 1;}
+        //     20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
+        //     }
+        // }
 
     &__subheading {
         font-weight: 300;
@@ -185,118 +187,118 @@
         height: 15%;
         width: 100%;
         background-color: #ffffff14;
-        background-image: url('../../Assets/Images/RichieHawtin.jpeg');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         box-shadow: 0px 5px 8px 1px #000000;
     }
-    &__artist-div-2 {
-        border-radius: .625rem;
-        height: 15%;
-        width: 100%;
-        background-color: #ffffff14;
-        background-image: url('../../Assets/Images/JeffMills.jpeg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        box-shadow: 0px 5px 8px 1px #000000;;
-    }
-    &__artist-div-3 {
-        border-radius: .625rem;
-        height: 15%;
-        width: 100%;
-        background-color: #ffffff14;
-        background-image: url('../../Assets/Images/Chlar.webp');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        box-shadow: 0px 5px 8px 1px #000000;;
-    }
-    &__artist-div-4 {
-        border-radius: .625rem;
-        height: 15%;
-        width: 100%;
-        background-color: #ffffff14;
-        background-image: url('../../Assets/Images/ihatemodels.jpeg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        box-shadow: 0px 5px 8px 1px #000000;;
-    }
-    &__artist-div-5 {
-        border-radius: .625rem;
-        height: 15%;
-        width: 100%;
-        background-color: #ffffff14;
-        background-image: url('../../Assets/Images/FJAAK.jpeg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        box-shadow: 0px 5px 8px 1px #000000;;
-    }
-    &__artist-div-6 {
-        border-radius: .625rem;
-        height: 15%;
-        width: 100%;
-        background-color: $PatchOrange;
-        background-image: url('../../Assets/Images/LocoDice.jpg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        box-shadow: 0px 5px 8px 1px #000000;;
-    }
-    &__artist-div-7 {
-        border-radius: .625rem;
-        height: 15%;
-        width: 100%;
-        background-color: $PatchOrange;
-        background-image: url('../../Assets/Images/rebekah.jpeg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        box-shadow: 0px 5px 8px 1px #000000;;
-    }
-    &__artist-div-8 {
-        border-radius: .625rem;
-        height: 15%;
-        width: 100%;
-        background-color: #ffffff14;
-        background-image: url('../../Assets/Images/sweely.jpeg');
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        box-shadow: 0px 5px 8px 1px #000000;;
-    }
+    // &__artist-div-2 {
+    //     border-radius: .625rem;
+    //     height: 15%;
+    //     width: 100%;
+    //     background-color: #ffffff14;
+    //     background-image: url('../../Assets/Images/JeffMills.jpeg');
+    //     background-position: center;
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    //     box-shadow: 0px 5px 8px 1px #000000;;
+    // }
+    // &__artist-div-3 {
+    //     border-radius: .625rem;
+    //     height: 15%;
+    //     width: 100%;
+    //     background-color: #ffffff14;
+    //     background-image: url('../../Assets/Images/Chlar.webp');
+    //     background-position: center;
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    //     box-shadow: 0px 5px 8px 1px #000000;;
+    // }
+    // &__artist-div-4 {
+    //     border-radius: .625rem;
+    //     height: 15%;
+    //     width: 100%;
+    //     background-color: #ffffff14;
+    //     background-image: url('../../Assets/Images/ihatemodels.jpeg');
+    //     background-position: center;
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    //     box-shadow: 0px 5px 8px 1px #000000;;
+    // }
+    // &__artist-div-5 {
+    //     border-radius: .625rem;
+    //     height: 15%;
+    //     width: 100%;
+    //     background-color: #ffffff14;
+    //     background-image: url('../../Assets/Images/FJAAK.jpeg');
+    //     background-position: center;
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    //     box-shadow: 0px 5px 8px 1px #000000;;
+    // }
+    // &__artist-div-6 {
+    //     border-radius: .625rem;
+    //     height: 15%;
+    //     width: 100%;
+    //     background-color: $PatchOrange;
+    //     background-image: url('../../Assets/Images/LocoDice.jpg');
+    //     background-position: center;
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    //     box-shadow: 0px 5px 8px 1px #000000;;
+    // }
+    // &__artist-div-7 {
+    //     border-radius: .625rem;
+    //     height: 15%;
+    //     width: 100%;
+    //     background-color: $PatchOrange;
+    //     background-image: url('../../Assets/Images/rebekah.jpeg');
+    //     background-position: center;
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    //     box-shadow: 0px 5px 8px 1px #000000;;
+    // }
+    // &__artist-div-8 {
+    //     border-radius: .625rem;
+    //     height: 15%;
+    //     width: 100%;
+    //     background-color: #ffffff14;
+    //     background-image: url('../../Assets/Images/sweely.jpeg');
+    //     background-position: center;
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    //     box-shadow: 0px 5px 8px 1px #000000;;
+    // }
     
 
-    &__nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: $PatchGrey;
-        height: 18.5vw;
-        padding: 0rem 1.5rem;
+    // &__nav {
+    //     display: flex;
+    //     justify-content: space-between;
+    //     align-items: center;
+    //     background-color: $PatchGrey;
+    //     height: 18.5vw;
+    //     padding: 0rem 1.5rem;
         
-    }
+    // }
 
-    &__nav-div {
-        height: 55%;
-        display: flex;
-        flex-direction: column;        
-        align-items: center;
-    }
+    // &__nav-div {
+    //     height: 55%;
+    //     display: flex;
+    //     flex-direction: column;        
+    //     align-items: center;
+    // }
 
-    &__nav-label {
-        font-size: 12px;
-        color: grey;
-        font-weight: 300;
-    }
+    // &__nav-label {
+    //     font-size: 12px;
+    //     color: grey;
+    //     font-weight: 300;
+    // }
 
-    &__nav-icons {
-        fill: grey;
-        width: 24px;
-        height: 40px;
-        padding-bottom: .1rem;
+    // &__nav-icons {
+    //     fill: grey;
+    //     width: 24px;
+    //     height: 40px;
+    //     padding-bottom: .1rem;
+    // }
     }
 }
