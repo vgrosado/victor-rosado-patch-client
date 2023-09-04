@@ -3,13 +3,14 @@ import {SlUser} from 'react-icons/sl';
 import {SlHome} from 'react-icons/sl';
 import {PiBooks} from 'react-icons/pi';
 import {BiUpload} from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 function Nav() {
     return (
         <div className='nav'>
         <div className='nav__div'>
             <SlHome className='nav__icons'/>
-            <p className='nav__label'>Home</p>
+            <Link to={"/Home"}><p className='nav__label'>Home</p></Link>
         </div>
         <div className='nav__div'>
             <SlUser className='nav__icons'/>
