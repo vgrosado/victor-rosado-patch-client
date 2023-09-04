@@ -51,13 +51,14 @@ useEffect(() => {
                 <div className='user__details-container'>
                     <div className='user__info-div'>
                         <p className='user__name'>{artist.name}</p>
-                        <p className='user__username'>@TheRealCarlCox</p>
+                        <p className='user__username'>{artist.username}</p>
                         <p className='user__location'>{artist.location}</p>
                     </div>
                     <div className='user__button-div'>
                         <button className='user__button'>Follow</button>
                     </div>
                 </div>
+                <p className='user__bio'>{artist.description}</p>
                     <div className='user__stats'>
                         <div className='user__nav-div'>
                             <div className='user__rating-div'>
