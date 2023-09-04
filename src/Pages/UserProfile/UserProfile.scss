@@ -1,10 +1,12 @@
 @use '../../Styles/Partials/variable' as*;
 @use '../../Styles/Partials/typography' as*;
+@use '../../Styles/Partials/breakpoints' as*;
 
 .user {
     display: flex;
+    flex-direction: column;
     height: 100vh;
-    justify-content: center;
+    justify-content: space-between;
     background-color: $PatchMedium-Grey;
 
     &__background-container {
@@ -51,12 +53,18 @@
     &__name {
         color: white;
         font-weight: 300;
+        @include iphone12Pro {
+            font-size: 20px;
+        }
     }
 
     &__username {
         font-weight: 300;
         font-size: .75rem;
-        color: white;
+        color: $PatchOrange;
+        @include iphone12Pro {
+            font-size: 1rem;
+        }
     }
 
     &__bio {
@@ -65,21 +73,27 @@
         color: white;
         padding: .5rem 0rem;
         letter-spacing: 0px;
+        @include iphone12Pro {
+            font-size: 14px;
+        }
     }
 
     &__stats-container {
         position: absolute;
         z-index: 1;
         top: 34vw;
-        height: 100vh;
+        height: 70%;
         width: 100%;
-        background-color: $PatchGrey;
+        background-color: rgb(31,31,31);
         display: flex;
         flex-direction: column;
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem 0rem 1.5rem;
         box-sizing: border-box;
         border-top-left-radius: 1.25rem;
         border-top-right-radius: 1.25rem;
+        @include iphone12Pro {
+            height: 72vh;
+        }
     }
 
     &__details-container {
@@ -97,6 +111,9 @@
         color: grey;
         font-weight: 300;
         font-size: 1rem;
+        @include iphone12Pro {
+            font-size: 20px;
+        }
     }   
 
     &__stats {
@@ -104,6 +121,9 @@
         box-sizing: border-box;
         justify-content: space-between;
         align-items: center;
+        @include iphone12Pro {
+            height: 10%;
+        }
     }
 
     &__rating-div {
@@ -115,15 +135,26 @@
     &__rating {
         font-size: .9rem;
         font-weight: 300;
-        color: white;
+        color: $PatchOrange;
         padding: 0rem .5rem;
-    }
+        text-shadow: 0px 0px 11px  $PatchOrange;
+        animation: flicker 8s linear forwards alternate infinite;
+            @keyframes flicker {
+            0%, 19.999%, 22%, 62.999%,64%, 64.999%, 72%, 100% {opacity: 1;}
+            20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
+            }
+            @include iphone12Pro {
+                font-size: 18px;
+            }
+        }
+        
+
 
     &__followers-div {
         display: flex;
         align-items: center;
         font-size: 12px;
-
+        padding-bottom: .5rem;
     }
 
     &__followers {
@@ -131,6 +162,9 @@
         font-weight: 300;
         color: white;
         padding: 0rem .5rem;
+        @include iphone12Pro {
+            font-size: 18px;
+        }
     }
 
     &__button-div {
@@ -144,7 +178,7 @@
         border-radius: 1.25rem;
         font-weight: 300;
         color: $PatchOrange;
-        background-color: $PatchMedium-Grey;
+        background-color: $PatchGrey;
         border: none;
         padding: 0.5rem 1rem;
         box-sizing: border-box;
@@ -159,10 +193,13 @@
     &__nav-item {
         font-weight: 300;
         font-size: 1rem;
-        color: grey;
+        color: $PatchOrange;
         &:hover {
         color: rgb(255, 255, 255);
         text-shadow: 0px 0px 11px rgb(166, 166, 166);
+        }
+        @include iphone12Pro {
+            font-size: 22px;
         }
     }
 
@@ -176,9 +213,10 @@
 
     &__booking-div {
         display: flex;
-        height: 100%;
+        // height: 100%;
         flex-direction: column;
-        justify-content: flex-end;
+        align-self: flex-end;
+        
     }
 
 }

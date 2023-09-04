@@ -7,6 +7,7 @@ import UserProfile from './Pages/UserProfile/UserProfile';
 import { useEffect, useState } from 'react';
 import {db} from './Firebase';
 import {collection, getDocs} from 'firebase/firestore'
+import Nav from './Components/Nav/Nav';
 
 function App() {
   const [artists, setArtists] = useState([]);
