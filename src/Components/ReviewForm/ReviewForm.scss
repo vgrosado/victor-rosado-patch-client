@@ -1,0 +1,32 @@
+@use '../../Styles/Partials/breakpoints'as*;
+@use '../../Styles/Partials/typography' as*;
+@use '../../Styles/Partials/variable' as*;
+
+
+input[type='radio'] {
+    display: none;
+}
+
+.reviewform {
+    height: 45vh;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+    &__div {
+        height: 15%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__input {
+        width: 100%;
+    }
+
+    &__rating {
+        cursor: pointer;
+    }
+
+}
