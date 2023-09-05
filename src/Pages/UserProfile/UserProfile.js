@@ -96,7 +96,7 @@ useEffect(() => {
                     </div>
                 </div>
                 {musicPage && ( <MediaPlayer music={music}/>)}
-                {encorePage && ( <ReviewForm/>)}
+                {encorePage && ( <ReviewForm artist={artist}/>)}
             </article>
             <Nav />
         </section>
