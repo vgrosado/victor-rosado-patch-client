@@ -4,12 +4,12 @@
 is a web-based application that offers a unique 1:1 platform for DJs to connect with their prospects, showcasing their talents, quantifying their global and local value, and facilitating business interactions directly from the artist. This README.md provides an overview of the PATCH project, its features, and instructions for setting it up.
 
 **Table of Contents**
-*Introduction
-*Features
-*Getting Started
+1.Introduction
+2.Features
+3.Getting Started
     *Prerequisites
     *Installation
-*Usage
+4.Usage
 
 **Introduction**
 PATCH is a web-based application built using React, Sass, and firebase that bridges the gap between DJs and their potential clients. It allows DJs to create interactive profiles showcasing their talents, complete with features such as MP3 streaming, follower counts, ratings, and real-time reviews. Prospects can easily discover and connect with DJs, facilitating a seamless business interaction process.
