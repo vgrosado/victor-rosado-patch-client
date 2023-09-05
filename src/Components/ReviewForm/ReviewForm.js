@@ -41,7 +41,7 @@ if (!userReviews || userReviews === 0) {
             <h2 className='reviewform__heading'>Leave {artist.name} A Review</h2>
             <form className='reviewform__form'>
                 <div className='reviewform__div'>
-                {/* {[...Array(5)].map((volt, index) => {
+                {[...Array(5)].map((volt, index) => {
                     const currentRating = index + 1;
                     return (
                     <label className='reviewform__rating-input'>
@@ -58,7 +58,7 @@ if (!userReviews || userReviews === 0) {
                         onMouseEnter={() => setHover(currentRating)}
                         onMouseLeave={() => setHover(null)}/>
                     </label>
-                )})} */}
+                )})}
                 </div>
                 <input
                     onChange={(event) => {setNewReview(event.target.value)}} 
