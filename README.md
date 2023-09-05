@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+**PATCH - DJ Talent Showcase**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**PATCH** 
+is a web-based application that offers a unique 1:1 platform for DJs to connect with their prospects, showcasing their talents, quantifying their global and local value, and facilitating business interactions directly from the artist. This README.md provides an overview of the PATCH project, its features, and instructions for setting it up.
 
-## Available Scripts
+**Table of Contents**
+*Introduction
+*Features
+*Getting Started
+    *Prerequisites
+    *Installation
+*Usage
 
-In the project directory, you can run:
+**Introduction**
+PATCH is a web-based application built using React, Sass, and firebase that bridges the gap between DJs and their potential clients. It allows DJs to create interactive profiles showcasing their talents, complete with features such as MP3 streaming, follower counts, ratings, and real-time reviews. Prospects can easily discover and connect with DJs, facilitating a seamless business interaction process.
 
-### `npm start`
+**Features**
+    *User Profiles: DJs can create and customize their profiles with personal information, photos, and details about their services.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    *MP3 Streaming: DJs can upload and stream their music directly from their profiles, allowing prospects to sample their work.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    *Follower Counts: DJs can see how many followers they have, providing a sense of their popularity.
 
-### `npm test`
+    *Ratings and Reviews: Prospects can rate and leave reviews for DJs, building trust and reputation.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    *Real-time Updates: The application uses Firebase to provide real-time updates for follower counts, ratings, and reviews.
 
-### `npm run build`
+**Getting Started**
+Follow these instructions to set up the PATCH application locally for development or testing purposes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Prerequisites**
+Ensure you have the following prerequisites installed on your machine:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* firebase
+* npm
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Installation**
+Clone this repository to your local machine:
 
-### `npm run eject`
+git clone https://github.com/vgrosado/victor-rosado-patch-client
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Change to the project directory:**
+cd PATCH
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Install the project dependencies:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Usage**
+Once you have the application set up, you can start it locally:
 
-## Learn More
+npm start
+The application will be accessible at http://localhost:3000 by default.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Explore the application and interact with existing profiles to experience the PATCH platform!
