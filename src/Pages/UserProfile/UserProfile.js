@@ -6,12 +6,15 @@ import {db} from '../../Firebase';
 import { useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
 import Nav from '../../Components/Nav/Nav';
+import ReviewForm from '../../Components/ReviewForm/ReviewForm';
 // import Tracks from '../../Components/Tracks/Tracks';
 
 function UserProfile() {
     const {id} = useParams();
     const artistId = id;
     const [artist, setArtist] = useState({});
+    const [encorePage, setEncorePage] = useState(false);
+    const [musicPage, setMusicPage] = useState(true);
     
     useEffect(() => {
     const artistDocRef = doc(db, "Artists", `${artistId}`)
@@ -37,6 +40,18 @@ useEffect(() => {
 
     getArtists();
 }, [])
+
+
+    function handleNavToEncore(){
+        setEncorePage(true)
+        setMusicPage(false)
+	}
+	
+
+	function handleNavToMusic(){
+        setEncorePage(false)
+		setMusicPage(true)
+	}
 
     return (
         <>
@@ -67,20 +82,21 @@ useEffect(() => {
                                 <p className='user__stats-title'>Voltage</p>
                                 <p className='user__rating'>{artist.rating}</p>
                             </div>
-                            <p className='user__nav-item'>Music</p>
+                            <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
                         </div>
                     <div className='user__nav-div'>
                         <div className='user__followers-div'>
                             <p className='user__stats-title'>Followers</p>
                             <p className='user__followers'>{artist.followers}</p>
                         </div>
-                        <p className='user__nav-item'>Encore</p>
+                        <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                     </div>
                     <div className='user__booking-div'>
                     <p className='user__nav-item'>Booking</p>
                     </div>
                 </div>
-                <MediaPlayer music={music}  />
+                {musicPage && ( <MediaPlayer music={music}/>)}
+                {encorePage && ( <ReviewForm/>)}
             </article>
             <Nav />
         </section>
