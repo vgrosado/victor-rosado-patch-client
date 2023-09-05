@@ -11,10 +11,17 @@ input[type='radio'] {
     height: 45vh;
     display: flex;
     flex-direction: column;
+    padding-top: 1rem;
 
+    &__heading {
+        font-weight: 300;
+        color: white;
+        align-self: center;
+        padding-top: 0.5rem;
+    }
 
     &__form {
-        height: 100%;
+        height: 50%;
         display: flex;
         flex-direction: column;
         padding-top: 1rem;
@@ -27,37 +34,94 @@ input[type='radio'] {
 
 
     &__div {
-        height: 20%;
+        height: 12%;
         width: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
     }
 
 
     &__input {
-        height: 35%;
+        height: 55%;
         width: 100%;
         border: none;
         border-radius: .625rem;
         box-sizing: border-box;
         margin: 1rem 0rem;
-        padding: 0rem .5rem 5rem .5rem;
+        padding: 1rem .5rem 4rem .5rem;
         outline: none;
+        font-weight: 300;
+        color: black;
         &::placeholder {
             font-size: 16px;
             font-weight: 300;
-            color: $PatchGrey;
+            color: black;
         }
     }
 
 
     &__button {
-        border-radius: 4px;
         align-self: end;
-        height: 10%;
-        width: 25%;
+        border-radius: 1.25rem;
+        font-weight: 300;
+        color: $PatchOrange;
+        background-color: $PatchGrey;
         border: none;
+        padding: 0.5rem 1rem;
+        box-sizing: border-box;
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
     }
 
+
+    &__review-section {
+        display: flex;
+        flex-direction: column;
+        height: 45%;
+        overflow-x: auto;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__user-div {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__user-details {
+        display: flex;
+        flex-direction: column;
+        padding-left: 4vw;
+    }
+
+    &__avatar {
+        background-color: $PatchGrey;
+        border-radius: 50%;
+        height: 12vw;
+        width: 12vw;
+    }
+
+    &__username {
+        font-size: 16px;
+        color: $PatchOrange;
+        font-weight: 300;
+        padding-bottom: .5rem;
+    }
+
+    &__user-timestamp {
+        font-size: 12px;
+        font-weight: bold;
+        color: grey;
+    }
+
+    &__review {
+        font-size: 12px;
+        color: white;
+        font-weight: 300;
+        padding: 4vw 0vw;
+    }
 }
