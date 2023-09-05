@@ -1,12 +1,12 @@
 import '../SignUpPage/SignUpPage.scss'
 import backgroundVid from '../../Assets/Videos/LoginBackground3.mp4'
-import {useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+// import {useNavigate } from 'react-router-dom';
+// import { useState } from 'react';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 
 function SignUpPage() {
 
-	const navigateTo = useNavigate();
+	// const navigateTo = useNavigate();
 
 	// function handleLogin(e){
 	// 	e.preventDefault();
@@ -22,16 +22,16 @@ function SignUpPage() {
 	// }
 
 
-	function HandleLogin(e){
-		e.preventDefault();
-		navigateTo('/LoginPage');
-	}
+	// function HandleLogin(e){
+	// 	e.preventDefault();
+	// 	navigateTo('/LoginPage');
+	// }
 	
 
-	function HandleSignUp(e){
-		e.preventDefault();
-		navigateTo('/SignUpPage');
-	}
+	// function HandleSignUp(e){
+	// 	e.preventDefault();
+	// 	navigateTo('/SignUpPage');
+	// }
 
 	return (
 		<section className="signup">
