@@ -4,7 +4,7 @@ import {db} from '../../Firebase';
 import '../ReviewForm/ReviewForm.scss';
 import {BsLightningFill} from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
-// import Review from '../Review/Review';
+
 
 function ReviewForm({artist}) {
     const {id} = useParams();
@@ -12,34 +12,37 @@ function ReviewForm({artist}) {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
     const [newReview, setNewReview] = useState("");
+    const [newUser, setNewUser] = useState("");
     const [review, setReview] = useState([]);
     const commentData =  collection(db, "Artists", `${artistId}`, "Comments");
-    const createReview =  async () => {
-        await addDoc(commentData, {review: newReview})
+    
+    
+    const createReview =  async (event) => {
+        event.preventDefault();
+        await addDoc(commentData, { user: newUser, review: newReview, time: new Date().toLocaleDateString()})
     }
 
+    useEffect(() => {
+        const getReviews = async () => {
+            const reviewData = await getDocs(collection(db, "Artists", `${artistId}`, "Comments"));
+            console.log(reviewData)
+            setReview(reviewData.docs.map((doc) => ({...doc.data(), id: doc.id})))
+            console.log(review)
+        };
 
-useEffect(() => {
-    const getReviews = async () => {
-        const reviewData = await getDocs(collection(db, "Artists", `${artistId}`, "Comments"));
-        console.log(reviewData)
-        setReview(reviewData.docs.map((doc) => ({...doc.data(), id: doc.id})))
-        console.log(review)
-    };
+        getReviews();
+    }, [])
 
-    getReviews();
-}, [])
-
-const userReviews = review;
-console.log(userReviews)
-if (!userReviews || userReviews === 0) {
+    const userReviews = review;
+    console.log(userReviews)
+    if (!userReviews || userReviews === 0) {
     return <>Loading</>
-}
+    }
 
     return (
         <section className='reviewform'>
             <h2 className='reviewform__heading'>Leave {artist.name} A Review</h2>
-            <form className='reviewform__form'>
+            <form autoComplete='off' type='submit' className='reviewform__form'>
                 <div className='reviewform__div'>
                 {[...Array(5)].map((volt, index) => {
                     const currentRating = index + 1;
@@ -60,6 +63,12 @@ if (!userReviews || userReviews === 0) {
                     </label>
                 )})}
                 </div>
+                <input 
+                    className='reviewform__username-input'
+                    onChange={(event) => {setNewUser(event.target.value)}} 
+                    type='text' 
+                    name='user'
+                    placeholder='@Username...'/>
                 <input
                     onChange={(event) => {setNewReview(event.target.value)}} 
                     className='reviewform__input' 
@@ -71,28 +80,19 @@ if (!userReviews || userReviews === 0) {
             <div className='reviewform__review-section'>
                 {userReviews.map(rev => {
                     return (
-                        <>
-                    <div className='reviewform__user-div'>
-                    <div  className='reviewform__avatar'></div>
-                        <div  className='reviewform__user-details'>
-                            <p  className='reviewform__username'>{rev.user}</p>
-                            <p  className='reviewform__user-timestamp'>{rev.time}</p>
+                    <div className='reviewform__review-div'>
+                        <div className='reviewform__user-div'>
+                            <div className='reviewform__avatar'></div>
+                                <div className='reviewform__user-details'>
+                                    <p className='reviewform__username'>{rev.user}</p>
+                                    <p className='reviewform__user-timestamp'>{new Date(rev.time).toLocaleDateString()}</p>
+                                </div>
                         </div>
-                </div>
-                <p className='reviewform__review'>{rev.review}</p>
-                </>
+                        <p className='reviewform__review'>{rev.review}</p>
+                    </div>
                 )})}
-                    {/* <div className='reviewform__user-div'>
-                        <div className='reviewform__avatar'></div>
-                            <div className='reviewform__user-details'>
-                                <p className='reviewform__username'>{review[1].user}</p>
-                                <p className='reviewform__user-timestamp'>DATE</p>
-                            </div>
-                        <p className='reviewform__review'>{review[1].review}</p>
-                    </div> */}
             </div>
         </section>
     )
 };
-
 export default ReviewForm ;

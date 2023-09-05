@@ -8,6 +8,11 @@
     height: 100vh;
     justify-content: space-between;
     background-color: $PatchMedium-Grey;
+    overflow-x: auto;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
     &__background-container {
         display: flex;
@@ -91,6 +96,7 @@
         box-sizing: border-box;
         border-top-left-radius: 1.25rem;
         border-top-right-radius: 1.25rem;
+        overflow: auto;
         @include iphone12Pro {
             height: 72vh;
         }
