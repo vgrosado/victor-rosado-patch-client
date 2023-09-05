@@ -8,7 +8,7 @@ input[type='radio'] {
 }
 
 .reviewform {
-    height: 45vh;
+    height: 62vh;
     display: flex;
     flex-direction: column;
     padding-top: 1rem;
@@ -21,7 +21,7 @@ input[type='radio'] {
     }
 
     &__form {
-        height: 50%;
+        height: 70%;
         display: flex;
         flex-direction: column;
         padding-top: 1rem;
@@ -41,6 +41,22 @@ input[type='radio'] {
         align-items: center;
     }
 
+    &__username-input {
+        height: 100%;
+        width: 42%;
+        outline: none;
+        font-weight: 300;
+        color: black;
+        border: none;
+        border-radius: 6px;
+        padding-left: 0.5rem;
+        margin-top: 1rem;
+        &::placeholder {
+            font-size: 16px;
+            font-weight: 300;
+            color: black;
+        }
+    }
 
     &__input {
         height: 55%;
@@ -78,18 +94,23 @@ input[type='radio'] {
         display: flex;
         flex-direction: column;
         height: 45%;
-        overflow-x: auto;
-        overflow-y: auto;
-        &::-webkit-scrollbar {
-            display: none;
-        }
+        // overflow-x: auto;
+        // overflow-y: auto;
+        // &::-webkit-scrollbar {
+        //     display: none;
+        // }
+    }
+
+    &__review-div {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
     }
 
     &__user-div {
         display: flex;
         align-items: center;
-        height: 100%;
-        width: 100%;
     }
 
     &__user-details {
