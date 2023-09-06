@@ -14,12 +14,13 @@ function ReviewForm({artist}) {
     const [newReview, setNewReview] = useState("");
     const [newUser, setNewUser] = useState("");
     const [review, setReview] = useState([]);
+    const [voltage, setVoltage] = useState(0);
     const commentData =  collection(db, "Artists", `${artistId}`, "Comments");
     
     
     const createReview =  async (event) => {
         event.preventDefault();
-        await addDoc(commentData, { user: newUser, review: newReview, time: new Date().toLocaleDateString()})
+        await addDoc(commentData, { user: '@'+newUser, rating: parseFloat(voltage), review: newReview, time: new Date().toLocaleDateString()})
     }
 
     useEffect(() => {
@@ -52,7 +53,8 @@ function ReviewForm({artist}) {
                         type='radio' 
                         name='rating' 
                         value={currentRating}
-                        onClick={() => setRating(currentRating)}/>
+                        onClick={() => setRating(currentRating)}
+                        onChange={(event) => {setVoltage(event.target.value)}} />
                         <BsLightningFill 
                         key={index}
                         className='reviewform__rating' 
@@ -68,13 +70,13 @@ function ReviewForm({artist}) {
                     onChange={(event) => {setNewUser(event.target.value)}} 
                     type='text' 
                     name='user'
-                    placeholder='@Username...'/>
+                    placeholder='Username'/>
                 <input
                     onChange={(event) => {setNewReview(event.target.value)}} 
                     className='reviewform__input' 
                     type='text' 
                     name='comment'
-                    placeholder='Leave A Comment'/>
+                    placeholder='Leave a review'/>
                 <button onClick={createReview} type='submit' className='reviewform__button'>Submit</button>
             </form>
             <div className='reviewform__review-section'>
@@ -86,6 +88,11 @@ function ReviewForm({artist}) {
                                 <div className='reviewform__user-details'>
                                     <p className='reviewform__username'>{rev.user}</p>
                                     <p className='reviewform__user-timestamp'>{new Date(rev.time).toLocaleDateString()}</p>
+                                    <div className='reviewform__voltage-div'>
+                                    {[...Array(rev.rating)].map((e) => {
+                                        return (<BsLightningFill  className='reviewform__voltage'/>)
+                                    })}
+                                    </div>
                                 </div>
                         </div>
                         <p className='reviewform__review'>{rev.review}</p>

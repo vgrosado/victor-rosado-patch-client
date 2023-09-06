@@ -40,7 +40,7 @@ function LoginPage() {
 			<div className="login__container">
 				<h1 className='login__header'>P<span className='login__flicker'>A</span>TCH</h1>
 				<div className='login__subheader-div'>
-					<h2 className='login__subheader'>Make the connection.</h2>
+					{/* <h2 className='login__subheader'>Make the connection.</h2> */}
 					<div className='login__switch-container'>
 						<button onClick={HandleLogin}  className='login__button-1' id='switch-button'>Login</button>
 						<button onClick={HandleSignUp} className='login__button-2' id='switch-button'>Register</button>
