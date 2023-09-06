@@ -54,7 +54,7 @@ input[type='radio'] {
         &::placeholder {
             font-size: 16px;
             font-weight: 300;
-            color: black;
+            color: grey;
         }
     }
 
@@ -72,7 +72,7 @@ input[type='radio'] {
         &::placeholder {
             font-size: 16px;
             font-weight: 300;
-            color: black;
+            color: grey;
         }
     }
 
@@ -106,11 +106,21 @@ input[type='radio'] {
         flex-direction: column;
         height: 100%;
         width: 100%;
+        border-bottom: 1px solid $PatchGrey;
+        margin-bottom: .5rem;
     }
 
     &__user-div {
         display: flex;
         align-items: center;
+    }
+
+    &__voltage-div {
+        display: flex;
+    }
+
+    &__voltage {
+        fill: $PatchOrange;
     }
 
     &__user-details {
@@ -130,13 +140,13 @@ input[type='radio'] {
         font-size: 16px;
         color: $PatchOrange;
         font-weight: 300;
-        padding-bottom: .5rem;
     }
 
     &__user-timestamp {
         font-size: 12px;
         font-weight: bold;
         color: grey;
+        padding: 0.2rem 0rem 0.5rem 0rem;
     }
 
     &__review {
