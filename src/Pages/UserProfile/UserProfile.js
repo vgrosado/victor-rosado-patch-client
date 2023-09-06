@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
 import Nav from '../../Components/Nav/Nav';
 import ReviewForm from '../../Components/ReviewForm/ReviewForm';
+import Booking from '../../Components/Booking/Booking';
 // import Tracks from '../../Components/Tracks/Tracks';
 
 function UserProfile() {
@@ -15,6 +16,7 @@ function UserProfile() {
     const [artist, setArtist] = useState({});
     const [encorePage, setEncorePage] = useState(false);
     const [musicPage, setMusicPage] = useState(true);
+    const [bookingPage, setBookingPage] = useState(false);
     
     useEffect(() => {
     const artistDocRef = doc(db, "Artists", `${artistId}`)
@@ -45,12 +47,19 @@ useEffect(() => {
     function handleNavToEncore(){
         setEncorePage(true)
         setMusicPage(false)
+        setBookingPage(false)
 	}
 	
-
 	function handleNavToMusic(){
         setEncorePage(false)
 		setMusicPage(true)
+        setBookingPage(false)
+	}
+	
+    function handleNavToBooking(){
+        setEncorePage(false)
+		setMusicPage(false)
+        setBookingPage(true)
 	}
 
     return (
@@ -92,11 +101,12 @@ useEffect(() => {
                         <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                     </div>
                     <div className='user__booking-div'>
-                    <p className='user__nav-item'>Booking</p>
+                    <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
                     </div>
                 </div>
                 {musicPage && ( <MediaPlayer music={music}/>)}
                 {encorePage && ( <ReviewForm artist={artist}/>)}
+                {bookingPage && (<Booking artist={artist} />)}
             </article>
             <Nav />
         </section>
