@@ -53,6 +53,7 @@
     color: white;
     outline: none;
     &::placeholder {
+        font-size: 1rem;
         font-weight: 300;
         color: grey;
     }

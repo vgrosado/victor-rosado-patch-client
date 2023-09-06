@@ -21,14 +21,14 @@
         background: none;
         border-bottom: .5px solid white;
         &::placeholder {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 300;
             color: grey;
         }
     }
 
     &__booking-type {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 300;
         color: grey;
         border: none;
@@ -40,7 +40,7 @@
     }
 
     &__date-input {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 300;
         color: grey;
         border: none;
@@ -50,14 +50,14 @@
         background: none;
         border-bottom: .5px solid white;
         &::placeholder {
-            font-size: 14px;
+            font-size: .875rem;
             font-weight: 300;
             color: grey;
         }
     }
 
     &__region-select {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 300;
         color: grey;
         border: none;
@@ -71,12 +71,12 @@
     &__button {
         background-color: $PatchGrey;
         color: $PatchOrange;
-        font-size: 22px;
+        font-size: 1.25rem;
         font-weight: 300;
         align-self: center;
         width: 80%;
         border: none;
-        border-radius: 4px;
+        border-radius: 1.25rem;
         box-sizing: border-box;
         padding: 2vw;
         margin-top: 4vw;
