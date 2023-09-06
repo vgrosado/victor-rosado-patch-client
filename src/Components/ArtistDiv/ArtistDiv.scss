@@ -1,3 +1,5 @@
+@use '../../Styles/Partials/variable' as*;
+
 .artist-container {
     height: 30%;
     width: 50%;
@@ -15,12 +17,13 @@
         width: 100%;
         border-radius: 0.625rem;
         box-shadow: 0px 5px 8px 1px #000000;
+        background-color: $PatchGrey;
     }
 
     &__name {
         color: white;
         font-weight: 300;
-        font-size: 12px;
+        font-size: .75rem;
         padding: .5rem 0rem;
         text-align: center;
         text-shadow: 3px 3px #000000;
