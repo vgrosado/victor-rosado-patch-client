@@ -52,7 +52,7 @@ input[type='radio'] {
         padding-left: 0.5rem;
         margin-top: 1rem;
         &::placeholder {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 300;
             color: grey;
         }
@@ -70,7 +70,7 @@ input[type='radio'] {
         font-weight: 300;
         color: black;
         &::placeholder {
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 300;
             color: grey;
         }
@@ -137,20 +137,20 @@ input[type='radio'] {
     }
 
     &__username {
-        font-size: 16px;
+        font-size: 1rem;
         color: $PatchOrange;
         font-weight: 300;
     }
 
     &__user-timestamp {
-        font-size: 12px;
+        font-size: .75rem;
         font-weight: bold;
         color: grey;
         padding: 0.2rem 0rem 0.5rem 0rem;
     }
 
     &__review {
-        font-size: 12px;
+        font-size: .75rem;
         color: white;
         font-weight: 300;
         padding: 4vw 0vw;
