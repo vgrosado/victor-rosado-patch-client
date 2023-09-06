@@ -10,7 +10,7 @@ function Nav() {
         <div className='nav'>
         <div className='nav__div'>
             <SlHome className='nav__icons'/>
-            <Link to={"/Home"}><p className='nav__label'>Home</p></Link>
+            <Link className='nav__label' to={"/Home"}><p>Home</p></Link>
         </div>
         <div className='nav__div'>
             <SlUser className='nav__icons'/>
