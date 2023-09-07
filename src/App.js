@@ -29,7 +29,7 @@ function App() {
     <Routes>
       <Route path="/" element={<LoginPage/>} />
       <Route path="/Login" element={<LoginPage/>} />
-      <Route path="/SignUp" element={<SignUpPage/>} />
+      <Route path="/SignUp" artistsCollection={artistsCollectionRef} element={<SignUpPage/>} />
       <Route path="/Home" element={<HomePage artists={artists} />} />
       <Route path="/Profile/:id" element={<UserProfile artists={artists}/>} />
     </Routes>

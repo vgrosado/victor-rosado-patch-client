@@ -8,7 +8,6 @@ import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
 import Nav from '../../Components/Nav/Nav';
 import ReviewForm from '../../Components/ReviewForm/ReviewForm';
 import Booking from '../../Components/Booking/Booking';
-// import Tracks from '../../Components/Tracks/Tracks';
 
 function UserProfile() {
     const {id} = useParams();
