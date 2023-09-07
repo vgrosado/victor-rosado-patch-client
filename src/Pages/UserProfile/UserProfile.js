@@ -8,6 +8,8 @@ import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
 import Nav from '../../Components/Nav/Nav';
 import ReviewForm from '../../Components/ReviewForm/ReviewForm';
 import Booking from '../../Components/Booking/Booking';
+import BookingModal from '../../Components/BookingModal/BookingModal';
+
 
 function UserProfile() {
     const {id} = useParams();
@@ -61,6 +63,16 @@ useEffect(() => {
         setBookingPage(true)
 	}
 
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
     return (
         <>
         <section className='user'>
@@ -107,7 +119,8 @@ useEffect(() => {
                 {encorePage && ( <ReviewForm artist={artist}/>)}
                 {bookingPage && (<Booking artist={artist} />)}
             </article>
-            <Nav />
+            <BookingModal isOpen={isModalOpen} closeModal={closeModal}/>
+            <Nav openModal={openModal} />
         </section>
         </>
     )
