@@ -32,6 +32,7 @@ function SignUpForm() {
 
                     <div className='signup-form__input-div'>
 						<input
+							autoComplete='off'
 							className="signup-form__input"
 							type="text"
 							id="name"
@@ -41,6 +42,7 @@ function SignUpForm() {
 					</div>
                     <div className='signup-form__input-div'>
 						<input
+							autoComplete='off'
 							className="signup-form__input"
 							type="text"
 							id="username"
@@ -50,6 +52,7 @@ function SignUpForm() {
 					</div>
 					<div className='signup-form__input-div'>
 						<input
+							autoComplete='off'
 							className="signup-form__input"
 							type="text"
 							id="email"
@@ -59,6 +62,7 @@ function SignUpForm() {
 					</div>
 					<div className='signup-form__input-div'>
 						<input
+							autoComplete='off'
 							className="signup-form__input"
 							type="password"
 							id="password"

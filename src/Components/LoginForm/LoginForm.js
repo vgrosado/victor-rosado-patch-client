@@ -13,6 +13,7 @@ function LoginForm() {
         <form className="form">
 					<div className='form__input-div'>
 						<input
+							autoComplete='off'
 							className="form__input"
 							type="text"
 							id="email"
@@ -21,6 +22,7 @@ function LoginForm() {
 					</div>
 					<div className='form__input-div'>
 						<input
+							autoComplete='off'
 							className="form__input"
 							type="password"
 							id="password"

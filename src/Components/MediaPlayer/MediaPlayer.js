@@ -65,7 +65,32 @@ function MediaPlayer({ music }) {
 
 
     if (!music || music.length === 0) {
-        return <p className='mediaplayer__loading'>LOADING</p>
+        return ( <section className='mediaplayer'>
+        <div className='mediaplayer__card'>
+            <div className='mediaplayer__song-div'>
+                <p className='mediaplayer__song-title'></p>
+                <p className='mediaplayer__song-subtitle'></p>
+            </div>
+            <video className='mediaplayer__vid' src={null} autoPlay loop muted />
+            <div className="mediaplayer__controls">
+                <input className='mediaplayer__progress-bar' ref={progressBarRef}
+                    type="range"
+                    defaultValue="0"
+                    onChange={handleProgressChange} />
+                <div className='mediaplayer__time-div'>
+                    <span className="mediaplayer__time">{formatTime(timeProgress)}</span>
+                    <span className="mediaplayer__time">{formatTime(duration)}</span>
+                </div>
+                <audio ref={audioRef} type='audio/mp3' src={null} onLoadedMetadata={onLoadedMetadata} />
+                <div className='mediaplayer__icon-div'>
+                    <BiSkipPrevious className='mediaplayer__icons' />
+                    {isPlaying ? (<AiFillPauseCircle className='mediaplayer__play-pause' onClick={togglePlay} />)
+                        : (<AiFillPlayCircle className='mediaplayer__play-pause' onClick={togglePlay} />)}
+                    <BiSkipNext className='mediaplayer__icons' />
+                </div>
+            </div>
+        </div>
+    </section>)
     }
 
     return (
