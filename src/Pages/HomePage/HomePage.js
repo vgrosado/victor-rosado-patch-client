@@ -48,25 +48,7 @@ console.log(artists)
                 ))}
             </section>
             </article>
-            <Nav/>
-            {/* <div className='homepage__nav'>
-                <div className='homepage__nav-div'>
-                    <SlHome className='homepage__nav-icons'/>
-                    <p className='homepage__nav-label'>Home</p>
-                </div>
-                <div className='homepage__nav-div'>
-                    <SlUser className='homepage__nav-icons'/>
-                    <p className='homepage__nav-label'>Profile</p>
-                </div>  
-                <div className='homepage__nav-div'>
-                    <BiUpload className='homepage__nav-icons'/>
-                    <p className='homepage__nav-label'>Upload</p>
-                </div>
-                <div className='homepage__nav-div'>
-                    <PiBooks className='homepage__nav-icons'/>
-                    <p className='homepage__nav-label'>Bookings</p>
-                </div>
-            </div> */}
+            <Nav artists={artists}/>
         </main>
     )
 };

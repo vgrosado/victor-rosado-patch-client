@@ -16,12 +16,6 @@ function ReviewForm({artist}) {
     const [review, setReview] = useState([]);
     const [voltage, setVoltage] = useState(0);
     const commentData =  collection(db, "Artists", `${artistId}`, "Comments");
-    
-    
-    const createReview =  async (event) => {
-        event.preventDefault();
-        await addDoc(commentData, { user: '@'+newUser, rating: parseFloat(voltage), review: newReview, time: new Date().toLocaleDateString()})
-    }
 
     useEffect(() => {
         const getReviews = async () => {
@@ -33,6 +27,19 @@ function ReviewForm({artist}) {
 
         getReviews();
     }, [])
+
+
+    const createReview =  async (event) => {
+        event.preventDefault();
+        await addDoc(commentData, { user: '@'+newUser, rating: parseFloat(voltage), review: newReview, time: new Date().toLocaleDateString()})
+        const getReviews = async () => {
+            const reviewData = await getDocs(collection(db, "Artists", `${artistId}`, "Comments"));
+            setReview(reviewData.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        };  setNewUser("")
+            setReview("")
+
+        getReviews();
+    }
 
     const userReviews = review;
     console.log(userReviews)
