@@ -5,7 +5,8 @@ import {PiBooks} from 'react-icons/pi';
 import {BiUpload} from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
-function Nav() {
+function Nav({artists}) {
+    console.log(artists)
     return (
         <div className='nav'>
         <div className='nav__div'>
