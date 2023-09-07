@@ -4,10 +4,12 @@
     flex-direction: column;
     align-items: center;
 	height: 100vh;
+    background-color:#191919 ;
 	
 	
 
 	&__header {
+        padding-top: 29vw;
         color: #fff;
         text-shadow: 
         0 0 0.033em #fff, 
@@ -28,64 +30,37 @@
         }
     }
 
-	#background-video {
-		width: 100vw;
-		height: 100%;
-		object-fit: cover;
-        left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-	}
+	// #background-video {
+	// 	width: 100vw;
+	// 	height: 100%;
+	// 	object-fit: cover;
+    //     left: 0;
+	// 	right: 0;
+	// 	top: 0;
+	// 	bottom: 0;
+	// }
 
     &__container {
-        opacity: .9;
         backdrop-filter: blur(2px);
-        background: linear-gradient(50deg,rgba(0,0,0,.51),#0d0000);
-        border-radius: 10px;
+        opacity: .9;
+        background: linear-gradient(180deg,rgba(0, 0, 0, 0.51),#191919);
         position: absolute;
         display: flex;
+        box-sizing: border-box;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
-        height: 90%;
-        width: 85vw;
+        height: 100vh;
+        width: 100vw;
         padding: 0rem 1rem;
 	}
 
     &__switch-container {
         display: flex;
         width: 100%;
-        height: 10%;
-        justify-content: space-between;
+        height: 25%;
+        justify-content: center;
         align-items: center;
-        backdrop-filter: blur(50px);
-        opacity: .9;
-        background: linear-gradient(50deg, #000000, #000000);
-        border-radius: 10px;
-    }
-
-    &__button-1 {
-        font-weight: bold;
-        font-size: 1rem;
-        border: none;
-        width: 100%;
-        height: 100%;
-        color: white;
-        border: 2px solid white;
-        border-radius: .25rem;
-        padding: 0.4em;
-        background-color: black;
-        box-shadow: 0 0 .2rem #fff,
-        0 0 .2rem #fff,
-        0 0 2rem #ff7b00,
-        0 0 0.8rem #ff7b00,
-        0 0 2.8rem #ff7b00,
-        inset 0 0 1.3rem #ff7b00;
-    }
-
-    &__button-2 {
-        display: none;
     }
 
 }
