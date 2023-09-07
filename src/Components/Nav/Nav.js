@@ -14,11 +14,11 @@ function Nav({artists, openModal}) {
             <p className='nav__label' >Home</p>
         </div>
         <div className='nav__div'>
-            <SlUser className='nav__icons'/>
+            <Link><SlUser className='nav__icons'/></Link>
             <p className='nav__label'>Profile</p>
         </div>  
         <div className='nav__div'>
-            <PiBooks onClick={openModal} className='nav__icons'/>
+            <Link><PiBooks onClick={openModal} className='nav__icons'/></Link>
             <p className='nav__label'>Bookings</p>
         </div>
         <div className='nav__div'>
