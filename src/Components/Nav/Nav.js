@@ -5,7 +5,7 @@ import {PiBooks} from 'react-icons/pi';
 import {BiUpload} from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
-function Nav({artists}) {
+function Nav({artists, openModal}) {
     console.log(artists)
     return (
         <div className='nav'>
@@ -22,7 +22,7 @@ function Nav({artists}) {
             <p className='nav__label'>Upload</p>
         </div>
         <div className='nav__div'>
-            <PiBooks className='nav__icons'/>
+            <PiBooks onClick={openModal} className='nav__icons'/>
             <p className='nav__label'>Bookings</p>
         </div>
     </div>
