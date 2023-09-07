@@ -1,4 +1,5 @@
 @use '../../Styles/Partials/typography' as*;
+@use '../../Styles/Partials/variable' as*;
 
 *{
     font-family: 'workingsans';
@@ -10,10 +11,12 @@
     flex-direction: column;
     align-items: center;
 	height: 100vh;
+    background-color:#191919 ;
 	
 	
 
 	&__header {
+        padding-top: 40vw;
         color: #fff;
         text-shadow: 
         0 0 0.033em #fff, 
@@ -35,7 +38,8 @@
         }
 
     &__subheader-div {
-        height: 50%;
+        height: 60%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -70,13 +74,12 @@
     &__container {
         backdrop-filter: blur(2px);
         opacity: .9;
-        background: linear-gradient(50deg,rgba(0,0,0,.51),#0d0000);
-        // border-radius: 10px;
+        background: linear-gradient(180deg,rgba(0, 0, 0, 0.51),#191919);
         position: absolute;
         display: flex;
         box-sizing: border-box;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
         height: 100vh;
         width: 100vw;
@@ -88,83 +91,13 @@
         display: flex;
         width: 100%;
         height: 25%;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        border-radius: 10px;
     }
 
-    &__button-1 {
-        font-weight: bold;
-        font-size: 1.5rem;
-        border: none;
-        width: 45%;
-        height: 90%;
-        background: none;
-        // color: rgba(255, 255, 255, 0.201);
-        // border: 2px solid rgba(255, 255, 255, 0.201);
-        border-radius: .25rem;
-        padding: 0.4em;
-        color: rgba(255, 255, 255, 0.2);
-        font-size: 2rem;
-        &:hover {
-            text-shadow: 0px 0px 11px rgb(166, 166, 166);
-            color: white;
-            }
-        // background-color: black;
-        // &:hover {
-        // animation: flicker 1.5s infinite alternate;
-        // color: white;
-        // border: 2px solid white;
-        // box-shadow: 0 0 .2rem #fff,
-        // 0 0 .2rem #fff,
-        // 0 0 2rem #ff7b00,
-        // 0 0 0.8rem #ff7b00,
-        // 0 0 2.8rem #ff7b00,
-        // inset 0 0 1.3rem #ff7b00;
-        // @keyframes flicker {
-        //     100% {
-        //         }
-        
-        //     }       
-        // }  
-        }
-
     &__button-2 {
-        font-weight: bold;
-        // font-size: 1rem;
-        border: none;
-        width: 45%;
-        height: 90%;
-        background: none;
-
-        // color: rgba(255, 255, 255, 0.201);
-        // border: 2px solid rgba(255, 255, 255, 0.201);
-        // border-radius: .25rem;
-        padding: 0.4em;
-        color: rgba(255, 255, 255, 0.2);
-        font-size: 2rem;
-        // font-weight: bolder;
-        &:hover {
-            text-shadow: 0px 0px 11px rgb(166, 166, 166);
-            color: white;
-            }
-        // background-color: black;
-        // &:hover {
-        // animation: flicker 1.5s infinite alternate;
-        // color: white;
-        // border: 2px solid white;
-        // box-shadow: 0 0 .2rem #fff,
-        // 0 0 .2rem #fff,
-        // 0 0 2rem #ff7b00,
-        // 0 0 0.8rem #ff7b00,
-        // 0 0 2.8rem #ff7b00,
-        // inset 0 0 1.3rem #ff7b00;
-        // @keyframes flicker {
-        //     100% {
-        //         }
-        
-        //     }       
-        // }  
-        // }
+        color: white;
+        font-weight: 300;
+        font-size: 16px;
     }
 }

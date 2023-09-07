@@ -13,7 +13,7 @@ function Booking() {
                     <option>Open</option>
                     <option>Support</option>
                 </select>
-                <input className='booking__date-input' type='datetime-local' name='date'>
+                <input placeholder='Choose a date' className='booking__date-input' type='datetime-local' name='date'>
                 </input>
                 <select className='booking__region-select' name='country/region'>
                     <option value="" disabled selected hidden>

@@ -35,11 +35,11 @@ function ReviewForm({artist}) {
         const getReviews = async () => {
             const reviewData = await getDocs(collection(db, "Artists", `${artistId}`, "Comments"));
             setReview(reviewData.docs.map((doc) => ({...doc.data(), id: doc.id})))
-        };  setNewUser("")
-            setReview("")
+        };  setNewUser("");
+            setReview("");
 
         getReviews();
-    }
+    };
 
     const userReviews = review;
     console.log(userReviews)

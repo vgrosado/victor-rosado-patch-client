@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import '../SignUpForm/SignUpForm.scss'
-import blankAvatar from '../../Assets/Images/newuseravatartemplate.png'
-import blankBackground from '../../Assets/Images/newuserbackgroundtemplate.png'
+
 import { AiFillEye } from 'react-icons/ai'
 import { addDoc, collection } from 'firebase/firestore';
 import {db} from '../../Firebase';
@@ -19,10 +18,10 @@ function SignUpForm() {
         await addDoc(artistsCollectionRef, { username: '@'+newUserName,
 			name: newName,
 			email: newEmail,
-			backgroundimg: blankBackground,
+			backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2Fnewuserbackgroundtemplate.png?alt=media&token=39794247-ec26-4fc9-a9fb-fe35e931f8cf",
 			description: "Add bio",
 			followers: "0",
-			image: blankAvatar,
+			image: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/newuseravatartemplate.png?alt=media&token=e0bdfc2f-2055-4e67-b7aa-1304267ac203",
 			rating: 0,})
 			navigateTo('/Home');
     		};
@@ -66,7 +65,7 @@ function SignUpForm() {
 							placeholder='Enter your password'>
 						</input>
 						<div className='signup-form__icon'>
-                        <AiFillEye/>
+                        <AiFillEye className='signup-form__eye'/>
 						</div>
 					</div>
 					<div className='signup-form__rememberme-div'>

@@ -1,7 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import '../LoginForm/LoginForm.scss'
 import { AiFillEye } from 'react-icons/ai'
 
 function LoginForm() {
+
+	const navigateTo = useNavigate();
+
+	function HandleLogin(){
+		navigateTo('/Home');
+	}
     return (
         <form className="form">
 					<div className='form__input-div'>
@@ -20,7 +27,7 @@ function LoginForm() {
 							placeholder='Enter your password'>
 						</input>
 						<div className='form__icon'>
-                        <AiFillEye/>
+                        <AiFillEye className='form__eye'/>
 						</div>
 					</div>
 					<div className='form__rememberme-div'>
@@ -31,7 +38,7 @@ function LoginForm() {
 						</input>
 						<label className='form__rememberme-label'>Remember Me</label>
 					</div>
-					<button className="form__button" type="submit">Sign In</button>
+					<button onClick={HandleLogin} className="form__button" type="submit">Sign In</button>
 				</form>
     )
 }
