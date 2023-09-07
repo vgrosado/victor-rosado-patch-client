@@ -41,22 +41,47 @@
         align-items: center;
     }
 
+    &__avatar-div {
+        width: 22.5%;
+    }
+
     &__avatar {
-        width: 14vw;
-        height: 14vw;
+        width: 12vw;
+        height: 12vw;
         border-radius: 50px;
         background-color: $PatchGrey;
         background-image: url('../../Assets/Images/rickytinez.jpeg');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        margin-bottom: 4vw;
     }
+
+
+    &__logo {
+        font-size: 2rem;
+        color: #fff;
+        text-shadow: 
+        0 0 0.033em #fff, 
+        0 0 0.08em #fff, 
+        0 0 0.1em #ff7b00,
+        0 0 0.2em #ff7b00, 
+        0 0 0.3em #ff7b00, 
+        0 0 1em #ff7b00, 
+        0 0 1.5em #ff7b00;
+        }
+
+        &__flicker {
+            animation: flicker 3s linear forwards alternate infinite;
+            @keyframes flicker {
+            0%, 19.999%, 22%, 62.999%,64%, 64.999%, 72%, 100% {opacity: 1;}
+            20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
+            }
+        }
 
     &__icons-container {
         display: flex;
         justify-content: space-between;
-        width: 25%;
+        width: 20%;
     }
 
     &__search-input {
@@ -82,11 +107,6 @@
         align-items: center;
         background-color: $PatchGrey;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
-        &:hover {
-        border: 2px solid lightgray;
-        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
-        color: white;
-        }
     }
 
 
