@@ -1,13 +1,10 @@
 import '../HomePage/HomePage.scss'
 import { AiOutlineSearch} from 'react-icons/ai';
-// import {SlUser} from 'react-icons/sl';
-// import {SlHome} from 'react-icons/sl';
-// import {PiBooks} from 'react-icons/pi';
 import {BiBell} from 'react-icons/bi';
 import {BiEnvelope} from 'react-icons/bi';
-// import {BiUpload} from 'react-icons/bi';
 import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 import Nav from '../../Components/Nav/Nav';
+import BookingModal from '../../Components/BookingModal/BookingModal';
 
 
 
@@ -48,6 +45,7 @@ console.log(artists)
                 ))}
             </section>
             </article>
+            <BookingModal />
             <Nav artists={artists}/>
         </main>
     )
