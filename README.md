@@ -1,7 +1,7 @@
 **PATCH - DJ Talent Showcase**
 
 **PATCH** 
-is a web-based application that offers a unique 1:1 platform for DJs to connect with their prospects, showcasing their talents, quantifying their global and local value, and facilitating business interactions directly from the artist. This README.md provides an overview of the PATCH project, its features, and instructions for setting it up.
+is a mobile web-based application that offers a unique 1:1 platform for DJs to connect with their prospects, showcasing their talents, quantifying their global and local value, and facilitating business interactions directly from the artist. This README.md provides an overview of the PATCH project, its features, and instructions for setting it up.
 
 **Table of Contents**
 1.Introduction
@@ -51,5 +51,6 @@ Once you have the application set up, you can start it locally:
 
 npm start
 The application will be accessible at http://localhost:3000 by default.
+*For best results, inspect and set dimensions to 390 x 844*
 
 Explore the application and interact with existing profiles to experience the PATCH platform!
