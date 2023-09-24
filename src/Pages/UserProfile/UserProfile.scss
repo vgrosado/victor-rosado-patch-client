@@ -30,11 +30,23 @@
         object-position: center;
         height: 100%;
         width: 100%;
+        background-color: #191919;
+    }
+
+    &__upload-icon {
+        display: flex;
+        align-self: center;
+        fill: white;
+    }
+
+    &__upload-input {
+        display: none;
     }
 
     &__avatar-div {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
         align-items: center;
     }
 
@@ -54,7 +66,19 @@
         border-radius: 50px;
         object-fit: cover;
         object-position: center;
-        background-color: $PatchGrey;
+        background-color: $PatchMedium-Grey;
+    }
+
+    &__avatar-empty {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+        background-color: $PatchMedium-Grey;
+        align-items: center;
+        justify-content: center;
+        display: flex;
     }
 
     &__name {
