@@ -5,8 +5,7 @@ import {PiBooks} from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import {BiLogOut} from 'react-icons/bi';
 
-function Nav({artists, openModal}) {
-    console.log(artists)
+function Nav({openModal}) {
     return (
         <div className='nav'>
         <div className='nav__div'>

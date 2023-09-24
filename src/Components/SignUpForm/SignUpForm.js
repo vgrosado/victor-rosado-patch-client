@@ -18,10 +18,10 @@ function SignUpForm() {
         await addDoc(artistsCollectionRef, { username: '@'+newUserName,
 			name: newName,
 			email: newEmail,
-			backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2Fnewuserbackgroundtemplate.png?alt=media&token=39794247-ec26-4fc9-a9fb-fe35e931f8cf",
+			backgroundimg: null,
 			description: "Add bio",
 			followers: "0",
-			image: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/newuseravatartemplate.png?alt=media&token=e0bdfc2f-2055-4e67-b7aa-1304267ac203",
+			image: null,
 			rating: 0,})
 			navigateTo('/Home');
     		};
@@ -29,7 +29,6 @@ function SignUpForm() {
 
     return (
         <form className="signup-form">
-
                     <div className='signup-form__input-div'>
 						<input
 							autoComplete='off'

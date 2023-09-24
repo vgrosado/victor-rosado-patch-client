@@ -57,7 +57,7 @@ function HomePage({ artists }) {
                 </section>
             </article>
             <BookingModal isOpen={isModalOpen} closeModal={closeModal}/>
-            <Nav openModal={openModal} artists={artists} />
+            <Nav openModal={openModal} />
         </main>
     )
 };
