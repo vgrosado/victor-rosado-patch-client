@@ -4,7 +4,7 @@ import { BiBell } from 'react-icons/bi';
 import { BiEnvelope } from 'react-icons/bi';
 import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 import Nav from '../../Components/Nav/Nav';
-import BookingModal from '../../Components/BookingModal/BookingModal';
+import UploadImageModal from '../../Components/UploadImageModal/UploadImageModal';
 import { useState } from 'react';
 
 
@@ -56,7 +56,7 @@ function HomePage({ artists }) {
                     ))}
                 </section>
             </article>
-            <BookingModal isOpen={isModalOpen} closeModal={closeModal}/>
+            <UploadImageModal isOpen={isModalOpen} closeModal={closeModal}/>
             <Nav openModal={openModal} />
         </main>
     )

@@ -9,6 +9,15 @@ function LoginForm() {
 	function HandleLogin(){
 		navigateTo('/Home');
 	}
+
+
+	const login = async () => {
+
+	}
+	const logout = async () => {
+
+	}
+
     return (
         <form className="form">
 					<div className='form__input-div'>
