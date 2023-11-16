@@ -1,14 +1,12 @@
 import '../SignUpPage/SignUpPage.scss'
 // import backgroundVid from '../../Assets/Videos/LoginBackground3.mp4'
 // import {useNavigate } from 'react-router-dom';
-// import { useState } from 'react';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 
 function SignUpPage() {
 
 	return (
 		<section className="signup">
-			{/* <video src={backgroundVid} id="background-video" autoPlay loop muted /> */}
 			<div className="signup__container">
 				<h1 className='signup__header'>P<span className='signup__flicker'>A</span>TCH</h1>
 				<SignUpForm />

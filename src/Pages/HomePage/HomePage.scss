@@ -6,7 +6,7 @@
     font-family: 'worksans';
 }
 .homepage {
-    height: 100vh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -86,7 +86,7 @@
 
     &__search-input {
         @include Inputs;
-        height: 12vw;
+        height: 3rem;
         width: 100%;
         padding: 0rem 1rem;
     }
@@ -94,13 +94,13 @@
     &__search-icon {
         padding-right: 1rem;
         fill: grey;
-        height: 8vw;
-        width: 8vw;
+        height: 2rem;
+        width: 2rem;
     }
 
 
     &__input-div {
-        height: 12vw;
+        height: 3rem;
         width: 100%;
         border-radius: .25rem;
         display: flex;

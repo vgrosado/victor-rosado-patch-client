@@ -12,7 +12,6 @@
 
 
 &__div {
-    height: 55%;
     display: flex;
     flex-direction: column;        
     align-items: center;
@@ -27,8 +26,8 @@
 
 &__icons {
     fill: grey;
-    width: 6vw;
-    height: 6vw;
+    width: 1.5rem;
+    height: 1.5rem;
     padding-bottom: .1rem;
     }
 }

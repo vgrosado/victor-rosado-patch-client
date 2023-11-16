@@ -1,7 +1,7 @@
 
 import '../UserProfile/UserProfile.scss';
 import { useEffect, useState } from 'react';
-import {doc, getDoc, getDocs, collection, updateDoc } from "firebase/firestore";
+import {doc, getDoc, getDocs, collection } from "firebase/firestore";
 import {db} from '../../Firebase';
 import { useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
@@ -9,6 +9,7 @@ import Nav from '../../Components/Nav/Nav';
 import ReviewForm from '../../Components/ReviewForm/ReviewForm';
 import Booking from '../../Components/Booking/Booking';
 import UploadImageModal from '../../Components/UploadImageModal/UploadImageModal'
+import {FaUser} from 'react-icons/fa';
 // import {SlPencil} from 'react-icons/sl';
 // import {PiUserCirclePlusLight} from 'react-icons/pi';
 // // import {storage} from '../../Firebase';
@@ -32,7 +33,6 @@ function UserProfile() {
             getDoc(artistDocRef)
             .then((doc) => {
             setArtist(doc.data(), doc.id)
-            console.log(artist)
         })
         .catch(error => {
             console.log('error fetching video ID:s', error)
@@ -42,12 +42,10 @@ function UserProfile() {
     useEffect(() => {
         const getArtists = async () => {
             const musicData = await getDocs(collection(db, "Artists", `${artistId}`, "Music",));
-            console.log(musicData)
             setMusic(musicData.docs.map((doc) => ({...doc.data(), id: doc.id})))
-            console.log(music)
         };
         getArtists();
-    }, [artist])
+    }, [])
 
 
     function handleNavToEncore(){
@@ -83,7 +81,7 @@ function UserProfile() {
                     <div className='user__header-background'></div>
                         <div className='user__info-container'>
                             <div className='user__avatar-div'>
-                                <div className='user__avatar-empty'></div>
+                                <div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder'/> </div>
                             </div>
                         </div>
                 </div>

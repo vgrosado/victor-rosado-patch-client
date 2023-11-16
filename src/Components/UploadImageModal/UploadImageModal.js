@@ -13,7 +13,6 @@ function BookingModal({isOpen, closeModal}) {
     const [avatarUpload, setAvatarUpload] = useState(null);
     const [url, setUrl] = useState(null);
     const [avatarUrl, setAvatarUrl] = useState(null);
-    const [isModalOpen, setModalOpen] = useState(false);
     const {id} = useParams();
     const artistId = id;
     
