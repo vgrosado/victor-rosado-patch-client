@@ -14,8 +14,8 @@
     width: 80%;
 
 &__input-div {
-    height: 13%;
-    width: 92.5%;
+    height: 11%;
+    width: 15rem;
     border-radius: .25rem;
     display: flex;        
     align-items: center;
@@ -46,7 +46,6 @@
 }
 
 &__rememberme-div {
-    align-self: start;
     display: flex;
     color: grey;
 }
@@ -65,7 +64,7 @@
     color: $PatchOrange;
     background-color: $PatchGrey;
     border: none;
-    padding: 4vw 18vw;
+    padding: 1rem 5rem;
     box-sizing: border-box;
     box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
 }

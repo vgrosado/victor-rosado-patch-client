@@ -76,9 +76,14 @@
         object-fit: cover;
         object-position: center;
         background-color: $PatchMedium-Grey;
-        align-items: center;
+        align-items: last baseline;
         justify-content: center;
         display: flex;
+    }
+
+    &__avatar-placeholder {
+        color: $PatchOrange;
+        border-radius: 50px;
     }
 
     &__name {
@@ -112,7 +117,7 @@
     &__stats-container {
         position: absolute;
         z-index: 1;
-        top: 34vw;
+        top: 9rem;
         height: 70%;
         width: 100%;
         background-color: rgb(31,31,31);

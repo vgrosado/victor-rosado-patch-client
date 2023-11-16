@@ -9,7 +9,7 @@
 	
 
 	&__header {
-        padding-top: 29vw;
+        padding-top: 12.25rem;
         color: #fff;
         text-shadow: 
         0 0 0.033em #fff, 
@@ -29,16 +29,6 @@
         20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
         }
     }
-
-	// #background-video {
-	// 	width: 100vw;
-	// 	height: 100%;
-	// 	object-fit: cover;
-    //     left: 0;
-	// 	right: 0;
-	// 	top: 0;
-	// 	bottom: 0;
-	// }
 
     &__container {
         backdrop-filter: blur(2px);
