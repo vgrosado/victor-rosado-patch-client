@@ -4,14 +4,18 @@ import {SlHome} from 'react-icons/sl';
 import {PiBooks} from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import {BiLogOut} from 'react-icons/bi';
-import { signOut } from 'firebase/auth';
+import { logOut } from '../../Firebase';
 
 
-function Nav({openModal, auth}) {
+function Nav({openModal}) {
 
-    const logout = async () => {
-        await signOut(auth)
-	}
+   async function handleLogOut() {
+    try {
+        await logOut();
+    } catch {
+        console.log('Error Loggin Out User')
+    }
+   }
 
     return (
         <div className='nav'>
@@ -28,7 +32,7 @@ function Nav({openModal, auth}) {
             <p className='nav__label'>Bookings</p>
         </div>
         <div className='nav__div'>
-        <Link to={"/"}><BiLogOut className='nav__icons' onClick={logout}/></Link>
+        <Link to={"/"}><BiLogOut className='nav__icons' onClick={handleLogOut()}/></Link>
             <p className='nav__label'>Log Out</p>
         </div>
     </div>
