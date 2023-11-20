@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
 
 export const db = getFirestore(app);
-export const auth = getAuth();
+export const auth = getAuth(app);
 
 //login exisisting user
 export function login(email, password) {

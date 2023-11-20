@@ -3,56 +3,55 @@ import {v4} from 'uuid';
 import { useState } from 'react';
 import {storage} from '../../Firebase';
 import {db} from '../../Firebase';
-import {getDownloadURL, ref, uploadBytes} from 'firebase/storage';
+import {getDownloadURL, ref, uploadBytes, getStorage} from 'firebase/storage';
 import {doc, updateDoc } from "firebase/firestore";
 import { useParams } from 'react-router-dom';
+import { getAuth, updateProfile } from 'firebase/auth';
 
 function BookingModal({isOpen, closeModal}) {
 
-    const [imageUpload, setImageUpload] = useState(null);
-    const [avatarUpload, setAvatarUpload] = useState(null);
-    const [url, setUrl] = useState(null);
-    const [avatarUrl, setAvatarUrl] = useState(null);
+    const [imageUpload, setImageUpload] = useState("");
+    const [avatarUpload, setAvatarUpload] = useState("");
+    const [backgroundUrl, setBackgroundUrl] = useState("");
+    const [avatarUrl, setAvatarUrl] = useState("");
     const {id} = useParams();
-    const artistId = id;
+    const userId = id;
+    const auth = getAuth();
+    const user = auth.currentUser;
     
-    const uploadImage = () => {
+    
+    async function uploadImage() {
         if (imageUpload == null) return;
         const imageRef = ref(storage, `userbackgroundimages/${imageUpload.name + v4()}`);
+        const userRef = doc(db, "users", `${userId}`)
         uploadBytes(imageRef, imageUpload).then(() => {
             getDownloadURL(imageRef).then((url) => {
-                console.log(url)
-                setUrl(url)
-            })
-            const artRef = doc(db, "Artists", `${artistId}`)
-            console.log(url)
-            updateDoc(artRef, {
-                backgroundimg: `${url}`
+                setBackgroundUrl(url)
+                console.log(backgroundUrl)
+                updateDoc(userRef, {
+                    backgroundimg: `${backgroundUrl}`
+                })
             })
         }).catch((error) => {
             console.log(error.message);
         }) 
     };
 
-    const uploadAvatar = () => {
-        if (avatarUpload == null) return;
-        const avatarRef = ref(storage, `avatars/${avatarUpload.name + v4()}`);
-        uploadBytes(avatarRef, avatarUpload).then(() => {
-            getDownloadURL(avatarRef).then((avatarUrl) => {
-                console.log(avatarUrl)
-                setAvatarUrl(avatarUrl)
-            })
-            const artRef = doc(db, "Artists", `${artistId}`)
-            console.log(avatarUrl)
-            updateDoc(artRef, {
-                image: `${avatarUrl}`
-            })
-        }).catch((error) => {
-            console.log(error.message);
-        })
-    };
-
-    
+    async function uploadAvatar(){
+        if (user) {
+            const avatarRef = ref(storage, `avatars/${avatarUpload.name}`);
+            uploadBytes(avatarRef, avatarUpload).then(() => {
+                getDownloadURL(avatarRef).then((url) => {
+                    setAvatarUrl(url)
+                })
+                updateProfile(user, {
+                photoURL: avatarUrl
+                })
+            }).catch((error) => {
+                console.log(error.message);
+            }) 
+        }
+        };
 
     if (!isOpen) return null;
     return (
@@ -67,6 +66,7 @@ function BookingModal({isOpen, closeModal}) {
                 </span>
         </div>
     )
+    
 };
 
 export default BookingModal;

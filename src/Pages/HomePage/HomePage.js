@@ -6,21 +6,21 @@ import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 import Nav from '../../Components/Nav/Nav';
 import UploadImageModal from '../../Components/UploadImageModal/UploadImageModal';
 import { useState } from 'react';
+import { getAuth } from 'firebase/auth';
 
 
 
 function HomePage({ artists }) {
     const [isModalOpen, setModalOpen] = useState(false);
+    const auth = getAuth();
+	const user = auth.currentUser;
 
     const openModal = () => {
         setModalOpen(true);
     };
-
     const closeModal = () => {
         setModalOpen(false);
     };
-
-    console.log(artists)
 
     return (
         <main className='homepage'>
@@ -57,7 +57,7 @@ function HomePage({ artists }) {
                 </section>
             </article>
             <UploadImageModal isOpen={isModalOpen} closeModal={closeModal}/>
-            <Nav openModal={openModal} />
+            <Nav user={user} openModal={openModal} />
         </main>
     )
 };
