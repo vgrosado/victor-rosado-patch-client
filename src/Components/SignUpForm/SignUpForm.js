@@ -3,26 +3,52 @@ import '../SignUpForm/SignUpForm.scss';
 import { AiFillEye } from 'react-icons/ai';
 // import { addDoc, collection } from 'firebase/firestore';
 // import {db} from '../../Firebase';
-import { Link, useNavigate } from 'react-router-dom';
-import { signUp } from '../../Firebase';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { db, signUp, useAuth } from '../../Firebase';
+import { collection, doc, documentId, setDoc, updateDoc } from 'firebase/firestore';
+import { getAuth, updateProfile } from 'firebase/auth';
 
 function SignUpForm() {
-	const navigateTo = useNavigate();
 	const [newName, setNewName] = useState();
-	const [displayName, setDisplayName] = useState();
+	const [userName, setUserName] = useState();
 	const [loading, setLoading] = useState(false);
 	const emailRef = useRef();
 	const passwordRef = useRef();
+	const auth = getAuth();
+	const user = auth.currentUser;
+	const userData = {
+		displayName: "@" + userName,
+		photoUrl: ""
+	};
 
 	 async function handleSignUp(){
 		setLoading(true);
-		try {
-		await signUp(emailRef.current.value, passwordRef.current.value);
-		} catch {
-			alert('Error');
-		}
-		setLoading(false);
-	};
+		signUp(emailRef.current.value, passwordRef.current.value)
+		.then((userCredential) => {
+			const user = userCredential.user;
+			if (user) {
+			  updateProfile(user, {
+				displayName: "@" + userName,
+				photoURL: ""
+			  })
+				.then(() => {
+				  console.log('Display name and photo URL updated');
+				})
+				.catch((error) => {
+				  console.log('Error updating profile:', error.message);
+				});
+			} else {
+			  console.log('User object is null');
+			}
+		  })
+		  .catch((error) => {
+			console.log('Sign-up error:', error.message);
+		  });
+	  };
+
+	  
+	  
+
 
 	return (
 		<div className="signup-form">
@@ -43,7 +69,7 @@ function SignUpForm() {
 					type="text"
 					id="username"
 					placeholder='Enter your username'
-					onChange={(event) => { setDisplayName(event.target.value) }}>
+					onChange={(event) => { setUserName(event.target.value) }}>
 				</input>
 			</div>
 			<div className='signup-form__input-div'>

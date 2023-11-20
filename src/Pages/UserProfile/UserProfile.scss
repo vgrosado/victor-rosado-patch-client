@@ -14,6 +14,11 @@
             display: none;
         }
 
+    &__edit-icon {
+        align-self:self-end;
+        cursor: pointer;
+    }
+
     &__background-container {
         display: flex;
         justify-content: space-between;

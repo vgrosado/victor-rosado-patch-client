@@ -3,23 +3,19 @@ import '../LoginForm/LoginForm.scss'
 import { AiFillEye } from 'react-icons/ai'
 import { login } from '../../Firebase';
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function LoginForm() {
-	const navigateTo = useNavigate();
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const [loading, setLoading] = useState(false);
-
-	function HandleLogin(){
-		navigateTo('/Home');
-	}
 
 	async function handleLogin(){
 		setLoading(true);
 		try {
 		await login(emailRef.current.value, passwordRef.current.value);
 		} catch {
-			alert('Error');
+			console.log('error');
 		}
 		setLoading(false);
 	};
@@ -48,7 +44,6 @@ function LoginForm() {
 						<div className='form__icon'>
                         <AiFillEye className='form__eye'/>
 						</div>
-						{passwordRef.current.value !== 6 && (<p>error</p>)}
 					</div>
 					<div className='form__rememberme-div'>
 						<input
@@ -58,7 +53,7 @@ function LoginForm() {
 						</input>
 						<label className='form__rememberme-label'>Remember Me</label>
 					</div>
-					<button onClick={HandleLogin} className="form__button" type="submit">Sign In</button>
+					<Link to={'/Home'}><button onClick={handleLogin} className="form__button" type="submit">Sign In</button></Link>
 				</form>
     )
 }
