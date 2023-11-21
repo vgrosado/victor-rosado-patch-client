@@ -10,7 +10,8 @@ import { getAuth } from 'firebase/auth';
 
 
 
-function HomePage({ artists }) {
+function HomePage({ artists, users }) {
+
     const [isModalOpen, setModalOpen] = useState(false);
     const auth = getAuth();
 	const user = auth.currentUser;
@@ -27,7 +28,7 @@ function HomePage({ artists }) {
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
                     <div className='homepage__header-container'>
-                        <div className='homepage__avatar-div'><div className='homepage__avatar'></div></div> 
+                        <div className='homepage__avatar-div'><img className='homepage__avatar' src={user?.photoURL}/></div> 
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>
                             <BiEnvelope className='homepage__header-icons' />
