@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react';
 import '../SignUpForm/SignUpForm.scss';
 import { AiFillEye } from 'react-icons/ai';
-// import { addDoc, collection } from 'firebase/firestore';
-// import {db} from '../../Firebase';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { db, signUp, useAuth } from '../../Firebase';
 import { collection, doc, documentId, setDoc, updateDoc } from 'firebase/firestore';
 import { getAuth, updateProfile } from 'firebase/auth';
 
 function SignUpForm() {
+	const { id } = useParams();
+	const userId = id;
 	const [newName, setNewName] = useState();
 	const [userName, setUserName] = useState();
 	const [loading, setLoading] = useState(false);
@@ -17,37 +17,44 @@ function SignUpForm() {
 	const auth = getAuth();
 	const user = auth.currentUser;
 	const userData = {
-		displayName: "@" + userName,
-		photoUrl: ""
+		reviews: "",
+		rating: 0,
+		bio: "",
+		followers: 0,
+		name: "",
+		id: "",
 	};
 
-	 async function handleSignUp(){
+	async function handleSignUp() {
+
 		setLoading(true);
 		signUp(emailRef.current.value, passwordRef.current.value)
-		.then((userCredential) => {
-			const user = userCredential.user;
-			if (user) {
-			  updateProfile(user, {
-				displayName: "@" + userName,
-				photoURL: ""
-			  })
-				.then(() => {
-				  console.log('Display name and photo URL updated');
-				})
-				.catch((error) => {
-				  console.log('Error updating profile:', error.message);
-				});
-			} else {
-			  console.log('User object is null');
-			}
-		  })
-		  .catch((error) => {
-			console.log('Sign-up error:', error.message);
-		  });
-	  };
+			.then((userCredential) => {
+				const user = userCredential.user;
+				if (user) {
+					updateProfile(user, {
+						displayName: "@" + userName,
+						photoURL: ""
+					})
+						.then(() => {
+							const userRef = doc(db, "users", `${user?.uid}`)
+							updateDoc(userRef, userData)
+							console.log('User successfully created!');
+						})
+						.catch((error) => {
+							console.log('Error updating profile:', error.message);
+						});
+				} else {
+					console.log('User object is null');
+				}
+			})
+			.catch((error) => {
+				console.log('Sign-up error:', error.message);
+			});
+	};
 
-	  
-	  
+
+
 
 
 	return (
@@ -80,7 +87,7 @@ function SignUpForm() {
 					id="email"
 					placeholder='Enter your email address'
 					ref={emailRef}
-					>
+				>
 				</input>
 			</div>
 			<div className='signup-form__input-div'>
@@ -91,7 +98,7 @@ function SignUpForm() {
 					id="password"
 					placeholder='Enter your password'
 					ref={passwordRef}
-					>
+				>
 				</input>
 				<div className='signup-form__icon'>
 					<AiFillEye className='signup-form__eye' />
