@@ -14,9 +14,7 @@ import { getAuth } from 'firebase/auth';
 import { SlPencil } from 'react-icons/sl';
 
 
-function UserProfile() {
-    const auth = getAuth();
-    const currentUser = auth.currentUser;
+function UserProfile({currentUser}) {
     const { id } = useParams();
     const usersId = id;
     const artistId = id;
@@ -48,7 +46,7 @@ function UserProfile() {
     }, [artistId]);
 
     useEffect(() => {
-        const usersDocRef = doc(db, "users", `${usersId}`)
+        const usersDocRef = doc(db, "users", `${currentUser?.uid}`)
         getDoc(usersDocRef)
             .then((doc) => {
                 setUser(doc.data(), doc.id)
@@ -56,7 +54,7 @@ function UserProfile() {
             .catch(error => {
                 console.log('error fetching video ID:s', error)
             });
-    }, [usersId])
+    }, [user])
 
     function handleFollow() {
         const artistDocRef = doc(db, "Artists", `${artistId}`)
@@ -112,7 +110,7 @@ function UserProfile() {
                             <p className='user__location'></p>
                         </div>
                         <div className='user__button-div'>
-                            <Link to={`/EditProfile/${currentUser?.uid}`}><button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12}/></button></Link>
+                            <Link className='user__button-link' to={`/EditProfile/${currentUser?.uid}`}><button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12}/></button></Link>
                         </div>
                     </div>
                     <p className='user__bio'>{user?.bio}</p>
