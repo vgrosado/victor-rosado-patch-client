@@ -44,8 +44,8 @@ function App() {
       <Route path="/Login" element={<LoginPage/>} />
       <Route path="/SignUp" element={<SignUpPage/>} />
       <Route path="/Home" element={<HomePage artists={artists} users={users} />} />
-      <Route path="/Profile/:id" element={<UserProfile artists={artists}/>} />
-      <Route path="/EditProfile/:id" element={<EditProfile user={currentUser} />} />
+      <Route path="/Profile/:id" element={<UserProfile currentUser={currentUser} artists={artists}/>} />
+      <Route path="/EditProfile/:id" element={<EditProfile currentUser={currentUser} />} />
     </Routes>
   </BrowserRouter>
   );

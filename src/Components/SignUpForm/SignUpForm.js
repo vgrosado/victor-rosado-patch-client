@@ -26,7 +26,6 @@ function SignUpForm() {
 	};
 
 	async function handleSignUp() {
-
 		setLoading(true);
 		signUp(emailRef.current.value, passwordRef.current.value)
 			.then((userCredential) => {
@@ -35,8 +34,7 @@ function SignUpForm() {
 					updateProfile(user, {
 						displayName: "@" + userName,
 						photoURL: ""
-					})
-						.then(() => {
+					}).then(() => {
 							const userRef = doc(db, "users", `${user?.uid}`)
 							updateDoc(userRef, userData)
 							console.log('User successfully created!');
