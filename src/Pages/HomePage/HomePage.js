@@ -6,15 +6,11 @@ import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 import Nav from '../../Components/Nav/Nav';
 import UploadImageModal from '../../Components/UploadImageModal/UploadImageModal';
 import { useState } from 'react';
-import { getAuth } from 'firebase/auth';
 
 
-
-function HomePage({ artists, users }) {
+function HomePage({ artists, currentUser}) {
 
     const [isModalOpen, setModalOpen] = useState(false);
-    const auth = getAuth();
-	const user = auth.currentUser;
 
     const openModal = () => {
         setModalOpen(true);
@@ -28,7 +24,7 @@ function HomePage({ artists, users }) {
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
                     <div className='homepage__header-container'>
-                        <div className='homepage__avatar-div'><img className='homepage__avatar' src={user?.photoURL}/></div> 
+                        <div className='homepage__avatar-div'><img className='homepage__avatar' src={currentUser?.photoURL}/></div> 
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>
                             <BiEnvelope className='homepage__header-icons' />
@@ -58,7 +54,7 @@ function HomePage({ artists, users }) {
                 </section>
             </article>
             <UploadImageModal isOpen={isModalOpen} closeModal={closeModal}/>
-            <Nav user={user} openModal={openModal} />
+            <Nav currentUser={currentUser} openModal={openModal} />
         </main>
     )
 };

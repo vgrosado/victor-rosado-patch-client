@@ -2,15 +2,13 @@ import '../Nav/Nav.scss';
 import { SlUser } from 'react-icons/sl';
 import { SlHome } from 'react-icons/sl';
 import { PiBooks } from 'react-icons/pi';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { BiLogOut } from 'react-icons/bi';
 import { logOut } from '../../Firebase';
 import { getAuth } from 'firebase/auth';
 
 
-function Nav() {
-    const auth = getAuth();
-    const user = auth.currentUser;
+function Nav({currentUser}) {
 
     async function handleLogOut() {
         try {
@@ -27,7 +25,7 @@ function Nav() {
                 <p className='nav__label' >Home</p>
             </div>
             <div className='nav__div'>
-                <Link to={`/Profile/${user?.uid}`}><SlUser className='nav__icons' /></Link>
+                <Link to={`/Profile/${currentUser?.uid}`}><SlUser className='nav__icons' /></Link>
                 <p className='nav__label'>Profile</p>
             </div>
             <div className='nav__div'>
