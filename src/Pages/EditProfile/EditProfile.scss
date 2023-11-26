@@ -130,6 +130,8 @@
         color: white;
         padding: .5rem 0rem;
         letter-spacing: 0px;
+        text-wrap: pretty;
+        width: 100%;
 
         @include iphone12Pro {
             font-size: .875rem;
