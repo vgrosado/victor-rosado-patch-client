@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useParams} from 'react-router-dom';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignUpPage from './Pages/SignUpPage/SignUpPage';
 import HomePage from './Pages/HomePage/HomePage';
@@ -12,21 +12,23 @@ import { getAuth } from 'firebase/auth';
 
 
 function App() {
+  const {uid} = useParams();
   const [user, setUser] = useState({});
   const [artists, setArtists] = useState([]);
   const [users, setUsers] = useState([]);
   const auth = getAuth();
   const currentUser = auth.currentUser;
+  console.log(users)
 
-  // useEffect(() => {
-  //   const artistsCollectionRef = collection(db, "Artists")
-  //   const getArtists = async () => {
-  //     const Data = await getDocs(artistsCollectionRef);
-  //     setArtists(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-  //   };
+  useEffect(() => {
+    const artistsCollectionRef = collection(db, "Artists")
+    const getArtists = async () => {
+      const Data = await getDocs(artistsCollectionRef);
+      setArtists(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    };
 
-  //   getArtists();
-  // }, []);
+    getArtists();
+  }, []);
 
   useEffect(() => {
     const usersCollectionRef = collection(db, "users")
@@ -35,10 +37,9 @@ function App() {
       setUsers(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     };
     getUsers();
-  }, []);
+  }, [uid]);
 
-  useEffect(() => {
-    const usersDocRef = doc(db, "users", `${currentUser?.uid}`)
+  const usersDocRef = doc(db, "users", `${currentUser?.uid}`)
     const getUser = async () => {
     await getDoc(usersDocRef)
       .then((doc) => {
@@ -47,8 +48,13 @@ function App() {
       .catch(error => {
         console.log('error fetching video ID:s', error)
       });
-    }; getUser();
-  }, [user])
+    };
+
+  useEffect(() => {
+     getUser();
+  }, [])
+
+  console.log(user)
 
   return (
     <BrowserRouter>
@@ -57,8 +63,8 @@ function App() {
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/Home" element={<HomePage artists={artists} users={users} currentUser={currentUser} />} />
-        <Route path="/Profile/:id" element={<UserProfile currentUser={currentUser} artists={artists}/>} />
-        <Route path="/EditProfile/:id" element={<EditProfile currentUser={currentUser} user={user}/>} />
+        <Route path="/Profile/:id" element={<UserProfile user={user} currentUser={currentUser} artists={artists}/>} />
+        <Route path="/EditProfile/:uid" element={<EditProfile currentUser={currentUser} user={user}/>} />
       </Routes>
     </BrowserRouter>
   );

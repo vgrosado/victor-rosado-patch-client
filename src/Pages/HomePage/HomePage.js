@@ -8,7 +8,7 @@ import UploadImageModal from '../../Components/UploadImageModal/UploadImageModal
 import { useState } from 'react';
 
 
-function HomePage({ artists, currentUser}) {
+function HomePage({ artists, currentUser, id}) {
 
     const [isModalOpen, setModalOpen] = useState(false);
 
@@ -19,6 +19,7 @@ function HomePage({ artists, currentUser}) {
         setModalOpen(false);
     };
 
+    console.log(currentUser.photoURL)
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>
@@ -54,7 +55,7 @@ function HomePage({ artists, currentUser}) {
                 </section>
             </article>
             <UploadImageModal isOpen={isModalOpen} closeModal={closeModal}/>
-            <Nav currentUser={currentUser} openModal={openModal} />
+            <Nav id={id} currentUser={currentUser} openModal={openModal} />
         </main>
     )
 };

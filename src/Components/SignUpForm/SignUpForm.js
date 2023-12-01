@@ -1,14 +1,13 @@
 import { useRef, useState } from 'react';
 import '../SignUpForm/SignUpForm.scss';
 import { AiFillEye } from 'react-icons/ai';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { db, signUp, useAuth } from '../../Firebase';
-import { collection, doc, documentId, setDoc, updateDoc } from 'firebase/firestore';
+import { Link} from 'react-router-dom';
+import { db, signUp} from '../../Firebase';
+import { doc, updateDoc } from 'firebase/firestore';
 import { getAuth, updateProfile } from 'firebase/auth';
 
 function SignUpForm() {
-	const { id } = useParams();
-	const userId = id;
+
 	const [newName, setNewName] = useState();
 	const [userName, setUserName] = useState();
 	const [loading, setLoading] = useState(false);
@@ -21,7 +20,7 @@ function SignUpForm() {
 		rating: 0,
 		bio: "",
 		followers: 0,
-		name: "",
+		name: newName,
 		id: "",
 	};
 
