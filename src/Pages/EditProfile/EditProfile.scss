@@ -88,7 +88,23 @@
         background-color: $PatchMedium-Grey;
     }
 
+    &__avatar-icon {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+        background-color: $PatchMedium-Grey;
+    }
+
+    &__edit-icon {
+        position: absolute;
+        top: 25px;
+        left: 23px;
+    }
+
     &__avatar-empty {
+        position: relative;
         width: 20vw;
         height: 20vw;
         border-radius: 50px;

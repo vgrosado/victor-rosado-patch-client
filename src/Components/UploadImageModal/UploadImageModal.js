@@ -1,9 +1,9 @@
 import '../../Components/UploadImageModal/UploadImageModal.scss'
 import { v4 } from 'uuid';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { storage } from '../../Firebase';
 import { db } from '../../Firebase';
-import { getDownloadURL, ref, uploadBytes, getStorage } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { doc, updateDoc } from "firebase/firestore";
 import { useParams } from 'react-router-dom';
 import { getAuth, updateProfile } from 'firebase/auth';

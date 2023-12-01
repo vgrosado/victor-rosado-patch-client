@@ -15,27 +15,19 @@ import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 
 
-function UserProfile({ currentUser }) {
+function UserProfile({ currentUser, user}) {
     const { id } = useParams();
-    const artistId = id;
     const [artist, setArtist] = useState({});
-    const [user, setUser] = useState({});
     const [encorePage, setEncorePage] = useState(false);
     const [musicPage, setMusicPage] = useState(true);
     const [bookingPage, setBookingPage] = useState(false);
     const [music, setMusic] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
+    console.log(user)
 
-    const name = user?.name;
-    const website = user?.website;
-    const location = user?.location;
-    const bio = user?.bio
-    const background = user?.backgroundimg?.current;
-    const rating = user?.rating;
-    const followers = user?.followers;
 
     useEffect(() => {
-        const artistDocRef = doc(db, "Artists", `${artistId}`)
+        const artistDocRef = doc(db, "Artists", `${id}`)
         getDoc(artistDocRef)
             .then((doc) => {
                 setArtist(doc.data(), doc.id)
@@ -43,37 +35,39 @@ function UserProfile({ currentUser }) {
             .catch(error => {
                 console.log('error fetching video ID:s', error)
             });
-    }, [artist])
+    }, [id])
 
-    useEffect(() => {
-        const usersDocRef = doc(db, "users", `${currentUser?.uid}`)
-        const getUser = async () => {
-            await getDoc(usersDocRef)
-                .then((doc) => {
-                    setUser(doc.data(), doc.id)
-                })
-                .catch(error => {
-                    console.log('error fetching video ID:s', error)
-                });
-        }; getUser();
-    }, [user])
+//     const usersDocRef = doc(db, "users", `${id}`)
+//     const getUser = async () => {
+//     await getDoc(usersDocRef)
+//       .then((doc) => {
+//         setUser(doc.data(), doc.id)
+//       })
+//       .catch(error => {
+//         console.log('error fetching video ID:s', error)
+//       });
+//     };
 
-    useEffect(() => {
-        const getArtists = async () => {
-            const musicData = await getDocs(collection(db, "Artists", `${artistId}`, "Music",));
-            setMusic(musicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        };
-        getArtists();
-    }, []);
+//   useEffect(() => {
+//      getUser();
+//   }, [user])
+
+    // useEffect(() => {
+    //     const getArtists = async () => {
+    //         const musicData = await getDocs(collection(db, "Artists", `${artistId}`, "Music",));
+    //         setMusic(musicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    //     };
+    //     getArtists();
+    // }, []);
 
 
     function handleFollow() {
-        const artistDocRef = doc(db, "Artists", `${artistId}`)
+        const artistDocRef = doc(db, "Artists", `${id}`)
         updateDoc(artistDocRef, { followers: artist?.followers + 1 })
             .then(() => {
 
             })
-    }
+    };
 
     function handleNavToEncore() {
         setEncorePage(true)
@@ -105,45 +99,45 @@ function UserProfile({ currentUser }) {
         return (<>
             <section className='user'>
                 <div className='user__background-container'>
-                    {background === undefined ? (<div className='user__header-background'></div>)
-                        : (<img className='user__header-background' src={background} alt='user background' />)}
+                    {user?.backgroundimg.current === undefined ? (<div className='user__header-background'></div>)
+                        : (<img className='user__header-background' src={user?.backgroundimg.current} alt='user background' />)}
                     <div className='user__info-container'>
                         <div className='user__avatar-div'>
-                            {currentUser?.photoURL === undefined ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>) : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
+                            {currentUser?.photoURL === null? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>) : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
                         </div>
                     </div>
                 </div>
                 <article className='user__stats-container'>
                     <div className='user__details-container'>
                         <div className='user__info-div'>
-                            <p className='user__name'>{name}</p>
+                            <p className='user__name'>{user?.name}</p>
                             <p className='user__username'>{currentUser?.displayName}</p>
                             <div className='user__location-div'>
                                 <IoLocationOutline stroke='grey' size={12} />
-                                <p className='user__location'>{location}</p>
+                                <p className='user__location'>{user?.location}</p>
                             </div>
                             <div className='user__website-div'>
                                 <LuLink stroke='grey' size={12} />
-                                <Link to={website} className='user__website'>{website}</Link>
+                                <Link to={user?.website} className='user__website'>{user?.website}</Link>
                             </div>
                         </div>
                         <div className='user__button-div'>
-                            <Link className='user__button-link' to={`/EditProfile/${currentUser?.uid}`}><button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button></Link>
+                            <Link className='user__button-link' to={`/EditProfile/${id}`}><button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button></Link>
                         </div>
                     </div>
-                    <p className='user__bio'>{bio}</p>
+                    <p className='user__bio'>{user?.bio}</p>
                     <div className='user__stats'>
                         <div className='user__nav-div'>
                             <div className='user__rating-div'>
                                 <p className='user__stats-title'>Voltage</p>
-                                <p className='user__rating'>{rating}</p>
+                                <p className='user__rating'>{user?.rating}</p>
                             </div>
                             <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
                         </div>
                         <div className='user__nav-div'>
                             <div className='user__followers-div'>
                                 <p className='user__stats-title'>Followers</p>
-                                <p className='user__followers'>{followers}</p>
+                                <p className='user__followers'>{user?.followers}</p>
                             </div>
                             <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                         </div>
