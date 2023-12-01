@@ -14,15 +14,15 @@ function LoginForm() {
 		navigateTo('/Home');
 	}
 
-	async function handleLogin(){
-		setLoading(true);
-		try {
-		await login(emailRef.current.value, passwordRef.current.value);
-		} catch {
-			alert('Error');
-		}
-		setLoading(false);
-	};
+	// async function handleLogin(){
+	// 	setLoading(true);
+	// 	try {
+	// 	await login(emailRef.current.value, passwordRef.current.value);
+	// 	} catch {
+	// 		alert('Error');
+	// 	}
+	// 	setLoading(false);
+	// };
 
     return (
         <form className="form">
@@ -48,7 +48,7 @@ function LoginForm() {
 						<div className='form__icon'>
                         <AiFillEye className='form__eye'/>
 						</div>
-						{passwordRef.current.value !== 6 && (<p>error</p>)}
+						{/* {passwordRef.current.value !== 6 && (<p>error</p>)} */}
 					</div>
 					<div className='form__rememberme-div'>
 						<input
