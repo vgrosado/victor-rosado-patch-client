@@ -1,24 +1,28 @@
-
+import { useNavigate } from 'react-router-dom';
 import '../LoginForm/LoginForm.scss'
 import { AiFillEye } from 'react-icons/ai'
 import { login } from '../../Firebase';
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 function LoginForm() {
+	const navigateTo = useNavigate();
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const [loading, setLoading] = useState(false);
 
-	async function handleLogin(){
-		setLoading(true);
-		try {
-		await login(emailRef.current.value, passwordRef.current.value);
-		} catch {
-			console.log('error');
-		}
-		setLoading(false);
+	function HandleLogin(){
+		navigateTo('/Home');
 	};
+
+	// async function handleLogin(){
+	// 	setLoading(true);
+	// 	try {
+	// 	await login(emailRef.current.value, passwordRef.current.value);
+	// 	} catch {
+	// 		alert('Error');
+	// 	}
+	// 	setLoading(false);
+	// };
 
     return (
         <form className="form">
@@ -44,6 +48,7 @@ function LoginForm() {
 						<div className='form__icon'>
                         <AiFillEye className='form__eye'/>
 						</div>
+						{/* {passwordRef.current.value !== 6 && (<p>error</p>)} */}
 					</div>
 					<div className='form__rememberme-div'>
 						<input
@@ -53,7 +58,7 @@ function LoginForm() {
 						</input>
 						<label className='form__rememberme-label'>Remember Me</label>
 					</div>
-					<Link to={'/Home'}><button onClick={handleLogin} className="form__button" type="submit">Sign In</button></Link>
+					<button onClick={HandleLogin} className="form__button" type="submit">Sign In</button>
 				</form>
     )
 }
