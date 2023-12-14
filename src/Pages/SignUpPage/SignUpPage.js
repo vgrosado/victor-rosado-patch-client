@@ -1,6 +1,4 @@
 import '../SignUpPage/SignUpPage.scss'
-// import backgroundVid from '../../Assets/Videos/LoginBackground3.mp4'
-// import {useNavigate } from 'react-router-dom';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 
 function SignUpPage() {

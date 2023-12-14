@@ -8,14 +8,14 @@ import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
 import Nav from '../../Components/Nav/Nav';
 import ReviewForm from '../../Components/ReviewForm/ReviewForm';
 import Booking from '../../Components/Booking/Booking';
-import UploadImageModal from '../../Components/UploadImageModal/UploadImageModal'
+import UploadImageModal from '../../Components/EditAvatarModal/EditAvatarModal'
 import { FaUser } from 'react-icons/fa';
 import { IoLocationOutline } from "react-icons/io5";
 import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 
 
-function UserProfile({ currentUser, user, avatarUrl}) {
+function UserProfile({ currentUser, user}) {
     const { id } = useParams();
     const [artist, setArtist] = useState({});
     const [encorePage, setEncorePage] = useState(false);
@@ -103,7 +103,7 @@ function UserProfile({ currentUser, user, avatarUrl}) {
                     <div className='user__info-container'>
                         <div className='user__avatar-div'>
                             {!currentUser?.photoURL? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>) 
-                            : (<img className='user__avatar' alt='avatar' src={avatarUrl} />)}
+                            : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@ function UserProfile({ currentUser, user, avatarUrl}) {
                     {encorePage && (<ReviewForm artist={artist} />)}
                     {bookingPage && (<Booking artist={artist} />)}
                 </article>
-                <Nav currentUser={currentUser} openModal={openModal} />
+                <Nav currentUser={currentUser} user={user} openModal={openModal} />
             </section>
         </>)
     }
@@ -161,34 +161,34 @@ function UserProfile({ currentUser, user, avatarUrl}) {
                         <img className='user__header-background' src={artist?.backgroundimg} alt='user background' />
                         <div className='user__info-container'>
                             <div className='user__avatar-div'>
-                                <img className='user__avatar' alt='avatar' src={artist.image} />
+                                <img className='user__avatar' alt='avatar' src={artist?.image} />
                             </div>
                         </div>
                     </div>
                     <article className='user__stats-container'>
                         <div className='user__details-container'>
                             <div className='user__info-div'>
-                                <p className='user__name'>{artist.name}</p>
-                                <p className='user__username'>{artist.username}</p>
-                                <p className='user__location'>{artist.location}</p>
+                                <p className='user__name'>{artist?.name}</p>
+                                <p className='user__username'>{artist?.username}</p>
+                                <p className='user__location'>{artist?.location}</p>
                             </div>
                             <div className='user__button-div'>
                                 <button className='user__button' onClick={handleFollow}>+ Follow</button>
                             </div>
                         </div>
-                        <p className='user__bio'>{artist.description}</p>
+                        <p className='user__bio'>{artist?.description}</p>
                         <div className='user__stats'>
                             <div className='user__nav-div'>
                                 <div className='user__rating-div'>
                                     <p className='user__stats-title'>Voltage</p>
-                                    <p className='user__rating'>{artist.rating}</p>
+                                    <p className='user__rating'>{artist?.rating}</p>
                                 </div>
                                 <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
                             </div>
                             <div className='user__nav-div'>
                                 <div className='user__followers-div'>
                                     <p className='user__stats-title'>Followers</p>
-                                    <p className='user__followers'>{artist.followers}</p>
+                                    <p className='user__followers'>{artist?.followers}</p>
                                 </div>
                                 <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                             </div>
@@ -200,7 +200,7 @@ function UserProfile({ currentUser, user, avatarUrl}) {
                         {encorePage && (<ReviewForm artist={artist} />)}
                         {bookingPage && (<Booking artist={artist} />)}
                     </article>
-                    <Nav currentUser={currentUser} openModal={openModal} />
+                    <Nav currentUser={currentUser} user={user} openModal={openModal} />
                 </section>
             </>
         )

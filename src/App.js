@@ -19,7 +19,8 @@ function App() {
   const auth = getAuth();
   const currentUser = auth.currentUser;
   const [avatarUrl, setAvatarUrl] = useState(currentUser?.photoURL)
-  console.log(users)
+  const [loading, setLoading] = useState(false);
+  console.log(currentUser?.photoURL)
 
   useEffect(() => {
     const artistsCollectionRef = collection(db, "Artists")
@@ -53,18 +54,18 @@ function App() {
 
   useEffect(() => {
      getUser();
-  }, [currentUser?.uid])
+  }, [uid, loading])
 
-  console.log(user)
+
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/Login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage loading={loading} setLoading={setLoading} />} />
+        <Route path="/Login" element={<LoginPage loading={loading} setLoading={setLoading} />} />
         <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/Home" element={<HomePage avatarUrl={avatarUrl} artists={artists} users={users} currentUser={currentUser} />} />
-        <Route path="/Profile/:id" element={<UserProfile avatarUrl={avatarUrl} user={user} currentUser={currentUser} artists={artists}/>} />
+        <Route path="/Profile/:uid" element={<UserProfile avatarUrl={avatarUrl} user={user} currentUser={currentUser} artists={artists}/>} />
         <Route path="/EditProfile/:uid" element={<EditProfile avatarUrl={avatarUrl} setAvatarUrl={setAvatarUrl} getUser={getUser} currentUser={currentUser} user={user}/>} />
       </Routes>
     </BrowserRouter>
