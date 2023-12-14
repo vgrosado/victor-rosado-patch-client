@@ -18,7 +18,7 @@ function SignUpForm() {
 	const userData = {
 		reviews: "",
 		rating: 0,
-		bio: "",
+		bio: "Add a bio",
 		followers: 0,
 		name: newName,
 		id: "",

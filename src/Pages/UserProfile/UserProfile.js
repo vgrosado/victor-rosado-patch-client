@@ -15,7 +15,7 @@ import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 
 
-function UserProfile({ currentUser, user}) {
+function UserProfile({ currentUser, user, avatarUrl}) {
     const { id } = useParams();
     const [artist, setArtist] = useState({});
     const [encorePage, setEncorePage] = useState(false);
@@ -23,7 +23,6 @@ function UserProfile({ currentUser, user}) {
     const [bookingPage, setBookingPage] = useState(false);
     const [music, setMusic] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
-    console.log(user)
 
 
     useEffect(() => {
@@ -87,11 +86,11 @@ function UserProfile({ currentUser, user}) {
         setBookingPage(true)
     }
 
-    const openModal = () => {
+    function openModal(){
         setModalOpen(true);
     };
 
-    const closeModal = () => {
+    function closeModal(){
         setModalOpen(false);
     };
 
@@ -99,11 +98,12 @@ function UserProfile({ currentUser, user}) {
         return (<>
             <section className='user'>
                 <div className='user__background-container'>
-                    {user?.backgroundimg.current === undefined ? (<div className='user__header-background'></div>)
-                        : (<img className='user__header-background' src={user?.backgroundimg.current} alt='user background' />)}
+                    {user?.backgroundimg?.current === undefined ? (<div className='user__header-background'></div>)
+                        : (<img className='user__header-background' src={user?.backgroundimg?.current} alt='user background' />)}
                     <div className='user__info-container'>
                         <div className='user__avatar-div'>
-                            {currentUser?.photoURL === null? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>) : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
+                            {!currentUser?.photoURL? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>) 
+                            : (<img className='user__avatar' alt='avatar' src={avatarUrl} />)}
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,6 @@ function UserProfile({ currentUser, user}) {
                     {encorePage && (<ReviewForm artist={artist} />)}
                     {bookingPage && (<Booking artist={artist} />)}
                 </article>
-                <UploadImageModal isOpen={isModalOpen} closeModal={closeModal} />
                 <Nav currentUser={currentUser} openModal={openModal} />
             </section>
         </>)
@@ -201,7 +200,6 @@ function UserProfile({ currentUser, user}) {
                         {encorePage && (<ReviewForm artist={artist} />)}
                         {bookingPage && (<Booking artist={artist} />)}
                     </article>
-                    <UploadImageModal isOpen={isModalOpen} closeModal={closeModal} />
                     <Nav currentUser={currentUser} openModal={openModal} />
                 </section>
             </>

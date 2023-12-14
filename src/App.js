@@ -18,6 +18,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const auth = getAuth();
   const currentUser = auth.currentUser;
+  const [avatarUrl, setAvatarUrl] = useState(currentUser?.photoURL)
   console.log(users)
 
   useEffect(() => {
@@ -37,7 +38,7 @@ function App() {
       setUsers(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     };
     getUsers();
-  }, [uid]);
+  }, []);
 
   const usersDocRef = doc(db, "users", `${currentUser?.uid}`)
     const getUser = async () => {
@@ -52,7 +53,7 @@ function App() {
 
   useEffect(() => {
      getUser();
-  }, [])
+  }, [currentUser?.uid])
 
   console.log(user)
 
@@ -62,9 +63,9 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/SignUp" element={<SignUpPage />} />
-        <Route path="/Home" element={<HomePage artists={artists} users={users} currentUser={currentUser} />} />
-        <Route path="/Profile/:id" element={<UserProfile user={user} currentUser={currentUser} artists={artists}/>} />
-        <Route path="/EditProfile/:uid" element={<EditProfile currentUser={currentUser} user={user}/>} />
+        <Route path="/Home" element={<HomePage avatarUrl={avatarUrl} artists={artists} users={users} currentUser={currentUser} />} />
+        <Route path="/Profile/:id" element={<UserProfile avatarUrl={avatarUrl} user={user} currentUser={currentUser} artists={artists}/>} />
+        <Route path="/EditProfile/:uid" element={<EditProfile avatarUrl={avatarUrl} setAvatarUrl={setAvatarUrl} getUser={getUser} currentUser={currentUser} user={user}/>} />
       </Routes>
     </BrowserRouter>
   );
