@@ -50,6 +50,7 @@
         height: 100%;
         width: 100%;
         background-color: #191919;
+
     }
 
     &__upload-icon {
@@ -60,6 +61,18 @@
 
     &__upload-input {
         display: none;
+    }
+
+
+    &__upload-avatar {
+        z-index: 2;
+    }
+
+    &__edit-avatar-div {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__avatar-div {
@@ -86,6 +99,24 @@
         object-fit: cover;
         object-position: center;
         background-color: $PatchMedium-Grey;
+    }
+
+    &__edit-avatar {
+        z-index: 1;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    &__user-avatar {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+        background-color: $PatchMedium-Grey;
+        -webkit-filter: blur(1px);
+        filter: blur(1px);
     }
 
     &__avatar-icon {
@@ -196,6 +227,7 @@
         height: 100%;
         background: none;
         border-bottom: .5px solid white;
+
         &::placeholder {
             font-size: 1rem;
             font-weight: 300;
@@ -216,7 +248,7 @@
         padding: 2vw;
         margin-top: 4vw;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
-        cursor:pointer;
+        cursor: pointer;
     }
 
 }
