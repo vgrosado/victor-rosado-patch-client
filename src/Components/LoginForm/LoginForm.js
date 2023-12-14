@@ -10,19 +10,16 @@ function LoginForm() {
 	const passwordRef = useRef();
 	const [loading, setLoading] = useState(false);
 
-	function HandleLogin(){
+	// function HandleLogin(){
 		navigateTo('/Home');
-	};
-
-	// async function handleLogin(){
-	// 	setLoading(true);
-	// 	try {
-	// 	await login(emailRef.current.value, passwordRef.current.value);
-	// 	} catch {
-	// 		alert('Error');
-	// 	}
-	// 	setLoading(false);
 	// };
+
+	async function handleLogin(){
+		setLoading(true);
+		await login(emailRef.current.value, passwordRef.current.value)
+			setLoading(false);
+			navigateTo('/Home');
+	};
 
     return (
         <form className="form">
@@ -58,7 +55,7 @@ function LoginForm() {
 						</input>
 						<label className='form__rememberme-label'>Remember Me</label>
 					</div>
-					<button onClick={HandleLogin} className="form__button" type="submit">Sign In</button>
+					<button onClick={handleLogin} className="form__button" type="submit">Sign In</button>
 				</form>
     )
 }
