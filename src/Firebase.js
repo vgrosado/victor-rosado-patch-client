@@ -24,12 +24,12 @@ export const auth = getAuth(app);
 //login exisisting user
 export function login(email, password) {
    return signInWithEmailAndPassword(auth, email, password);
-}
+};
 
 //signout current user
 export function logOut(){
   return signOut(auth)
-}
+};
 
 //create/auth new user using email/password
 export function signUp(email, password) {
@@ -40,8 +40,8 @@ export function signUp(email, password) {
 export function useAuth(){
   const [currentUser, setCurrentUser] = useState();
   useEffect(() => {
-    const unSub = onAuthStateChanged(auth, user => setCurrentUser(user))
+    const unSub = onAuthStateChanged(auth, user  => setCurrentUser(user))
     return unSub;
-  })
+  },[])
   return currentUser;
 };

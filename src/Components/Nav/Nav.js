@@ -12,6 +12,7 @@ function Nav({currentUser}) {
     async function handleLogOut() {
         try {
             await logOut();
+            console.log("logged out => " + currentUser?.email)
         } catch {
             console.log('Error Loggin Out User')
         }
