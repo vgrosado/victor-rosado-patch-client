@@ -85,7 +85,7 @@ function EditProfile({ currentUser, user, avatarUrl, setAvatarUrl}) {
                 <div className='editprofile__info-container'>
                     <div className='editprofile__avatar-div'>
                         {!currentUser?.photoURL ? 
-                        (<div className='editprofile__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /> </div>) 
+                        (<div className='editprofile__avatar-empty'><FaUser onClick={openModal}  size={60} className='user__avatar-placeholder' /> </div>) 
                         : 
                         (<div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={avatarUrl} />
                             <TbCameraPlus stroke='white' onClick={openModal} size={40} className='editprofile__edit-avatar'/>

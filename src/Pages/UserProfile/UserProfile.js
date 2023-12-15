@@ -15,7 +15,7 @@ import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 
 
-function UserProfile({ currentUser, user}) {
+function UserProfile({ currentUser, user, avatarUrl}) {
     const { id } = useParams();
     const [artist, setArtist] = useState({});
     const [encorePage, setEncorePage] = useState(false);
@@ -102,8 +102,8 @@ function UserProfile({ currentUser, user}) {
                         : (<img className='user__header-background' src={user?.backgroundimg?.current} alt='user background' />)}
                     <div className='user__info-container'>
                         <div className='user__avatar-div'>
-                            {!currentUser?.photoURL? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>) 
-                            : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
+                            {!currentUser?.photoURL ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>) 
+                            : (<img className='user__avatar' alt='avatar' src={avatarUrl} />)}
                         </div>
                     </div>
                 </div>

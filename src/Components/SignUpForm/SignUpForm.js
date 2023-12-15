@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
 import '../SignUpForm/SignUpForm.scss';
 import { AiFillEye } from 'react-icons/ai';
-import { Link} from 'react-router-dom';
-import { db, signUp} from '../../Firebase';
-import { doc, updateDoc } from 'firebase/firestore';
-import { getAuth, updateProfile } from 'firebase/auth';
+import { Link } from 'react-router-dom';
+import { db, signUp } from '../../Firebase';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { updateProfile } from 'firebase/auth';
+import { v4 } from 'uuid';
 
 function SignUpForm() {
 
@@ -13,43 +14,57 @@ function SignUpForm() {
 	const [loading, setLoading] = useState(false);
 	const emailRef = useRef();
 	const passwordRef = useRef();
-	const auth = getAuth();
-	const user = auth.currentUser;
 	const userData = {
 		reviews: "",
 		rating: 0,
 		bio: "Add a bio",
 		followers: 0,
 		name: newName,
-		id: "",
+		uid: v4(),
+		backgroundimg: "",
+		location: "Share your location",
+		website: "Add a website"
 	};
 
 	async function handleSignUp() {
 		setLoading(true);
-		signUp(emailRef.current.value, passwordRef.current.value)
-			.then((userCredential) => {
-				const user = userCredential.user;
-				if (user) {
-					updateProfile(user, {
-						displayName: "@" + userName,
-						photoURL: ""
-					}).then(() => {
-							const userRef = doc(db, "users", `${user?.uid}`)
-							updateDoc(userRef, userData)
-							console.log('User successfully created!');
-						})
-						.catch((error) => {
-							console.log('Error updating profile:', error.message);
-						});
+		try {
+			const userCredential = await signUp(emailRef.current.value, passwordRef.current.value);
+			const user = userCredential.user;
+			
+			if (user) {
+				await updateProfile(user, {
+					displayName: "@" + userName,
+					photoURL: ""
+				});
+	
+				const userRef = doc(db, "users", `${user.uid}`);
+				const userDoc = await getDoc(userRef);
+	
+				if (!userDoc.exists()) {
+					// If the user document doesn't exist, create it
+					 setDoc(userRef, 
+						userData
+					);
 				} else {
-					console.log('User object is null');
+					// If the user document exists, update it
+					 updateDoc(userRef, 
+						userData
+						// Other fields you want to update
+					);
 				}
-			})
-			.catch((error) => {
-				console.log('Sign-up error:', error.message);
-			});
+	
+				console.log('User successfully created or updated!');
+			} else {
+				console.log('User object is null');
+			}
+		} catch (error) {
+			console.log('Sign-up error:', error.message);
+		} finally {
+			setLoading(false);
+		}
 	};
-
+	
 
 
 
