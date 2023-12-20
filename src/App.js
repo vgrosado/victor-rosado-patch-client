@@ -61,7 +61,7 @@ function App() {
         <Route path="/Login" element={<LoginPage getUser={getUser} loading={loading} setLoading={setLoading} />} />
         <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/Home" element={<HomePage getUser={getUser} artists={artists} users={users} currentUser={currentUser} />} />
-        <Route path="/Profile/:uid" element={<UserProfile getUser={getUser} user={user} currentUser={currentUser} artists={artists} />} />
+        <Route path="/Profile/:id" element={<UserProfile getUser={getUser} user={user} currentUser={currentUser} artists={artists} />} />
         <Route path="/EditProfile/:uid" element={<EditProfile getUser={getUser} currentUser={currentUser} user={user} />} />
       </Routes>
     </BrowserRouter>

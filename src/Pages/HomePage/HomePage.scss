@@ -48,7 +48,8 @@
     &__avatar {
         width: 12vw;
         height: 12vw;
-        border-radius: 50px;
+        border: 1px solid $PatchOrange;
+        border-radius: 50%;
         background-color: $PatchGrey;
         background-position: center;
         background-size: cover;
@@ -57,7 +58,7 @@
 
 
     &__logo {
-        font-size: 2rem;
+        font-size: 8vw;
         color: #fff;
         text-shadow: 
         0 0 0.033em #fff, 
