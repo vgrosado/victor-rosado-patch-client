@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Route, Routes, useParams} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignUpPage from './Pages/SignUpPage/SignUpPage';
 import HomePage from './Pages/HomePage/HomePage';
@@ -12,15 +12,13 @@ import { getAuth } from 'firebase/auth';
 
 
 function App() {
-  const {uid} = useParams();
   const [user, setUser] = useState({});
   const [artists, setArtists] = useState([]);
   const [users, setUsers] = useState([]);
   const auth = getAuth();
   const currentUser = auth.currentUser;
-  const [avatarUrl, setAvatarUrl] = useState(currentUser?.photoURL)
   const [loading, setLoading] = useState(false);
-  console.log(currentUser?.photoURL)
+
 
   useEffect(() => {
     const artistsCollectionRef = collection(db, "Artists")
@@ -42,7 +40,7 @@ function App() {
   }, []);
 
   const usersDocRef = doc(db, "users", `${currentUser?.uid}`)
-    const getUser = async () => {
+  const getUser = async () => {
     await getDoc(usersDocRef)
       .then((doc) => {
         setUser(doc.data(), doc.id)
@@ -50,23 +48,21 @@ function App() {
       .catch(error => {
         console.log('error fetching video ID:s', error)
       });
-    };
+  };
 
   useEffect(() => {
-     getUser();
-  }, [uid, loading])
-
-
+    getUser();
+  }, [user?.uid])
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage loading={loading} setLoading={setLoading} />} />
-        <Route path="/Login" element={<LoginPage loading={loading} setLoading={setLoading} />} />
+        <Route path="/" element={<LoginPage getUser={getUser} loading={loading} setLoading={setLoading} />} />
+        <Route path="/Login" element={<LoginPage getUser={getUser} loading={loading} setLoading={setLoading} />} />
         <Route path="/SignUp" element={<SignUpPage />} />
-        <Route path="/Home" element={<HomePage avatarUrl={avatarUrl} artists={artists} users={users} currentUser={currentUser} />} />
-        <Route path="/Profile/:uid" element={<UserProfile avatarUrl={avatarUrl} user={user} currentUser={currentUser} artists={artists}/>} />
-        <Route path="/EditProfile/:uid" element={<EditProfile avatarUrl={avatarUrl} setAvatarUrl={setAvatarUrl} getUser={getUser} currentUser={currentUser} user={user}/>} />
+        <Route path="/Home" element={<HomePage getUser={getUser} artists={artists} users={users} currentUser={currentUser} />} />
+        <Route path="/Profile/:uid" element={<UserProfile getUser={getUser} user={user} currentUser={currentUser} artists={artists} />} />
+        <Route path="/EditProfile/:uid" element={<EditProfile getUser={getUser} currentUser={currentUser} user={user} />} />
       </Routes>
     </BrowserRouter>
   );

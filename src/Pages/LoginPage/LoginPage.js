@@ -4,7 +4,7 @@ import LoginForm from '../../Components/LoginForm/LoginForm'
 import {useNavigate } from 'react-router-dom';
 
 
-function LoginPage({loading, setLoading}) {
+function LoginPage({loading, getUser, setLoading}) {
 
 	const navigateTo = useNavigate();
 	function HandleSignUp(){
@@ -16,7 +16,7 @@ function LoginPage({loading, setLoading}) {
 			<div className="login__container">
 				<h1 className='login__header'>P<span className='login__flicker'>A</span>TCH</h1>
 				<div className='login__subheader-div'>
-					<LoginForm loading={loading} setLoading={setLoading} />
+					<LoginForm getUser={getUser} loading={loading} setLoading={setLoading} />
 					<div className='login__switch-container'>
 						<p onClick={HandleSignUp} className='login__button-2' id='switch-button'>New to patch? Register now.</p>
 					</div>

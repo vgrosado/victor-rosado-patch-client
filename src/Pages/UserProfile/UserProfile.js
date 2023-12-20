@@ -1,21 +1,20 @@
 
 import '../UserProfile/UserProfile.scss';
 import { useEffect, useState } from 'react';
-import { doc, getDoc, getDocs, collection, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from '../../Firebase';
 import { Link, useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
 import Nav from '../../Components/Nav/Nav';
 import ReviewForm from '../../Components/ReviewForm/ReviewForm';
 import Booking from '../../Components/Booking/Booking';
-import UploadImageModal from '../../Components/EditAvatarModal/EditAvatarModal'
 import { FaUser } from 'react-icons/fa';
 import { IoLocationOutline } from "react-icons/io5";
 import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 
 
-function UserProfile({ currentUser, user, avatarUrl}) {
+function UserProfile({ currentUser, user, getUser }) {
     const { id } = useParams();
     const [artist, setArtist] = useState({});
     const [encorePage, setEncorePage] = useState(false);
@@ -36,20 +35,20 @@ function UserProfile({ currentUser, user, avatarUrl}) {
             });
     }, [id])
 
-//     const usersDocRef = doc(db, "users", `${id}`)
-//     const getUser = async () => {
-//     await getDoc(usersDocRef)
-//       .then((doc) => {
-//         setUser(doc.data(), doc.id)
-//       })
-//       .catch(error => {
-//         console.log('error fetching video ID:s', error)
-//       });
-//     };
+    //     const usersDocRef = doc(db, "users", `${id}`)
+    //     const getUser = async () => {
+    //     await getDoc(usersDocRef)
+    //       .then((doc) => {
+    //         setUser(doc.data(), doc.id)
+    //       })
+    //       .catch(error => {
+    //         console.log('error fetching video ID:s', error)
+    //       });
+    //     };
 
-//   useEffect(() => {
-//      getUser();
-//   }, [user])
+    //   useEffect(() => {
+    //      getUser();
+    //   }, [user])
 
     // useEffect(() => {
     //     const getArtists = async () => {
@@ -67,6 +66,8 @@ function UserProfile({ currentUser, user, avatarUrl}) {
 
             })
     };
+
+    getUser();
 
     function handleNavToEncore() {
         setEncorePage(true)
@@ -86,12 +87,8 @@ function UserProfile({ currentUser, user, avatarUrl}) {
         setBookingPage(true)
     }
 
-    function openModal(){
+    function openModal() {
         setModalOpen(true);
-    };
-
-    function closeModal(){
-        setModalOpen(false);
     };
 
     if (currentUser?.uid && !artist) {
@@ -102,8 +99,8 @@ function UserProfile({ currentUser, user, avatarUrl}) {
                         : (<img className='user__header-background' src={user?.backgroundimg?.current} alt='user background' />)}
                     <div className='user__info-container'>
                         <div className='user__avatar-div'>
-                            {!currentUser?.photoURL ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>) 
-                            : (<img className='user__avatar' alt='avatar' src={avatarUrl} />)}
+                            {!currentUser?.photoURL ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>)
+                                : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
                         </div>
                     </div>
                 </div>
@@ -122,7 +119,7 @@ function UserProfile({ currentUser, user, avatarUrl}) {
                             </div>
                         </div>
                         <div className='user__button-div'>
-                            <Link className='user__button-link' to={`/EditProfile/${id}`}><button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button></Link>
+                            <Link className='user__button-link' to={`/EditProfile/${currentUser?.uid}`}><button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button></Link>
                         </div>
                     </div>
                     <p className='user__bio'>{user?.bio}</p>
