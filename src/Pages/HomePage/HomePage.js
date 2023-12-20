@@ -4,20 +4,20 @@ import { BiBell } from 'react-icons/bi';
 import { BiEnvelope } from 'react-icons/bi';
 import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 import Nav from '../../Components/Nav/Nav';
-import UploadImageModal from '../../Components/EditAvatarModal/EditAvatarModal';
-import { useState } from 'react';
+import { FaUser } from 'react-icons/fa';
 
-
-function HomePage({ artists, currentUser, id, avatarUrl}) {
+function HomePage({ artists, currentUser}) {
     console.log("currently logged in user => " + currentUser?.email)
-
-
+    
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
                     <div className='homepage__header-container'>
-                        <div className='homepage__avatar-div'><img className='homepage__avatar' src={avatarUrl}/></div> 
+                        <div className='homepage__avatar-div'>
+                            {currentUser?.photoURL === null ? ( <div className='homepage__avatar-div'><FaUser size={40} className='user__avatar-placeholder' /></div>) 
+                            : ( <div className='homepage__avatar-div'><img className='homepage__avatar' src={currentUser?.photoURL}/></div>)}
+                            </div>
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>
                             <BiEnvelope className='homepage__header-icons' />
@@ -46,7 +46,7 @@ function HomePage({ artists, currentUser, id, avatarUrl}) {
                     ))}
                 </section>
             </article>
-            <Nav id={id} currentUser={currentUser} />
+            <Nav currentUser={currentUser} />
         </main>
     )
 };

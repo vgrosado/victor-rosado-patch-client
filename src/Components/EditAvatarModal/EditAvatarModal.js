@@ -1,12 +1,12 @@
 import './EditAvatarModal.scss'
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { storage } from '../../Firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
 
-function BookingModal({ isModalOpen, closeModal, currentUser, avatarUrl, setAvatarUrl }) {
+function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
     const [avatarUpload, setAvatarUpload] = useState("");
-
+    const avatarUrl = useRef();
 
     function uploadAvatar() {
         if (avatarUpload == null) return;
@@ -15,12 +15,12 @@ function BookingModal({ isModalOpen, closeModal, currentUser, avatarUrl, setAvat
             .then(() => {
                 getDownloadURL(avatarRef)
                     .then((url) => {
-                        setAvatarUrl(url)
+                        avatarUrl.current = url;
+                        console.log(avatarUrl)
                     }).then(() => {
                         updateProfile(currentUser, {
-                            photoURL: avatarUrl
+                            photoURL: avatarUrl.current
                         });
-
                     })
             }).catch((error) => {
                 console.log(error.message);
@@ -32,7 +32,7 @@ function BookingModal({ isModalOpen, closeModal, currentUser, avatarUrl, setAvat
         <div className="modal-overlay">
             <div className='modal-overlay__content'>
                 <div className='modal-overlay__avatar-div'>
-                    <div className='modal-overlay__edit-avatar-div'><img className='modal-overlay__user-avatar' alt='avatar' src={avatarUrl} />
+                    <div className='modal-overlay__edit-avatar-div'><img className='modal-overlay__user-avatar' alt='avatar' src={currentUser?.photoURL} />
                         <label className='modal-overlay__upload-avatar' htmlFor='avatar-input' id='avatar'>
                             <div className='modal-overlay__input-button'>Choose a new photo</div>
                             <input className='modal-overlay__upload-input' id='avatar-input' name='avatar-input' type='file'
@@ -51,4 +51,4 @@ function BookingModal({ isModalOpen, closeModal, currentUser, avatarUrl, setAvat
 
 };
 
-export default BookingModal;
+export default EditAvatarModal;
