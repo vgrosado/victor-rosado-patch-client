@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react';
 import Nav from '../../Components/Nav/Nav';
 import '../EditProfile/EditProfile.scss';
-import { FaPencil, FaUser } from 'react-icons/fa6';
+import { FaUser } from 'react-icons/fa6';
+import { TbEdit } from "react-icons/tb";
 import { TbCameraPlus } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../../Firebase';
 import { updateProfile } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { v4 } from 'uuid';
 import EditAvatarModal from '../../Components/EditAvatarModal/EditAvatarModal';
 
 
@@ -85,13 +85,15 @@ function EditProfile({ currentUser, getUser, user }) {
                 <div className='editprofile__info-container'>
                     <div className='editprofile__avatar-div'>
                         {!currentUser?.photoURL ?
-                            (<div className='editprofile__avatar-empty'><TbCameraPlus stroke='white' onClick={openModal} size={40} className='editprofile__edit-avatar' /><FaUser onClick={openModal} size={60} className='user__avatar-placeholder' /> </div>)
+                            (<div className='editprofile__avatar-empty'><TbCameraPlus stroke='white' onClick={openModal} size={40} className='editprofile__edit-avatar' />
+                            <FaUser onClick={openModal} size={60} className='user__avatar-placeholder' /> </div>)
                             :
                             (<div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={currentUser?.photoURL} />
                                 <TbCameraPlus stroke='white' onClick={openModal} size={40} className='editprofile__edit-avatar' />
                             </div>)}
 
-                        <label className='modal-overlay__upload-background' htmlFor='background-input' id='background'><FaPencil size={22} onClick={(event) => uploadImage(event)} />
+                        <label className='modal-overlay__upload-background' htmlFor='background-input' id='background'>
+                            <TbEdit className='editprofile__edit-background-icon' size={30} onClick={(event) => uploadImage(event)} />
                             <input className='modal-overlay__upload-input' id='background-input' name='background-input' type='file' onChange={(event) => { setImageUpload(event.target.files[0]) }}></input>
                         </label>
                     </div>

@@ -6,7 +6,7 @@
     @include iphone12Pro {
         display: flex;
         flex-direction: column;
-        height: 100vw;
+        height: 40vh;
     }
 
 
@@ -21,18 +21,15 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        // padding: .5rem;
         border-radius: 1.25rem;
-        // background-color: $PatchMedium-Grey;
-        // height: 25vh;
         width: 100%;
         @include iphone12Pro {
-            height: 100%;
+            height: 40vh;
         }
     }
 
     &__vid {
-        // height: 50vh;
+        height: 30vh;
         width: 100%;
         object-fit: cover;
         padding: 0.5rem;
@@ -40,15 +37,13 @@
         border-top-right-radius: 20px;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        // @include iphone12Pro {
-        //     height: 35vw;
-        // }
     }
 
     &__controls {
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 12vh;
         width: 100%;
     }
 
@@ -137,14 +132,14 @@
     }
 
     &__icons {
-        height: 10vw;
-        width: 15vw;
+        height: 9vh;
+        width: 100%;
         fill: $PatchOrange;
     }
 
     &__play-pause {
-        height: 15vw;   
-        width: 15vw;
+        height: 9vh;   
+        width: 100%;
         fill: $PatchOrange;
     }
 }
