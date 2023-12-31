@@ -14,15 +14,18 @@ function SignUpForm() {
 	const [loading, setLoading] = useState(false);
 	const emailRef = useRef();
 	const passwordRef = useRef();
+	const music = [];
+	const comments = [];
 	const userData = {
-		reviews: "",
+		music, 
+		comments,
 		rating: 0,
-		bio: "Add a bio",
+		bio: "Tell us about yourself",
 		followers: 0,
 		name: newName,
 		uid: v4(),
-		backgroundimg: "",
-		location: "Share your location",
+		backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2Fpatchbanner.jpeg?alt=media&token=f7fbbfd3-0fb4-420b-8d4a-16bd2c73318e",
+		location: "Add a location",
 		website: "Add a website"
 	};
 
