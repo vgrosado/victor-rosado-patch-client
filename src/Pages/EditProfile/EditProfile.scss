@@ -111,12 +111,12 @@
     &__edit-avatar {
         z-index: 1;
         position: absolute;
-        right: 23px;
-        bottom: 23px;
+        right: 1rem;
+        bottom: 1rem;
     }
 
     &__user-avatar {
-        width: 5.125rem;
+        width: 4.5rem;
         height: 10vh;
         border-radius: 50px;
         object-fit: cover;
