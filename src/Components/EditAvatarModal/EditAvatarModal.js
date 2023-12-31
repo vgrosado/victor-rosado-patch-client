@@ -26,6 +26,7 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
             }).catch((error) => {
                 console.log(error.message);
             })
+            closeModal();
     };
 
     function placeHolderPreview(event) {

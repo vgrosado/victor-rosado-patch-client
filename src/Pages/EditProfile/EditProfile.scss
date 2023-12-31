@@ -111,7 +111,7 @@
     &__edit-avatar {
         z-index: 1;
         position: absolute;
-        right: 1rem;
+        right: 1.2rem;
         bottom: 1rem;
     }
 
@@ -144,6 +144,7 @@
         position: relative;
         width: 20vw;
         height: 20vw;
+        border: 1px solid $PatchOrange;
         border-radius: 50px;
         object-fit: cover;
         object-position: center;
@@ -155,7 +156,7 @@
 
     &__avatar-placeholder {
         color: $PatchOrange;
-        border-radius: 50px;
+        border-radius: 24px;
     }
 
     &__name {

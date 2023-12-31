@@ -17,7 +17,6 @@ function EditProfile({ currentUser, getUser, user }) {
         <>Loading</>
     };
 
-    const navigate = useNavigate();
     const [isModalOpen, setModalOpen] = useState(false);
     const [updateUserName, setUpdateUserName] = useState(currentUser?.displayName);
     const [updateName, setUpdateName] = useState(user?.name);
