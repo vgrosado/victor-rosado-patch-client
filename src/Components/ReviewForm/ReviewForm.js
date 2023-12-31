@@ -6,7 +6,7 @@ import {BsLightningFill} from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 
 
-function ReviewForm({artist}) {
+function ReviewForm({artist, currentUser}) {
     const {id} = useParams();
     const artistId = id;
     const [rating, setRating] = useState(null);
@@ -31,13 +31,13 @@ function ReviewForm({artist}) {
 
     const createReview =  async (event) => {
         event.preventDefault();
-        await addDoc(commentData, { user: '@'+newUser, rating: parseFloat(voltage), review: newReview, time: new Date().toLocaleDateString()})
+        await addDoc(commentData, { user: currentUser?.displayName, rating: parseFloat(voltage), avatar: currentUser?.photoURL, review: newReview, time: new Date().toLocaleDateString()})
         const getReviews = async () => {
             const reviewData = await getDocs(collection(db, "Artists", `${artistId}`, "Comments"));
             setReview(reviewData.docs.map((doc) => ({...doc.data(), id: doc.id})))
         };  setNewUser("");
             setReview("");
-
+            setRating(0)
         getReviews();
     };
 
@@ -77,7 +77,8 @@ function ReviewForm({artist}) {
                     onChange={(event) => {setNewUser(event.target.value)}} 
                     type='text' 
                     name='user'
-                    placeholder='Username'/>
+                    placeholder={currentUser?.displayName}
+                    value={currentUser?.displayName}/>
                 <input
                     onChange={(event) => {setNewReview(event.target.value)}} 
                     className='reviewform__input' 
@@ -91,7 +92,7 @@ function ReviewForm({artist}) {
                     return (
                     <div className='reviewform__review-div'>
                         <div className='reviewform__user-div'>
-                            <div className='reviewform__avatar'></div>
+                            <img className='reviewform__avatar' src={rev.avatar}></img>
                                 <div className='reviewform__user-details'>
                                     <p className='reviewform__username'>{rev.user}</p>
                                     <p className='reviewform__user-timestamp'>{new Date(rev.time).toLocaleDateString()}</p>

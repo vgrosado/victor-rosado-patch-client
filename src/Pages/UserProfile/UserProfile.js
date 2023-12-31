@@ -1,17 +1,18 @@
 
 import '../UserProfile/UserProfile.scss';
 import { useEffect, useState } from 'react';
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from '../../Firebase';
 import { Link, useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
 import Nav from '../../Components/Nav/Nav';
 import ReviewForm from '../../Components/ReviewForm/ReviewForm';
 import Booking from '../../Components/Booking/Booking';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaUserFriends } from 'react-icons/fa';
 import { IoLocationOutline } from "react-icons/io5";
 import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
+import { BsLightningFill } from 'react-icons/bs';
 
 
 function UserProfile({ currentUser, user, getUser }) {
@@ -50,13 +51,13 @@ function UserProfile({ currentUser, user, getUser }) {
     //      getUser();
     //   }, [user])
 
-    // useEffect(() => {
-    //     const getArtists = async () => {
-    //         const musicData = await getDocs(collection(db, "Artists", `${artistId}`, "Music",));
-    //         setMusic(musicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    //     };
-    //     getArtists();
-    // }, []);
+    useEffect(() => {
+        const getArtists = async () => {
+            const musicData = await getDocs(collection(db, "Artists", `${id}`, "Music",));
+            setMusic(musicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        };
+        getArtists();
+    }, []);
 
 
     function handleFollow() {
@@ -65,6 +66,10 @@ function UserProfile({ currentUser, user, getUser }) {
             .then(() => {
 
             })
+    };
+
+    function followFormatter(num) {
+        return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
     };
 
     getUser();
@@ -105,49 +110,55 @@ function UserProfile({ currentUser, user, getUser }) {
                     </div>
                 </div>
                 <article className='user__stats-container'>
-                    <div className='user__details-container'>
-                        <div className='user__info-div'>
-                            <p className='user__name'>{user?.name}</p>
-                            <p className='user__username'>{currentUser?.displayName}</p>
+                        <div className='user__details-container'>
+                            <div className='user__info-div'>
+                                <div className='user__names'>
+                                    <p className='user__name'>{user?.name}</p>
+                                    <p className='user__username'>{currentUser?.displayName}</p>
+                                </div>
+                                <div className='user__button-div'>
+                                <Link className='user__button-link' to={`/EditProfile/${currentUser?.uid}`}><button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button></Link>
+                            </div>
+                            </div>
+                            <div className='user__stats'>
+                                <div className='user__rating-div'>
+                                    <BsLightningFill size={14} color='grey' /> <p className='user__stats-title'>Voltage</p>
+                                    <p className='user__rating'>{user?.rating}</p>
+                                </div>
+                                <div className='user__followers-div'>
+                                    <FaUserFriends size={14} color='grey' /> <p className='user__stats-title'>Followers</p>
+                                    <p className='user__followers'>{followFormatter(user?.followers)}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <p className='user__bio'>{user?.bio}</p>
+                        <div className='user__contacts-container'>
                             <div className='user__location-div'>
-                                <IoLocationOutline stroke='grey' size={12} />
+                                <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />
                                 <p className='user__location'>{user?.location}</p>
                             </div>
                             <div className='user__website-div'>
-                                <LuLink stroke='grey' size={12} />
-                                <Link to={user?.website} className='user__website'>{user?.website}</Link>
+                                <LuLink stroke='grey' strokeWidth={3} size={12} />
+                                <Link to={artist?.website} className='user__website'>{user?.website}</Link>
                             </div>
                         </div>
-                        <div className='user__button-div'>
-                            <Link className='user__button-link' to={`/EditProfile/${currentUser?.uid}`}><button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button></Link>
-                        </div>
-                    </div>
-                    <p className='user__bio'>{user?.bio}</p>
-                    <div className='user__stats'>
+
                         <div className='user__nav-div'>
-                            <div className='user__rating-div'>
-                                <p className='user__stats-title'>Voltage</p>
-                                <p className='user__rating'>{user?.rating}</p>
-                            </div>
                             <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
-                        </div>
-                        <div className='user__nav-div'>
-                            <div className='user__followers-div'>
-                                <p className='user__stats-title'>Followers</p>
-                                <p className='user__followers'>{user?.followers}</p>
-                            </div>
                             <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
-                        </div>
-                        <div className='user__booking-div'>
                             <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
                         </div>
-                    </div>
+
+
+
+               
                     {musicPage && (<MediaPlayer music={music} />)}
                     {encorePage && (<ReviewForm artist={artist} />)}
                     {bookingPage && (<Booking artist={artist} />)}
                 </article>
                 <Nav currentUser={currentUser} user={user} openModal={openModal} />
-            </section>
+            </section >
         </>)
     }
     else
@@ -162,43 +173,53 @@ function UserProfile({ currentUser, user, getUser }) {
                             </div>
                         </div>
                     </div>
+
                     <article className='user__stats-container'>
                         <div className='user__details-container'>
                             <div className='user__info-div'>
-                                <p className='user__name'>{artist?.name}</p>
-                                <p className='user__username'>{artist?.username}</p>
-                                <p className='user__location'>{artist?.location}</p>
+                                <div className='user__names'>
+                                    <p className='user__name'>{artist?.name}</p>
+                                    <p className='user__username'>{artist?.username}</p>
+                                </div>
+                                <div className='user__button-div'>
+                                    <button className='user__button' onClick={handleFollow}>+ Follow</button>
+                                </div>
                             </div>
-                            <div className='user__button-div'>
-                                <button className='user__button' onClick={handleFollow}>+ Follow</button>
-                            </div>
-                        </div>
-                        <p className='user__bio'>{artist?.description}</p>
-                        <div className='user__stats'>
-                            <div className='user__nav-div'>
+                            <div className='user__stats'>
                                 <div className='user__rating-div'>
-                                    <p className='user__stats-title'>Voltage</p>
+                                    <BsLightningFill size={14} color='grey' /> <p className='user__stats-title'>Voltage</p>
                                     <p className='user__rating'>{artist?.rating}</p>
                                 </div>
-                                <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
-                            </div>
-                            <div className='user__nav-div'>
                                 <div className='user__followers-div'>
-                                    <p className='user__stats-title'>Followers</p>
-                                    <p className='user__followers'>{artist?.followers}</p>
+                                    <FaUserFriends size={14} color='grey' /> <p className='user__stats-title'>Followers</p>
+                                    <p className='user__followers'>{followFormatter(artist?.followers)}</p>
                                 </div>
-                                <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                             </div>
-                            <div className='user__booking-div'>
-                                <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
+
+                        </div>
+                        <p className='user__bio'>{artist?.description}</p>
+                        <div className='user__contacts-container'>
+                            <div className='user__location-div'>
+                                <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />
+                                <p className='user__location'>{artist?.location}</p>
+                            </div>
+                            <div className='user__website-div'>
+                                <LuLink stroke='grey' strokeWidth={3} size={12} />
+                                <Link to={artist?.website} className='user__website'>{artist?.website}</Link>
                             </div>
                         </div>
+
+                        <div className='user__nav-div'>
+                            <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
+                            <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
+                            <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
+                        </div>
                         {musicPage && (<MediaPlayer music={music} />)}
-                        {encorePage && (<ReviewForm artist={artist} />)}
+                        {encorePage && (<ReviewForm currentUser={currentUser} artist={artist} />)}
                         {bookingPage && (<Booking artist={artist} />)}
                     </article>
                     <Nav currentUser={currentUser} user={user} openModal={openModal} />
-                </section>
+                </section >
             </>
         )
 };
