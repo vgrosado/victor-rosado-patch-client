@@ -36,28 +36,13 @@ function UserProfile({ currentUser, user, getUser }) {
             });
     }, [id])
 
-    //     const usersDocRef = doc(db, "users", `${id}`)
-    //     const getUser = async () => {
-    //     await getDoc(usersDocRef)
-    //       .then((doc) => {
-    //         setUser(doc.data(), doc.id)
-    //       })
-    //       .catch(error => {
-    //         console.log('error fetching video ID:s', error)
-    //       });
-    //     };
-
-    //   useEffect(() => {
-    //      getUser();
-    //   }, [user])
-
     useEffect(() => {
         const getArtists = async () => {
             const musicData = await getDocs(collection(db, "Artists", `${id}`, "Music",));
             setMusic(musicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         };
         getArtists();
-    }, []);
+    }, [id]);
 
 
     function handleFollow() {
@@ -149,10 +134,6 @@ function UserProfile({ currentUser, user, getUser }) {
                             <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                             <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
                         </div>
-
-
-
-               
                     {musicPage && (<MediaPlayer music={music} />)}
                     {encorePage && (<ReviewForm artist={artist} />)}
                     {bookingPage && (<Booking artist={artist} />)}
