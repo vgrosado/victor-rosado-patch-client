@@ -1,4 +1,5 @@
 import '../MediaPlayer/MediaPlayer.scss';
+import EmptyMediaPlayer from '../EmptyMediaPlayer/EmptyMediaPlayer';
 import { AiFillPlayCircle, AiFillPauseCircle } from 'react-icons/ai'
 import { BiSkipPrevious, BiSkipNext } from 'react-icons/bi'
 import { useState, useEffect, useRef, useCallback } from 'react';
@@ -20,7 +21,7 @@ function MediaPlayer({ music }) {
     useEffect(() => {
         setCurrentTrack(music[musicIndex]);
     }, [music, musicIndex]);
-    
+
 
     function onLoadedMetadata() {
         const seconds = audioRef.current.duration;
@@ -70,8 +71,8 @@ function MediaPlayer({ music }) {
 
         // Clean up function when component is unmounted
         return () => {
-            cancelAnimationFrame(playAnimationRef.current); 
-            
+            cancelAnimationFrame(playAnimationRef.current);
+
         };
     }, [isPlaying, audioRef, repeat]);
 
@@ -99,36 +100,17 @@ function MediaPlayer({ music }) {
 
 
     if (!music || music?.length === 0) {
-        return (<section className='mediaplayer'>
-            <div className='mediaplayer__card'>
-                <div className='mediaplayer__song-div'>
-                    <p className='mediaplayer__song-title'></p>
-                    <p className='mediaplayer__song-subtitle'></p>
-                </div>
-                <video className='mediaplayer__vid' src={null} autoPlay loop muted />
-                <div className="mediaplayer__controls">
-                    <input className='mediaplayer__progress-bar' ref={progressBarRef}
-                        type="range"
-                        defaultValue="0"
-                        onChange={handleProgressChange} />
-                    <div className='mediaplayer__time-div'>
-                        <span className="mediaplayer__time"></span>
-                        <span className="mediaplayer__time"></span>
-                    </div>
-                    <audio />
-                    <div className='mediaplayer__icon-div'>
-                        <BiSkipPrevious className='mediaplayer__icons' />
-                        {isPlaying ? (<AiFillPauseCircle className='mediaplayer__play-pause' onClick={togglePlay} />)
-                            : (<AiFillPlayCircle className='mediaplayer__play-pause' onClick={togglePlay} />)}
-                        <BiSkipNext className='mediaplayer__icons' />
-                    </div>
-                </div>
-            </div>
-        </section>)
+        return (
+            <EmptyMediaPlayer
+                currentTrack={currentTrack} formatTime={formatTime} progressBarRef={progressBarRef}
+                handleProgressChange={handleProgressChange} timeProgress={timeProgress} duration={duration}
+                onLoadedMetadata={onloadedmetadata} handlePrevious={handlePrevious} handleNext={handleNext}
+                music={music} isPlaying={isPlaying} audioRef={audioRef}
+            />
+        )
     }
     else {
         return (
-
             <section className='mediaplayer'>
                 <div className='mediaplayer__card'>
                     <div className='mediaplayer__song-div'>
