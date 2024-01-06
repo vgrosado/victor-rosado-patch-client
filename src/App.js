@@ -9,6 +9,7 @@ import { db } from './Firebase';
 import { collection, doc, getDoc, getDocs, } from 'firebase/firestore';
 import EditProfile from './Pages/EditProfile/EditProfile';
 import { getAuth } from 'firebase/auth';
+import UploadMusicPage from './Pages/UploadMusicPage/UploadMusicPage';
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
         <Route path="/Home" element={<HomePage getUser={getUser} artists={artists} users={users} currentUser={currentUser} />} />
         <Route path="/Profile/:id" element={<UserProfile getUser={getUser} user={user} currentUser={currentUser} artists={artists} />} />
         <Route path="/EditProfile/:uid" element={<EditProfile getUser={getUser} currentUser={currentUser} user={user} />} />
+        <Route path="UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser}/>}></Route>
       </Routes>
     </BrowserRouter>
   );
