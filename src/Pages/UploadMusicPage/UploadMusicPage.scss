@@ -1,0 +1,264 @@
+@use '../../Styles/Partials/variable' as*;
+@use '../../Styles/Partials/typography' as*;
+@use '../../Styles/Partials/breakpoints' as*;
+
+.uploadmusicpage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    background-color: $PatchMedium-Grey;
+    overflow-x: auto;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    &__vid {
+        height: 45vh;
+        width: 100%;
+        object-fit: cover;
+    }
+
+
+    &__edit-div {
+        background-color: $PatchMedium-Grey;
+        border: 2px solid $PatchOrange;
+        border-radius: 50%;
+        padding: 0.5rem;
+        align-self: end;
+        box-sizing: border-box;
+        width: 6vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__edit-icon {
+        margin-left: .5rem;
+        cursor: pointer;
+        fill: $PatchOrange;
+    }
+
+    &__edit-background-icon {
+        position: absolute;
+        right: 1.5rem;
+    }
+
+    &__background-container {
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        height: 43vh;
+        width: 100%;
+        background-color: grey;
+    }
+
+    &__header-background {
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
+        width: 100%;
+        background-color: #191919;
+        filter: blur(1.5px) brightness(50%);
+    }
+
+    &__upload-icon {
+        display: flex;
+        align-self: center;
+        fill: white;
+    }
+
+    &__upload-input {
+        display: none;
+    }
+
+
+    &__upload-avatar {
+        z-index: 2;
+    }
+
+    &__edit-avatar-div {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid $PatchOrange;
+        border-radius: 50%;
+    }
+
+    &__avatar-div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+
+    &__info-container {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 2rem 2rem 0rem 1rem;
+        align-items: center;
+    }
+
+    &__avatar {
+        width: 5.125rem;
+        height: 10vh;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+        background-color: $PatchMedium-Grey;
+    }
+
+    &__edit-avatar {
+        z-index: 1;
+        position: absolute;
+        right: 1.2rem;
+        bottom: 1rem;
+    }
+
+    &__user-avatar {
+        width: 4.5rem;
+        height: 10vh;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+        background-color: $PatchMedium-Grey;
+        filter: blur(1.5px) brightness(50%);
+    }
+
+    &__avatar-icon {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+        background-color: $PatchMedium-Grey;
+    }
+
+    &__edit-icon {
+        position: absolute;
+        top: 25px;
+        left: 23px;
+    }
+
+    &__avatar-empty {
+        position: relative;
+        width: 20vw;
+        height: 20vw;
+        border: 1px solid $PatchOrange;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+        background-color: $PatchMedium-Grey;
+        align-items: last baseline;
+        justify-content: center;
+        display: flex;
+    }
+
+    &__avatar-placeholder {
+        color: $PatchOrange;
+        border-radius: 24px;
+    }
+
+    &__name {
+        color: white;
+        font-weight: 300;
+
+        @include iphone12Pro {
+            font-size: 1.25rem;
+        }
+    }
+
+    &__username {
+        font-weight: 300;
+        font-size: .75rem;
+        color: $PatchOrange;
+
+        @include iphone12Pro {
+            font-size: 1rem;
+        }
+    }
+
+    &__bio {
+        font-size: .625rem;
+        font-weight: 300;
+        color: white;
+        padding: .5rem 0rem;
+        letter-spacing: 0px;
+        text-wrap: pretty;
+        width: 100%;
+
+        @include iphone12Pro {
+            font-size: .875rem;
+        }
+    }
+
+    &__form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        position: absolute;
+        z-index: 1;
+        top: 18rem;
+        height: 52vh;
+        width: 100%;
+        background-color: rgb(31, 31, 31);
+        padding: 1rem 1.5rem 0rem 1.5rem;
+        box-sizing: border-box;
+        border-top-left-radius: 1.25rem;
+        border-top-right-radius: 1.25rem;
+        overflow: auto;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 30vh;
+        width: 100%;
+    }
+
+    &__input-label {
+        font-weight: 300;
+        color: $PatchOrange;
+    }
+
+    &__input {
+        font-weight: 300;
+        color: white;
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        background: none;
+        border-bottom: .5px solid white;
+
+        &::placeholder {
+            font-size: 1rem;
+            font-weight: 300;
+            color: grey;
+        }
+    }
+
+    &__button {
+        background-color: $PatchGrey;
+        color: $PatchOrange;
+        font-size: 1.25rem;
+        font-weight: 300;
+        align-self: center;
+        width: 80%;
+        border: 1px solid $PatchOrange;
+        border-radius: 1.25rem;
+        box-sizing: border-box;
+        padding: 2vw;
+        margin-top: 4vw;
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+        cursor: pointer;
+    }
+
+}

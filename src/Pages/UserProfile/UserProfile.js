@@ -134,7 +134,7 @@ function UserProfile({ currentUser, user, getUser }) {
                             <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                             <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
                         </div>
-                    {musicPage && (<MediaPlayer music={music} />)}
+                    {musicPage && (<MediaPlayer currentUser={currentUser} music={music} />)}
                     {encorePage && (<ReviewForm artist={artist} />)}
                     {bookingPage && (<Booking artist={artist} />)}
                 </article>
@@ -195,7 +195,7 @@ function UserProfile({ currentUser, user, getUser }) {
                             <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                             <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
                         </div>
-                        {musicPage && (<MediaPlayer music={music} />)}
+                        {musicPage && (<MediaPlayer currentUser={currentUser} music={music} />)}
                         {encorePage && (<ReviewForm currentUser={currentUser} artist={artist} />)}
                         {bookingPage && (<Booking artist={artist} />)}
                     </article>
