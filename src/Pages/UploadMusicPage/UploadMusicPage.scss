@@ -104,7 +104,7 @@
         font-size: .750rem;
         font-weight: 300;
         color: white;
-        border: 1px solid grey;
+        border: 2px solid grey;
         background-color: rgba(128, 128, 128, 0.193);
         border-radius: 5px;
     }
@@ -229,6 +229,14 @@
         }
     }
 
+    &__uploadlabel-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 23vh;
+    }
+
     &__form-container {
         display: flex;
         flex-direction: column;
@@ -323,6 +331,7 @@
 
     &__progress-title {
         color: white;
+        font-size: .8rem;
         font-weight: 300;
     }
 
@@ -330,8 +339,7 @@
         width: 100%;
         border-radius: 50px;
         background-color: #cb620023;
-        margin-bottom: 1rem;
-
+        margin: .2rem 0rem;
     }
 
     &__progress-bar {
