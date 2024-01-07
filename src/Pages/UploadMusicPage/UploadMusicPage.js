@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import { db, storage } from '../../Firebase';
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage';
 import { collection, doc, setDoc } from 'firebase/firestore';
-import { TbVideoPlus } from "react-icons/tb";
+import { FaPhotoVideo } from "react-icons/fa";
+
+
 
 
 function UploadMusicPage({ currentUser }) {
@@ -140,8 +142,8 @@ function UploadMusicPage({ currentUser }) {
                 </> :
                     <div className='uploadmusicpage__info-container'>
                         <div className='uploadmusicpage__visualizer-div'>
-                            <TbVideoPlus size={60} color='grey' className='uploadmusicpage__edit-background-icon' />
-                            <label className='uploadmusicpagea__upload-background' htmlFor='viz-input' id='viz-iput'>
+                            <label className='uploadmusicpagea__uploadlabel-container' htmlFor='viz-input' id='viz-iput'>
+                            <FaPhotoVideo size={60} color='grey' className='uploadmusicpage__edit-background-icon' />
                                 <div className='uploadmusicpage__instructions'>Upload an image or short video</div>
                                 <input
                                     className='uploadmusicpage__upload-input'
@@ -178,12 +180,12 @@ function UploadMusicPage({ currentUser }) {
                 </div>
                 <div className='uploadmusicpage__form'>
                     <label className='uploadmusicpage__input-label' htmlFor='title'>Title
-                        <input autoComplete='off' className='uploadmusicpage__input' type='text' name='title' id='title' value={updateTitle}
+                        <input autoComplete='off' className='uploadmusicpage__input' type='text' name='title' id='title' placeholder='Title...' value={updateTitle}
                             onChange={(event) => { setUpdateTitle(event.target.value) }}>
                         </input>
                     </label>
                     <label className='uploadmusicpage__input-label' htmlFor='artist'>Artist
-                        <input autoComplete='off' className='uploadmusicpage__input' type='text' name='Artist' id='Artist' value={updateArtist}
+                        <input autoComplete='off' className='uploadmusicpage__input' type='text' name='Artist' id='Artist' placeholder='Artist...' value={updateArtist}
                             onChange={(event) => { setUpdateArtist(event.target.value) }}>
                         </input>
                     </label>
