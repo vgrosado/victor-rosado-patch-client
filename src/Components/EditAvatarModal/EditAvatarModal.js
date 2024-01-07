@@ -26,7 +26,7 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
             }).catch((error) => {
                 console.log(error.message);
             })
-            closeModal();
+        closeModal();
     };
 
     function placeHolderPreview(event) {
@@ -52,8 +52,19 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
                                     setAvatarUpload(event.target.files[0])
                                     placeHolderPreview(event)
                                 }}
-                                ></input>
+                            ></input>
                         </label>
+
+                        <label className='modal-overlay__upload-avatar' htmlFor='avatar-input' id='avatar'>
+                            <div className='modal-overlay__input-button'>Upload</div>
+                            <input className='modal-overlay__upload-input' id='avatar-input' name='avatar-input' type='file'
+                                onChange={(event) => {
+                                    setAvatarUpload(event.target.files[0])
+                                    placeHolderPreview(event)
+                                }}
+                            ></input>
+                        </label>
+
                         <button className='modal-overlay__upload-button' type='submit' onClick={() => uploadAvatar()}>Upload</button>
                     </div>
                 </div>
