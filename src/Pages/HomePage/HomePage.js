@@ -5,19 +5,20 @@ import { BiEnvelope } from 'react-icons/bi';
 import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 import Nav from '../../Components/Nav/Nav';
 import { FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-function HomePage({ artists, currentUser}) {
+function HomePage({ artists, currentUser }) {
     console.log("currently logged in user => " + currentUser?.email)
-    
+
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
                     <div className='homepage__header-container'>
                         <div className='homepage__avatar-div'>
-                            {currentUser?.photoURL === null ? ( <div className='homepage__avatar-div'><FaUser size={40} className='user__avatar-placeholder' /></div>) 
-                            : ( <div className='homepage__avatar-div'><img className='homepage__avatar' src={currentUser?.photoURL}/></div>)}
-                            </div>
+                            {currentUser?.photoURL === null ? (<div className='homepage__avatar-div'><FaUser size={40} className='user__avatar-placeholder' /></div>)
+                                : (<Link to={`/Profile/${currentUser?.uid}`}><div className='homepage__avatar-div'><img className='homepage__avatar' src={currentUser?.photoURL} /></div></Link>)}
+                        </div>
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>
                             <BiEnvelope className='homepage__header-icons' />

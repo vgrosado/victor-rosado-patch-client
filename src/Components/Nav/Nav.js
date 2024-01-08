@@ -2,12 +2,13 @@ import '../Nav/Nav.scss';
 import { SlUser } from 'react-icons/sl';
 import { SlHome } from 'react-icons/sl';
 import { PiBooks } from 'react-icons/pi';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BiLogOut } from 'react-icons/bi';
 import { logOut } from '../../Firebase';
+import { RiUploadCloudLine } from "react-icons/ri";
 
 
-function Nav({currentUser}) {
+function Nav({ currentUser }) {
 
     async function handleLogOut() {
         try {
@@ -31,6 +32,10 @@ function Nav({currentUser}) {
             <div className='nav__div'>
                 <Link><PiBooks className='nav__icons' /></Link>
                 <p className='nav__label'>Bookings</p>
+            </div>
+            <div className='nav__div'>
+                <Link to={`/UploadMusic/${currentUser?.uid}`}><RiUploadCloudLine className='nav__icons' /></Link>
+                <p className='nav__label'>Upload</p>
             </div>
             <div className='nav__div'>
                 <Link to={"/"}><BiLogOut className='nav__icons' onClick={handleLogOut} /></Link>

@@ -9,6 +9,7 @@ import { FaPhotoVideo } from "react-icons/fa";
 
 
 
+
 function UploadMusicPage({ currentUser }) {
     const [uploadProgress, setUploadProgress] = useState(0);
     const [updateTitle, setUpdateTitle] = useState("");
@@ -142,7 +143,7 @@ function UploadMusicPage({ currentUser }) {
                 </> :
                     <div className='uploadmusicpage__info-container'>
                         <div className='uploadmusicpage__visualizer-div'>
-                            <label className='uploadmusicpagea__uploadlabel-container' htmlFor='viz-input' id='viz-iput'>
+                            <label className='uploadmusicpage__uploadlabel-container' htmlFor='viz-input' id='viz-iput'>
                             <FaPhotoVideo size={60} color='grey' className='uploadmusicpage__edit-background-icon' />
                                 <div className='uploadmusicpage__instructions'>Upload an image or short video</div>
                                 <input

@@ -14,7 +14,6 @@ import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 import { BsLightningFill } from 'react-icons/bs';
 
-
 function UserProfile({ currentUser, user, getUser }) {
     const { id } = useParams();
     const [artist, setArtist] = useState({});
