@@ -4,7 +4,7 @@ import { FaUser } from 'react-icons/fa';
 
 function UserCard({ user }) {
     console.log(user)
-    if (!user.image) {
+    if (!user.avatar) {
         return (<Link className='artist-container' to={`/Profile/${user?.id}`}>
             <div className='artist-container__image-empty'><FaUser size={80} className='artist-container__placeholder' /></div>
             <label className='artist-container__name'>{user?.name}</label>
@@ -12,8 +12,8 @@ function UserCard({ user }) {
     }
     return (
         <Link className='artist-container' to={`/Profile/${user?.id}`}>
-            <img className='artist-container__image' alt='dj' src={user?.image} />
-            <label className='artist-container__name'>{user?.name}</label>
+            <img className='artist-container__image' alt='dj' src={user?.avatar} />
+            <label className='artist-container__name'>{user?.displayName}</label>
         </Link>
     )
 };

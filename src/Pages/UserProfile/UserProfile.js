@@ -22,7 +22,7 @@ function UserProfile({ currentUser, getUser }) {
     const [musicPage, setMusicPage] = useState(true);
     const [bookingPage, setBookingPage] = useState(false);
     const [music, setMusic] = useState([]);
-    const [userMusic, setUserMusic] = useState([]);
+    // const [userMusic, setUserMusic] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
 
 
@@ -51,19 +51,19 @@ function UserProfile({ currentUser, getUser }) {
 
     // useEffect(() => {
     //     const getArtists = async () => {
-    //         const musicData = await getDocs(collection(db, "Artists", `${id}`, "Music",));
+    //         const musicData = await getDocs(collection(db, "users", `${id}`, "Music",));
     //         setMusic(musicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     //     };
     //     getArtists();
     // }, [id]);
 
-    // useEffect(() => {
-    //     const getUserMusic = async () => {
-    //         const userMusicData = await getDocs(collection(db, "users", `${id}`, "Music",));
-    //         setUserMusic(userMusicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    //     };
-    //     getUserMusic();
-    // }, [id]);
+    useEffect(() => {
+        const getUserMusic = async () => {
+            const userMusicData = await getDocs(collection(db, "users", `${id}`, "Music",));
+            setMusic(userMusicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        };
+        getUserMusic();
+    }, [id]);
 
 
     getUser();
@@ -157,7 +157,7 @@ function UserProfile({ currentUser, getUser }) {
                         <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                         <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
                     </div>
-                    {musicPage && (<MediaPlayer currentUser={currentUser} userMusic={userMusic} music={music} />)}
+                    {musicPage && (<MediaPlayer currentUser={currentUser} music={music} />)}
                     {encorePage && (<ReviewForm artist={artist} />)}
                     {bookingPage && (<Booking artist={artist} />)}
                 </article>
@@ -219,7 +219,7 @@ function UserProfile({ currentUser, getUser }) {
                             <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                             <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
                         </div>
-                        {musicPage && (<MediaPlayer currentUser={currentUser} userMusic={userMusic} music={music} />)}
+                        {musicPage && (<MediaPlayer currentUser={currentUser} music={music} />)}
                         {encorePage && (<ReviewForm currentUser={currentUser} artist={artist} />)}
                         {bookingPage && (<Booking artist={artist} />)}
                     </article>

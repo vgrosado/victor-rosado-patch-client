@@ -3,7 +3,7 @@ import Nav from '../../Components/Nav/Nav';
 import { useEffect, useRef, useState } from 'react';
 import { db, storage } from '../../Firebase';
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage';
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { FaPhotoVideo } from "react-icons/fa";
 
 function UploadMusicPage({ currentUser }) {
@@ -74,8 +74,8 @@ function UploadMusicPage({ currentUser }) {
     //upload track object to currentusers Music collection
     function handleTrackUpload(e) {
         e.preventDefault();
-        const userMusicCollectionRef = doc(collection(db, "users", `${currentUser?.uid}`, "Music"))
-        setDoc(userMusicCollectionRef, {
+        const userMusicCollectionRef = collection(db, "users", `${currentUser?.uid}`, "Music");
+        addDoc(userMusicCollectionRef, {
             title: updateTitle,
             artist: updateArtist,
             track: trackUrl.current,

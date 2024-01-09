@@ -8,7 +8,7 @@ import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import UserCard from '../../Components/UserCard/UserCard';
 
-function HomePage({ artists, currentUser, users }) {
+function HomePage({ currentUser, users }) {
     console.log("currently logged in user => " + currentUser?.email)
     console.log(users)
 
@@ -45,9 +45,6 @@ function HomePage({ artists, currentUser, users }) {
                 </div>
                 <section className='homepage__container'>
                     <>
-                    {artists.map(artist => (
-                        <ArtistDiv key={artist.id} artists={artist} />
-                    ))}
                     </>
                     {users.map(user => (
                         <UserCard key={user.id} user={user} />

@@ -4,7 +4,7 @@ import { AiFillPlayCircle, AiFillPauseCircle } from 'react-icons/ai'
 import { BiSkipPrevious, BiSkipNext } from 'react-icons/bi'
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-function MediaPlayer({ music, currentUser, userMusic }) {
+function MediaPlayer({ music, currentUser }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -90,16 +90,14 @@ function MediaPlayer({ music, currentUser, userMusic }) {
 
     function handleNext() {
         if (musicIndex >= music.length - 1) {
-            setMusicIndex(music[0]);
+            setMusicIndex(0);
             setCurrentTrack(music[0]);
         } else {
             setMusicIndex((prev) => prev + 1);
-            setCurrentTrack(music[musicIndex + 1]);
         }
     };
 
-
-    if (!music || music?.length === 0) {
+    if (!music) {
         return (
             <EmptyMediaPlayer
                 currentUser={currentUser}
