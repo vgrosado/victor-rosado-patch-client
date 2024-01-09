@@ -21,15 +21,15 @@ function App() {
   const [loading, setLoading] = useState(false);
 
 
-  useEffect(() => {
-    const artistsCollectionRef = collection(db, "Artists")
-    const getArtists = async () => {
-      const Data = await getDocs(artistsCollectionRef);
-      setArtists(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    };
+  // useEffect(() => {
+  //   const artistsCollectionRef = collection(db, "Artists")
+  //   const getArtists = async () => {
+  //     const Data = await getDocs(artistsCollectionRef);
+  //     setArtists(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+  //   };
 
-    getArtists();
-  }, []);
+  //   getArtists();
+  // }, []);
 
   useEffect(() => {
     const usersCollectionRef = collection(db, "users")

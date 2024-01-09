@@ -6,6 +6,7 @@ import { db, signUp } from '../../Firebase';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 import { v4 } from 'uuid';
+import { FaUser } from 'react-icons/fa';
 
 function SignUpForm() {
 
@@ -23,7 +24,9 @@ function SignUpForm() {
 		bio: "Tell us about yourself",
 		followers: 0,
 		name: newName,
-		uid: v4(),
+		displayName: userName,
+		avatar: "",
+		id: v4(),
 		backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2Fpatchbanner.jpeg?alt=media&token=f7fbbfd3-0fb4-420b-8d4a-16bd2c73318e",
 		location: "Add a location",
 		website: "Add a website"

@@ -16,7 +16,7 @@ function EditProfile({ currentUser, getUser, user }) {
     if (!currentUser) {
         <>Loading</>
     };
-
+    const  navigate  = useNavigate();
     const [isModalOpen, setModalOpen] = useState(false);
     const [updateUserName, setUpdateUserName] = useState(currentUser?.displayName);
     const [updateName, setUpdateName] = useState(user?.name);
@@ -85,10 +85,10 @@ function EditProfile({ currentUser, getUser, user }) {
                     <div className='editprofile__avatar-div'>
                         {!currentUser?.photoURL ?
                             (<div className='editprofile__avatar-empty'><TbCameraPlus stroke='white' onClick={openModal} size={40} className='editprofile__edit-avatar' />
-                            <FaUser onClick={openModal} size={60} className='user__avatar-placeholder' /> </div>)
+                                <FaUser onClick={openModal} size={60} className='user__avatar-placeholder' /> </div>)
                             :
                             (<div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={currentUser?.photoURL} />
-                                <TbCameraPlus stroke='white' onClick={openModal} size={40} className='editprofile__edit-avatar' />
+                                <TbCameraPlus stroke='white' onClick={openModal} size={30} className='editprofile__edit-avatar' />
                             </div>)}
 
                         <label className='modal-overlay__upload-background' htmlFor='background-input' id='background'>

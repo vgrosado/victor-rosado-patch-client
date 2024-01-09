@@ -6,9 +6,11 @@ import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 import Nav from '../../Components/Nav/Nav';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import UserCard from '../../Components/UserCard/UserCard';
 
-function HomePage({ artists, currentUser }) {
+function HomePage({ artists, currentUser, users }) {
     console.log("currently logged in user => " + currentUser?.email)
+    console.log(users)
 
     return (
         <main className='homepage'>
@@ -16,7 +18,7 @@ function HomePage({ artists, currentUser }) {
                 <div className='homepage__search-container'>
                     <div className='homepage__header-container'>
                         <div className='homepage__avatar-div'>
-                            {currentUser?.photoURL === null ? (<div className='homepage__avatar-div'><FaUser size={40} className='user__avatar-placeholder' /></div>)
+                            {currentUser?.photoURL === null ? (<FaUser size={40} className='homepage__avatar-placeholder' />)
                                 : (<Link to={`/Profile/${currentUser?.uid}`}><div className='homepage__avatar-div'><img className='homepage__avatar' src={currentUser?.photoURL} /></div></Link>)}
                         </div>
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
@@ -42,8 +44,13 @@ function HomePage({ artists, currentUser }) {
                     </div>
                 </div>
                 <section className='homepage__container'>
+                    <>
                     {artists.map(artist => (
                         <ArtistDiv key={artist.id} artists={artist} />
+                    ))}
+                    </>
+                    {users.map(user => (
+                        <UserCard key={user.id} user={user} />
                     ))}
                 </section>
             </article>

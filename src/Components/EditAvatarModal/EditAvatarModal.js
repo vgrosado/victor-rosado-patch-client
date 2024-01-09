@@ -1,10 +1,13 @@
 import './EditAvatarModal.scss'
 import { useRef, useState } from 'react';
-import { storage } from '../../Firebase';
+import { db, storage } from '../../Firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
+import { doc, updateDoc } from 'firebase/firestore';
+import { useParams } from 'react-router-dom';
 
 function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
+    const {id} = useParams();
     const [avatarUpload, setAvatarUpload] = useState("");
     const avatarUrl = useRef();
     const [placeholder, setPlaceHolder] = useState(currentUser?.photoURL)
@@ -12,6 +15,7 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
     function uploadAvatar() {
         if (avatarUpload == null) return;
         const avatarRef = ref(storage, `avatars/${avatarUpload?.name}`);
+        const userDocRef = doc(db, "users", `${currentUser?.uid}`)
         uploadBytes(avatarRef, avatarUpload)
             .then(() => {
                 getDownloadURL(avatarRef)
@@ -21,12 +25,16 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
                     }).then(() => {
                         updateProfile(currentUser, {
                             photoURL: avatarUrl.current
-                        });
-                    })
+                        })
+                    }).then(() => {
+                        updateDoc(userDocRef, {
+                            avatar: avatarUrl.current
+                        })
+                    });
             }).catch((error) => {
                 console.log(error.message);
             })
-        closeModal();
+            closeModal();
     };
 
     function placeHolderPreview(event) {
@@ -52,19 +60,8 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
                                     setAvatarUpload(event.target.files[0])
                                     placeHolderPreview(event)
                                 }}
-                            ></input>
+                                ></input>
                         </label>
-
-                        <label className='modal-overlay__upload-avatar' htmlFor='avatar-input' id='avatar'>
-                            <div className='modal-overlay__input-button'>Upload</div>
-                            <input className='modal-overlay__upload-input' id='avatar-input' name='avatar-input' type='file'
-                                onChange={(event) => {
-                                    setAvatarUpload(event.target.files[0])
-                                    placeHolderPreview(event)
-                                }}
-                            ></input>
-                        </label>
-
                         <button className='modal-overlay__upload-button' type='submit' onClick={() => uploadAvatar()}>Upload</button>
                     </div>
                 </div>

@@ -6,10 +6,6 @@ import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { FaPhotoVideo } from "react-icons/fa";
 
-
-
-
-
 function UploadMusicPage({ currentUser }) {
     const [uploadProgress, setUploadProgress] = useState(0);
     const [updateTitle, setUpdateTitle] = useState("");

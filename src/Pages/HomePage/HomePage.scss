@@ -42,7 +42,19 @@
     }
 
     &__avatar-div {
-        width: 22.5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 12vw;
+        height: 12vw;
+        border: 1px solid $PatchOrange;
+        border-radius: 50%;
+        background-color: $PatchGrey;
+    }
+
+    &__avatar-placeholder {
+        fill: $PatchOrange;
+        border-radius: 20px;
     }
 
     &__avatar {
