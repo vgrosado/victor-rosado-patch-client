@@ -153,11 +153,11 @@ function UserProfile({ currentUser, getUser }) {
                     </div>
 
                     <div className='user__nav-div'>
-                        <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
-                        <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
-                        <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
+                        <p onClick={handleNavToMusic} className={musicPage && !encorePage && !bookingPage ? 'user__nav-item-active' : 'user__nav-item'}>Music</p>
+                        <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Encore</p>
+                        <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Booking</p>
                     </div>
-                    {musicPage && (<MediaPlayer currentUser={currentUser} music={music} />)}
+                    {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} />)}
                     {encorePage && (<ReviewForm artist={artist} />)}
                     {bookingPage && (<Booking artist={artist} />)}
                 </article>
@@ -173,8 +173,8 @@ function UserProfile({ currentUser, getUser }) {
                         <img className='user__header-background' src={user?.backgroundimg} alt='user background' />
                         <div className='user__info-container'>
                             <div className='user__avatar-div'>
-                            {!user?.avatar ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>)
-                                : (<img className='user__avatar' alt='avatar' src={user?.avatar} />)}
+                                {!user?.avatar ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>)
+                                    : (<img className='user__avatar' alt='avatar' src={user?.avatar} />)}
                             </div>
                         </div>
                     </div>
@@ -202,7 +202,7 @@ function UserProfile({ currentUser, getUser }) {
                             </div>
 
                         </div>
-                        <p className='user__bio'>{artist?.description}</p>
+                        <p className='user__bio'>{user?.bio}</p>
                         <div className='user__contacts-container'>
                             <div className='user__location-div'>
                                 <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />
@@ -215,11 +215,11 @@ function UserProfile({ currentUser, getUser }) {
                         </div>
 
                         <div className='user__nav-div'>
-                            <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
-                            <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
-                            <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
+                            <p onClick={handleNavToMusic} className={musicPage && !encorePage && !bookingPage ? 'user__nav-item-active' : 'user__nav-item'}>Music</p>
+                            <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Encore</p>
+                            <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Booking</p>
                         </div>
-                        {musicPage && (<MediaPlayer currentUser={currentUser} music={music} />)}
+                        {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} />)}
                         {encorePage && (<ReviewForm currentUser={currentUser} artist={artist} />)}
                         {bookingPage && (<Booking artist={artist} />)}
                     </article>

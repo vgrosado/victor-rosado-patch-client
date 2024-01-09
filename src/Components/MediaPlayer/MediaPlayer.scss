@@ -3,6 +3,7 @@
 
 .mediaplayer {
     padding-top: 1rem;
+
     @include iphone12Pro {
         display: flex;
         flex-direction: column;
@@ -23,6 +24,7 @@
         justify-content: space-between;
         border-radius: 1.25rem;
         width: 100%;
+
         @include iphone12Pro {
             height: 40vh;
         }
@@ -63,12 +65,13 @@
     &__progress-bar {
         -webkit-appearance: none;
         --range-progress: 0;
-        background:#ccc;
+        background: #ccc;
         width: 100%;
         height: .125rem;
         border-radius: .125rem;
         cursor: pointer;
         position: relative;
+
         &:before {
             content: '';
             height: .125rem;
@@ -80,6 +83,7 @@
             top: 0;
             left: 0;
         }
+
         &::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: .5rem;
@@ -90,6 +94,7 @@
             cursor: pointer;
             position: relative;
         }
+
         &:active::-webkit-slider-thumb {
             transform: scale(1.2);
         }
@@ -102,11 +107,37 @@
         width: 100%;
     }
 
+    &__empty-alertdiv {
+        box-sizing: border-box;
+        padding: .5rem;
+        margin-top: 2rem;
+        height: 39vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 4px solid grey;
+        border-radius: 20px;
+    }
+
+    &__empty-alert-user {
+        color: $PatchOrange;
+        font-weight: bold;
+    }
+
+    &__empty-alert {
+        color: white;
+        font-weight: 300;
+        font-size: 1.5rem;
+    }
+
     &__song-title {
         align-self: center;
         font-size: .9375rem;
         font-weight: bold;
         color: white;
+
         @include iphone12Pro {
             font-size: 1.25rem;
         }
@@ -117,6 +148,7 @@
         font-size: .75rem;
         font-weight: bold;
         color: grey;
+
         @include iphone12Pro {
             font-size: 1rem;
         }
@@ -125,6 +157,7 @@
     &__icon-div {
         display: flex;
         align-items: center;
+
         @include iphone12Pro {
             width: 100%;
             justify-content: space-evenly;
@@ -138,7 +171,7 @@
     }
 
     &__play-pause {
-        height: 9vh;   
+        height: 9vh;
         width: 100%;
         fill: $PatchOrange;
     }

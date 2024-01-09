@@ -2,9 +2,12 @@ import '../MediaPlayer/MediaPlayer.scss';
 import EmptyMediaPlayer from '../EmptyMediaPlayer/EmptyMediaPlayer';
 import { AiFillPlayCircle, AiFillPauseCircle } from 'react-icons/ai'
 import { BiSkipPrevious, BiSkipNext } from 'react-icons/bi'
+import { FaRegSmileWink } from "react-icons/fa";
+import { LuConstruction } from "react-icons/lu";
+import { IoConstructOutline } from "react-icons/io5";
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-function MediaPlayer({ music, currentUser }) {
+function MediaPlayer({ music, currentUser, user }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -97,18 +100,24 @@ function MediaPlayer({ music, currentUser }) {
         }
     };
 
-    if (!music) {
+    if (currentUser && !user && music.length === 0) {
         return (
             <EmptyMediaPlayer
                 currentUser={currentUser}
-                currentTrack={currentTrack} formatTime={formatTime} progressBarRef={progressBarRef}
-                handleProgressChange={handleProgressChange} timeProgress={timeProgress} duration={duration}
-                onLoadedMetadata={onloadedmetadata} handlePrevious={handlePrevious} handleNext={handleNext}
-                music={music} isPlaying={isPlaying} audioRef={audioRef}
+                user={user}
             />
         )
     }
-    else {
+    else if (user && music.length === 0) {
+        return (
+            <section className='mediaplayer'>
+                <div className='mediaplayer__empty-alertdiv'>
+                    <p className='mediaplayer__empty-alert'><p className='mediaplayer__empty-alert-user'>{user?.displayName}</p>has not uploaded any music yet. Please check back soon!</p>
+                    <LuConstruction color='#ff7b00' size={80}/>
+                </div>
+            </section>
+        )
+    } else
         return (
             <section className='mediaplayer'>
                 <div className='mediaplayer__card'>
@@ -137,7 +146,6 @@ function MediaPlayer({ music, currentUser }) {
                 </div>
             </section>
         )
-    }
 };
 
 export default MediaPlayer;

@@ -3,7 +3,7 @@ import { PiMusicNotesPlus } from "react-icons/pi";
 import { Link } from 'react-router-dom';
 
 
-function EmptyMediaPlayer({currentUser}) {
+function EmptyMediaPlayer({currentUser, user}) {
 
     return (
         <section className='emptymediaplayer'>
