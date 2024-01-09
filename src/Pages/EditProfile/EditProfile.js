@@ -30,6 +30,7 @@ function EditProfile({ currentUser, getUser, user }) {
         website: updateWebsite,
         location: updateLocation,
         bio: updateBio,
+        displayName: updateUserName
     };
 
     //update user profile information
