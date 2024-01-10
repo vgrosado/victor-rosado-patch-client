@@ -7,7 +7,6 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 
 function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
-    const {id} = useParams();
     const [avatarUpload, setAvatarUpload] = useState("");
     const avatarUrl = useRef();
     const [placeholder, setPlaceHolder] = useState(currentUser?.photoURL)

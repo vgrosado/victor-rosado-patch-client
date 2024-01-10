@@ -46,8 +46,8 @@ function HomePage({ currentUser, users }) {
                 <section className='homepage__container'>
                     <>
                     </>
-                    {users.map(user => (
-                        <UserCard key={user.id} user={user} />
+                    {users.map(use => (
+                        <UserCard key={use.id} currentUser={currentUser} use={use} />
                     ))}
                 </section>
             </article>

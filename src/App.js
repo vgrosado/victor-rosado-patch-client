@@ -13,23 +13,11 @@ import UploadMusicPage from './Pages/UploadMusicPage/UploadMusicPage';
 
 
 function App() {
-  const [user, setUser] = useState({});
-  const [artists, setArtists] = useState([]);
+  const [loggedUser, setLoggedUser] = useState({});
   const [users, setUsers] = useState([]);
   const auth = getAuth();
   const currentUser = auth.currentUser;
   const [loading, setLoading] = useState(false);
-
-
-  // useEffect(() => {
-  //   const artistsCollectionRef = collection(db, "Artists")
-  //   const getArtists = async () => {
-  //     const Data = await getDocs(artistsCollectionRef);
-  //     setArtists(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-  //   };
-
-  //   getArtists();
-  // }, []);
 
   useEffect(() => {
     const usersCollectionRef = collection(db, "users")
@@ -44,7 +32,7 @@ function App() {
   const getUser = async () => {
     await getDoc(usersDocRef)
       .then((doc) => {
-        setUser(doc.data(), doc.id)
+        setLoggedUser(doc.data(), doc.id)
       })
       .catch(error => {
         console.log('error fetching video ID:s', error)
@@ -53,17 +41,20 @@ function App() {
 
   useEffect(() => {
     getUser();
-  }, [user?.uid])
+  }, [currentUser?.uid])
+
+  console.log(loggedUser)
+
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage getUser={getUser} loading={loading} setLoading={setLoading} />} />
-        <Route path="/Login" element={<LoginPage getUser={getUser} loading={loading} setLoading={setLoading} />} />
+        <Route path="/" element={<LoginPage  loading={loading} setLoading={setLoading} />} />
+        <Route path="/Login" element={<LoginPage  loading={loading} setLoading={setLoading} />} />
         <Route path="/SignUp" element={<SignUpPage />} />
-        <Route path="/Home" element={<HomePage getUser={getUser} artists={artists} users={users} currentUser={currentUser} />} />
-        <Route path="/Profile/:id" element={<UserProfile getUser={getUser} user={user} currentUser={currentUser} artists={artists} />} />
-        <Route path="/EditProfile/:uid" element={<EditProfile getUser={getUser} currentUser={currentUser} user={user} />} />
+        <Route path="/Home" element={<HomePage users={users} currentUser={currentUser} />} />
+        <Route path="/Profile/:id" element={<UserProfile loggedUser={loggedUser} currentUser={currentUser}  />} />
+        <Route path="/EditProfile/:uid" element={<EditProfile currentUser={currentUser} loggedUser={loggedUser} />} />
         <Route path="UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser}/>}></Route>
       </Routes>
     </BrowserRouter>

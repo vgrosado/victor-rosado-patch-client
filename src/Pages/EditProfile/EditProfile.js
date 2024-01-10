@@ -3,6 +3,7 @@ import Nav from '../../Components/Nav/Nav';
 import '../EditProfile/EditProfile.scss';
 import { FaUser } from 'react-icons/fa6';
 import { TbEdit } from "react-icons/tb";
+import { FaImage } from "react-icons/fa";
 import { TbCameraPlus } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom';
 import { doc, updateDoc } from 'firebase/firestore';
@@ -12,19 +13,19 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import EditAvatarModal from '../../Components/EditAvatarModal/EditAvatarModal';
 
 
-function EditProfile({ currentUser, getUser, user }) {
+function EditProfile({ currentUser, loggedUser }) {
     if (!currentUser) {
         <>Loading</>
     };
-    const  navigate  = useNavigate();
+    const navigate = useNavigate();
     const [isModalOpen, setModalOpen] = useState(false);
     const [updateUserName, setUpdateUserName] = useState(currentUser?.displayName);
-    const [updateName, setUpdateName] = useState(user?.name);
-    const [updateWebsite, setUpdateWebsite] = useState(user?.website);
-    const [updateLocation, setUpdateLocation] = useState(user?.location);
-    const [updateBio, setUpdateBio] = useState(user?.bio);
-    const [imageUpload, setImageUpload] = useState(user?.backgroundimg?.current);
-    const backgroundUrl = useRef(user?.backgroundimg?.current);
+    const [updateName, setUpdateName] = useState(loggedUser?.name);
+    const [updateWebsite, setUpdateWebsite] = useState(loggedUser?.website);
+    const [updateLocation, setUpdateLocation] = useState(loggedUser?.location);
+    const [updateBio, setUpdateBio] = useState(loggedUser?.bio);
+    const [imageUpload, setImageUpload] = useState(loggedUser?.backgroundimg?.current);
+    const backgroundUrl = useRef(loggedUser?.backgroundimg?.current);
     const updatedUserData = {
         name: updateName,
         website: updateWebsite,
@@ -80,8 +81,8 @@ function EditProfile({ currentUser, getUser, user }) {
     return (
         <section className='editprofile'>
             <div className='editprofile__background-container'>
-                {!user?.backgroundimg?.current ? (<div className='user__header-background'></div>)
-                    : (<img className='editprofile__header-background' src={user?.backgroundimg?.current} alt='user background' />)}
+                {!loggedUser?.backgroundimg?.current ? (<div className='user__header-background'></div>)
+                    : (<img className='editprofile__header-background' src={loggedUser?.backgroundimg?.current} alt='user background' />)}
                 <div className='editprofile__info-container'>
                     <div className='editprofile__avatar-div'>
                         {!currentUser?.photoURL ?
@@ -93,7 +94,7 @@ function EditProfile({ currentUser, getUser, user }) {
                             </div>)}
 
                         <label className='modal-overlay__upload-background' htmlFor='background-input' id='background'>
-                            <TbEdit className='editprofile__edit-background-icon' size={30} onClick={(event) => uploadImage(event)} />
+                            <div className='editprofile__edit-background' onClick={(event) => uploadImage(event)}> <FaImage fill='white'/>Replace</div>
                             <input className='modal-overlay__upload-input' id='background-input' name='background-input' type='file' onChange={(event) => { setImageUpload(event.target.files[0]) }}></input>
                         </label>
                     </div>
@@ -124,7 +125,7 @@ function EditProfile({ currentUser, getUser, user }) {
                     <button autoComplete='off' type='submit' className='editprofile__button' onClick={updateUser}>Submit</button>
                 </div>
             </article>
-            <EditAvatarModal getUser={getUser} isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
+            <EditAvatarModal isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
             <Nav currentUser={currentUser} />
         </section>
     )

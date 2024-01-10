@@ -14,28 +14,15 @@ import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 import { BsLightningFill } from 'react-icons/bs';
 
-function UserProfile({ currentUser, getUser }) {
+function UserProfile({ currentUser, loggedUser }) {
     const { id } = useParams();
-    const [artist, setArtist] = useState({});
     const [user, setUser] = useState({});
     const [encorePage, setEncorePage] = useState(false);
     const [musicPage, setMusicPage] = useState(true);
     const [bookingPage, setBookingPage] = useState(false);
     const [music, setMusic] = useState([]);
-    // const [userMusic, setUserMusic] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
 
-
-    // useEffect(() => {
-    //     const artistDocRef = doc(db, "Artists", `${id}`)
-    //     getDoc(artistDocRef)
-    //         .then((doc) => {
-    //             setArtist(doc.data(), doc.id)
-    //         })
-    //         .catch(error => {
-    //             console.log('error fetching video ID:s', error)
-    //         });
-    // }, [id])
 
     useEffect(() => {
         const userDocRef = doc(db, "users", `${id}`)
@@ -46,16 +33,7 @@ function UserProfile({ currentUser, getUser }) {
             .catch(error => {
                 console.log('error fetching video ID:s', error)
             });
-    }, [id])
-
-
-    // useEffect(() => {
-    //     const getArtists = async () => {
-    //         const musicData = await getDocs(collection(db, "users", `${id}`, "Music",));
-    //         setMusic(musicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    //     };
-    //     getArtists();
-    // }, [id]);
+    }, [id, user])
 
     useEffect(() => {
         const getUserMusic = async () => {
@@ -66,11 +44,9 @@ function UserProfile({ currentUser, getUser }) {
     }, [id]);
 
 
-    getUser();
-
     function handleFollow() {
-        const artistDocRef = doc(db, "Artists", `${id}`)
-        updateDoc(artistDocRef, { followers: artist?.followers + 1 })
+        const artistDocRef = doc(db, "users", `${id}`)
+        updateDoc(artistDocRef, { followers: user?.followers + 1 })
             .then(() => {
 
             })
@@ -80,7 +56,6 @@ function UserProfile({ currentUser, getUser }) {
         return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
     };
 
-    getUser();
 
     function handleNavToEncore() {
         setEncorePage(true)
@@ -104,7 +79,7 @@ function UserProfile({ currentUser, getUser }) {
         setModalOpen(true);
     };
 
-    if (currentUser?.uid && !user?.uid) {
+    if (currentUser?.uid === user?.id) {
         return (<>
             <section className='user'>
                 <div className='user__background-container'>
@@ -125,7 +100,9 @@ function UserProfile({ currentUser, getUser }) {
                                 <p className='user__username'>{currentUser?.displayName}</p>
                             </div>
                             <div className='user__button-div'>
-                                <Link className='user__button-link' to={`/EditProfile/${currentUser?.uid}`}><button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button></Link>
+                                <Link className='user__button-link' to={`/EditProfile/${currentUser?.uid}`}>
+                                    <button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button>
+                                </Link>
                             </div>
                         </div>
                         <div className='user__stats'>
@@ -148,7 +125,7 @@ function UserProfile({ currentUser, getUser }) {
                         </div>
                         <div className='user__website-div'>
                             <LuLink stroke='grey' strokeWidth={3} size={12} />
-                            <Link to={artist?.website} className='user__website'>{user?.website}</Link>
+                            <Link to={user?.website} className='user__website'>{user?.website}</Link>
                         </div>
                     </div>
 
@@ -165,7 +142,7 @@ function UserProfile({ currentUser, getUser }) {
             </section >
         </>)
     }
-    else if (user) {
+    else if (user.id !== currentUser?.uid) {
         return (
             <>
                 <section className='user'>

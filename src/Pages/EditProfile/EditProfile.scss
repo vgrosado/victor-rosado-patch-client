@@ -33,9 +33,19 @@
         fill: $PatchOrange;
     }
 
-    &__edit-background-icon {
-        position: absolute;
-        right: 1.5rem;
+    &__edit-background {
+        width: 100%;
+        height: 4vh;
+        text-align: center;
+        box-sizing: border-box;
+        padding: .375rem;
+        font-size: .750rem;
+        font-weight: bold;
+        color: white;
+        background-color: $PatchOrange;
+        border: 2px solid white;
+        border-radius: 5px;
+
     }
 
     &__background-container {
@@ -86,7 +96,7 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        align-items: center;
+        align-items: self-end;
     }
 
     &__info-container {
