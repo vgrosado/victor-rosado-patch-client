@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { db, signUp } from '../../Firebase';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
-import { v4 } from 'uuid';
-import { FaUser } from 'react-icons/fa';
 
 function SignUpForm() {
 
@@ -15,8 +13,6 @@ function SignUpForm() {
 	const [loading, setLoading] = useState(false);
 	const emailRef = useRef();
 	const passwordRef = useRef();
-	const music = [];
-	const comments = [];
 
 	async function handleSignUp() {
 		setLoading(true);
@@ -36,8 +32,6 @@ function SignUpForm() {
 				if (!userDoc.exists()) {
 					// If the user document doesn't exist, create it
 					setDoc(userRef, {
-						music,
-						comments,
 						rating: 0,
 						bio: "Tell us about yourself",
 						followers: 0,
@@ -53,8 +47,6 @@ function SignUpForm() {
 				} else {
 					// If the user document exists, update it
 					updateDoc(userRef, {
-						music,
-						comments,
 						rating: 0,
 						bio: "Tell us about yourself",
 						followers: 0,

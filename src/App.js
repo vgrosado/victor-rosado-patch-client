@@ -53,7 +53,7 @@ function App() {
         <Route path="/Login" element={<LoginPage  loading={loading} setLoading={setLoading} />} />
         <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/Home" element={<HomePage users={users} currentUser={currentUser} />} />
-        <Route path="/Profile/:id" element={<UserProfile loggedUser={loggedUser} currentUser={currentUser}  />} />
+        <Route path="/Profile/:id" element={<UserProfile  currentUser={currentUser}  />} />
         <Route path="/EditProfile/:uid" element={<EditProfile currentUser={currentUser} loggedUser={loggedUser} />} />
         <Route path="UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser}/>}></Route>
       </Routes>

@@ -14,7 +14,7 @@ import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 import { BsLightningFill } from 'react-icons/bs';
 
-function UserProfile({ currentUser, loggedUser }) {
+function UserProfile({ currentUser }) {
     const { id } = useParams();
     const [user, setUser] = useState({});
     const [encorePage, setEncorePage] = useState(false);
@@ -33,7 +33,7 @@ function UserProfile({ currentUser, loggedUser }) {
             .catch(error => {
                 console.log('error fetching video ID:s', error)
             });
-    }, [id, user])
+    }, [id])
 
     useEffect(() => {
         const getUserMusic = async () => {
@@ -135,14 +135,14 @@ function UserProfile({ currentUser, loggedUser }) {
                         <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Booking</p>
                     </div>
                     {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} />)}
-                    {encorePage && (<ReviewForm artist={artist} />)}
-                    {bookingPage && (<Booking artist={artist} />)}
+                    {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
+                    {bookingPage && (<Booking currentUser={currentUser} user={user} />)}
                 </article>
                 <Nav currentUser={currentUser} user={user} openModal={openModal} />
             </section >
         </>)
     }
-    else if (user.id !== currentUser?.uid) {
+    else if (user?.id !== currentUser?.uid) {
         return (
             <>
                 <section className='user'>
@@ -197,8 +197,8 @@ function UserProfile({ currentUser, loggedUser }) {
                             <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Booking</p>
                         </div>
                         {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} />)}
-                        {encorePage && (<ReviewForm currentUser={currentUser} artist={artist} />)}
-                        {bookingPage && (<Booking artist={artist} />)}
+                        {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
+                        {bookingPage && (<Booking user={user} />)}
                     </article>
                     <Nav currentUser={currentUser} user={user} openModal={openModal} />
                 </section >
