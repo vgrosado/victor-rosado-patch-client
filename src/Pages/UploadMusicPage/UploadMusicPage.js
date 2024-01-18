@@ -84,6 +84,7 @@ function UploadMusicPage({ currentUser }) {
         setUpdateArtist("")
         setUpdateTitle("")
         setThumbnail("")
+        setTrackPreview("")
     };
 
     // Update the previewUrl state
@@ -187,8 +188,9 @@ function UploadMusicPage({ currentUser }) {
                         </input>
                     </label>
                 </div>
-                <button className='uploadmusicpage__uploadbutton' type='submit'
-                    onClick={(e) => handleTrackUpload(e)}>Upload</button>
+                {uploadProgress !== 100 ? <button className='uploadmusicpage__uploadbutton-disabled' disabled type='submit'
+                    onClick={(e) => handleTrackUpload(e)}>Upload</button> : <button className='uploadmusicpage__uploadbutton' type='submit'
+                    onClick={(e) => handleTrackUpload(e)}>Upload</button>}
             </article>
             <Nav currentUser={currentUser} />
         </section>

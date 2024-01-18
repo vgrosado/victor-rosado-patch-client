@@ -81,8 +81,8 @@ function EditProfile({ currentUser, loggedUser }) {
     return (
         <section className='editprofile'>
             <div className='editprofile__background-container'>
-                {!loggedUser?.backgroundimg?.current ? (<div className='user__header-background'></div>)
-                    : (<img className='editprofile__header-background' src={loggedUser?.backgroundimg?.current} alt='user background' />)}
+                {!loggedUser?.backgroundimg ? (<div className='user__header-background'></div>)
+                    : (<img className='editprofile__header-background' src={loggedUser?.backgroundimg} alt='user background' />)}
                 <div className='editprofile__info-container'>
                     <div className='editprofile__avatar-div'>
                         {!currentUser?.photoURL ?
@@ -93,10 +93,10 @@ function EditProfile({ currentUser, loggedUser }) {
                                 <TbCameraPlus stroke='white' onClick={openModal} size={30} className='editprofile__edit-avatar' />
                             </div>)}
 
-                        <label className='modal-overlay__upload-background' htmlFor='background-input' id='background'>
+                        {/* <label className='modal-overlay__upload-background' htmlFor='background-input' id='background'>
                             <div className='editprofile__edit-background' onClick={(event) => uploadImage(event)}> <FaImage fill='white'/>Replace</div>
                             <input className='modal-overlay__upload-input' id='background-input' name='background-input' type='file' onChange={(event) => { setImageUpload(event.target.files[0]) }}></input>
-                        </label>
+                        </label> */}
                     </div>
                 </div>
             </div>

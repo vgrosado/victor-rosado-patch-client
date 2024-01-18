@@ -83,8 +83,8 @@ function UserProfile({ currentUser }) {
         return (<>
             <section className='user'>
                 <div className='user__background-container'>
-                    {user?.backgroundimg?.current === undefined ? (<div className='user__header-background'></div>)
-                        : (<img className='user__header-background' src={user?.backgroundimg?.current} alt='user background' />)}
+                    {user?.backgroundimg === undefined ? (<div className='user__header-background'></div>)
+                        : (<img className='user__header-background' src={user?.backgroundimg} alt='user background' />)}
                     <div className='user__info-container'>
                         <div className='user__avatar-div'>
                             {!currentUser?.photoURL ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>)
