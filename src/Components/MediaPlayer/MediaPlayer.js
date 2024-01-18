@@ -100,15 +100,14 @@ function MediaPlayer({ music, currentUser, user }) {
         }
     };
 
-    if (currentUser && !user && music.length === 0) {
+    if (currentUser?.uid === user.id && music.length === 0) {
         return (
             <EmptyMediaPlayer
                 currentUser={currentUser}
-                user={user}
             />
         )
     }
-    else if (user && music.length === 0) {
+    else if (currentUser?.uid !== user?.id && music.length === 0 ) {
         return (
             <section className='mediaplayer'>
                 <div className='mediaplayer__empty-alertdiv'>
