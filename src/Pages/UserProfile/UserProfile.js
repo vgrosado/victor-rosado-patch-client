@@ -83,7 +83,7 @@ function UserProfile({ currentUser }) {
         return (<>
             <section className='user'>
                 <div className='user__background-container'>
-                    {user?.backgroundimg === undefined ? (<div className='user__header-background'></div>)
+                    {!user?.backgroundimg ? (<div className='user__header-background'></div>)
                         : (<img className='user__header-background' src={user?.backgroundimg} alt='user background' />)}
                     <div className='user__info-container'>
                         <div className='user__avatar-div'>

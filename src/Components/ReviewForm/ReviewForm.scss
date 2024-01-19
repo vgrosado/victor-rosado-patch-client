@@ -14,6 +14,7 @@ input[type='radio'] {
     padding-top: 1rem;
 
     &__heading {
+        text-wrap: balance;
         font-weight: 300;
         color: white;
         align-self: center;
@@ -42,7 +43,7 @@ input[type='radio'] {
     }
 
     &__username-input {
-        height: 7vh;
+        height: 2rem;
         width: 42%;
         outline: none;
         font-weight: 300;
@@ -59,20 +60,21 @@ input[type='radio'] {
     }
 
     &__input {
-        height: 55%;
+        text-align: start;
+        height: 8rem;
         width: 100%;
         border: none;
         border-radius: .625rem;
         box-sizing: border-box;
         margin: 1rem 0rem;
-        padding: 1rem .5rem 4rem .5rem;
+        padding: .5rem .5rem;
         outline: none;
         font-weight: 300;
         color: black;
         &::placeholder {
             font-size: 1rem;
             font-weight: 300;
-            color: grey;
+            color: black;
         }
     }
 
@@ -83,7 +85,7 @@ input[type='radio'] {
         font-weight: 300;
         color: $PatchOrange;
         background-color: $PatchGrey;
-        border: none;
+        border: 1px solid $PatchOrange;
         padding: 0.5rem 1rem;
         box-sizing: border-box;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
@@ -146,6 +148,9 @@ input[type='radio'] {
     }
 
     &__review {
+        word-wrap: break-word;
+        word-break: break-all;
+        text-wrap: balance;
         font-size: .75rem;
         color: white;
         font-weight: 300;

@@ -116,10 +116,9 @@
         font-size: .9375rem;
         font-weight: bold;
         color: white;
-
-        @include iphone12Pro {
-            font-size: 1.25rem;
-        }
+        font-size: 1.25rem;
+        margin-top: 1rem;
+        
     }
 
     &__upload-subtitle {

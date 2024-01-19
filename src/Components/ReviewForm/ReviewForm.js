@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { addDoc, getDocs, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { addDoc, getDocs, collection, deleteDoc } from "firebase/firestore";
 import { db } from '../../Firebase';
 import '../ReviewForm/ReviewForm.scss';
 import { BsLightningFill } from 'react-icons/bs';
@@ -10,50 +10,50 @@ function ReviewForm({ user, currentUser }) {
     const { id } = useParams();
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
-    const [newReview, setNewReview] = useState("");
-    const [deleteThisReview, setDeleteThisReview] = useState();
+    const [newReview, setNewReview] = useState();
+    // const [deleteThisReview, setDeleteThisReview] = useState();
     const [newUser, setNewUser] = useState("");
     const [review, setReview] = useState([]);
     const [voltage, setVoltage] = useState(0);
 
     useEffect(() => {
-        const getReviews = async () => {
+        async function getReviews() {
             const reviewData = await getDocs(collection(db, "users", `${id}`, "Reviews"));
             setReview(reviewData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         };
         getReviews();
     }, [id, newReview])
 
-    const createReview = async (event) => {
+    function createReview(event) {
         event.preventDefault();
         const reviewData = collection(db, "users", `${id}`, "Reviews");
-        await setDoc(reviewData, {
+        addDoc(reviewData, {
             user: currentUser?.displayName,
             rating: parseFloat(voltage),
             avatar: currentUser?.photoURL,
             review: newReview,
             time: new Date().toLocaleDateString(),
         });
-
         // Clear form values after submitting review
         setNewUser("");
         setNewReview("");
-        setReview("");
         setRating(null);
     };
 
-    function findReview(array) {
-        return array.find((review) => {
-            let reviewToDelete = doc.id === review.id;
-            setDeleteThisReview(reviewToDelete);
-              return reviewToDelete;
-        });
-    }
-    const deleteReview = async () => {
-        // findReview(review)
-        const reviewData = doc(db, "users", `${id}`, "Reviews", `${deleteThisReview}`);
-        await deleteDoc(reviewData);
-    };
+    console.log(newReview)
+
+    // function findReview(array) {
+    //     return array.find((review) => {
+    //         let reviewToDelete = doc.id === review.id;
+    //         setDeleteThisReview(reviewToDelete);
+    //           return reviewToDelete;
+    //     });
+    // }
+    // const deleteReview = async () => {
+    //     // findReview(review)
+    //     const reviewData = doc(db, "users", `${id}`, "Reviews", `${deleteThisReview}`);
+    //     await deleteDoc(reviewData);
+    // };
 
     if (currentUser?.uid === user?.id) {
         return (
@@ -113,12 +113,13 @@ function ReviewForm({ user, currentUser }) {
                         name='user'
                         placeholder={currentUser?.displayName}
                         value={currentUser?.displayName} />
-                    <input
+                    <textarea
                         onChange={(event) => { setNewReview(event.target.value) }}
                         className='reviewform__input'
                         type='text'
                         name='comment'
-                        placeholder='Leave a review' />
+                        placeholder='Leave a review'
+                        value={newReview} />
                     <button onClick={createReview} type='submit' className='reviewform__button'>Submit</button>
                 </form>
                 <div className='reviewform__review-section'>
@@ -129,12 +130,12 @@ function ReviewForm({ user, currentUser }) {
                                     <img className='reviewform__avatar' src={rev?.avatar}></img>
                                     <div className='reviewform__user-details'>
                                         <p className='reviewform__username'>{rev?.user}</p>
-                                        <p className='reviewform__user-timestamp'>{new Date(rev.time).toLocaleDateString()}</p>
+                                        <p className='reviewform__user-timestamp'>{new Date(rev?.time).toLocaleDateString()}</p>
                                         <div className='reviewform__voltage-div'>
                                             {[...Array(rev?.rating)].map((e) => {
                                                 return (<BsLightningFill className='reviewform__voltage' />)
                                             })}
-                                            <button onClick={() => deleteReview()}>delete</button>
+                                            {/* <button onClick={() => deleteReview()}>delete</button> */}
                                         </div>
                                     </div>
                                 </div>

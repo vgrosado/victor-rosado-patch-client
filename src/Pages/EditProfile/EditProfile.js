@@ -119,8 +119,8 @@ function EditProfile({ currentUser, loggedUser }) {
                         </input>
                     </label>
                     <label className='editprofile__input-label' htmlFor='location'>Bio
-                        <input autoComplete='off' className='editprofile__input' name='location' type='text' id='location' contentEditable={true} onChange={(event) => { setUpdateBio(event.target.value) }} value={updateBio}>
-                        </input>
+                        <textarea autoComplete='off' className='editprofile__input' name='location' type='text' id='location' contentEditable={true} onChange={(event) => { setUpdateBio(event.target.value) }} value={updateBio}>
+                        </textarea>
                     </label>
                     <button autoComplete='off' type='submit' className='editprofile__button' onClick={updateUser}>Submit</button>
                 </div>

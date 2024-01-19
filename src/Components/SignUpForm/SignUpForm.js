@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import '../SignUpForm/SignUpForm.scss';
-import { AiFillEye } from 'react-icons/ai';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { db, signUp } from '../../Firebase';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
@@ -8,6 +8,7 @@ import { updateProfile } from 'firebase/auth';
 
 function SignUpForm() {
 
+	const [passwordOff, setPasswordOff] = useState(true);
 	const [newName, setNewName] = useState();
 	const [userName, setUserName] = useState();
 	const [loading, setLoading] = useState(false);
@@ -74,6 +75,13 @@ function SignUpForm() {
 	};
 
 
+	function handlePasswordPrivacy() {
+		if (passwordOff === true) {
+		setPasswordOff(false);
+		} else {
+			setPasswordOff(true)
+		}
+	};
 
 
 
@@ -120,18 +128,19 @@ function SignUpForm() {
 					ref={passwordRef}
 				>
 				</input>
-				<div className='signup-form__icon'>
-					<AiFillEye className='signup-form__eye' />
+				<div className='form__icon'>
+					{passwordOff ? <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} /> : 
+					<AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />}
 				</div>
 			</div>
-			<div className='signup-form__rememberme-div'>
+			{/* <div className='signup-form__rememberme-div'>
 				<input
 					className='signup-form__rememberme'
 					type='checkbox'
 					id='remember-me'>
 				</input>
 				<label className='signup-form__rememberme-label'>Remember Me</label>
-			</div>
+			</div> */}
 			<Link to={'/Home'}><button disabled={loading} className="signup-form__button" onClick={handleSignUp}>Sign Up</button></Link>
 		</div>
 	)
