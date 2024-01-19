@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../LoginForm/LoginForm.scss'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { login } from '../../Firebase';
@@ -8,24 +8,28 @@ function LoginForm({ loading, setLoading, getUser }) {
 	const [passwordOff, setPasswordOff] = useState(true);
 	const emailRef = useRef();
 	const passwordRef = useRef();
+	const navigateTo = useNavigate();
 
 	async function handleLogin() {
-		setLoading(true);
-		try {
-			await login(emailRef.current.value, passwordRef.current.value);
-			setLoading(false);
-			getUser();
-		} catch (error) {
-			setLoading(false);
-			// Handle login error, for example:
-			console.log('Login error:', error.message);
-		}
+		if (!emailRef.current.value || !passwordRef.current.value) {
+			return alert('Must sign in to continue'); }
+		else if (emailRef.current.value && passwordRef.current.value) {
+			setLoading(true);
+			try {
+				await login(emailRef.current.value, passwordRef.current.value);
+				setLoading(false);
+			} catch (error) {
+				setLoading(false);
+				console.log('Login error:', error.message);
+			}
+			navigateTo('/Home');
+		};
 
 	};
 
 	function handlePasswordPrivacy() {
 		if (passwordOff === true) {
-		setPasswordOff(false);
+			setPasswordOff(false);
 		} else {
 			setPasswordOff(true)
 		}
@@ -54,8 +58,8 @@ function LoginForm({ loading, setLoading, getUser }) {
 					ref={passwordRef}>
 				</input>
 				<div className='form__icon'>
-					{passwordOff ? <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} /> : 
-					<AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />}
+					{passwordOff ? <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} /> :
+						<AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />}
 				</div>
 			</div>
 			{/* <div className='form__rememberme-div'>
@@ -67,7 +71,7 @@ function LoginForm({ loading, setLoading, getUser }) {
 				<label className='form__rememberme-label'>Remember Me</label>
 			</div> */}
 
-			<Link to={'/Home'} ><button onClick={handleLogin} disabled={loading} className="form__button" type="submit">Sign In</button></Link>
+			<button onClick={handleLogin} disabled={loading} className="form__button" type="submit">Sign In</button>
 		</section>
 	)
 }
