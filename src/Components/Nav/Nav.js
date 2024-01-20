@@ -29,10 +29,10 @@ function Nav({ currentUser }) {
                 <Link to={`/Profile/${currentUser?.uid}`}><SlUser className='nav__icons' /></Link>
                 <p className='nav__label'>Profile</p>
             </div>
-            <div className='nav__div'>
+            {/* <div className='nav__div'>
                 <Link><PiBooks className='nav__icons' /></Link>
                 <p className='nav__label'>Bookings</p>
-            </div>
+            </div> */}
             <div className='nav__div'>
                 <Link to={`/UploadMusic/${currentUser?.uid}`}><RiUploadCloudLine className='nav__icons' /></Link>
                 <p className='nav__label'>Upload</p>
