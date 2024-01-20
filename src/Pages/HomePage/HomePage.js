@@ -10,17 +10,18 @@ import UserCard from '../../Components/UserCard/UserCard';
 
 function HomePage({ currentUser, users }) {
     console.log("currently logged in user => " + currentUser?.email)
-    console.log(users)
+
 
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
                     <div className='homepage__header-container'>
-                        <div className='homepage__avatar-div'>
+                        <Link to={`/Profile/${currentUser?.uid}`}><div className='homepage__avatar-div'>
                             {currentUser?.photoURL === null ? (<FaUser size={40} className='homepage__avatar-placeholder' />)
-                                : (<Link to={`/Profile/${currentUser?.uid}`}><div className='homepage__avatar-div'><img className='homepage__avatar' src={currentUser?.photoURL} /></div></Link>)}
+                                : (<div className='homepage__avatar-div'><img className='homepage__avatar' src={currentUser?.photoURL} /></div>)}
                         </div>
+                        </Link>
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>
                             <BiEnvelope className='homepage__header-icons' />
