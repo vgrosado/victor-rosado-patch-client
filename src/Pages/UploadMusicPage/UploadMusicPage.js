@@ -3,7 +3,7 @@ import Nav from '../../Components/Nav/Nav';
 import { useEffect, useRef, useState } from 'react';
 import { db, storage } from '../../Firebase';
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection} from 'firebase/firestore';
 import { FaPhotoVideo } from "react-icons/fa";
 
 function UploadMusicPage({ currentUser }) {
@@ -85,6 +85,8 @@ function UploadMusicPage({ currentUser }) {
         setUpdateTitle("")
         setThumbnail("")
         setTrackPreview("")
+        setUploadProgress(null)
+        setTrackUpload(null)
     };
 
     // Update the previewUrl state

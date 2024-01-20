@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../LoginForm/LoginForm.scss'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { login } from '../../Firebase';

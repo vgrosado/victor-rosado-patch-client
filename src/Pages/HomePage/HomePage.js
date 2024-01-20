@@ -2,7 +2,6 @@ import '../HomePage/HomePage.scss'
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BiBell } from 'react-icons/bi';
 import { BiEnvelope } from 'react-icons/bi';
-import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 import Nav from '../../Components/Nav/Nav';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -24,8 +23,8 @@ function HomePage({ currentUser, users }) {
                         </Link>
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>
-                            <BiEnvelope className='homepage__header-icons' />
-                            <BiBell className='homepage__header-icons' />
+                            {/* <BiEnvelope className='homepage__header-icons' />
+                            <BiBell className='homepage__header-icons' /> */}
                         </div>
                     </div>
                     <div className='homepage__input-div'>
