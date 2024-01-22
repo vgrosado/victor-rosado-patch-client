@@ -12,11 +12,11 @@ function ReviewForm({ user, currentUser }) {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
     const [newReview, setNewReview] = useState();
-    // const [deleteThisReview, setDeleteThisReview] = useState();
     const [newUser, setNewUser] = useState("");
     const [review, setReview] = useState([]);
     const [voltage, setVoltage] = useState(0);
 
+    //get all reviews for specific user
     useEffect(() => {
         async function getReviews() {
             const reviewData = await getDocs(collection(db, "users", `${id}`, "Reviews"));
@@ -27,7 +27,7 @@ function ReviewForm({ user, currentUser }) {
 
     
 
-
+    //create a new review
     function createReview(event) {
         event.preventDefault();
         const reviewData = collection(db, "users", `${id}`, "Reviews");
@@ -45,7 +45,7 @@ function ReviewForm({ user, currentUser }) {
         setRating(null);
     };
 
-    
+    //delete a review
     async function deleteReview(reviewId){
         const reviewData = doc(db, "users", `${id}`, "Reviews", `${reviewId}`);
          await deleteDoc(reviewData);
