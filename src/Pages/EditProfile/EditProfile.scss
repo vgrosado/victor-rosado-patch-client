@@ -268,4 +268,10 @@
         cursor: pointer;
     }
 
+    &__delete-account {
+        color: red;
+        font-weight: 300;
+        text-align: center;
+    }
+
 }

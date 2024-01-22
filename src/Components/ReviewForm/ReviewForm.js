@@ -3,6 +3,7 @@ import { addDoc, getDocs, collection, deleteDoc, doc } from "firebase/firestore"
 import { db } from '../../Firebase';
 import '../ReviewForm/ReviewForm.scss';
 import { BsLightningFill } from 'react-icons/bs';
+import { FaRegTrashCan } from "react-icons/fa6";
 import { useParams } from 'react-router-dom';
 import { v4 } from 'uuid';
 
@@ -25,7 +26,7 @@ function ReviewForm({ user, currentUser }) {
         getReviews();
     }, [newReview, id, deleteReview])
 
-    
+
 
     //create a new review
     function createReview(event) {
@@ -46,12 +47,12 @@ function ReviewForm({ user, currentUser }) {
     };
 
     //delete a review
-    async function deleteReview(reviewId){
+    async function deleteReview(reviewId) {
         const reviewData = doc(db, "users", `${id}`, "Reviews", `${reviewId}`);
-         await deleteDoc(reviewData);
+        await deleteDoc(reviewData);
     };
 
-    
+
 
     if (currentUser?.uid === user?.id) {
         return (
@@ -133,12 +134,16 @@ function ReviewForm({ user, currentUser }) {
                                             {[...Array(rev?.rating)].map((e) => {
                                                 return (<BsLightningFill className='reviewform__voltage' />)
                                             })}
-                                            <button onClick={() => deleteReview(rev?.id)}>delete</button>
-                                            
                                         </div>
                                     </div>
                                 </div>
-                                <p className='reviewform__review'>{rev?.review}</p>
+                                <div className='reviewform__review-container'>
+                                    <p className='reviewform__review'>{rev?.review}</p>
+                                    {currentUser?.displayName === rev?.user ?
+                                     <FaRegTrashCan color='#ff7b00' onClick={() => deleteReview(rev?.id)}/>
+                                        // <button className='reviewform__delete-button' onClick={() => deleteReview(rev?.id)}>delete</button>
+                                        : ""}
+                                </div>
                             </div>
                         )
                     })}

@@ -1,0 +1,90 @@
+@use '../../Styles/Partials/variable' as*;
+@use '../../Styles/Partials/typography' as*;
+
+
+.deleteoverlay {
+    font-weight: 300;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: $PatchMedium-Grey;
+        opacity: .99;
+        position: relative;
+        top: 20vh;
+        height: 25vh;
+        width: 75%;
+        padding: 7.5vw;
+        box-shadow: 12px 12px 17px 6px rgba(0, 0, 0, 0.6901960784);
+        border-radius: 1rem;
+    }
+
+    &__warning-header {
+        color: $PatchOrange;
+        font-weight: bold;
+    }
+
+    &__warning {
+        color: white;
+        font-weight: 300;
+        word-break: normal;
+        white-space: wrap;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    &__delete-button {
+        background-color: red;
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 300;
+        align-self: center;
+        width: 100%;
+        height: 6vh;
+        border: none;
+        border-radius: 1.25rem;
+        box-sizing: border-box;
+        padding: 2vw;
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+        cursor: pointer;
+    }
+
+   &__cancel-button {
+    margin-bottom: 1rem;
+    background-color: $PatchGrey;
+    color: $PatchOrange;
+    font-size: 1.25rem;
+    font-weight: 300;
+    align-self: center;
+    width: 100%;
+    height: 6vh;
+    border: 2px solid $PatchOrange;
+    border-radius: 1.25rem;
+    box-sizing: border-box;
+    padding: 2vw;
+    box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+    cursor: pointer;
+   }
+
+    &__close {
+        position: absolute;
+        top: 0vh;
+        right: 0vh;
+        height: 99%;
+        width: 99%;
+        z-index: -1;
+
+    }
+}

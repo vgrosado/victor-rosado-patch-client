@@ -8,9 +8,10 @@ import { TbCameraPlus } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../../Firebase';
-import { updateProfile } from 'firebase/auth';
+import {  updateProfile } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import EditAvatarModal from '../../Components/EditAvatarModal/EditAvatarModal';
+import DeleteUserModal from '../../Components/DeleteUserModal/DeleteUserModal';
 
 
 function EditProfile({ currentUser, loggedUser }) {
@@ -19,6 +20,7 @@ function EditProfile({ currentUser, loggedUser }) {
     };
     const navigate = useNavigate();
     const [isModalOpen, setModalOpen] = useState(false);
+    const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [updateUserName, setUpdateUserName] = useState(currentUser?.displayName);
     const [updateName, setUpdateName] = useState(loggedUser?.name);
     const [updateWebsite, setUpdateWebsite] = useState(loggedUser?.website);
@@ -78,6 +80,15 @@ function EditProfile({ currentUser, loggedUser }) {
         setModalOpen(true);
     };
 
+
+    function closeDeleteModal() {
+        setDeleteModalOpen(false);
+    };
+
+    function openDeleteModal() {
+        setDeleteModalOpen(true);
+    };
+
     return (
         <section className='editprofile'>
             <div className='editprofile__background-container'>
@@ -123,8 +134,10 @@ function EditProfile({ currentUser, loggedUser }) {
                         </textarea>
                     </label>
                     <button autoComplete='off' type='submit' className='editprofile__button' onClick={updateUser}>Submit</button>
+                    <p className='editprofile__delete-account' onClick={openDeleteModal}>Delete account</p>
                 </div>
             </article>
+            <DeleteUserModal isDeleteModalOpen={isDeleteModalOpen} closeDeleteModal={closeDeleteModal} currentUser={currentUser} />
             <EditAvatarModal isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
             <Nav currentUser={currentUser} />
         </section>

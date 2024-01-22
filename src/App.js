@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignUpPage from './Pages/SignUpPage/SignUpPage';
 import HomePage from './Pages/HomePage/HomePage';
@@ -19,12 +19,13 @@ function App() {
   const currentUser = auth.currentUser;
   const [loading, setLoading] = useState(false);
 
+  const usersCollectionRef = collection(db, "users")
+  const getUsers = async () => {
+    const Data = await getDocs(usersCollectionRef);
+    setUsers(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+  };
+
   useEffect(() => {
-    const usersCollectionRef = collection(db, "users")
-    const getUsers = async () => {
-      const Data = await getDocs(usersCollectionRef);
-      setUsers(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    };
     getUsers();
   }, []);
 
@@ -49,13 +50,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage  loading={loading} setLoading={setLoading} />} />
-        <Route path="/Login" element={<LoginPage  loading={loading} setLoading={setLoading} />} />
+        <Route path="/" element={<LoginPage loading={loading} setLoading={setLoading} />} />
+        <Route path="/Login" element={<LoginPage loading={loading} setLoading={setLoading} />} />
         <Route path="/SignUp" element={<SignUpPage />} />
-        <Route path="/Home" element={<HomePage users={users} currentUser={currentUser} />} />
-        <Route path="/Profile/:id" element={<UserProfile  currentUser={currentUser}  />} />
+        <Route path="/Home" element={<HomePage users={users} getUsers={getUsers} currentUser={currentUser} />} />
+        <Route path="/Profile/:id" element={<UserProfile currentUser={currentUser} />} />
         <Route path="/EditProfile/:uid" element={<EditProfile currentUser={currentUser} loggedUser={loggedUser} />} />
-        <Route path="UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser}/>}></Route>
+        <Route path="UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser} />}></Route>
       </Routes>
     </BrowserRouter>
   );

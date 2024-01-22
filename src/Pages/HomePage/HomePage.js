@@ -6,11 +6,14 @@ import Nav from '../../Components/Nav/Nav';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import UserCard from '../../Components/UserCard/UserCard';
+import { useEffect } from 'react';
 
-function HomePage({ currentUser, users }) {
+function HomePage({ currentUser, users, getUsers }) {
+
+    useEffect(() => {
+        getUsers();
+    },[]);
     console.log("currently logged in user => " + currentUser?.email)
-
-
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>
