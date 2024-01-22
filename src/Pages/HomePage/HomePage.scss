@@ -134,7 +134,8 @@
     &__heading {
         font-weight: 300;
         font-size: 2rem;
-        color: $PatchOrange;
+        color: white;
+        text-shadow: 2px 4px 8px black;
     }
 
     &__subheading {

@@ -7,7 +7,7 @@ function UserCard({ user }) {
     if (!user.avatar) {
         return (<Link className='usercard' to={`/Profile/${user?.id}`}>
             <div className='usercard__image-empty'><FaUser size={80} className='artist-container__placeholder' /></div>
-            <label className='usercard__name'>{user?.name}</label>
+            <label className='usercard__name'>{user?.displayName}</label>
         </Link>)
     }
     return (
