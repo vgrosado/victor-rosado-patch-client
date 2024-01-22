@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { addDoc, getDocs, collection, deleteDoc } from "firebase/firestore";
+import { addDoc, getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { db } from '../../Firebase';
 import '../ReviewForm/ReviewForm.scss';
 import { BsLightningFill } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
+import { v4 } from 'uuid';
 
 
 function ReviewForm({ user, currentUser }) {
@@ -22,7 +23,10 @@ function ReviewForm({ user, currentUser }) {
             setReview(reviewData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         };
         getReviews();
-    }, [id, newReview])
+    }, [newReview, id, deleteReview])
+
+    
+
 
     function createReview(event) {
         event.preventDefault();
@@ -33,6 +37,7 @@ function ReviewForm({ user, currentUser }) {
             avatar: currentUser?.photoURL,
             review: newReview,
             time: new Date().toLocaleDateString(),
+            id: v4()
         });
         // Clear form values after submitting review
         setNewUser("");
@@ -40,20 +45,13 @@ function ReviewForm({ user, currentUser }) {
         setRating(null);
     };
 
-    console.log(newReview)
+    
+    async function deleteReview(reviewId){
+        const reviewData = doc(db, "users", `${id}`, "Reviews", `${reviewId}`);
+         await deleteDoc(reviewData);
+    };
 
-    // function findReview(array) {
-    //     return array.find((review) => {
-    //         let reviewToDelete = doc.id === review.id;
-    //         setDeleteThisReview(reviewToDelete);
-    //           return reviewToDelete;
-    //     });
-    // }
-    // const deleteReview = async () => {
-    //     // findReview(review)
-    //     const reviewData = doc(db, "users", `${id}`, "Reviews", `${deleteThisReview}`);
-    //     await deleteDoc(reviewData);
-    // };
+    
 
     if (currentUser?.uid === user?.id) {
         return (
@@ -135,7 +133,8 @@ function ReviewForm({ user, currentUser }) {
                                             {[...Array(rev?.rating)].map((e) => {
                                                 return (<BsLightningFill className='reviewform__voltage' />)
                                             })}
-                                            {/* <button onClick={() => deleteReview()}>delete</button> */}
+                                            <button onClick={() => deleteReview(rev?.id)}>delete</button>
+                                            
                                         </div>
                                     </div>
                                 </div>
