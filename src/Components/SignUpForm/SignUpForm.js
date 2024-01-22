@@ -134,8 +134,8 @@ function SignUpForm() {
 				>
 				</input>
 				<div className='form__icon'>
-					{passwordOff ? <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} /> :
-						<AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />}
+					{passwordOff ? <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />
+						: <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} />}
 				</div>
 			</div>
 			{/* <div className='signup-form__rememberme-div'>

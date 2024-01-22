@@ -12,7 +12,8 @@ function LoginForm({ loading, setLoading, getUser }) {
 
 	async function handleLogin() {
 		if (!emailRef.current.value || !passwordRef.current.value) {
-			return alert('Must sign in to continue'); }
+			return alert('Must sign in to continue');
+		}
 		else if (emailRef.current.value && passwordRef.current.value) {
 			setLoading(true);
 			try {
@@ -58,8 +59,8 @@ function LoginForm({ loading, setLoading, getUser }) {
 					ref={passwordRef}>
 				</input>
 				<div className='form__icon'>
-					{passwordOff ? <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} /> :
-						<AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />}
+					{passwordOff ? <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />
+						: <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} />}
 				</div>
 			</div>
 			{/* <div className='form__rememberme-div'>

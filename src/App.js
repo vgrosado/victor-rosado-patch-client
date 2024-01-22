@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignUpPage from './Pages/SignUpPage/SignUpPage';
 import HomePage from './Pages/HomePage/HomePage';
@@ -44,7 +44,6 @@ function App() {
     getUser();
   }, [currentUser?.uid])
 
-  console.log(loggedUser)
 
 
   return (
