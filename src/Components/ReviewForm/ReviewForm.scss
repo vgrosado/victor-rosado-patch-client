@@ -14,11 +14,16 @@ input[type='radio'] {
     padding-top: 1rem;
 
     &__heading {
+        text-align: center;
         text-wrap: balance;
         font-weight: 300;
         color: white;
         align-self: center;
         padding-top: 0.5rem;
+    }
+
+    &__displayName {
+        color: $PatchOrange;
     }
 
     &__form {
@@ -71,6 +76,7 @@ input[type='radio'] {
         outline: none;
         font-weight: 300;
         color: black;
+        resize: none;
         &::placeholder {
             font-size: 1rem;
             font-weight: 300;

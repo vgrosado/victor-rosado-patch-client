@@ -6,13 +6,19 @@ import Nav from '../../Components/Nav/Nav';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import UserCard from '../../Components/UserCard/UserCard';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function HomePage({ currentUser, users, getUsers }) {
+    const [searchInput, setSearchInput] = useState([]);
+
+    const filteredUsers = users.filter((user) => {
+        const searchData = `${user.displayName}`.toLowerCase();
+        return searchData.includes(String(searchInput).toLowerCase());
+    })
 
     useEffect(() => {
         getUsers();
-    },[]);
+    }, []);
     console.log("currently logged in user => " + currentUser?.email)
     return (
         <main className='homepage'>
@@ -31,7 +37,7 @@ function HomePage({ currentUser, users, getUsers }) {
                         </div>
                     </div>
                     <div className='homepage__input-div'>
-                        <input className='homepage__search-input' placeholder='Search'></input>
+                        <input className='homepage__search-input' placeholder='Search' value={searchInput} onChange={(event) => setSearchInput(event.target.value)}></input>
                         <AiOutlineSearch className='homepage__search-icon' />
                     </div>
                 </div>
@@ -49,7 +55,7 @@ function HomePage({ currentUser, users, getUsers }) {
                 <section className='homepage__container'>
                     <>
                     </>
-                    {users.map(user => (
+                    {filteredUsers.map(user => (
                         <UserCard key={user.id} currentUser={currentUser} user={user} />
                     ))}
                 </section>

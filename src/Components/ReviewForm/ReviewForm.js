@@ -18,14 +18,14 @@ function ReviewForm({ user, currentUser }) {
     const [voltage, setVoltage] = useState(0);
 
     //get all reviews for specific user
-    useEffect(() => {
-        async function getReviews() {
-            const reviewData = await getDocs(collection(db, "users", `${id}`, "Reviews"));
-            setReview(reviewData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        };
-        getReviews();
-    }, [newReview, id, deleteReview])
+    async function getReviews() {
+        const reviewData = await getDocs(collection(db, "users", `${id}`, "Reviews"));
+        setReview(reviewData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    };
 
+    useEffect(() => {
+        getReviews();
+    }, [newReview, id])
 
 
     //create a new review
@@ -50,8 +50,8 @@ function ReviewForm({ user, currentUser }) {
     async function deleteReview(reviewId) {
         const reviewData = doc(db, "users", `${id}`, "Reviews", `${reviewId}`);
         await deleteDoc(reviewData);
+        getReviews();
     };
-
 
 
     if (currentUser?.uid === user?.id) {
@@ -81,7 +81,7 @@ function ReviewForm({ user, currentUser }) {
     } else
         return (
             <section className='reviewform'>
-                <h2 className='reviewform__heading'>Leave {user?.displayName} A Review</h2>
+                <h2 className='reviewform__heading'>Leave <span className='reviewform__displayName'>{user?.displayName}</span> A Review</h2>
                 <form autoComplete='off' type='submit' className='reviewform__form'>
                     <div className='reviewform__div'>
                         {[...Array(5)].map((volt, index) => {
@@ -126,8 +126,8 @@ function ReviewForm({ user, currentUser }) {
                         return (
                             <div className='reviewform__review-div'>
                                 <div className='reviewform__user-div'>
-                                    {rev.avatar ? <img className='reviewform__avatar' src={rev?.avatar}></img> : 
-                                    <img className='reviewform__avatar' src='https://xsgames.co/randomusers/avatar.php?g=male'></img>}
+                                    {rev.avatar ? <img className='reviewform__avatar' src={rev?.avatar}></img> :
+                                        <img className='reviewform__avatar' src='https://xsgames.co/randomusers/avatar.php?g=male'></img>}
                                     <div className='reviewform__user-details'>
                                         <p className='reviewform__username'>{rev?.user}</p>
                                         <p className='reviewform__user-timestamp'>{new Date(rev?.time).toLocaleDateString()}</p>
@@ -141,7 +141,7 @@ function ReviewForm({ user, currentUser }) {
                                 <div className='reviewform__review-container'>
                                     <p className='reviewform__review'>{rev?.review}</p>
                                     {currentUser?.displayName === rev?.user ?
-                                     <FaRegTrashCan color='#ff7b00' onClick={() => deleteReview(rev?.id)}/>
+                                        <FaRegTrashCan color='#ff7b00' onClick={(event) => deleteReview(rev?.id)} />
                                         // <button className='reviewform__delete-button' onClick={() => deleteReview(rev?.id)}>delete</button>
                                         : ""}
                                 </div>

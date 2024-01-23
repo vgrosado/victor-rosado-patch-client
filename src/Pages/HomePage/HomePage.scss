@@ -45,8 +45,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 12vw;
-        height: 12vw;
+        width: 3.5rem;
+        height: 3.5rem;
         border: 1px solid $PatchOrange;
         border-radius: 50%;
         background-color: $PatchGrey;
@@ -58,9 +58,8 @@
     }
 
     &__avatar {
-        width: 12vw;
-        height: 12vw;
-        border: 1px solid $PatchOrange;
+        width: 3.5rem;
+        height: 3.5rem;
         border-radius: 50%;
         background-color: $PatchGrey;
         background-position: center;
@@ -99,6 +98,7 @@
 
     &__search-input {
         @include Inputs;
+        font-weight: 300;
         height: 2.5rem;
         width: 100%;
         padding: 0rem 1rem;
