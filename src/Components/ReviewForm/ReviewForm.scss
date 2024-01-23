@@ -167,8 +167,8 @@ input[type='radio'] {
 
     &__review {
         word-wrap: break-word;
-        word-break: break-all;
-        text-wrap: balance;
+        word-break: normal;
+        text-wrap: wrap;
         font-size: .75rem;
         color: white;
         font-weight: 300;

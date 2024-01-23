@@ -52,25 +52,25 @@ function EditProfile({ currentUser, loggedUser }) {
     };
 
     // upload/update user background image
-    function uploadImage() {
-        if (imageUpload == undefined) return;
-        const imageRef = ref(storage, `userbackgroundimages/${imageUpload?.name}`);
-        const userRef = doc(db, "users", `${currentUser?.uid}`)
-        uploadBytes(imageRef, imageUpload)
-            .then(async () => {
-                await getDownloadURL(imageRef)
-                    .then(async (url) => {
-                        backgroundUrl.current = url;
-                        console.log("new background url " + user?.backgroundimg?.current)
-                    }).then(async () => {
-                        await updateDoc(userRef, {
-                            backgroundimg: backgroundUrl
-                        });
-                    })
-            }).catch((error) => {
-                console.log(error.message);
-            })
-    };
+    // function uploadImage() {
+    //     if (imageUpload == undefined) return;
+    //     const imageRef = ref(storage, `userbackgroundimages/${imageUpload?.name}`);
+    //     const userRef = doc(db, "users", `${currentUser?.uid}`)
+    //     uploadBytes(imageRef, imageUpload)
+    //         .then(async () => {
+    //             await getDownloadURL(imageRef)
+    //                 .then(async (url) => {
+    //                     backgroundUrl.current = url;
+    //                     console.log("new background url " + user?.backgroundimg?.current)
+    //                 }).then(async () => {
+    //                     await updateDoc(userRef, {
+    //                         backgroundimg: backgroundUrl
+    //                     });
+    //                 })
+    //         }).catch((error) => {
+    //             console.log(error.message);
+    //         })
+    // };
 
     function closeModal() {
         setModalOpen(false);

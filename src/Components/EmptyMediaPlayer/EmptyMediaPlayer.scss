@@ -122,11 +122,15 @@
     }
 
     &__upload-subtitle {
-        align-self: center;
-        font-size: .75rem;
+        text-align: center;
+        box-sizing: border-box;
+        padding: .375rem;
+        font-size: .750rem;
         font-weight: 300;
         color: white;
-
+        border: 2px solid grey;
+        background-color: rgba(128, 128, 128, 0.193);
+        border-radius: 5px;
         @include iphone12Pro {
             font-size: 1rem;
         }
