@@ -11,7 +11,7 @@ import GenreCard from '../../Components/GenreCard/GenreCard';
 
 function HomePage({ currentUser, users, getUsers }) {
     const [searchInput, setSearchInput] = useState([]);
-    const [sortBy, setSortBy] = useState("");
+    const [sortBy, setSortBy] = useState("artist");
 
     const filteredUsers = users.filter((user) => {
         const searchData = `${user.displayName}`.toLowerCase();
@@ -23,6 +23,11 @@ function HomePage({ currentUser, users, getUsers }) {
     });
 
     const genresArr = [...new Set(newGenreArr)]
+
+    const filteredGenres = genresArr.filter((genre) => {
+        const searchData = `${genre}`.toLowerCase();
+        return searchData.includes(String(searchInput).toLowerCase());
+    });
 
     console.log(genresArr);
 
@@ -60,21 +65,21 @@ function HomePage({ currentUser, users, getUsers }) {
                     <div className='homepage__select-div'>
                         <label className='homepage__subheading'>Search By:</label>
                         <select className='homepage__select' value={sortBy} onChange={handleFilter}>
-                            <option className='homepage__option' value="" disabled hidden>Genre</option>
-                            <option className='homepage__option' value="genre">Genre</option>
+                            <option className='homepage__option' value="" disabled hidden>Artist</option>
                             <option className='homepage__option' value="artist">Artist</option>
+                            <option className='homepage__option' value="genre">Genre</option>
                         </select>
                     </div>
                 </div>
                 {sortBy === 'artist' ? <section className='homepage__container'>
-                    {filteredUsers.map(user => (
-                        <UserCard key={user.id} currentUser={currentUser} user={user} />
-                    ))};
+                    {filteredUsers.map((user, index) => (
+                        <UserCard key={index} currentUser={currentUser} user={user} />
+                    ))}
                 </section> : <section className='homepage__container'>
                     <div className='homepage__genrecontainer'>
-                    {genresArr.map((genre) =>
-                        <GenreCard genre={genre} users={users} />
-                    )};
+                    {filteredGenres.map((genre, index) =>
+                        <GenreCard key={index} genre={genre} users={users} />
+                    )}
                     </div>
                 </section>}
             </article>
