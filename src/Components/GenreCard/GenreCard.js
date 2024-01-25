@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import '../GenreCard/GenreCard.scss';
 
 function GenreCard({ users, genre }) {
-    console.log(genre);
+
+    const genreHeader = genre[0].toUpperCase() + genre.substring(1);
+    
     return (
         <article className='genrecard'>
 
-            <h2 className='genrecard__heading'>{genre}</h2>
+            <h2 className='genrecard__heading'>{genreHeader}</h2>
             <div className='genrecard__div'>
                 {users.map((user) => (
                     user.genre === genre && (
