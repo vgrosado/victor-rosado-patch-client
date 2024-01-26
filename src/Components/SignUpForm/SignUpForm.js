@@ -14,15 +14,17 @@ function SignUpForm() {
 	const [loading, setLoading] = useState(false);
 	const [emailRef, setEmailRef] = useState();
 	const [passwordRef, setPasswordRef] = useState(0);
+	const [err, setError] = useState(false);
 	const navigateTo = useNavigate();
 
 	async function handleSignUp() {
-		if (passwordRef.length < 6 ) {
-			alert('password must be atleast 6 characters long'); 
+		if (passwordRef.length < 6) {
+			handleErr(passwordRef)
+			alert('password must be atleast 6 characters long');
 		}
 		else if (!emailRef || !passwordRef || !newName || !userName) {
 			alert('All fields are required');
-			}
+		}
 		else {
 			setLoading(true);
 			try {
@@ -84,6 +86,12 @@ function SignUpForm() {
 
 	console.log(passwordRef?.length)
 
+	function handleErr(password) {
+		if (password.length < 6){
+			setError(true)
+		}
+	};
+
 	function handlePasswordPrivacy() {
 		if (passwordOff === true) {
 			setPasswordOff(false);
@@ -126,9 +134,9 @@ function SignUpForm() {
 					onChange={(event) => { setEmailRef(event.target.value) }}>
 				</input>
 			</div>
-			<div className='signup-form__input-div'>
+			<div className={ !err || passwordRef.length > 6 ? 'signup-form__input-div' : 'signup-form__input-error'}>
 				<input
-				minLength={6}
+					minLength={6}
 					autoComplete='off'
 					className="signup-form__input"
 					type={passwordOff ? "password" : "text"}
