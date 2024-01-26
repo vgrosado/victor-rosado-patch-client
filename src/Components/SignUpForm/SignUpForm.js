@@ -12,18 +12,21 @@ function SignUpForm() {
 	const [newName, setNewName] = useState();
 	const [userName, setUserName] = useState();
 	const [loading, setLoading] = useState(false);
-	const emailRef = useRef();
-	const passwordRef = useRef();
+	const [emailRef, setEmailRef] = useState();
+	const [passwordRef, setPasswordRef] = useState(0);
 	const navigateTo = useNavigate();
 
 	async function handleSignUp() {
-		if (!emailRef.current.value || !passwordRef.current.value || !newName || !userName) {
-			return alert('Must sign in to continue');
+		if (passwordRef.length < 6 ) {
+			alert('password must be atleast 6 characters long'); 
 		}
-		else if (emailRef.current.value && passwordRef.current.value) {
+		else if (!emailRef || !passwordRef || !newName || !userName) {
+			alert('All fields are required');
+			}
+		else {
 			setLoading(true);
 			try {
-				const userCredential = await signUp(emailRef.current.value, passwordRef.current.value);
+				const userCredential = await signUp(emailRef, passwordRef);
 				const user = userCredential.user;
 
 				if (user) {
@@ -79,6 +82,7 @@ function SignUpForm() {
 		}
 	};
 
+	console.log(passwordRef?.length)
 
 	function handlePasswordPrivacy() {
 		if (passwordOff === true) {
@@ -119,19 +123,18 @@ function SignUpForm() {
 					type="text"
 					id="email"
 					placeholder='Enter your email address'
-					ref={emailRef}
-				>
+					onChange={(event) => { setEmailRef(event.target.value) }}>
 				</input>
 			</div>
 			<div className='signup-form__input-div'>
 				<input
+				minLength={6}
 					autoComplete='off'
 					className="signup-form__input"
 					type={passwordOff ? "password" : "text"}
 					id="password"
 					placeholder='Enter your password'
-					ref={passwordRef}
-				>
+					onChange={(event) => { setPasswordRef(event.target.value) }}>
 				</input>
 				<div className='form__icon'>
 					{passwordOff ? <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />

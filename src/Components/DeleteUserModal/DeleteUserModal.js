@@ -20,7 +20,6 @@ function DeleteUserModal({ isDeleteModalOpen, closeDeleteModal, currentUser }) {
         const deletedUserRef = doc(db, "users", `${currentUser?.uid}`)
         deleteDoc(deletedUserRef).then(() => {
             deleteUser(currentUser).then(() => {
-                handleLogOut()
                 alert('Your account has been deleted successfully')
                 navigateTo('/Login')
                 console.log('user has been delete');

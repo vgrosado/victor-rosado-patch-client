@@ -19,11 +19,11 @@ function LoginForm({ loading, setLoading, getUser }) {
 			try {
 				await login(emailRef.current.value, passwordRef.current.value);
 				setLoading(false);
+				navigateTo('/Home');
 			} catch (error) {
 				setLoading(false);
-				console.log('Login error:', error.message);
+				alert('Login error: User not found :(');
 			}
-			navigateTo('/Home');
 		};
 
 	};

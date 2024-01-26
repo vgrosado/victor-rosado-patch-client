@@ -25,6 +25,7 @@ function HomePage({ currentUser, users, getUsers }) {
     const genresArr = [...new Set(newGenreArr)]
 
     const filteredGenres = genresArr.filter((genre) => {
+        if (genre === "") return;
         const searchData = `${genre}`.toLowerCase();
         return searchData.includes(String(searchInput).toLowerCase());
     });

@@ -6,7 +6,7 @@ function UserCard({ user, genre }) {
     console.log(user)
     if (!user.avatar) {
         return (<Link className='usercard' to={`/Profile/${user?.id}`}>
-            <div className='usercard__image-empty'><FaUser size={80} className='artist-container__placeholder' /></div>
+            <div className='usercard__image-empty'><FaUser size={80} color='#ff7b00' /></div>
             <label className='usercard__name'>{user?.displayName}</label>
         </Link>)
     }

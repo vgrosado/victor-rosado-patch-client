@@ -178,6 +178,22 @@
         }
     }
 
+    &__genre-div {
+        display: flex;
+        margin-right: 1rem;
+        align-items: center;
+    }
+
+    &__genre {
+        color: grey;
+        font-weight: 300;
+        word-break: keep-all;
+        white-space: normal;
+        margin-left: .25rem;
+        font-size: .850rem;
+        font-weight: bold;
+    }
+
     &__stats-container {
         position: absolute;
         z-index: 1;

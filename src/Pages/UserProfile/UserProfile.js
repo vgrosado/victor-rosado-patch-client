@@ -13,6 +13,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 import { BsLightningFill } from 'react-icons/bs';
+import { PiVinylRecord } from "react-icons/pi";
 
 function UserProfile({ currentUser }) {
     const { id } = useParams();
@@ -118,6 +119,10 @@ function UserProfile({ currentUser }) {
 
                     </div>
                     <p className='user__bio'>{user?.bio}</p>
+                    <div className='user__genre-div'>
+                            <PiVinylRecord fill='grey' size={14} />
+                            <p className='user__genre'>{user?.genre}</p>
+                        </div>
                     <div className='user__contacts-container'>
                         <div className='user__location-div'>
                             <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />

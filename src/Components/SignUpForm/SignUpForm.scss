@@ -41,6 +41,18 @@
     }
 }
 
+&__input-error {
+    height: 6vh;
+    width: 60vw;
+    border-radius: .25rem;
+    border: 2px solid red;
+    display: flex;        
+    align-items: center;
+    background-color: $PatchGrey;
+    box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+    padding: 0rem 1rem;
+}
+
 &__eye {
     fill: white;
 }
