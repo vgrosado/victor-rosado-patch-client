@@ -185,6 +185,10 @@ function UserProfile({ currentUser }) {
 
                         </div>
                         <p className='user__bio'>{user?.bio}</p>
+                        <div className='user__genre-div'>
+                            <PiVinylRecord fill='grey' size={14} />
+                            <p className='user__genre'>{user?.genre}</p>
+                        </div>
                         <div className='user__contacts-container'>
                             <div className='user__location-div'>
                                 <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />

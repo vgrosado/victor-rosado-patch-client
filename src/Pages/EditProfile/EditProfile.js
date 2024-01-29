@@ -22,8 +22,14 @@ function EditProfile({ currentUser, loggedUser }) {
     const [updateLocation, setUpdateLocation] = useState(loggedUser?.location);
     const [updateGenre, setUpdateGenre] = useState(loggedUser?.genre);
     const [updateBio, setUpdateBio] = useState(loggedUser?.bio);
-    // const [imageUpload, setImageUpload] = useState(loggedUser?.backgroundimg?.current);
-    // const backgroundUrl = useRef(loggedUser?.backgroundimg?.current);
+    const formValues = {
+        updateUserName,
+        updateName,
+        updateWebsite,
+        updateLocation,
+        updateGenre,
+        updateBio,
+    };
     const updatedUserData = {
         name: updateName,
         website: updateWebsite,
@@ -33,33 +39,50 @@ function EditProfile({ currentUser, loggedUser }) {
         displayName: updateUserName
     };
 
-    const [formValue, setFormvalue] = useState({updatedUserData});
+    useEffect(() => {
+        if (loggedUser) {
+            setUpdateUserName(loggedUser?.displayName || '');
+            setUpdateName(loggedUser?.name || '');
+            setUpdateWebsite(loggedUser?.website || '');
+            setUpdateLocation(loggedUser?.location || '');
+            setUpdateGenre(loggedUser?.genre || '');
+            setUpdateBio(loggedUser?.bio || '');
+        }
+    }, [loggedUser]);
 
     //update user profile information
     async function updateUser(event) {
         event.preventDefault();
         updateProfile(currentUser, {
-            displayName: `${updateUserName}`
+            displayName: updateUserName,
         }).then(() => {
-            const usersDocRef = doc(db, "users", `${currentUser?.uid}`)
-            updateDoc(usersDocRef, updatedUserData)
-            console.log('itworked')
+            const usersDocRef = doc(db, "users", `${currentUser?.uid}`);
+            updateDoc(usersDocRef, updatedUserData);
+            console.log('it worked');
         }).catch((error) => {
-            console.log(error.message)
-        })
-        navigate(`/Profile/${currentUser?.uid}`)
+            console.log(error.message);
+        });
+
+        navigate(`/Profile/${currentUser?.uid}`);
     };
 
+    // Save form data to localStorage on bio change
     useEffect(() => {
-        localStorage.setItem('formValue', JSON.stringify(formValue))
-    },[updateBio])
+        localStorage.setItem('formValues', JSON.stringify(formValues));
+    }, [formValues]);
 
+    // Load form data from localStorage on component mount
     useEffect(() => {
-        const items = JSON.parse(localStorage.getItem('formValue'));
-        if (items) {
-            setFormvalue(items)
+        const storedFormValues = JSON.parse(localStorage.getItem('formValues'));
+        if (storedFormValues) {
+            setUpdateUserName(storedFormValues.updateUserName || '');
+            setUpdateName(storedFormValues.updateName || '');
+            setUpdateWebsite(storedFormValues.updateWebsite || '');
+            setUpdateLocation(storedFormValues.updateLocation || '');
+            setUpdateGenre(storedFormValues.updateGenre || '');
+            setUpdateBio(storedFormValues.updateBio || '');
         }
-    },[])
+    }, []);
 
     // upload/update user background image
     // function uploadImage() {
@@ -102,6 +125,8 @@ function EditProfile({ currentUser, loggedUser }) {
     if (!currentUser) {
         <>Loading</>
     };
+
+
 
     return (
         <section className='editprofile'>
