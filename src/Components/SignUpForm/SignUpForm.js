@@ -89,7 +89,7 @@ function SignUpForm() {
 	console.log(passwordRef?.length)
 
 	function handleErr(password) {
-		if (password.length < 6){
+		if (password.length < 6) {
 			setError(true)
 		}
 	};
@@ -106,51 +106,63 @@ function SignUpForm() {
 
 	return (
 		<div className="signup-form">
-			<div className='signup-form__input-div'>
-				<input
-					autoComplete='off'
-					className="signup-form__input"
-					type="text"
-					id="name"
-					placeholder='Enter your name'
-					onChange={(event) => { setNewName(event.target.value) }}>
-				</input>
-			</div>
-			<div className='signup-form__input-div'>
-				<input
-					autoComplete='off'
-					className="signup-form__input"
-					type="text"
-					id="username"
-					placeholder='Enter your username'
-					onChange={(event) => { setUserName(event.target.value) }}>
-				</input>
-			</div>
-			<div className='signup-form__input-div'>
-				<input
-					autoComplete='off'
-					className="signup-form__input"
-					type="text"
-					id="email"
-					placeholder='Enter your email address'
-					onChange={(event) => { setEmailRef(event.target.value) }}>
-				</input>
-			</div>
-			<div className={ !err || passwordRef.length > 6 ? 'signup-form__input-div' : 'signup-form__input-error'}>
-				<input
-					minLength={6}
-					autoComplete='off'
-					className="signup-form__input"
-					type={passwordOff ? "password" : "text"}
-					id="password"
-					placeholder='Enter your password'
-					onChange={(event) => { setPasswordRef(event.target.value) }}>
-				</input>
-				<div className='form__icon'>
-					{passwordOff ? <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />
-						: <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} />}
+			<label className='signup-form__input-label'>
+				Name
+				<div className='signup-form__input-div'>
+					<input
+						autoComplete='off'
+						className="signup-form__input"
+						type="text"
+						id="name"
+						placeholder='Enter your name'
+						onChange={(event) => { setNewName(event.target.value) }}>
+					</input>
 				</div>
-			</div>
+			</label>
+			<label className='signup-form__input-label'>
+				Username
+				<div className='signup-form__input-div'>
+					<input
+						autoComplete='off'
+						className="signup-form__input"
+						type="text"
+						id="username"
+						placeholder='Enter your username'
+						onChange={(event) => { setUserName(event.target.value) }}>
+					</input>
+				</div>
+			</label>
+			<label className='signup-form__input-label'>
+				Email
+				<div className='signup-form__input-div'>
+					<input
+						autoComplete='off'
+						className="signup-form__input"
+						type="text"
+						id="email"
+						placeholder='Enter your email address'
+						onChange={(event) => { setEmailRef(event.target.value) }}>
+					</input>
+				</div>
+			</label>
+			<label className='signup-form__input-label'>
+				Password
+				<div className={!err || passwordRef.length > 6 ? 'signup-form__input-div' : 'signup-form__input-error'}>
+					<input
+						minLength={6}
+						autoComplete='off'
+						className="signup-form__input"
+						type={passwordOff ? "password" : "text"}
+						id="password"
+						placeholder='Enter your password'
+						onChange={(event) => { setPasswordRef(event.target.value) }}>
+					</input>
+					<div className='form__icon'>
+						{passwordOff ? <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />
+							: <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} />}
+					</div>
+				</div>
+			</label>
 			{/* <div className='signup-form__rememberme-div'>
 				<input
 					className='signup-form__rememberme'

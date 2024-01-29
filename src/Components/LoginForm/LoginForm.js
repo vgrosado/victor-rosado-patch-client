@@ -39,30 +39,40 @@ function LoginForm({ loading, setLoading, getUser }) {
 
 	return (
 		<section className="form">
-			<div className='form__input-div'>
-				<input
-					autoComplete='off'
-					className="form__input"
-					type="text"
-					id="email"
-					placeholder='Enter your email'
-					ref={emailRef}>
-				</input>
-			</div>
-			<div className='form__input-div'>
-				<input
-					autoComplete='off'
-					className="form__input"
-					type={passwordOff ? "password" : "text"}
-					id="password"
-					placeholder='Enter your password'
-					ref={passwordRef}>
-				</input>
-				<div className='form__icon'>
-					{passwordOff ? <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />
-						: <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} />}
+			<label className='form__input-label'>
+				Email
+				<div className='form__input-div'>
+
+					<input
+						autoComplete='off'
+						className="form__input"
+						type="text"
+						id="email"
+						placeholder='Enter your email'
+						ref={emailRef}>
+					</input>
 				</div>
-			</div>
+			</label>
+			<label className='form__input-label'>
+				Password
+				<div className='form__input-div'>
+
+					<input
+						autoComplete='off'
+						className="form__input"
+						type={passwordOff ? "password" : "text"}
+						id="password"
+						placeholder='Enter your password'
+						ref={passwordRef}>
+					</input>
+
+					<div className='form__icon'>
+						{passwordOff ? <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />
+							: <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} />}
+					</div>
+
+				</div>
+			</label>
 			{/* <div className='form__rememberme-div'>
 				<input
 					className='form__remember-me'

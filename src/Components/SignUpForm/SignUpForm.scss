@@ -13,6 +13,12 @@
     height: 85vh;
     width: 80%;
 
+    &__input-label {
+        color: white;
+        font-weight: 300;
+        font-size: .875rem;
+    }
+
 &__input-div {
     height: 6vh;
     width: 60vw;
@@ -22,6 +28,7 @@
     background-color: $PatchGrey;
     box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
     padding: 0rem 1rem;
+    margin: .5rem 0rem;
 }
 
 &__input {

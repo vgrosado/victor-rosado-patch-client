@@ -1,23 +1,18 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Nav from '../../Components/Nav/Nav';
 import '../EditProfile/EditProfile.scss';
 import { FaUser } from 'react-icons/fa6';
-import { TbEdit } from "react-icons/tb";
-import { FaImage } from "react-icons/fa";
 import { TbCameraPlus } from "react-icons/tb";
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../../Firebase';
-import {  updateProfile } from 'firebase/auth';
+import { updateProfile } from 'firebase/auth';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import EditAvatarModal from '../../Components/EditAvatarModal/EditAvatarModal';
 import DeleteUserModal from '../../Components/DeleteUserModal/DeleteUserModal';
 
 
 function EditProfile({ currentUser, loggedUser }) {
-    if (!currentUser) {
-        <>Loading</>
-    };
     const navigate = useNavigate();
     const [isModalOpen, setModalOpen] = useState(false);
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -27,8 +22,8 @@ function EditProfile({ currentUser, loggedUser }) {
     const [updateLocation, setUpdateLocation] = useState(loggedUser?.location);
     const [updateGenre, setUpdateGenre] = useState(loggedUser?.genre);
     const [updateBio, setUpdateBio] = useState(loggedUser?.bio);
-    const [imageUpload, setImageUpload] = useState(loggedUser?.backgroundimg?.current);
-    const backgroundUrl = useRef(loggedUser?.backgroundimg?.current);
+    // const [imageUpload, setImageUpload] = useState(loggedUser?.backgroundimg?.current);
+    // const backgroundUrl = useRef(loggedUser?.backgroundimg?.current);
     const updatedUserData = {
         name: updateName,
         website: updateWebsite,
@@ -37,6 +32,8 @@ function EditProfile({ currentUser, loggedUser }) {
         bio: updateBio,
         displayName: updateUserName
     };
+
+    const [formValue, setFormvalue] = useState({updatedUserData});
 
     //update user profile information
     async function updateUser(event) {
@@ -52,6 +49,17 @@ function EditProfile({ currentUser, loggedUser }) {
         })
         navigate(`/Profile/${currentUser?.uid}`)
     };
+
+    useEffect(() => {
+        localStorage.setItem('formValue', JSON.stringify(formValue))
+    },[updateBio])
+
+    useEffect(() => {
+        const items = JSON.parse(localStorage.getItem('formValue'));
+        if (items) {
+            setFormvalue(items)
+        }
+    },[])
 
     // upload/update user background image
     // function uploadImage() {
@@ -89,6 +97,10 @@ function EditProfile({ currentUser, loggedUser }) {
 
     function openDeleteModal() {
         setDeleteModalOpen(true);
+    };
+
+    if (!currentUser) {
+        <>Loading</>
     };
 
     return (
@@ -132,7 +144,7 @@ function EditProfile({ currentUser, loggedUser }) {
                         </input>
                     </label>
                     <label className='editprofile__input-label' htmlFor='bio'>Genre
-                        <input autoComplete='off' className='editprofile__input' name='genre' type='text' id='genre' onChange={(event) => { setUpdateGenre(event.target.value) }} value={updateGenre}>
+                        <input autoComplete='off' className='editprofile__input' placeholder='Add a genre so others can find you' name='genre' type='text' id='genre' onChange={(event) => { setUpdateGenre(event.target.value) }} value={updateGenre}>
                         </input>
                     </label>
                     <label className='editprofile__input-label' htmlFor='location'>Bio
