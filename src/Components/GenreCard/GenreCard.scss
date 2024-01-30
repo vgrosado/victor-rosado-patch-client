@@ -1,9 +1,12 @@
 @use '../../Styles/Partials/variable' as*;
 
 .genrecard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     border-radius: 10px;
-    background: #191919;
+    background: linear-gradient(225deg, #f8f8f833, #191919, #ff7b0040);
     box-sizing: border-box;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -12,28 +15,30 @@
         display: flex;
         width: 100%;
         overflow: auto;
+
         &::-webkit-scrollbar {
             display: none;
         }
     }
 
-   &__heading {
-    align-self: flex-start;
-    color: white;
-    margin-bottom: .5rem;
-   }
+    &__heading {
+        align-self: flex-start;
+        color: white;
+        margin-bottom: .5rem;
+    }
 
-   &__link {
-    height: 20vh;
-    width: 10rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 0rem .5rem;
-    text-decoration: none;
-    color: $PatchOrange;
-   }
+    &__link {
+        height: 20vh;
+        width: 10rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        padding: 0rem .5rem;
+        text-decoration: none;
+        color: $PatchOrange;
+    }
 
     &__image-empty {
         background-color: $PatchGrey;
@@ -49,8 +54,8 @@
     &__placeholder {
         color: $PatchOrange;
     }
-    
-    &__image{
+
+    &__image {
         object-fit: cover;
         object-position: center;
         height: 70%;

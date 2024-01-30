@@ -3,11 +3,11 @@ import Nav from '../../Components/Nav/Nav';
 import '../EditProfile/EditProfile.scss';
 import { FaUser } from 'react-icons/fa6';
 import { TbCameraPlus } from "react-icons/tb";
-import { json, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../../Firebase';
 import { updateProfile } from 'firebase/auth';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+// import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import EditAvatarModal from '../../Components/EditAvatarModal/EditAvatarModal';
 import DeleteUserModal from '../../Components/DeleteUserModal/DeleteUserModal';
 
@@ -69,7 +69,7 @@ function EditProfile({ currentUser, loggedUser }) {
     // Save form data to localStorage on bio change
     useEffect(() => {
         localStorage.setItem('formValues', JSON.stringify(formValues));
-    }, [formValues]);
+    }, []);
 
     // Load form data from localStorage on component mount
     useEffect(() => {

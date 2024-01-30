@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import '../SignUpForm/SignUpForm.scss';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
@@ -158,8 +158,8 @@ function SignUpForm() {
 						onChange={(event) => { setPasswordRef(event.target.value) }}>
 					</input>
 					<div className='form__icon'>
-						{passwordOff ? <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />
-							: <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} />}
+						{passwordOff ? <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} />
+							: <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />}
 					</div>
 				</div>
 			</label>

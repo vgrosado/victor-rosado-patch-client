@@ -54,9 +54,9 @@ function LoginForm({ loading, setLoading, getUser }) {
 				</div>
 			</label>
 			<label className='form__input-label'>
-				Password
-				<div className='form__input-div'>
-
+					Password
+			<div className='form__input-div'>
+				
 					<input
 						autoComplete='off'
 						className="form__input"
@@ -65,13 +65,13 @@ function LoginForm({ loading, setLoading, getUser }) {
 						placeholder='Enter your password'
 						ref={passwordRef}>
 					</input>
-
-					<div className='form__icon'>
-						{passwordOff ? <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />
-							: <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} />}
-					</div>
-
+				
+				<div className='form__icon'>
+					{passwordOff ? <AiFillEye className='form__eye' onClick={() => handlePasswordPrivacy()} /> 
+						: <AiFillEyeInvisible className='form__eye' onClick={() => handlePasswordPrivacy()} />  }
 				</div>
+				
+			</div>
 			</label>
 			{/* <div className='form__rememberme-div'>
 				<input
