@@ -70,7 +70,6 @@ function MediaPlayer({ music, currentUser, user, getUserMusic }) {
                 cancelAnimationFrame(playAnimationRef.current);
             }
         }
-
         // Clean up function when component is unmounted
         return () => {
             cancelAnimationFrame(playAnimationRef.current);
@@ -99,6 +98,13 @@ function MediaPlayer({ music, currentUser, user, getUserMusic }) {
         }
     };
 
+    const selectedTrack = music.filter((track) => track !== currentTrack);
+
+    function handleSelectedTrack(trackObj) {
+        setCurrentTrack(trackObj);
+        console.log(currentTrack);
+    }
+
     if (currentUser?.uid === user.id && music.length === 0) {
         return (
             <EmptyMediaPlayer
@@ -106,6 +112,7 @@ function MediaPlayer({ music, currentUser, user, getUserMusic }) {
             />
         )
     }
+
     else if (currentUser?.uid !== user?.id && music.length === 0) {
         return (
             <section className='mediaplayer'>
@@ -115,6 +122,7 @@ function MediaPlayer({ music, currentUser, user, getUserMusic }) {
                 </div>
             </section>
         )
+
     } else
         return (
             <section className='mediaplayer'>
@@ -123,8 +131,9 @@ function MediaPlayer({ music, currentUser, user, getUserMusic }) {
                         <p className='mediaplayer__song-title'>{currentTrack?.title}</p>
                         <p className='mediaplayer__song-subtitle'>{currentTrack?.artist}</p>
                     </div>
-                    {currentTrack?.video ? <video className='mediaplayer__vid' src={currentTrack?.video} autoPlay loop muted /> :
-                        <video className='mediaplayer__vid' poster={user?.avatar} autoPlay loop muted />}
+                    {currentTrack?.video === null ? <img className='mediaplayer__vid' src={user?.avatar}/> :
+                        <video className='mediaplayer__vid' src={currentTrack?.video} autoPlay loop muted />
+                    }
                     <div className="mediaplayer__controls">
                         <input className='mediaplayer__progress-bar' ref={progressBarRef}
                             type="range"
@@ -142,7 +151,7 @@ function MediaPlayer({ music, currentUser, user, getUserMusic }) {
                             {music.length > 1 ? <BiSkipNext onClick={handleNext} className='mediaplayer__icons' /> : <BiSkipNext className='mediaplayer__icons' />}
                         </div>
                     </div>
-                    <TrackList user={user} currentUser={currentUser} getUserMusic={getUserMusic} music={music} />
+                    <TrackList handleSelectedTrack={handleSelectedTrack} user={user} currentUser={currentUser} getUserMusic={getUserMusic} music={music} />
                 </div>
             </section>
         )
