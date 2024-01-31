@@ -4,8 +4,9 @@ import { AiFillPlayCircle, AiFillPauseCircle } from 'react-icons/ai'
 import { BiSkipPrevious, BiSkipNext } from 'react-icons/bi'
 import { TbVinyl } from "react-icons/tb";
 import { useState, useEffect, useRef, useCallback } from 'react';
+import TrackList from '../TrackList/Tracklist';
 
-function MediaPlayer({ music, currentUser, user }) {
+function MediaPlayer({ music, currentUser, user, getUserMusic }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -105,12 +106,12 @@ function MediaPlayer({ music, currentUser, user }) {
             />
         )
     }
-    else if (currentUser?.uid !== user?.id && music.length === 0 ) {
+    else if (currentUser?.uid !== user?.id && music.length === 0) {
         return (
             <section className='mediaplayer'>
                 <div className='mediaplayer__empty-alertdiv'>
                     <p className='mediaplayer__empty-alert'><p className='mediaplayer__empty-alert-user'>{user?.displayName}</p>has not uploaded any music yet. Please check back soon!</p>
-                    <TbVinyl color='#ff7b00' size={80}/>
+                    <TbVinyl color='#ff7b00' size={80} />
                 </div>
             </section>
         )
@@ -122,7 +123,8 @@ function MediaPlayer({ music, currentUser, user }) {
                         <p className='mediaplayer__song-title'>{currentTrack?.title}</p>
                         <p className='mediaplayer__song-subtitle'>{currentTrack?.artist}</p>
                     </div>
-                    <video className='mediaplayer__vid' src={currentTrack?.video} autoPlay loop muted />
+                    {currentTrack?.video ? <video className='mediaplayer__vid' src={currentTrack?.video} autoPlay loop muted /> :
+                        <video className='mediaplayer__vid' poster={user?.avatar} autoPlay loop muted />}
                     <div className="mediaplayer__controls">
                         <input className='mediaplayer__progress-bar' ref={progressBarRef}
                             type="range"
@@ -140,6 +142,7 @@ function MediaPlayer({ music, currentUser, user }) {
                             {music.length > 1 ? <BiSkipNext onClick={handleNext} className='mediaplayer__icons' /> : <BiSkipNext className='mediaplayer__icons' />}
                         </div>
                     </div>
+                    <TrackList user={user} currentUser={currentUser} getUserMusic={getUserMusic} music={music} />
                 </div>
             </section>
         )

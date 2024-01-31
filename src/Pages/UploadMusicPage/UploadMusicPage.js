@@ -5,6 +5,7 @@ import { db, storage } from '../../Firebase';
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, collection} from 'firebase/firestore';
 import { FaPhotoVideo } from "react-icons/fa";
+import { v4 } from 'uuid';
 
 function UploadMusicPage({ currentUser }) {
     const [uploadProgress, setUploadProgress] = useState(0);
@@ -35,7 +36,7 @@ function UploadMusicPage({ currentUser }) {
             });
     };
 
-
+    
     //select mp3 file for media player
     function uploadTrack(trackFile) {
         console.log("Inside uploadViz:", trackFile); // Debugging log
@@ -79,7 +80,8 @@ function UploadMusicPage({ currentUser }) {
             title: updateTitle,
             artist: updateArtist,
             track: trackUrl.current,
-            video: vizUrl.current
+            video: vizUrl.current,
+            id: v4()
         })
         setUpdateArtist("")
         setUpdateTitle("")

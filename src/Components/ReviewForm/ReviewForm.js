@@ -141,7 +141,7 @@ function ReviewForm({ user, currentUser }) {
                                 <div className='reviewform__review-container'>
                                     <p className='reviewform__review'>{rev?.review}</p>
                                     {currentUser?.displayName === rev?.user ?
-                                        <FaRegTrashCan color='#ff7b00' onClick={(event) => deleteReview(rev?.id)} />
+                                        <FaRegTrashCan color='#ff7b00' onClick={() => deleteReview(rev?.id)} />
                                         // <button className='reviewform__delete-button' onClick={() => deleteReview(rev?.id)}>delete</button>
                                         : ""}
                                 </div>

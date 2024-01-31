@@ -36,11 +36,12 @@ function UserProfile({ currentUser }) {
             });
     }, [id])
 
+    const getUserMusic = async () => {
+        const userMusicData = await getDocs(collection(db, "users", `${id}`, "Music",));
+        setMusic(userMusicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    };
+
     useEffect(() => {
-        const getUserMusic = async () => {
-            const userMusicData = await getDocs(collection(db, "users", `${id}`, "Music",));
-            setMusic(userMusicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        };
         getUserMusic();
     }, [id]);
 
@@ -79,8 +80,6 @@ function UserProfile({ currentUser }) {
     function openModal() {
         setModalOpen(true);
     };
-
-
 
     if (currentUser?.uid === user?.id) {
         return (<>
@@ -123,7 +122,7 @@ function UserProfile({ currentUser }) {
                     <p className='user__bio'>{user?.bio}</p>
                     <div className='user__genre-div'>
                         <PiVinylRecord stroke='grey' fill='grey' size={14} />
-                        <p className='user__genre'>{user?.genre}</p>
+                        <p className='user__genre'>{user.genre}</p>
                     </div>
                     <div className='user__contacts-container'>
                         <div className='user__location-div'>
@@ -141,7 +140,7 @@ function UserProfile({ currentUser }) {
                         <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Encore</p>
                         <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Booking</p>
                     </div>
-                    {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} />)}
+                    {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
                     {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
                     {bookingPage && (<Booking currentUser={currentUser} user={user} />)}
                 </article>
@@ -154,7 +153,7 @@ function UserProfile({ currentUser }) {
             <>
                 <section className='user'>
                     <div className='user__background-container'>
-                        <img className='user__header-background' src={user?.backgroundimg} alt='user background' />
+                        <img className='user__header-background' src={user.backgroundimg} alt='user background' />
                         <div className='user__info-container'>
                             <div className='user__avatar-div'>
                                 {!user?.avatar ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>)
@@ -189,7 +188,7 @@ function UserProfile({ currentUser }) {
                         <p className='user__bio'>{user?.bio}</p>
                         <div className='user__genre-div'>
                             <PiVinylRecord stroke='grey' fill='grey' size={14} />
-                            <p className='user__genre'>{user?.genre}</p>
+                            <p className='user__genre'>{user.genre}</p>
                         </div>
                         <div className='user__contacts-container'>
                             <div className='user__location-div'>
@@ -207,7 +206,7 @@ function UserProfile({ currentUser }) {
                             <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Encore</p>
                             <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Booking</p>
                         </div>
-                        {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} />)}
+                        {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
                         {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
                         {bookingPage && (<Booking user={user} />)}
                     </article>
