@@ -15,8 +15,9 @@ function UploadMusicPage({ currentUser }) {
     const [trackUpload, setTrackUpload] = useState("");
     const [thumbnail, setThumbnail] = useState("");
     const [trackPreview, setTrackPreview] = useState("")
-    const vizUrl = useRef();
+    const vizUrl = useRef(null);
     const trackUrl = useRef();
+    const trackid = v4();
 
 
     function uploadViz(vizFile) {
@@ -81,7 +82,7 @@ function UploadMusicPage({ currentUser }) {
             artist: updateArtist,
             track: trackUrl.current,
             video: vizUrl.current,
-            id: v4()
+            id: trackid
         })
         setUpdateArtist("")
         setUpdateTitle("")

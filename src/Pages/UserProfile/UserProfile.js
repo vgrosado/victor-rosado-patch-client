@@ -15,7 +15,7 @@ import { SlPencil } from 'react-icons/sl';
 import { BsLightningFill } from 'react-icons/bs';
 import { PiVinylRecord } from "react-icons/pi";
 
-function UserProfile({ currentUser }) {
+function UserProfile({ currentUser, getBookings }) {
     const { id } = useParams();
     const [user, setUser] = useState({});
     const [encorePage, setEncorePage] = useState(false);
@@ -142,7 +142,7 @@ function UserProfile({ currentUser }) {
                     </div>
                     {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
                     {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
-                    {bookingPage && (<Booking currentUser={currentUser} user={user} />)}
+                    {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} user={user} />)}
                 </article>
                 <Nav currentUser={currentUser} user={user} openModal={openModal} />
             </section >
@@ -208,7 +208,7 @@ function UserProfile({ currentUser }) {
                         </div>
                         {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
                         {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
-                        {bookingPage && (<Booking user={user} />)}
+                        {bookingPage && (<Booking getBookings={getBookings} user={user} />)}
                     </article>
                     <Nav currentUser={currentUser} user={user} openModal={openModal} />
                 </section >

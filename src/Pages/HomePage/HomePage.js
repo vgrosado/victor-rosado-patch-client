@@ -8,8 +8,11 @@ import { Link } from 'react-router-dom';
 import UserCard from '../../Components/UserCard/UserCard';
 import { useEffect, useState } from 'react';
 import GenreCard from '../../Components/GenreCard/GenreCard';
+import { BiBell, BiEnvelope } from 'react-icons/bi';
+import { collection, doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../Firebase';
 
-function HomePage({ currentUser, users, getUsers }) {
+function HomePage({ currentUser, users, getUsers, bookingNotification, getBookings }) {
     const [searchInput, setSearchInput] = useState([]);
     const [sortBy, setSortBy] = useState("artist");
 
@@ -30,7 +33,6 @@ function HomePage({ currentUser, users, getUsers }) {
         return searchData.includes(String(searchInput).toLowerCase());
     });
 
-    console.log(genresArr);
 
     function handleFilter(event) {
         setSortBy(event.target.value);
@@ -40,6 +42,15 @@ function HomePage({ currentUser, users, getUsers }) {
         getUsers();
     }, []);
 
+    function handleNotification(bookingId) {
+        alert(`${bookingNotification?.email}` + '' + 'sent you a booking request!')
+        const bookingDocRef = doc(db, "users", `${currentUser?.uid}`, "Bookings", `${bookingId}`);
+        updateDoc(bookingDocRef, {
+            isRead: true
+        });
+        getBookings();
+        console.log('it worked');
+    }
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>
@@ -52,8 +63,9 @@ function HomePage({ currentUser, users, getUsers }) {
                         </Link>
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>
-                            {/* <BiEnvelope className='homepage__header-icons' />
-                            <BiBell className='homepage__header-icons' /> */}
+                            <BiEnvelope className='homepage__header-icons' />
+                            <BiBell className='homepage__header-icons' />
+                            {bookingNotification?.isRead === false ? <div className='homepage__icon-notification' onClick={() => handleNotification(bookingNotification?.id)}></div> : ""}
                         </div>
                     </div>
                     <div className='homepage__input-div'>
@@ -78,9 +90,9 @@ function HomePage({ currentUser, users, getUsers }) {
                     ))}
                 </section> : <section className='homepage__container'>
                     <div className='homepage__genrecontainer'>
-                    {filteredGenres.map((genre, index) =>
-                        <GenreCard key={index} genre={genre} users={users} />
-                    )}
+                        {filteredGenres.map((genre, index) =>
+                            <GenreCard key={index} genre={genre} users={users} />
+                        )}
                     </div>
                 </section>}
             </article>

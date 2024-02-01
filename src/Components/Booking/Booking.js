@@ -1,35 +1,120 @@
+import { useEffect, useState } from 'react';
 import '../Booking/Booking.scss';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../Firebase';
+import { useParams } from 'react-router-dom';
 
-function Booking() {
+function Booking({getBookings}) {
+    const { id } = useParams();
+
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [type, setType] = useState();
+    const [date, setDate] = useState();
+    const [region, setRegion] = useState();
+    const [venue, setVenue] = useState();
+    const [address, setAddress] = useState();
+    const newDate = Date.now();
+    const formValues = {
+        name,
+        email,
+        type,
+        date,
+        region,
+        venue,
+        address
+    };
+
+    useEffect(() => {
+        setName(name || '');
+        setEmail(email || '');
+        setType(type || '');
+        setDate(date || '');
+        setRegion(region || '');
+        setVenue(venue || '');
+        setAddress(address || '');
+    }, [formValues]);
+
+    // Save form data to localStorage on bio change
+    useEffect(() => {
+        localStorage.setItem('formValues', JSON.stringify(formValues));
+    }, []);
+
+    // Load form data from localStorage on component mount
+    useEffect(() => {
+        const storedFormValues = JSON.parse(localStorage.getItem('formValues'));
+        if (storedFormValues) {
+            setName(storedFormValues.name || '');
+            setEmail(storedFormValues.email || '');
+            setType(storedFormValues.type || '');
+            setDate(storedFormValues.date || '');
+            setRegion(storedFormValues.region || '');
+            setVenue(storedFormValues.venue || '');
+            setAddress(storedFormValues.address || '');
+        }
+    }, []);
+
+
+    //create a new Booking
+    function createBooking(event) {
+        event.preventDefault();
+        const bookingData = collection(db, "users", `${id}`, "Bookings");
+        addDoc(bookingData, {
+            name: name,
+            email: email,
+            type: type,
+            date: date,
+            region: region,
+            venue: venue,
+            address: address,
+            isRead: false,
+            timestamp: newDate
+        });
+        // Clear form values after submitting Booking
+        setName("");
+        setEmail("");
+        setType("");
+        setDate("");
+        setRegion("");
+        setVenue("");
+        setAddress("");
+        getBookings();
+    };
+
+    console.log(type)
+    console.log(region)
+    console.log(date)
+
+
     return (
         <section className='booking'>
             <form className='booking__form'>
-                <input autoComplete='off' className='booking__input' type='text' name='name' placeholder='Name'>
+                <input autoComplete='off' className='booking__input' type='text' name='name' placeholder='Name' onChange={(event) => setName(event.target.value)} value={name}>
                 </input>
-                <input autoComplete='off' className='booking__input' type='text' name='email' placeholder='Email'>
+                <input autoComplete='off' className='booking__input' type='text' name='email' placeholder='Email' onChange={(event) => setEmail(event.target.value)} value={email}>
                 </input>
-                <select className='booking__booking-type'>
-                    <option>Headline</option>
-                    <option>Open</option>
-                    <option>Support</option>
+                <select className='booking__booking-type' onChange={(event) => setType(event.target.value)} value={type}>
+                    <option value='Headline'>Headline</option>
+                    <option value='Open'>Open</option>
+                    <option value='Support'>Support</option>
                 </select>
-                <input autoComplete='off' placeholder='Choose a date' className='booking__date-input' type='datetime-local' name='date'>
+                <input autoComplete='off' placeholder='Choose a date' className='booking__date-input' type='datetime-local' name='date' onChange={(event) => setDate(event.target.value)} value={date}>
                 </input>
-                <select className='booking__region-select' name='country/region'>
+                <select className='booking__region-select' name='country/region' onChange={(event) => setRegion(event.target.value)} value={region}>
                     <option value="" disabled selected hidden>
-                    Country/Region</option>
-                    <option>North America</option>
-                    <option>South America</option>
-                    <option>Europe</option>
-                    <option>Asia</option>
-                    <option>Australia</option>
-                    <option>Africa</option>
+                        Country/Region</option>
+                    <option value='North America'>North America</option>
+                    <option value='South America'>South America</option>
+                    <option value='Europe'>Europe</option>
+                    <option value='Asia'>Asia</option>
+                    <option value='Australia'>Australia</option>
+                    <option value='Africa'>Africa</option>
                 </select>
-                <input autoComplete='off'className='booking__input' name='venue' type='text' placeholder='Venue'>
+                <input autoComplete='off' className='booking__input' name='venue' type='text' placeholder='Venue' onChange={(event) => setVenue(event.target.value)} value={venue}>
                 </input>
-                <input autoComplete='off' className='booking__input' name='address' type='text' placeholder='Address'>
+                <input autoComplete='off' className='booking__input' name='address' type='text' placeholder='Address' onChange={(event) => setAddress(event.target.value)} value={address}>
                 </input>
-                <button autoComplete='off'type='submit' className='booking__button'>Submit</button>
+                <button autoComplete='off' type='submit' className='booking__button' onClick={(event) => createBooking(event)}>Submit</button>
             </form>
         </section>
     )
