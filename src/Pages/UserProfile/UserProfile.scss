@@ -83,7 +83,6 @@
     &__avatar {
         width: 5rem;
         height: 5rem;
-        border: 2px solid $PatchOrange;
         border-radius: 50px;
         object-fit: cover;
         object-position: center;
@@ -97,7 +96,7 @@
         object-fit: cover;
         object-position: center;
         background-color: $PatchMedium-Grey;
-        align-items: last baseline;
+        align-items: center;
         justify-content: center;
         display: flex;
     }

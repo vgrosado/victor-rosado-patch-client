@@ -9,7 +9,7 @@ import UserCard from '../../Components/UserCard/UserCard';
 import { useEffect, useState } from 'react';
 import GenreCard from '../../Components/GenreCard/GenreCard';
 import { BiBell, BiEnvelope } from 'react-icons/bi';
-import { collection, doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 
 function HomePage({ currentUser, users, getUsers, bookingNotification, getBookings }) {
@@ -43,7 +43,7 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
     }, []);
 
     function handleNotification(bookingId) {
-        alert(`${bookingNotification?.email}` + '' + 'sent you a booking request!')
+        alert(`${bookingNotification?.email}` + '' + ' sent you a booking request!')
         const bookingDocRef = doc(db, "users", `${currentUser?.uid}`, "Bookings", `${bookingId}`);
         updateDoc(bookingDocRef, {
             isRead: true

@@ -89,7 +89,7 @@ function UserProfile({ currentUser, getBookings }) {
                         : (<img className='user__header-background' src={user?.backgroundimg} alt='user background' />)}
                     <div className='user__info-container'>
                         <div className='user__avatar-div'>
-                            {!currentUser?.photoURL ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>)
+                            {!currentUser?.photoURL ? (<div className='user__avatar-empty'><img className='usercard__image' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square'/></div>)
                                 : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
                         </div>
                     </div>
@@ -156,7 +156,7 @@ function UserProfile({ currentUser, getBookings }) {
                         <img className='user__header-background' src={user.backgroundimg} alt='user background' />
                         <div className='user__info-container'>
                             <div className='user__avatar-div'>
-                                {!user?.avatar ? (<div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder' /></div>)
+                                {!user?.avatar ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square'/></div>)
                                     : (<img className='user__avatar' alt='avatar' src={user?.avatar} />)}
                             </div>
                         </div>

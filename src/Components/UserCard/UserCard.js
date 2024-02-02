@@ -2,18 +2,12 @@ import '../UserCard/UserCard.scss'
 import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 
-function UserCard({ user, genre }) {
-    console.log(user)
-    if (!user.avatar) {
-        return (<Link className='usercard' to={`/Profile/${user?.id}`}>
-            <div className='usercard__image-empty'><FaUser size={80} color='#ff7b00' /></div>
-            <label className='usercard__name'>{user?.displayName}</label>
-        </Link>)
-    }
+function UserCard({ user }) {
     return (
         <>
         <Link className='usercard' to={`/Profile/${user?.id}`}>
-            <img className='usercard__image' alt='dj' src={user?.avatar} />
+            {user?.avatar ? <img className='usercard__image' alt='dj' src={user?.avatar} /> :
+            <img className='usercard__image' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square'/>}
             <label className='usercard__name'>{user?.displayName}</label>
         </Link>
         </>
