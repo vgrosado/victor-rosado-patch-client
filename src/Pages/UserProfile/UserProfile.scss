@@ -274,7 +274,7 @@
     &__stats-title {
         color: white;
         font-weight: 300;
-        font-size: 1.25rem;
+        font-size: 1.50rem;
         margin-left: .25rem;
     }
 
@@ -289,7 +289,7 @@
 
     &__rating-div {
         display: flex;
-        align-items: center;
+        align-items: baseline;
         padding-bottom: .5rem;
         width: 50%;
     }
@@ -305,7 +305,7 @@
 
     &__followers-div {
         display: flex;
-        align-items: center;
+        align-items: baseline;
         font-size: .75rem;
         padding-bottom: .5rem;
         width: 55%;

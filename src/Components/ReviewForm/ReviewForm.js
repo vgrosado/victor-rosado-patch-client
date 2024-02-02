@@ -98,7 +98,7 @@ function ReviewForm({ user, currentUser }) {
                                         key={index}
                                         className='reviewform__rating'
                                         size={28}
-                                        color={currentRating <= (hover || rating) ? "#ff7b00" : "#191919"}
+                                        color={currentRating <= (hover || rating) ? "#ff7b00" : "#342415"}
                                         onMouseEnter={() => setHover(currentRating)}
                                         onMouseLeave={() => setHover(null)} />
                                 </label>
@@ -142,7 +142,6 @@ function ReviewForm({ user, currentUser }) {
                                     <p className='reviewform__review'>{rev?.review}</p>
                                     {currentUser?.displayName === rev?.user ?
                                         <FaRegTrashCan color='#ff7b00' onClick={() => deleteReview(rev?.id)} />
-                                        // <button className='reviewform__delete-button' onClick={() => deleteReview(rev?.id)}>delete</button>
                                         : ""}
                                 </div>
                             </div>

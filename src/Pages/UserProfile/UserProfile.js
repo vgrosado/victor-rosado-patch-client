@@ -1,19 +1,21 @@
 
 import '../UserProfile/UserProfile.scss';
 import { useEffect, useState } from 'react';
-import { collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from '../../Firebase';
 import { Link, useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
 import Nav from '../../Components/Nav/Nav';
 import ReviewForm from '../../Components/ReviewForm/ReviewForm';
 import Booking from '../../Components/Booking/Booking';
-import { FaUser, FaUserFriends } from 'react-icons/fa';
 import { IoLocationOutline } from "react-icons/io5";
 import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 import { BsLightningFill } from 'react-icons/bs';
-import { PiVinylRecord, PiBooks } from "react-icons/pi";
+import { PiVinylRecord } from "react-icons/pi";
+import { IoLibrarySharp } from "react-icons/io5";
+
+
 
 function UserProfile({ currentUser, getBookings }) {
     const { id } = useParams();
@@ -104,7 +106,7 @@ function UserProfile({ currentUser, getBookings }) {
                                 <p className='user__rating'>{user?.rating}</p>
                             </div>
                             <div className='user__followers-div'>
-                                <PiBooks size={16} color='grey' /><p className='user__stats-title'>Bookings</p>
+                                <IoLibrarySharp size={16} color='grey' /><p className='user__stats-title'>Bookings</p>
                                 <p className='user__followers'>{followFormatter(user?.bookings)}</p>
                             </div>
                         </div>
@@ -164,11 +166,11 @@ function UserProfile({ currentUser, getBookings }) {
                             <p className='user__bio'>{user?.bio}</p>
                             <div className='user__stats'>
                                 <div className='user__rating-div'>
-                                    <BsLightningFill size={14} color='grey' /> <p className='user__stats-title'>Voltage</p>
+                                    <BsLightningFill size={16} color='grey' /> <p className='user__stats-title'>Voltage</p>
                                     <p className='user__rating'>{user?.rating}</p>
                                 </div>
                                 <div className='user__followers-div'>
-                                    <PiBooks size={14} color='grey' /> <p className='user__stats-title'>Bookings</p>
+                                    <IoLibrarySharp size={16} color='grey' /> <p className='user__stats-title'>Bookings</p>
                                     <p className='user__followers'>{followFormatter(user?.bookings)}</p>
                                 </div>
                             </div>

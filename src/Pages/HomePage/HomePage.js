@@ -1,7 +1,5 @@
 import '../HomePage/HomePage.scss'
 import { AiOutlineSearch } from 'react-icons/ai';
-// import { BiBell } from 'react-icons/bi';
-// import { BiEnvelope } from 'react-icons/bi';
 import Nav from '../../Components/Nav/Nav';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -15,7 +13,6 @@ import { db } from '../../Firebase';
 function HomePage({ currentUser, users, getUsers, bookingNotification, getBookings }) {
     const [searchInput, setSearchInput] = useState([]);
     const [sortBy, setSortBy] = useState("artist");
-
     const filteredUsers = users.filter((user) => {
         const searchData = `${user.displayName}`.toLowerCase();
         return searchData.includes(String(searchInput).toLowerCase());
@@ -46,9 +43,12 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
         const bookingDocRef = doc(db, "users", `${currentUser?.uid}`, "Bookings", `${bookingId}`);
         updateDoc(bookingDocRef, {
             isRead: true
-        });
-        getBookings();
-        console.log('it worked');
+        }).then(() => {
+            getBookings();
+            console.log('it worked');
+        }).catch((error) => {
+            console.log(error.message)
+        })
     };
 
 

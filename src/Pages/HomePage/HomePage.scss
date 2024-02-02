@@ -71,7 +71,7 @@
 
     &__logo {
         margin-left: 1.5rem;
-        font-size: 8vw;
+        font-size: 2rem;
         color: #fff;
         text-shadow:
             0 0 0.033em #fff,
@@ -162,6 +162,7 @@
         position: absolute;
         z-index: 1;
         right: 30px;
+        top: 55px;
     }
 
     &__heading {
