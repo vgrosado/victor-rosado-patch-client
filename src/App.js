@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignUpPage from './Pages/SignUpPage/SignUpPage';
 import HomePage from './Pages/HomePage/HomePage';
@@ -22,7 +22,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const usersCollectionRef = collection(db, "users")
-  const getUsers = async () => {
+  async function getUsers(){
     const Data = await getDocs(usersCollectionRef);
     setUsers(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
   };
@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   const usersDocRef = doc(db, "users", `${currentUser?.uid}`)
-  const getUser = async () => {
+  async function getUser(){
     await getDoc(usersDocRef)
       .then((doc) => {
         setLoggedUser(doc.data(), doc.id)
@@ -47,7 +47,7 @@ function App() {
   }, [currentUser?.uid])
 
   const bookingsRef = collection(db, 'users', `${currentUser?.uid}`, 'Bookings');
-  const getBookings = async () => {
+  async function getBookings(){
     const orderedQuery = query(bookingsRef, orderBy('timestamp', 'asc')); // Change 'asc' to 'desc' if needed
     const data = await getDocs(orderedQuery);
     const orderedBookings = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
@@ -57,14 +57,14 @@ function App() {
   let lastBooking = bookings[bookings.length - 1];
   console.log(lastBooking)
 
-  const bookingNotification = bookings?.find((book) => {
+  let bookingNotification = bookings?.find((book) => {
     return book === lastBooking;
   })
   useEffect(() => {
     getBookings();
     setNewBooking(lastBooking);
   }, [newBooking, currentUser?.uid]);
-  
+
   console.log(bookings)
   console.log(bookingNotification?.isRead)
 

@@ -1,6 +1,5 @@
 import '../UserCard/UserCard.scss'
 import { Link } from 'react-router-dom';
-import { FaUser } from 'react-icons/fa';
 
 function UserCard({ user }) {
     return (

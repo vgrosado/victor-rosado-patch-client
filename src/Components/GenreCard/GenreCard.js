@@ -16,7 +16,7 @@ function GenreCard({ users, genre }) {
 
                             <div className='genrecard__container' key={user.id}>
                                 <Link className='genrecard__link' to={`/Profile/${user?.id}`}>
-                                    {user?.avatar ? <img className='genrecard__image' alt='dj' src={user?.avatar} /> : <div className='usercard__image-empty'><FaUser size={80} className='artist-container__placeholder' /></div>}
+                                    {user?.avatar ? <img className='genrecard__image' alt='dj' src={user?.avatar} /> : <img className='genrecard__image' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square'/>}
                                     <label className='genrecard__name'>{user?.displayName}</label>
                                 </Link>
                             </div>

@@ -33,7 +33,6 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
         return searchData.includes(String(searchInput).toLowerCase());
     });
 
-
     function handleFilter(event) {
         setSortBy(event.target.value);
     };
@@ -43,14 +42,16 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
     }, []);
 
     function handleNotification(bookingId) {
-        alert(`${bookingNotification?.email}` + '' + ' sent you a booking request!')
+        alert(bookingNotification?.email + ' sent you a booking request!')
         const bookingDocRef = doc(db, "users", `${currentUser?.uid}`, "Bookings", `${bookingId}`);
         updateDoc(bookingDocRef, {
             isRead: true
         });
         getBookings();
         console.log('it worked');
-    }
+    };
+
+
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>

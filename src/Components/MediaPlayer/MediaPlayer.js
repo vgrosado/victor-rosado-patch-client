@@ -98,12 +98,10 @@ function MediaPlayer({ music, currentUser, user, getUserMusic }) {
         }
     };
 
-    const selectedTrack = music.filter((track) => track !== currentTrack);
-
     function handleSelectedTrack(trackObj) {
         setCurrentTrack(trackObj);
         console.log(currentTrack);
-    }
+    };
 
     if (currentUser?.uid === user.id && music.length === 0) {
         return (
@@ -132,7 +130,7 @@ function MediaPlayer({ music, currentUser, user, getUserMusic }) {
                         <p className='mediaplayer__song-subtitle'>{currentTrack?.artist}</p>
                     </div>
                     {currentTrack?.video === null ? <img className='mediaplayer__vid' src={user?.avatar}/> :
-                        <video className='mediaplayer__vid' src={currentTrack?.video} autoPlay loop muted />
+                        <video className='mediaplayer__vid' src={currentTrack?.video} autoPlay loop muted controls={false} />
                     }
                     <div className="mediaplayer__controls">
                         <input className='mediaplayer__progress-bar' ref={progressBarRef}
