@@ -57,10 +57,11 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
                     <div className='homepage__header-container'>
-                        <Link to={`/Profile/${currentUser?.uid}`}><div className='homepage__avatar-div'>
-                            {currentUser?.photoURL === null ? (<FaUser size={40} className='homepage__avatar-placeholder' />)
-                                : (<div className='homepage__avatar-div'><img className='homepage__avatar' src={currentUser?.photoURL} /></div>)}
-                        </div>
+                        <Link to={`/Profile/${currentUser?.uid}`}>
+                            <div className='homepage__avatar-div'>
+                                {!currentUser?.photoURL ? (<img className='homepage__avatar-placeholder' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' />)
+                                    : (<img className='homepage__avatar' alt='avatar' src={currentUser?.photoURL} />)}
+                            </div>
                         </Link>
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>

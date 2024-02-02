@@ -54,7 +54,7 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
                     <div className='modal-overlay__edit-avatar-div'><img className='modal-overlay__user-avatar' alt='avatar' src={placeholder} />
                         <label className='modal-overlay__upload-avatar' htmlFor='avatar-input' id='avatar'>
                             <div className='modal-overlay__input-button'>Choose a new photo</div>
-                            <input className='modal-overlay__upload-input' id='avatar-input' name='avatar-input' type='file'
+                            <input className='modal-overlay__upload-input' id='avatar-input' name='avatar-input' type='file' accept='image/*'
                                 onChange={(event) => {
                                     setAvatarUpload(event.target.files[0])
                                     placeHolderPreview(event)

@@ -1,4 +1,4 @@
-@use '../../Styles/Partials/breakpoints'as*;
+@use '../../Styles/Partials/breakpoints' as*;
 @use '../../Styles/Partials/typography' as*;
 @use '../../Styles/Partials/variable' as*;
 
@@ -20,6 +20,20 @@ input[type='radio'] {
         color: white;
         align-self: center;
         padding-top: 0.5rem;
+    }
+
+    &__error-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 44vh;
+    }
+
+    &__error-title {
+        margin-top: 1rem;
+        color: white;
+        text-align: center;
     }
 
     &__displayName {
@@ -57,6 +71,7 @@ input[type='radio'] {
         border-radius: 6px;
         padding-left: 0.5rem;
         margin-top: 1rem;
+
         &::placeholder {
             font-size: 1rem;
             font-weight: 300;
@@ -77,6 +92,7 @@ input[type='radio'] {
         font-weight: 300;
         color: black;
         resize: none;
+
         &::placeholder {
             font-size: 1rem;
             font-weight: 300;
@@ -113,7 +129,7 @@ input[type='radio'] {
         display: flex;
         flex-direction: column;
         height: 45%;
-        
+
     }
 
     &__review-div {

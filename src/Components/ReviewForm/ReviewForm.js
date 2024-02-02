@@ -4,6 +4,7 @@ import { db } from '../../Firebase';
 import '../ReviewForm/ReviewForm.scss';
 import { BsLightningFill } from 'react-icons/bs';
 import { FaRegTrashCan } from "react-icons/fa6";
+import { TbMoodSad } from "react-icons/tb";
 import { useParams } from 'react-router-dom';
 import { v4 } from 'uuid';
 
@@ -51,6 +52,17 @@ function ReviewForm({ user, currentUser }) {
         const reviewData = doc(db, "users", `${id}`, "Reviews", `${reviewId}`);
         await deleteDoc(reviewData);
         getReviews();
+    };
+
+    if (currentUser?.uid === user?.id && review.length === 0) {
+        return (
+            <div className='reviewform__error-section'>
+                <h2 className='reviewform__error-title'>
+                    You have no reviews!
+                </h2>
+                <TbMoodSad size={150} color='#ff7b00' />
+            </div>
+        )
     };
 
 

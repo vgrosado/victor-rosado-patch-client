@@ -94,6 +94,8 @@ function Booking({getBookings}) {
                 <input autoComplete='off' className='booking__input' type='text' name='email' placeholder='Email' onChange={(event) => setEmail(event.target.value)} value={email}>
                 </input>
                 <select className='booking__booking-type' onChange={(event) => setType(event.target.value)} value={type}>
+                <option value="" disabled selected hidden>
+                        Type</option>
                     <option value='Headline'>Headline</option>
                     <option value='Open'>Open</option>
                     <option value='Support'>Support</option>

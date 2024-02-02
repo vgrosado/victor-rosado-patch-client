@@ -69,7 +69,11 @@
         padding: .5rem;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+
 
     &__upload-button {
         background-color: $PatchGrey;
@@ -85,7 +89,11 @@
         padding: 2vw;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+
 
 
     &__section {
@@ -120,7 +128,7 @@
 
     &__user-avatar {
         width: 13rem;
-        height: 28vh;
+        height: 13rem;
         border-radius: 50%;
         border: 1px solid white;
         object-fit: cover;

@@ -133,6 +133,7 @@ function UploadMusicPage({ currentUser }) {
                             id='viz-input'
                             name='viz-input'
                             type='file'
+                            accept='image/*,video/*'
                             onChange={(event) => {
                                 const vizFile = event.target.files[0];
                                 console.log("Selected file:", vizFile); // Debugging log
@@ -153,6 +154,7 @@ function UploadMusicPage({ currentUser }) {
                                     id='viz-input'
                                     name='viz-input'
                                     type='file'
+                                    accept='image/*,video/*'
                                     onChange={(event) => {
                                         const vizFile = event.target.files[0];
                                         console.log("Selected file:", vizFile); // Debugging log
@@ -171,7 +173,7 @@ function UploadMusicPage({ currentUser }) {
                 <div className='uploadmusicpage__form-buttonscontainer'>
                     <label className='uploadmusicpage__form-musiclabel' htmlFor='music-input' id='music'>
                         {!trackUpload ? <div className='uploadmusicpage__form-inputbutton'>Choose a track</div> : <div></div>}
-                        <input className='uploadmusicpage__form-musicinput' id='music-input' name='music-input' type='file'
+                        <input className='uploadmusicpage__form-musicinput' id='music-input' name='music-input' type='file' accept='audio/*'
                             onChange={(event) => {
                                 const trackFile = event.target.files[0];
                                 console.log("Selected file:", trackFile); // Debugging log
