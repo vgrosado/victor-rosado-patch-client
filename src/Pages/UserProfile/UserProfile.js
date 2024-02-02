@@ -13,7 +13,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
 import { BsLightningFill } from 'react-icons/bs';
-import { PiVinylRecord } from "react-icons/pi";
+import { PiVinylRecord, PiBooks } from "react-icons/pi";
 
 function UserProfile({ currentUser, getBookings }) {
     const { id } = useParams();
@@ -45,14 +45,6 @@ function UserProfile({ currentUser, getBookings }) {
         getUserMusic();
     }, [id]);
 
-
-    function handleFollow() {
-        const artistDocRef = doc(db, "users", `${id}`)
-        updateDoc(artistDocRef, { followers: user?.followers + 1 })
-            .then(() => {
-
-            })
-    };
 
     function followFormatter(num) {
         return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
@@ -89,37 +81,34 @@ function UserProfile({ currentUser, getBookings }) {
                         : (<img className='user__header-background' src={user?.backgroundimg} alt='user background' />)}
                     <div className='user__info-container'>
                         <div className='user__avatar-div'>
-                            {!currentUser?.photoURL ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square'/></div>)
+                            {!currentUser?.photoURL ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' /></div>)
                                 : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
+                                <div className='user__banner-div'><h2 className='user__banner'>{user?.name}</h2></div>
                         </div>
                     </div>
                 </div>
                 <article className='user__stats-container'>
                     <div className='user__details-container'>
                         <div className='user__info-div'>
-                            <div className='user__names'>
-                                <p className='user__name'>{user?.name}</p>
-                                <p className='user__username'>{currentUser?.displayName}</p>
-                            </div>
+                            <h2 className='user__heading'>About</h2>
                             <div className='user__button-div'>
                                 <Link className='user__button-link' to={`/EditProfile/${currentUser?.uid}`}>
                                     <button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button>
                                 </Link>
                             </div>
                         </div>
+                        <p className='user__bio'>{user?.bio}</p>
                         <div className='user__stats'>
                             <div className='user__rating-div'>
                                 <BsLightningFill size={14} color='grey' /> <p className='user__stats-title'>Voltage</p>
                                 <p className='user__rating'>{user?.rating}</p>
                             </div>
                             <div className='user__followers-div'>
-                                <FaUserFriends size={14} color='grey' /> <p className='user__stats-title'>Followers</p>
-                                <p className='user__followers'>{followFormatter(user?.followers)}</p>
+                                <PiBooks size={16} color='grey' /><p className='user__stats-title'>Bookings</p>
+                                <p className='user__followers'>{followFormatter(user?.bookings)}</p>
                             </div>
                         </div>
-
                     </div>
-                    <p className='user__bio'>{user?.bio}</p>
                     <div className='user__genre-div'>
                         <PiVinylRecord stroke='grey' fill='grey' size={14} />
                         <p className='user__genre'>{user.genre}</p>
@@ -153,11 +142,13 @@ function UserProfile({ currentUser, getBookings }) {
             <>
                 <section className='user'>
                     <div className='user__background-container'>
-                        <img className='user__header-background' src={user.backgroundimg} alt='user background' />
+                    {!user?.backgroundimg ? (<div className='user__header-background'></div>)
+                        : (<img className='user__header-background' src={user?.backgroundimg} alt='user background' />)}
                         <div className='user__info-container'>
                             <div className='user__avatar-div'>
-                                {!user?.avatar ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square'/></div>)
+                                {!user?.avatar ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' /></div>)
                                     : (<img className='user__avatar' alt='avatar' src={user?.avatar} />)}
+                                <div className='user__banner-div'><h2 className='user__banner'>{user?.name}</h2></div>
                             </div>
                         </div>
                     </div>
@@ -165,27 +156,23 @@ function UserProfile({ currentUser, getBookings }) {
                     <article className='user__stats-container'>
                         <div className='user__details-container'>
                             <div className='user__info-div'>
-                                <div className='user__names'>
-                                    <p className='user__name'>{user?.name}</p>
-                                    <p className='user__username'>{user?.displayName}</p>
-                                </div>
+                                <h2 className='user__heading'>About</h2>
                                 <div className='user__button-div'>
-                                    <button className='user__button' onClick={handleFollow}>+ Follow</button>
+                                    <button className='user__button' onClick={handleNavToBooking}>+ Book</button>
                                 </div>
                             </div>
+                            <p className='user__bio'>{user?.bio}</p>
                             <div className='user__stats'>
                                 <div className='user__rating-div'>
                                     <BsLightningFill size={14} color='grey' /> <p className='user__stats-title'>Voltage</p>
                                     <p className='user__rating'>{user?.rating}</p>
                                 </div>
                                 <div className='user__followers-div'>
-                                    <FaUserFriends size={14} color='grey' /> <p className='user__stats-title'>Followers</p>
-                                    <p className='user__followers'>{followFormatter(user?.followers)}</p>
+                                    <PiBooks size={14} color='grey' /> <p className='user__stats-title'>Bookings</p>
+                                    <p className='user__followers'>{followFormatter(user?.bookings)}</p>
                                 </div>
                             </div>
-
                         </div>
-                        <p className='user__bio'>{user?.bio}</p>
                         <div className='user__genre-div'>
                             <PiVinylRecord stroke='grey' fill='grey' size={14} />
                             <p className='user__genre'>{user.genre}</p>

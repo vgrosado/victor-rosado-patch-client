@@ -81,7 +81,7 @@ function ReviewForm({ user, currentUser }) {
     } else
         return (
             <section className='reviewform'>
-                <h2 className='reviewform__heading'>Leave <span className='reviewform__displayName'>{user?.displayName}</span> A Review</h2>
+                <h2 className='reviewform__heading'>Leave <span className='reviewform__displayName'>{user?.name}</span> A Review</h2>
                 <form autoComplete='off' type='submit' className='reviewform__form'>
                     <div className='reviewform__div'>
                         {[...Array(5)].map((volt, index) => {

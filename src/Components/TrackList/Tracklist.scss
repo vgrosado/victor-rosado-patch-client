@@ -7,18 +7,19 @@
 
     &__header {
         color: white;
+        font-size: 2rem;
     }
 }
 
 .track {
     background-color: $PatchGrey;
-    border: 2px solid white;
     box-sizing: border-box;
     padding: 1rem;
     margin: .5rem 0rem;
     border-radius: 8px;
     height: 8vh;
     width: 100%;
+    border: 1px solid #93939375;
 
     &__container {
         display: flex;

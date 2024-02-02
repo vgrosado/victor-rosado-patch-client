@@ -49,7 +49,7 @@
         object-position: center;
         height: 100%;
         width: 100%;
-        background-color: #191919;
+        background: black;
     }
 
     &__upload-icon {
@@ -65,7 +65,7 @@
     &__avatar-div {
         display: flex;
         justify-content: space-between;
-        height: 10vh;
+        height: 80%;
         width: 100%;
         align-items: center;
     }
@@ -73,10 +73,11 @@
     &__info-container {
         display: flex;
         position: absolute;
+        height: 20%;
         width: 100%;
         justify-content: space-between;
         box-sizing: border-box;
-        padding: 2rem 2rem 0rem 1rem;
+        padding: 2rem 1rem 0rem 1rem;
         align-items: center;
     }
 
@@ -109,20 +110,13 @@
     &__name {
         color: $PatchOrange;
         font-weight: bold;
-
-        @include iphone12Pro {
-            font-size: 1.25rem;
-        }
+        font-size: 1.25rem;
     }
 
     &__username {
         font-weight: 300;
-        font-size: .75rem;
+        font-size: 1rem;
         color: grey;
-
-        @include iphone12Pro {
-            font-size: 1rem;
-        }
     }
 
     &__website-div {
@@ -151,6 +145,23 @@
         align-items: center;
     }
 
+    &__banner-div {
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        height: 100%;
+        width: 80%;
+    }
+
+    &__banner {
+        text-wrap: wrap;
+        font-weight: bold;
+        color: white;
+        font-size: 2.5rem;
+        text-transform: capitalize;
+    }
+
+
     &__location {
         width: 34vw;
         color: grey;
@@ -160,10 +171,40 @@
         margin-left: .25rem;
         font-size: .850rem;
         font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    &__heading {
+        color: white;
+        font-size: 2rem;
+        animation: flicker 8s linear forwards alternate infinite;
+        text-shadow: 0 0 0.033em #fff, 0 0 0.08em #fff, 0 0 0.1em #ff7b00, 0 0 0.2em #ff7b00, 0 0 0.3em #ff7b00, 0 0 1em #ff7b00, 0 0 1.5em #ff7b00;
+        @keyframes flicker {
+
+            0%,
+            19.999%,
+            22%,
+            62.999%,
+            64%,
+            64.999%,
+            72%,
+            100% {
+                opacity: 1;
+            }
+
+            20%,
+            21.999%,
+            63%,
+            63.999%,
+            65%,
+            71.999% {
+                opacity: 0.33;
+            }
+        }
     }
 
     &__bio {
-        font-size: .625rem;
+        font-size: .875rem;
         font-weight: 300;
         color: white;
         padding: .25rem 0rem;
@@ -171,10 +212,6 @@
         width: 100%;
         text-wrap: wrap;
         text-align: justify;
-
-        @include iphone12Pro {
-            font-size: .875rem;
-        }
     }
 
     &__genre-div {
@@ -185,6 +222,7 @@
 
     &__genre {
         color: grey;
+        text-transform: capitalize;
         font-weight: 300;
         word-break: keep-all;
         white-space: normal;
@@ -197,7 +235,7 @@
         position: absolute;
         z-index: 1;
         top: 9rem;
-        height: 70%;
+        height: 70vh;
         width: 100%;
         background-color: rgb(31, 31, 31);
         display: flex;
@@ -207,10 +245,6 @@
         border-top-left-radius: 1.25rem;
         border-top-right-radius: 1.25rem;
         overflow: auto;
-
-        @include iphone12Pro {
-            height: 70vh;
-        }
     }
 
     &__details-container {
@@ -229,6 +263,7 @@
     &__names {
         display: flex;
         flex-direction: column;
+        text-transform: capitalize;
     }
 
     &__contacts-container {
@@ -239,12 +274,8 @@
     &__stats-title {
         color: white;
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 1.25rem;
         margin-left: .25rem;
-
-        @include iphone12Pro {
-            font-size: 1.25rem;
-        }
     }
 
     &__stats {
@@ -268,35 +299,6 @@
         font-weight: bold;
         color: $PatchOrange;
         padding: 0rem .5rem;
-        text-shadow: 0px 0px 11px $PatchOrange;
-        animation: flicker 8s linear forwards alternate infinite;
-
-        @keyframes flicker {
-
-            0%,
-            19.999%,
-            22%,
-            62.999%,
-            64%,
-            64.999%,
-            72%,
-            100% {
-                opacity: 1;
-            }
-
-            20%,
-            21.999%,
-            63%,
-            63.999%,
-            65%,
-            71.999% {
-                opacity: 0.33;
-            }
-        }
-
-        @include iphone12Pro {
-            font-size: 1.25rem;
-        }
     }
 
 
@@ -306,7 +308,7 @@
         align-items: center;
         font-size: .75rem;
         padding-bottom: .5rem;
-        width: 50%;
+        width: 55%;
     }
 
     &__followers {
@@ -314,10 +316,6 @@
         font-weight: bold;
         color: $PatchOrange;
         padding: 0rem .5rem;
-
-        @include iphone12Pro {
-            font-size: 1.25rem;
-        }
     }
 
     &__button-div {
@@ -351,27 +349,29 @@
     }
 
     &__nav-item {
-        font-weight: 300;
-        font-size: 1rem;
+        font-weight: bold;
+        font-size: 1.375rem;
         color: $PatchOrange;
+        box-sizing: border-box;
+        padding: 0.25rem;
 
         &:hover {
             color: rgb(255, 255, 255);
             text-shadow: 0px 0px 11px rgb(166, 166, 166);
         }
-
-        @include iphone12Pro {
-            font-size: 1.375rem;
-        }
     }
 
     &__nav-item-active {
-        margin-bottom: -.5rem;
+        // margin-bottom: -.5rem;
         font-size: 1.375rem;
-        font-weight: 300;
-        color: rgb(255, 255, 255);
-        text-shadow: 0px 0px 11px rgb(166, 166, 166);
-        border-bottom: 2px solid white;
+        font-weight: bold;
+        color: #191919;
+        // text-shadow: 0px 0px 11px rgb(166, 166, 166);
+        // border-bottom: 2px solid white;
+        background: #ff7b00;
+        border-radius: 6px;
+        box-sizing: border-box;
+        padding: 0.25rem;
     }
 
     &__nav-div {

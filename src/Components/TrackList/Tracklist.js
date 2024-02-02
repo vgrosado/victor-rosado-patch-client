@@ -17,7 +17,6 @@ function TrackList({ music, getUserMusic, currentUser, user, handleSelectedTrack
     return (
         <>
             <section className='tracklist'>
-                <h2 className='tracklist__header'>Tracks</h2>
                 {music.map((track, index) =>
                     <div key={index} className='track' onClick={() => handleSelectedTrack(track)}>
                         <div className='track__container'>
