@@ -45,12 +45,13 @@ function SignUpForm() {
 						setDoc(userRef, {
 							rating: 0,
 							bio: "Tell us about yourself",
-							followers: 0,
+							bookings: 0,
 							name: newName,
 							displayName: '@' + userName,
 							avatar: "",
 							id: user.uid,
-							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2Fpatchbanner.jpeg?alt=media&token=f7fbbfd3-0fb4-420b-8d4a-16bd2c73318e",
+							email: emailRef,
+							backgroundimg: null,
 							location: "Add a location",
 							website: "Add a website",
 							genre: ""
@@ -61,12 +62,13 @@ function SignUpForm() {
 						updateDoc(userRef, {
 							rating: 0,
 							bio: "Tell us about yourself",
-							followers: 0,
+							bookings: 0,
 							name: newName,
 							displayName: userName,
 							avatar: "",
 							id: user.uid,
-							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2Fpatchbanner.jpeg?alt=media&token=f7fbbfd3-0fb4-420b-8d4a-16bd2c73318e",
+							email: emailRef,
+							backgroundimg: null,
 							location: "Add a location",
 							website: "Add a website",
 							genre: ""

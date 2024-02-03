@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import '../Booking/Booking.scss';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 import { useParams } from 'react-router-dom';
 
-function Booking({getBookings}) {
+function Booking({ getBookings, user, bookings }) {
     const { id } = useParams();
-
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [type, setType] = useState();
@@ -69,6 +68,23 @@ function Booking({getBookings}) {
             address: address,
             isRead: false,
             timestamp: newDate
+        }).then(() => {
+            const mailData = collection(db, "mail");
+            addDoc(mailData, {
+                to: user?.email,
+                message: {
+                    subject: "Welcome!",
+                    html: `Hi ${user?.name}! ${name} would like to book to ${type} @ ${venue} ${address} located in ${region} on ${date}.
+                    Please contact ${name} @ ${email} if you would like to accept!`
+                }
+            })
+        }).then(() => {
+            const bookingDocRef = doc(db, "users", `${id}`);
+            updateDoc(bookingDocRef, {
+                bookings: bookings?.length
+            })
+        }).catch((error) => {
+            console.log(error.message)
         });
         // Clear form values after submitting Booking
         setName("");
@@ -94,7 +110,7 @@ function Booking({getBookings}) {
                 <input autoComplete='off' className='booking__input' type='text' name='email' placeholder='Email' onChange={(event) => setEmail(event.target.value)} value={email}>
                 </input>
                 <select className='booking__booking-type' onChange={(event) => setType(event.target.value)} value={type}>
-                <option value="" disabled selected hidden>
+                    <option value="" disabled selected hidden>
                         Type</option>
                     <option value='Headline'>Headline</option>
                     <option value='Open'>Open</option>

@@ -17,7 +17,7 @@ import { IoLibrarySharp } from "react-icons/io5";
 
 
 
-function UserProfile({ currentUser, getBookings }) {
+function UserProfile({ currentUser, getBookings, bookings }) {
     const { id } = useParams();
     const [user, setUser] = useState({});
     const [encorePage, setEncorePage] = useState(false);
@@ -133,7 +133,7 @@ function UserProfile({ currentUser, getBookings }) {
                     </div>
                     {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
                     {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
-                    {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} user={user} />)}
+                    {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} bookings={bookings} user={user} />)}
                 </article>
                 <Nav currentUser={currentUser} user={user} openModal={openModal} />
             </section >
@@ -197,7 +197,7 @@ function UserProfile({ currentUser, getBookings }) {
                         </div>
                         {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
                         {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
-                        {bookingPage && (<Booking getBookings={getBookings} user={user} />)}
+                        {bookingPage && (<Booking getBookings={getBookings} bookings={bookings} user={user} />)}
                     </article>
                     <Nav currentUser={currentUser} user={user} openModal={openModal} />
                 </section >
