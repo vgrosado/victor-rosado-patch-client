@@ -29,6 +29,7 @@
     &__name {
         color: $PatchOrange;
         font-weight: bold;
+        text-transform: capitalize;
     }
 
     &__subject {
