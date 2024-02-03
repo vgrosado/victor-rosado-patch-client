@@ -1,0 +1,35 @@
+@use '../../Styles/Partials/variable' as*;
+
+.notificationpage {
+    height: 91.5vh;
+    background: $PatchGrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__header-div {
+        height: 20vh;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 2rem;
+    }
+
+    &__header {
+        color: white;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    &__container {
+        background: $PatchMedium-Grey;
+        height: 100vh;
+        width: 100%;
+        overflow: auto;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+}

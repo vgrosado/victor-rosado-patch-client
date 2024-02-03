@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignUpPage from './Pages/SignUpPage/SignUpPage';
 import HomePage from './Pages/HomePage/HomePage';
@@ -10,6 +10,7 @@ import { collection, doc, getDoc, getDocs, orderBy, query, } from 'firebase/fire
 import EditProfile from './Pages/EditProfile/EditProfile';
 import { getAuth } from 'firebase/auth';
 import UploadMusicPage from './Pages/UploadMusicPage/UploadMusicPage';
+import NotificationPage from './Pages/NotificationPage/NotificationPage';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const usersCollectionRef = collection(db, "users")
-  async function getUsers(){
+  async function getUsers() {
     const Data = await getDocs(usersCollectionRef);
     setUsers(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
   };
@@ -32,7 +33,7 @@ function App() {
   }, []);
 
   const usersDocRef = doc(db, "users", `${currentUser?.uid}`)
-  async function getUser(){
+  async function getUser() {
     await getDoc(usersDocRef)
       .then((doc) => {
         setLoggedUser(doc.data(), doc.id)
@@ -47,7 +48,7 @@ function App() {
   }, [currentUser?.uid])
 
   const bookingsRef = collection(db, 'users', `${currentUser?.uid}`, 'Bookings');
-  async function getBookings(){
+  async function getBookings() {
     const orderedQuery = query(bookingsRef, orderBy('timestamp', 'asc')); // Change 'asc' to 'desc' if needed
     const data = await getDocs(orderedQuery);
     const orderedBookings = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
@@ -77,7 +78,8 @@ function App() {
         <Route path="/Home" element={<HomePage users={users} getBookings={getBookings} bookingNotification={bookingNotification} loggedUser={loggedUser} getUsers={getUsers} currentUser={currentUser} />} />
         <Route path="/Profile/:id" element={<UserProfile currentUser={currentUser} bookings={bookings} getBookings={getBookings} />} />
         <Route path="/EditProfile/:uid" element={<EditProfile currentUser={currentUser} getUser={getUser} loggedUser={loggedUser} />} />
-        <Route path="UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser} />}></Route>
+        <Route path="/UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser} />}></Route>
+        <Route path="/Notifications/:id" element={<NotificationPage currentUser={currentUser} bookings={bookings} />}></Route>
       </Routes>
     </BrowserRouter>
   );

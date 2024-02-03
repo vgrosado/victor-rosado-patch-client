@@ -65,7 +65,7 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>
                             {/* <BiEnvelope className='homepage__header-icons' /> */}
-                            <BiBell className='homepage__header-icons' />
+                            <Link to={`/Notifications/${currentUser?.uid}`}><BiBell className='homepage__header-icons' /></Link>
                             {bookingNotification?.isRead === false ? <div className='homepage__icon-notification' onClick={() => handleNotification(bookingNotification?.id)}></div> : ""}
                         </div>
                     </div>
