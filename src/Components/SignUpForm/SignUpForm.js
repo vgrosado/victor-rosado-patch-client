@@ -51,7 +51,7 @@ function SignUpForm() {
 							avatar: "",
 							id: user.uid,
 							email: emailRef,
-							backgroundimg: null,
+							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2FPatchStockBackground.jpeg?alt=media&token=40704bfb-4d34-4609-b5ab-38207e36aa24",
 							location: "Add a location",
 							website: "Add a website",
 							genre: ""
@@ -68,7 +68,7 @@ function SignUpForm() {
 							avatar: "",
 							id: user.uid,
 							email: emailRef,
-							backgroundimg: null,
+							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2FPatchStockBackground.jpeg?alt=media&token=40704bfb-4d34-4609-b5ab-38207e36aa24",
 							location: "Add a location",
 							website: "Add a website",
 							genre: ""

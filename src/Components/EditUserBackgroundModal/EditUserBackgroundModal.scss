@@ -1,6 +1,6 @@
 @use '../../Styles/Partials/variable' as*;
 
-.modal-overlay {
+.edituserbackgroundmodal {
     font-weight: 300;
     position: fixed;
     z-index: 1;
@@ -21,15 +21,15 @@
         background-color: $PatchMedium-Grey;
         opacity: .99;
         position: relative;
-        top: -9vh;
-        height: 50vh;
+        top: 0vh;
+        height: 80vh;
         width: 75%;
         padding: 7.5vw;
         box-shadow: 12px 12px 17px 6px rgba(0, 0, 0, 0.6901960784);
         border-radius: 1rem;
     }
 
-    &__avatar-div {
+    &__background-div {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -37,7 +37,7 @@
         align-items: center;
     }
 
-    &__edit-avatar-div {
+    &__edit-background-div {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -52,18 +52,17 @@
     }
 
     &__input-button {
-        text-align: center;
-        background-color: $PatchGrey;
+        background-color: $PatchMedium-Grey;
         color: $PatchOrange;
         font-size: 1.25rem;
         font-weight: 300;
         align-self: center;
-        width: 80%;
+        width: 100%;
         height: 6vh;
         border: 1px solid $PatchOrange;
-        border-radius: 1.25rem;
+        border-radius: 5px;
         box-sizing: border-box;
-        padding: .5rem;
+        padding: 2vw;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
         cursor: pointer;
         display: flex;
@@ -73,15 +72,15 @@
 
 
     &__upload-button {
-        background-color: $PatchGrey;
-        color: $PatchOrange;
+        background-color: $PatchOrange;
+        color: #1f1f1f;
         font-size: 1.25rem;
         font-weight: 300;
         align-self: center;
-        width: 80%;
+        width: 100%;
         height: 6vh;
-        border: 1px solid $PatchOrange;
-        border-radius: 1.25rem;
+        border: none;
+        border-radius: 5px;
         box-sizing: border-box;
         padding: 2vw;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
@@ -114,7 +113,7 @@
         display: none;
     }
 
-    &__upload-avatar {
+    &__upload-background {
         color: white;
         width: 100%;
         height: 5rem;
@@ -123,14 +122,13 @@
         justify-content: center;
     }
 
-    &__user-avatar {
-        width: 13rem;
-        height: 13rem;
-        border-radius: 50%;
-        border: 1px solid white;
+    &__user-background {
+        width: 20rem;
+        height: 30rem;
+        border-radius: 5%;
         object-fit: cover;
         object-position: center;
-        background-color: $PatchMedium-Grey;
+        background-color: #1f1f1f;
     }
 
     &__upload-background {

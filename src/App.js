@@ -76,7 +76,7 @@ function App() {
         <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/Home" element={<HomePage users={users} getBookings={getBookings} bookingNotification={bookingNotification} loggedUser={loggedUser} getUsers={getUsers} currentUser={currentUser} />} />
         <Route path="/Profile/:id" element={<UserProfile currentUser={currentUser} bookings={bookings} getBookings={getBookings} />} />
-        <Route path="/EditProfile/:uid" element={<EditProfile currentUser={currentUser} loggedUser={loggedUser} />} />
+        <Route path="/EditProfile/:uid" element={<EditProfile currentUser={currentUser} getUser={getUser} loggedUser={loggedUser} />} />
         <Route path="UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser} />}></Route>
       </Routes>
     </BrowserRouter>

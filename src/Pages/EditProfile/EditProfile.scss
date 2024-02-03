@@ -34,7 +34,6 @@
     }
 
     &__edit-background {
-        width: 100%;
         height: 4vh;
         text-align: center;
         box-sizing: border-box;
@@ -42,10 +41,18 @@
         font-size: .750rem;
         font-weight: bold;
         color: white;
-        background-color: $PatchOrange;
-        border: 2px solid white;
+        border: 1px solid $PatchOrange;
+        background-color: rgba(128, 128, 128, 0.193);
         border-radius: 5px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+    }
+
+    &__background-icon {
+        margin-right: .5rem;
     }
 
     &__background-container {
@@ -254,7 +261,7 @@
 
     &__button {
         background-color: $PatchGrey;
-        color: $PatchOrange;
+        color: white;
         font-size: 1.25rem;
         font-weight: 300;
         align-self: center;

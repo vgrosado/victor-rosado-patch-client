@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Nav from '../../Components/Nav/Nav';
 import '../EditProfile/EditProfile.scss';
-import { FaUser } from 'react-icons/fa6';
+import { FaImage, FaUser } from 'react-icons/fa6';
 import { TbCameraPlus } from "react-icons/tb";
 import {  useNavigate } from 'react-router-dom';
 import { doc, updateDoc } from 'firebase/firestore';
@@ -10,11 +10,13 @@ import { updateProfile } from 'firebase/auth';
 // import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import EditAvatarModal from '../../Components/EditAvatarModal/EditAvatarModal';
 import DeleteUserModal from '../../Components/DeleteUserModal/DeleteUserModal';
+import EditUserBackgroundModal from '../../Components/EditUserBackgroundModal/EditUserBackgroundModal';
 
 
-function EditProfile({ currentUser, loggedUser }) {
+function EditProfile({ currentUser, loggedUser, getUser }) {
     const navigate = useNavigate();
     const [isModalOpen, setModalOpen] = useState(false);
+    const [isBackgroundModalOpen, setBackgroundModalOpen] = useState(false);
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [updateUserName, setUpdateUserName] = useState(currentUser?.displayName);
     const [updateName, setUpdateName] = useState(loggedUser?.name);
@@ -38,6 +40,7 @@ function EditProfile({ currentUser, loggedUser }) {
         bio: updateBio,
         displayName: updateUserName
     };
+
 
     useEffect(() => {
         if (loggedUser) {
@@ -84,33 +87,21 @@ function EditProfile({ currentUser, loggedUser }) {
         }
     }, []);
 
-    // upload/update user background image
-    // function uploadImage() {
-    //     if (imageUpload == undefined) return;
-    //     const imageRef = ref(storage, `userbackgroundimages/${imageUpload?.name}`);
-    //     const userRef = doc(db, "users", `${currentUser?.uid}`)
-    //     uploadBytes(imageRef, imageUpload)
-    //         .then(async () => {
-    //             await getDownloadURL(imageRef)
-    //                 .then(async (url) => {
-    //                     backgroundUrl.current = url;
-    //                     console.log("new background url " + user?.backgroundimg?.current)
-    //                 }).then(async () => {
-    //                     await updateDoc(userRef, {
-    //                         backgroundimg: backgroundUrl
-    //                     });
-    //                 })
-    //         }).catch((error) => {
-    //             console.log(error.message);
-    //         })
-    // };
-
     function closeModal() {
         setModalOpen(false);
     };
 
     function openModal() {
         setModalOpen(true);
+    };
+
+
+    function closeBackgroundModal() {
+        setBackgroundModalOpen(false);
+    };
+
+    function openBackgroundModal() {
+        setBackgroundModalOpen(true);
     };
 
 
@@ -142,11 +133,7 @@ function EditProfile({ currentUser, loggedUser }) {
                             (<div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={currentUser?.photoURL} />
                                 <TbCameraPlus stroke='white' onClick={openModal} size={30} className='editprofile__edit-avatar' />
                             </div>)}
-
-                        {/* <label className='modal-overlay__upload-background' htmlFor='background-input' id='background'>
-                            <div className='editprofile__edit-background' onClick={(event) => uploadImage(event)}> <FaImage fill='white'/>Replace</div>
-                            <input className='modal-overlay__upload-input' id='background-input' name='background-input' type='file' onChange={(event) => { setImageUpload(event.target.files[0]) }}></input>
-                        </label> */}
+                            <div className='editprofile__edit-background' onClick={openBackgroundModal}><FaImage className='editprofile__background-icon' fill='white'/>Replace</div>
                     </div>
                 </div>
             </div>
@@ -182,6 +169,7 @@ function EditProfile({ currentUser, loggedUser }) {
             </article>
             <DeleteUserModal isDeleteModalOpen={isDeleteModalOpen} closeDeleteModal={closeDeleteModal} currentUser={currentUser} />
             <EditAvatarModal isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
+            <EditUserBackgroundModal isBackgroundModalOpen={isBackgroundModalOpen} getUser={getUser} closeBackgroundModal={closeBackgroundModal} loggedUser={loggedUser} currentUser={currentUser}  />
             <Nav currentUser={currentUser} />
         </section>
     )
