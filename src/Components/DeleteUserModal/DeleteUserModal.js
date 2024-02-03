@@ -7,23 +7,13 @@ import { deleteDoc, doc } from 'firebase/firestore';
 function DeleteUserModal({ isDeleteModalOpen, closeDeleteModal, currentUser }) {
     const navigateTo = useNavigate();
 
-    async function handleLogOut() {
-        try {
-            await logOut();
-            console.log("logged out => " + currentUser?.email)
-        } catch {
-            console.log('Error Loggin Out User')
-        }
-    };
-
     async function deleteCurrentUser() {
         const deletedUserRef = doc(db, "users", `${currentUser?.uid}`)
         deleteDoc(deletedUserRef).then(() => {
-            deleteUser(currentUser).then(() => {
-                alert('Your account has been deleted successfully')
-                navigateTo('/Login')
-                console.log('user has been delete');
-            })
+            deleteUser(currentUser);
+            alert('Your account has been deleted successfully')
+            navigateTo('/Login')
+            console.log('user has been delete');
         }).catch((error) => {
             console.log(error.message)
         });
