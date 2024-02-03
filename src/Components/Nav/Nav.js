@@ -1,7 +1,7 @@
 import '../Nav/Nav.scss';
 import { SlUser } from 'react-icons/sl';
 import { SlHome } from 'react-icons/sl';
-import { PiBooks } from 'react-icons/pi';
+// import { PiBooks } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import { BiLogOut } from 'react-icons/bi';
 import { logOut } from '../../Firebase';

@@ -1,7 +1,6 @@
 import '../HomePage/HomePage.scss'
 import { AiOutlineSearch } from 'react-icons/ai';
 import Nav from '../../Components/Nav/Nav';
-import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import UserCard from '../../Components/UserCard/UserCard';
 import { useEffect, useState } from 'react';

@@ -4,7 +4,6 @@ import { db, storage } from '../../Firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
 import { doc, updateDoc } from 'firebase/firestore';
-import { useParams } from 'react-router-dom';
 
 function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
     const [avatarUpload, setAvatarUpload] = useState("");

@@ -73,7 +73,7 @@ function ReviewForm({ user, currentUser }) {
                     return (
                         <div className='reviewform__review-div'>
                             <div className='reviewform__user-div'>
-                                <img className='reviewform__avatar' src={rev?.avatar}></img>
+                                <img className='reviewform__avatar' src={rev?.avatar} alt='user avatar'></img>
                                 <div className='reviewform__user-details'>
                                     <p className='reviewform__username'>{rev?.user}</p>
                                     <p className='reviewform__user-timestamp'>{new Date(rev?.time).toLocaleDateString()}</p>
@@ -138,8 +138,8 @@ function ReviewForm({ user, currentUser }) {
                         return (
                             <div className='reviewform__review-div'>
                                 <div className='reviewform__user-div'>
-                                    {rev.avatar ? <img className='reviewform__avatar' src={rev?.avatar}></img> :
-                                        <img className='reviewform__avatar' src='https://xsgames.co/randomusers/avatar.php?g=male'></img>}
+                                    {rev.avatar ? <img className='reviewform__avatar' src={rev?.avatar} alt='user avatar'></img> :
+                                        <img className='reviewform__avatar' src='https://xsgames.co/randomusers/avatar.php?g=male' alt='user avatar'></img>}
                                     <div className='reviewform__user-details'>
                                         <p className='reviewform__username'>{rev?.user}</p>
                                         <p className='reviewform__user-timestamp'>{new Date(rev?.time).toLocaleDateString()}</p>
