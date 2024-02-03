@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import UserCard from '../../Components/UserCard/UserCard';
 import { useEffect, useState } from 'react';
 import GenreCard from '../../Components/GenreCard/GenreCard';
-import { BiBell, BiEnvelope } from 'react-icons/bi';
+import { BiBell} from 'react-icons/bi';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 
@@ -64,7 +64,7 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
                         </Link>
                         <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
                         <div className='homepage__icons-container'>
-                            <BiEnvelope className='homepage__header-icons' />
+                            {/* <BiEnvelope className='homepage__header-icons' /> */}
                             <BiBell className='homepage__header-icons' />
                             {bookingNotification?.isRead === false ? <div className='homepage__icon-notification' onClick={() => handleNotification(bookingNotification?.id)}></div> : ""}
                         </div>
