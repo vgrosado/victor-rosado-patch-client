@@ -85,7 +85,7 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                         <div className='user__avatar-div'>
                             {!currentUser?.photoURL ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' /></div>)
                                 : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
-                                <div className='user__banner-div'><h2 className='user__banner'>{user?.name}</h2></div>
+                            <div className='user__banner-div'><h2 className='user__banner'>{user?.name}</h2></div>
                         </div>
                     </div>
                 </div>
@@ -111,10 +111,10 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                             </div>
                         </div>
                     </div>
-                    <div className='user__genre-div'>
+                    {user?.genre === "" ? "" : <div className='user__genre-div'>
                         <PiVinylRecord stroke='grey' fill='grey' size={14} />
                         <p className='user__genre'>{user.genre}</p>
-                    </div>
+                    </div>}
                     <div className='user__contacts-container'>
                         <div className='user__location-div'>
                             <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />
@@ -144,8 +144,8 @@ function UserProfile({ currentUser, getBookings, bookings }) {
             <>
                 <section className='user'>
                     <div className='user__background-container'>
-                    {!user?.backgroundimg ? (<div className='user__header-background'></div>)
-                        : (<img className='user__header-background' src={user?.backgroundimg} alt='user background' />)}
+                        {!user?.backgroundimg ? (<div className='user__header-background'></div>)
+                            : (<img className='user__header-background' src={user?.backgroundimg} alt='user background' />)}
                         <div className='user__info-container'>
                             <div className='user__avatar-div'>
                                 {!user?.avatar ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' /></div>)
@@ -175,10 +175,10 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                                 </div>
                             </div>
                         </div>
-                        <div className='user__genre-div'>
+                        {user?.genre === "" ? "" : <div className='user__genre-div'>
                             <PiVinylRecord stroke='grey' fill='grey' size={14} />
                             <p className='user__genre'>{user.genre}</p>
-                        </div>
+                        </div>}
                         <div className='user__contacts-container'>
                             <div className='user__location-div'>
                                 <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />
