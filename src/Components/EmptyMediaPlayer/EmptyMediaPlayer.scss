@@ -2,7 +2,6 @@
 @use '../../Styles/Partials/breakpoints' as*;
 
 .emptymediaplayer {
-    padding-top: 1rem;
 
     @include iphone12Pro {
         display: flex;

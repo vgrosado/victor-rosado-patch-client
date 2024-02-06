@@ -1,13 +1,9 @@
-import { TbCalendarPlus } from 'react-icons/tb';
 import { IoLocationOutline } from "react-icons/io5";
 import { IoCalendarSharp } from "react-icons/io5";
-
 import '../BookingList/BookingList.scss';
 
 
 function BookingList({ bookings }) {
-
-
 
     return (
         <>
@@ -16,7 +12,6 @@ function BookingList({ bookings }) {
                     <div key={index} className='bookinglist'>
                         <div className='bookinglist__container'>
                             <IoCalendarSharp color='grey' size={110} />
-                            {/* <img className='bookinglist__event-flyer' src=''></img> */}
                             <div className='bookinglist__booking-div'>
                                 <IoLocationOutline stroke='#ff7b00' strokeWidth={4} size={14} />
                                 <div className='bookinglist__details'>

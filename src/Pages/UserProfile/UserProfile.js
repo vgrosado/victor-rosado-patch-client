@@ -127,9 +127,9 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                     </div>
 
                     <div className='user__nav-div'>
-                        <p onClick={handleNavToMusic} className={musicPage && !encorePage && !bookingPage ? 'user__nav-item-active' : 'user__nav-item'}>Music</p>
-                        <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Encore</p>
-                        <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Booking</p>
+                        <p onClick={handleNavToMusic} className={musicPage && !encorePage && !bookingPage ? 'user__nav-item-active' : 'user__nav-item'}>MUSIC</p>
+                        <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>ENCORE</p>
+                        <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>BOOKING</p>
                     </div>
                     {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
                     {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
@@ -191,9 +191,9 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                         </div>
 
                         <div className='user__nav-div'>
-                            <p onClick={handleNavToMusic} className={musicPage && !encorePage && !bookingPage ? 'user__nav-item-active' : 'user__nav-item'}>Music</p>
-                            <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Encore</p>
-                            <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>Booking</p>
+                            <p onClick={handleNavToMusic} className={musicPage && !encorePage && !bookingPage ? 'user__nav-item-active' : 'user__nav-item'}>MUSIC</p>
+                            <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>ENCORE</p>
+                            <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>BOOKING</p>
                         </div>
                         {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
                         {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
