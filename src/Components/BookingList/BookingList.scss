@@ -1,55 +1,99 @@
 @use '../../Styles/Partials/variable' as*;
 
 .bookinglist {
+    display: flex;
+    justify-content: space-between;
     height: 20vh;
     width: 100%;
-    border-bottom: 1px solid $PatchGrey;
+    border-radius: 10px;
+    border: 2px solid grey;
+    box-sizing: border-box;
+    padding: 1rem;
+    margin-top: 1rem;
+    
 
     &__container {
-        height: 15vh;
+        height: 100%;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-sizing: border-box;
-        padding: 0rem 2rem;
-        :hover {
-            background: transparent;
-        }
+    }
+
+    &__booking-div {
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        width: 50%;
+    }
+
+    &__details {
+        width: 100%;
+        margin-left: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
     }
 
     &__event-flyer-div {
         height: 10vh;
         width: 10vh;
     }
-    
+
     &__event-flyer {
-        height: 10vh;
+        height: 15vh;
+        width: 10rem;
         filter: grayscale(1);
         object-fit: cover;
         object-position: center;
     }
 
-    &__details {
+    &__details-div {
         display: flex;
         flex-direction: column;
-        width: 80%;
+        align-items: baseline;
+        justify-content: center;
     }
 
-    &__name {
+    &__location-div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    &__type {
         color: $PatchOrange;
-        font-weight: bold;
-        text-transform: capitalize;
+        font-weight: 400;
+        margin-bottom: .25rem;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
     }
 
-    &__subject {
+    &__venue {
         color: white;
+        font-weight: 400;
+        text-transform: capitalize;
+        font-size: 1.25rem;
+    }
+
+    &__time-div {
+        display: flex;
+    }
+
+    &__date {
+        color: grey;
         font-weight: 300;
-        margin-bottom: .5rem;
     }
 
     &__time {
-        color: grey;
+        color: $PatchOrange;
         font-weight: 300;
-        font-size: .875rem;
+        font-size: 1rem;
+        margin-right: .25rem
     }
-};
+}
+
+;

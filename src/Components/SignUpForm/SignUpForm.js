@@ -7,7 +7,6 @@ import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 
 function SignUpForm() {
-
 	const [passwordOff, setPasswordOff] = useState(true);
 	const [newName, setNewName] = useState();
 	const [userName, setUserName] = useState();
@@ -87,7 +86,7 @@ function SignUpForm() {
 			}
 		}
 	};
-
+	console.log(emailRef)
 	console.log(passwordRef?.length)
 
 	function handleErr(password) {

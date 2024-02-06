@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import BookingList from '../BookingList/BookingList';
 
 function Booking({ getBookings, user, bookings, currentUser }) {
+    console.log(user?.email)
     const { id } = useParams();
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -67,6 +68,9 @@ function Booking({ getBookings, user, bookings, currentUser }) {
     function createBooking(event) {
         event.preventDefault();
         const bookingData = collection(db, "users", `${id}`, "Bookings");
+        console.log("startTime:", startTime);
+        console.log("endTime:", endTime);
+
         addDoc(bookingData, {
             name: name,
             email: email,
@@ -85,24 +89,24 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                 to: user?.email,
                 message: {
                     subject: "Welcome!",
-                    html: `Hi ${user?.name}! ${name} would like to book to ${type} @ ${venue} ${address} located in ${region} on ${date} from ${startTime} to ${endTime}.
+                    html: `Hi ${user.name}! ${name} would like to book to ${type} @ ${venue} ${address} located in ${region} on ${date}.
                     Please contact ${name} @ ${email} if you would like to accept!`
                 }
             })
         }).then(() => {
             const bookingDocRef = doc(db, "users", `${id}`);
             updateDoc(bookingDocRef, {
-                bookings: bookings?.length
-            })
+                bookings: user?.bookings + 1
+            });
         }).catch((error) => {
             console.log(error.message)
         });
         // Clear form values after submitting Booking
-        setStartTime("");
-        setEndTime("");
         setName("");
         setEmail("");
         setType("");
+        setStartTime("");
+        setEndTime("");
         setDate("");
         setRegion("");
         setVenue("");
