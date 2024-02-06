@@ -8,15 +8,15 @@ import BookingList from '../BookingList/BookingList';
 function Booking({ getBookings, user, bookings, currentUser }) {
     console.log(user?.email)
     const { id } = useParams();
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [type, setType] = useState();
-    const [date, setDate] = useState();
-    const [startTime, setStartTime] = useState();
-    const [endTime, setEndTime] = useState();
-    const [region, setRegion] = useState();
-    const [venue, setVenue] = useState();
-    const [address, setAddress] = useState();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [type, setType] = useState("");
+    const [date, setDate] = useState("");
+    const [startTime, setStartTime] = useState("");
+    const [endTime, setEndTime] = useState("");
+    const [region, setRegion] = useState("");
+    const [venue, setVenue] = useState("");
+    const [address, setAddress] = useState("");
     const newDate = Date.now();
     const formValues = {
         name,
@@ -186,7 +186,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                             value={endTime}
                         />
                     </div>
-                    <select className='booking__region-select' name='country/region' onChange={(event) => setRegion(event.target.value)} value={region}>
+                    <select required className='booking__region-select' name='country/region' onChange={(event) => setRegion(event.target.value)} value={region}>
                         <option value="" disabled selected hidden>
                             Country/Region</option>
                         <option value='North America'>North America</option>

@@ -8,10 +8,10 @@ import { updateProfile } from 'firebase/auth';
 
 function SignUpForm() {
 	const [passwordOff, setPasswordOff] = useState(true);
-	const [newName, setNewName] = useState();
-	const [userName, setUserName] = useState();
+	const [newName, setNewName] = useState("");
+	const [userName, setUserName] = useState("");
 	const [loading, setLoading] = useState(false);
-	const [emailRef, setEmailRef] = useState();
+	const [emailRef, setEmailRef] = useState("");
 	const [passwordRef, setPasswordRef] = useState(0);
 	const [err, setError] = useState(false);
 	const navigateTo = useNavigate();

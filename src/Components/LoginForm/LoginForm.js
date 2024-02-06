@@ -4,7 +4,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { login } from '../../Firebase';
 import { useRef, useState } from 'react';
 
-function LoginForm({ loading, setLoading, getUser }) {
+function LoginForm({ loading, setLoading}) {
 	const [passwordOff, setPasswordOff] = useState(true);
 	const emailRef = useRef();
 	const passwordRef = useRef();
