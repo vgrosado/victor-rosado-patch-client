@@ -1,0 +1,55 @@
+@use '../../Styles/Partials/variable' as*;
+
+.bookinglist {
+    height: 20vh;
+    width: 100%;
+    border-bottom: 1px solid $PatchGrey;
+
+    &__container {
+        height: 15vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0rem 2rem;
+        :hover {
+            background: transparent;
+        }
+    }
+
+    &__event-flyer-div {
+        height: 10vh;
+        width: 10vh;
+    }
+    
+    &__event-flyer {
+        height: 10vh;
+        filter: grayscale(1);
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+
+    &__name {
+        color: $PatchOrange;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    &__subject {
+        color: white;
+        font-weight: 300;
+        margin-bottom: .5rem;
+    }
+
+    &__time {
+        color: grey;
+        font-weight: 300;
+        font-size: .875rem;
+    }
+};

@@ -197,7 +197,7 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                         </div>
                         {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
                         {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
-                        {bookingPage && (<Booking getBookings={getBookings} bookings={bookings} user={user} />)}
+                        {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} bookings={bookings} user={user} />)}
                     </article>
                     <Nav currentUser={currentUser} user={user} openModal={openModal} />
                 </section >

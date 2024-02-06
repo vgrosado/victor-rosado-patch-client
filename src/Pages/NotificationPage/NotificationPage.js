@@ -2,7 +2,7 @@ import Nav from '../../Components/Nav/Nav';
 import Notification from '../../Components/Notification/Notification';
 import '../NotificationPage/NotificationPage.scss';
 
-function NotificationPage({ bookings, currentUser }) {
+function NotificationPage({ bookings}) {
     return (
         <>
             <main className='notificationpage'>

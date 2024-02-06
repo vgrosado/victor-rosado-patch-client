@@ -20,7 +20,7 @@ function Notification({ book }) {
                     <TbCalendarPlus size={50} color='grey' />
                     <div className='notification__details'>
                         <p className='notification__subject'><span className='notification__name'>{book?.name}</span> has sent you a booking request!</p>
-                        <p className='notification__time'>{date + "  at "  + new Date(time).toLocaleTimeString([], {
+                        <p className='notification__time'>{date + "  at  "  + new Date(time).toLocaleTimeString([], {
                             timeStyle: 'short'
                         })}</p>
                         <p className='notification__information'></p>
