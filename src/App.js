@@ -11,6 +11,7 @@ import EditProfile from './Pages/EditProfile/EditProfile';
 import { getAuth } from 'firebase/auth';
 import UploadMusicPage from './Pages/UploadMusicPage/UploadMusicPage';
 import NotificationPage from './Pages/NotificationPage/NotificationPage';
+import LandingPage from './Pages/LandingPage/LandingPage';
 
 
 function App() {
@@ -72,7 +73,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage loading={loading} setLoading={setLoading} />} />
+        <Route path="/" element={<LandingPage/>} />
         <Route path="/Login" element={<LoginPage loading={loading} setLoading={setLoading} />} />
         <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/Home" element={<HomePage users={users} getBookings={getBookings} bookingNotification={bookingNotification} loggedUser={loggedUser} getUsers={getUsers} currentUser={currentUser} />} />

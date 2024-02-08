@@ -50,6 +50,7 @@
         height: 100%;
         width: 100%;
         background: black;
+        filter: brightness(0.5);
     }
 
     &__upload-icon {
@@ -179,6 +180,7 @@
         font-size: 2rem;
         animation: flicker 8s linear forwards alternate infinite;
         text-shadow: 0 0 0.033em #fff, 0 0 0.08em #fff, 0 0 0.1em #ff7b00, 0 0 0.2em #ff7b00, 0 0 0.3em #ff7b00, 0 0 1em #ff7b00, 0 0 1.5em #ff7b00;
+
         @keyframes flicker {
 
             0%,

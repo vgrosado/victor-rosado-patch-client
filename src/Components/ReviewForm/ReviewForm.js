@@ -131,7 +131,8 @@ function ReviewForm({ user, currentUser }) {
                         name='comment'
                         placeholder='Leave a review'
                         value={newReview} />
-                    <button onClick={createReview} type='submit' className='reviewform__button'>Submit</button>
+                        {!newReview || !newUser || !voltage ? <button onClick={createReview} type='submit' disabled className='reviewform__button'>Submit</button> :
+                    <button onClick={createReview} type='submit'  className='reviewform__button'>Submit</button>}
                 </form>
                 <div className='reviewform__review-section'>
                     {review?.map(rev => {

@@ -1,0 +1,123 @@
+@use '../../Styles/Partials/variable' as*;
+
+.landingpage {
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        background: $PatchGrey;
+        align-items: center;
+        width: 100vw;
+        box-sizing: border-box;
+        padding: 1rem 2rem;
+        height: 9vh;
+    }
+
+    &__nav-logo {
+        color: #fff;
+        text-shadow:
+            0 0 0.033em #fff,
+            0 0 0.08em #fff,
+            0 0 0.1em #ff7b00,
+            0 0 0.2em #ff7b00,
+            0 0 0.3em #ff7b00,
+            0 0 1em #ff7b00,
+            0 0 1.5em #ff7b00;
+        font-size: 1.5rem;
+    }
+
+    &__logo-flicker {
+        animation: flicker 3s linear forwards alternate infinite;
+
+        @keyframes flicker {
+
+            0%,
+            19.999%,
+            22%,
+            62.999%,
+            64%,
+            64.999%,
+            72%,
+            100% {
+                opacity: 1;
+            }
+
+            20%,
+            21.999%,
+            63%,
+            63.999%,
+            65%,
+            71.999% {
+                opacity: 0.33;
+            }
+        }
+    }
+
+    &__nav-buttondiv {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 75%;
+    }
+
+    &__nav-signin {
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size: .875rem;
+        width: 30%;
+        height: 5vh;
+        box-sizing: border-box;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+
+    &__nav-signup {
+        text-align: center;
+        color: $PatchGrey;
+        font-weight: bold;
+        font-size: .875rem;
+        width: 30%;
+        height: 5vh;
+        border-radius: 5px;
+        border: none;
+        box-sizing: border-box;
+        background-color: $PatchOrange;
+        cursor: pointer;
+    }
+
+    &__hero {
+        height: 45vh;
+        width: 100vw;
+    }
+
+    &__hero-overlay {
+        height: 45vh;
+        width: 100vw;
+        background: transparent;
+        position: absolute;
+        bottom: 326px;
+        z-index: 1;
+        display: flex;
+        align-items: flex-end;
+        box-sizing: border-box;
+        padding: 1rem;
+    }
+
+    &__hero-header {
+        font-size: 3rem;
+        background: transparent;
+        color: white;
+        width: 80%;
+    }
+
+    &__hero-img {
+        filter: brightness(.5);
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}

@@ -125,7 +125,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
             <section className='booking'>
                 <form className='booking__form'>
                     <input
-                        required
+                        required={true}
                         autoComplete='off'
                         className='booking__input'
                         type='text' name='name'
@@ -134,7 +134,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                         value={name}>
                     </input>
                     <input
-                        required
+                        required={true}
                         autoComplete='off'
                         className='booking__input'
                         type='text'
@@ -143,7 +143,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                         onChange={(event) => setEmail(event.target.value)}
                         value={email}>
                     </input>
-                    <select className='booking__booking-type' onChange={(event) => setType(event.target.value)} value={type}>
+                    <select required={true} className='booking__booking-type' onChange={(event) => setType(event.target.value)} value={type}>
                         <option value="" disabled selected hidden>
                             Type</option>
                         <option value='Headline'>Headline</option>
@@ -151,7 +151,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                         <option value='Support'>Support</option>
                     </select>
                     <input
-                        required
+                        required={true}
                         autoComplete='off'
                         placeholder='Choose a date'
                         className='booking__date-input'
@@ -163,7 +163,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                     <div className='booking__time-div'>
                         <label className='booking__time-label'> Start </label>
                         <input
-                            required
+                            required={true}
                             autoComplete='off'
                             placeholder='Start Time'
                             className='booking__time-input'
@@ -176,7 +176,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                     <div className='booking__time-div'>
                         <label className='booking__time-label-end'> End </label>
                         <input
-                            required
+                            required={true}
                             autoComplete='off'
                             placeholder='End Time'
                             className='booking__time-input'
@@ -186,7 +186,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                             value={endTime}
                         />
                     </div>
-                    <select required className='booking__region-select' name='country/region' onChange={(event) => setRegion(event.target.value)} value={region}>
+                    <select required={true}className='booking__region-select' name='country/region' onChange={(event) => setRegion(event.target.value)} value={region}>
                         <option value="" disabled selected hidden>
                             Country/Region</option>
                         <option value='North America'>North America</option>
@@ -197,7 +197,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                         <option value='Africa'>Africa</option>
                     </select>
                     <input
-                        required
+                        required={true}
                         autoComplete='off'
                         className='booking__input'
                         name='venue'
@@ -207,7 +207,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                         value={venue}>
                     </input>
                     <input
-                        required
+                        required={true}
                         autoComplete='off'
                         className='booking__input'
                         name='address'
