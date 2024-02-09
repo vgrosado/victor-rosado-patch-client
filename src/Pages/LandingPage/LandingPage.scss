@@ -14,8 +14,9 @@
         box-sizing: border-box;
         padding: 1rem 2rem;
         height: 9vh;
-        position: fixed;
-        z-index: 1;
+        // position: sticky;
+        // top: 0;
+        // z-index: 1;
     }
 
     &__nav-logo {
@@ -65,12 +66,16 @@
         width: 75%;
     }
 
+    &__nav-link {
+        width: 30%;
+    }
+
     &__nav-signin {
         text-align: center;
         color: white;
         font-weight: bold;
         font-size: 1rem;
-        width: 30%;
+        width: 100%;
         height: 5vh;
         box-sizing: border-box;
         border: none;
@@ -79,22 +84,31 @@
     }
 
     &__hero {
-        height: 68vh;
         width: 100vw;
+        background: url('../../Assets/Images/Chlar.webp');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     &__hero-overlay {
-        height: 44vh;
+        height: 60vh;
         width: 100vw;
-        background: transparent;
-        position: relative;
+        background-color: rgba(0, 0, 0, 0.433);
         display: flex;
         align-items: center;
         justify-content: flex-end;
         flex-direction: column;
         box-sizing: border-box;
         padding: 1rem;
-        bottom: 320px;
+    }
+
+    &__hero-overlaycontents {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: column;
+        box-sizing: border-box;
     }
 
     &__hero-header {
@@ -103,6 +117,20 @@
         background: transparent;
         color: white;
         width: 100%;
+    }
+
+    &__signup-link {
+        width: 100%;
+        text-decoration: none;
+    }
+
+    &__cwa-link {
+        width: 100%;
+        text-decoration: none;
+        :hover {
+            text-decoration: underline;
+            color: #ff7b00;
+        }
     }
 
     &__hero-signup {
@@ -118,6 +146,20 @@
         background-color: #ff7b00;
         cursor: pointer;
         margin-top: 1rem;
+        text-decoration: none;
+    }
+
+    &__hero-cwa {
+        text-align: center;
+        color: white;
+        font-weight: lighter;
+        font-size: .875rem;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        padding: .5rem 0rem;
     }
 
     &__hero-img {
@@ -128,16 +170,15 @@
         object-position: center;
     }
 
+
     &__cta-div {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 2rem 0rem 1rem 0rem;
+        margin: 0rem 0rem 1rem 0rem;
         box-sizing: border-box;
         padding: 1rem;
-        position: relative;
-        bottom: 350px;
     }
 
     &__desc-header {
@@ -147,10 +188,6 @@
         color: white;
         width: min-content;
         margin-top: 1rem;
-    }
-
-    &__desc-section {
-        
     }
 
     &__desc-subheaderleft {
@@ -183,8 +220,6 @@
         align-items: center;
         box-sizing: border-box;
         padding: 1rem;
-        position: relative;
-        bottom: 350px;
         width: 100%;
     }
 
@@ -214,5 +249,29 @@
         line-height: 1.25rem;
         letter-spacing: -1px;
         width: 70%;
+    }
+
+    &__footericon-div {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    &__footer {
+        display: flex;
+        flex-direction: column;
+        height: 11vh;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        background: black;
+        box-sizing: border-box;
+        padding: 1rem;
+    }
+
+    &__footer-text {
+        color: grey;
+        font-weight: lighter;
+        font-size: .750rem;
     }
 }
