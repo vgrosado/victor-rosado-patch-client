@@ -67,51 +67,55 @@ function Booking({ getBookings, user, bookings, currentUser }) {
     //create a new Booking
     function createBooking(event) {
         event.preventDefault();
-        const bookingData = collection(db, "users", `${id}`, "Bookings");
-        console.log("startTime:", startTime);
-        console.log("endTime:", endTime);
+        if (!name || !email || !type || !startTime || !endTime || !date || !region || !venue || !address) {
+            alert('All fields are required')
+        } else {
+            const bookingData = collection(db, "users", `${id}`, "Bookings");
+            console.log("startTime:", startTime);
+            console.log("endTime:", endTime);
 
-        addDoc(bookingData, {
-            name: name,
-            email: email,
-            type: type,
-            date: date,
-            start: startTime,
-            end: endTime,
-            region: region,
-            venue: venue,
-            address: address,
-            isRead: false,
-            timestamp: newDate
-        }).then(() => {
-            const mailData = collection(db, "mail");
-            addDoc(mailData, {
-                to: user?.email,
-                message: {
-                    subject: "Welcome!",
-                    html: `Hi ${user.name}! ${name} would like to book to ${type} @ ${venue} ${address} located in ${region} on ${date}.
+            addDoc(bookingData, {
+                name: name,
+                email: email,
+                type: type,
+                date: date,
+                start: startTime,
+                end: endTime,
+                region: region,
+                venue: venue,
+                address: address,
+                isRead: false,
+                timestamp: newDate
+            }).then(() => {
+                const mailData = collection(db, "mail");
+                addDoc(mailData, {
+                    to: user?.email,
+                    message: {
+                        subject: "Welcome!",
+                        html: `Hi ${user.name}! ${name} would like to book to ${type} @ ${venue} ${address} located in ${region} on ${date}.
                     Please contact ${name} @ ${email} if you would like to accept!`
-                }
-            })
-        }).then(() => {
-            const bookingDocRef = doc(db, "users", `${id}`);
-            updateDoc(bookingDocRef, {
-                bookings: user?.bookings + 1
+                    }
+                })
+            }).then(() => {
+                const bookingDocRef = doc(db, "users", `${id}`);
+                updateDoc(bookingDocRef, {
+                    bookings: user?.bookings + 1
+                });
+            }).catch((error) => {
+                console.log(error.message)
             });
-        }).catch((error) => {
-            console.log(error.message)
-        });
-        // Clear form values after submitting Booking
-        setName("");
-        setEmail("");
-        setType("");
-        setStartTime("");
-        setEndTime("");
-        setDate("");
-        setRegion("");
-        setVenue("");
-        setAddress("");
-        getBookings();
+            // Clear form values after submitting Booking
+            setName("");
+            setEmail("");
+            setType("");
+            setStartTime("");
+            setEndTime("");
+            setDate("");
+            setRegion("");
+            setVenue("");
+            setAddress("");
+            getBookings();
+        }
     };
 
     console.log(type)
@@ -186,7 +190,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                             value={endTime}
                         />
                     </div>
-                    <select required={true}className='booking__region-select' name='country/region' onChange={(event) => setRegion(event.target.value)} value={region}>
+                    <select required={true} className='booking__region-select' name='country/region' onChange={(event) => setRegion(event.target.value)} value={region}>
                         <option value="" disabled selected hidden>
                             Country/Region</option>
                         <option value='North America'>North America</option>
