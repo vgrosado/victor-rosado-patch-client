@@ -13,8 +13,8 @@ function ReviewForm({ user, currentUser }) {
     const { id } = useParams();
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
-    const [newReview, setNewReview] = useState();
-    const [newUser, setNewUser] = useState("");
+    const [newReview, setNewReview] = useState("");
+    const [newUser, setNewUser] = useState(currentUser?.displayName);
     const [review, setReview] = useState([]);
     const [voltage, setVoltage] = useState(0);
 
@@ -28,23 +28,29 @@ function ReviewForm({ user, currentUser }) {
         getReviews();
     }, [newReview, id])
 
+    console.log(newReview)
+    console.log(newUser)
 
     //create a new review
     function createReview(event) {
         event.preventDefault();
-        const reviewData = collection(db, "users", `${id}`, "Reviews");
-        addDoc(reviewData, {
-            user: currentUser?.displayName,
-            rating: parseFloat(voltage),
-            avatar: currentUser?.photoURL,
-            review: newReview,
-            time: new Date().toLocaleDateString(),
-            id: v4()
-        });
-        // Clear form values after submitting review
-        setNewUser("");
-        setNewReview("");
-        setRating(null);
+        if (!newReview || !newUser) {
+            alert('All fields are required')
+        } else {
+            const reviewData = collection(db, "users", `${id}`, "Reviews");
+            addDoc(reviewData, {
+                user: currentUser?.displayName,
+                rating: parseFloat(voltage),
+                avatar: currentUser?.photoURL,
+                review: newReview,
+                time: new Date().toLocaleDateString(),
+                id: v4()
+            });
+            // Clear form values after submitting review
+            setNewUser("");
+            setNewReview("");
+            setRating(null);
+        }
     };
 
     //delete a review
@@ -131,8 +137,7 @@ function ReviewForm({ user, currentUser }) {
                         name='comment'
                         placeholder='Leave a review'
                         value={newReview} />
-                        {!newReview || !newUser || !voltage ? <button onClick={createReview} type='submit' disabled className='reviewform__button'>Submit</button> :
-                    <button onClick={createReview} type='submit'  className='reviewform__button'>Submit</button>}
+                        <button onClick={createReview} type='submit' className='reviewform__button'>Submit</button>
                 </form>
                 <div className='reviewform__review-section'>
                     {review?.map(rev => {
