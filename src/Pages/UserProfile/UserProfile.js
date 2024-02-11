@@ -88,7 +88,7 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                         <div className='user__avatar-div'>
                             {!currentUser?.photoURL ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' /></div>)
                                 : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
-                            <div className='user__banner-div'><h2 className='user__banner'>{user?.name}</h2></div>
+                            <div className='user__banner-div'><h2 className='user__banner'>{user?.displayName}</h2></div>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                     </div>
                     {user?.genre === "" ? "" : <div className='user__genre-div'>
                         <PiVinylRecord stroke='grey' fill='grey' size={14} />
-                        <p className='user__genre'>{user.genre}</p>
+                        <p className='user__genre'>{user?.genre}</p>
                     </div>}
                     <div className='user__contacts-container'>
                         <div className='user__location-div'>
@@ -138,7 +138,7 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                     {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
                     {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} bookings={bookings} user={user} />)}
                 </article>
-                <Nav currentUser={currentUser} user={user} openModal={openModal} />
+                {!currentUser ? <></> : <Nav currentUser={currentUser} user={user} openModal={openModal} />}
             </section >
         </>)
     }
@@ -153,7 +153,7 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                             <div className='user__avatar-div'>
                                 {!user?.avatar ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' /></div>)
                                     : (<img className='user__avatar' alt='avatar' src={user?.avatar} />)}
-                                <div className='user__banner-div'><h2 className='user__banner'>{user?.name}</h2></div>
+                                <div className='user__banner-div'><h2 className='user__banner'>{user?.displayName}</h2></div>
                             </div>
                         </div>
                     </div>
@@ -180,7 +180,7 @@ function UserProfile({ currentUser, getBookings, bookings }) {
                         </div>
                         {user?.genre === "" ? "" : <div className='user__genre-div'>
                             <PiVinylRecord stroke='grey' fill='grey' size={14} />
-                            <p className='user__genre'>{user.genre}</p>
+                            <p className='user__genre'>{user?.genre}</p>
                         </div>}
                         <div className='user__contacts-container'>
                             <div className='user__location-div'>

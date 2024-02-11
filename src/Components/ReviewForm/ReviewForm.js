@@ -14,7 +14,7 @@ function ReviewForm({ user, currentUser }) {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
     const [newReview, setNewReview] = useState("");
-    const [newUser, setNewUser] = useState("");
+    const [newUser, setNewUser] = useState(currentUser?.displayName);
     const [review, setReview] = useState([]);
     const [voltage, setVoltage] = useState(0);
 
@@ -30,16 +30,19 @@ function ReviewForm({ user, currentUser }) {
 
     console.log(newReview)
     console.log(newUser)
+    console.log(currentUser?.displayName)
+    console.log(voltage)
+    console.log(currentUser?.photoURL)
 
     //create a new review
     function createReview(event) {
         event.preventDefault();
         if (!newReview || !newUser) {
             alert('All fields are required')
-        } else if (currentUser) {
+        } if (currentUser) {
             const reviewData = collection(db, "users", `${id}`, "Reviews");
             addDoc(reviewData, {
-                user: currentUser?.name,
+                user: currentUser?.displayName,
                 rating: parseFloat(voltage),
                 avatar: currentUser?.photoURL,
                 review: newReview,
@@ -56,7 +59,7 @@ function ReviewForm({ user, currentUser }) {
             addDoc(reviewData, {
                 user: newUser,
                 rating: parseFloat(voltage),
-                avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
+                avatar: "https://source.boringavatars.com/beam/120/Zora%20Neale?colors=ff7b00,191919,ffffff?square",
                 review: newReview,
                 time: new Date().toLocaleDateString(),
                 id: v4()
@@ -160,7 +163,7 @@ function ReviewForm({ user, currentUser }) {
                             <div className='reviewform__review-div'>
                                 <div className='reviewform__user-div'>
                                     {rev.avatar ? <img className='reviewform__avatar' src={rev?.avatar} alt='user avatar'></img> :
-                                        <img className='reviewform__avatar' src='https://xsgames.co/randomusers/avatar.php?g=male' alt='user avatar'></img>}
+                                        <img className='reviewform__avatar' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' alt='user avatar'></img>}
                                     <div className='reviewform__user-details'>
                                         <p className='reviewform__username'>{rev?.user}</p>
                                         <p className='reviewform__user-timestamp'>{new Date(rev?.time).toLocaleDateString()}</p>

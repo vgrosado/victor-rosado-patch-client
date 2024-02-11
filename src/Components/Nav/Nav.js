@@ -19,20 +19,22 @@ function Nav({ currentUser }) {
         }
     }
 
+    function handleGuest() {
+        if (!currentUser) {
+            alert('Must be signed in')
+        }
+    }
+
     return (
         <div className='nav'>
             <div className='nav__div'>
                 <Link to={"/Home"}><SlHome className='nav__icons' /></Link>
                 <p className='nav__label' >Home</p>
             </div>
-            <div className='nav__div'>
+            {<div className='nav__div'>
                 <Link to={`/Profile/${currentUser?.uid}`}><SlUser className='nav__icons' /></Link>
                 <p className='nav__label'>Profile</p>
-            </div>
-            {/* <div className='nav__div'>
-                <Link><PiBooks className='nav__icons' /></Link>
-                <p className='nav__label'>Bookings</p>
-            </div> */}
+            </div>}
             <div className='nav__div'>
                 <Link to={`/UploadMusic/${currentUser?.uid}`}><RiUploadCloudLine className='nav__icons' /></Link>
                 <p className='nav__label'>Upload</p>

@@ -3,7 +3,6 @@ import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 import { useNavigate } from 'react-router-dom';
 
 function SignUpPage() {
-
 	const navigateTo = useNavigate();
 	function HandleSignIn(){
 		navigateTo('/Login');

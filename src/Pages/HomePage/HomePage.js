@@ -62,7 +62,7 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
                                     : (<img className='homepage__avatar' alt='avatar' src={currentUser?.photoURL} />)}
                             </div>
                         </Link>
-                        <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
+                        <Link className='homepage__logo-link' to={'/'}><h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2></Link>
                         <div className='homepage__icons-container'>
                             {/* <BiEnvelope className='homepage__header-icons' /> */}
                             <Link to={`/Notifications/${currentUser?.uid}`}><BiBell className='homepage__header-icons' /></Link>
@@ -97,7 +97,7 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
                     </div>
                 </section>}
             </article>
-            <Nav currentUser={currentUser} />
+            <Nav currentUser={currentUser}/>
         </main>
     )
 };

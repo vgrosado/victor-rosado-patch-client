@@ -25,6 +25,7 @@
         align-self: flex-start;
         color: white;
         margin-bottom: .5rem;
+        text-transform: capitalize;
     }
 
     &__link {
@@ -72,5 +73,6 @@
         padding: .5rem 0rem;
         text-align: center;
         text-shadow: 3px 3px #000000;
+        text-transform: capitalize;
     }
 }

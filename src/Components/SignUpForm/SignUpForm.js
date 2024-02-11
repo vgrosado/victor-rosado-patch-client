@@ -32,8 +32,8 @@ function SignUpForm() {
 
 				if (user) {
 					await updateProfile(user, {
-						displayName: "@" + userName,
-						photoURL: ""
+						displayName: userName,
+						photoURL: "https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square"
 					});
 
 					const userRef = doc(db, "users", `${user.uid}`);
@@ -46,8 +46,8 @@ function SignUpForm() {
 							bio: "Tell us about yourself",
 							bookings: 0,
 							name: newName,
-							displayName: '@' + userName,
-							avatar: "",
+							displayName: userName,
+							avatar: "https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square",
 							id: user.uid,
 							email: emailRef,
 							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2FPatchStockBackground.jpeg?alt=media&token=40704bfb-4d34-4609-b5ab-38207e36aa24",
@@ -64,7 +64,7 @@ function SignUpForm() {
 							bookings: 0,
 							name: newName,
 							displayName: userName,
-							avatar: "",
+							avatar: "https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square",
 							id: user.uid,
 							email: emailRef,
 							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2FPatchStockBackground.jpeg?alt=media&token=40704bfb-4d34-4609-b5ab-38207e36aa24",

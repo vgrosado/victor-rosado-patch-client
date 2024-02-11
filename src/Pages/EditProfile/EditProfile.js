@@ -56,7 +56,7 @@ function EditProfile({ currentUser, loggedUser, getUser }) {
     async function updateUser(event) {
         event.preventDefault();
         updateProfile(currentUser, {
-            displayName: updateUserName,
+            displayName: updateName,
         }).then(() => {
             const usersDocRef = doc(db, "users", `${currentUser?.uid}`);
             updateDoc(usersDocRef, updatedUserData);
