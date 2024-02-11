@@ -75,6 +75,9 @@ function UserProfile({ currentUser, getBookings, bookings }) {
         setModalOpen(true);
     };
 
+    console.log(currentUser?.uid)
+    console.log(user?.id)
+
     if (currentUser?.uid === user?.id) {
         return (<>
             <section className='user'>

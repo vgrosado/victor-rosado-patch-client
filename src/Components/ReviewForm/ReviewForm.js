@@ -14,7 +14,7 @@ function ReviewForm({ user, currentUser }) {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
     const [newReview, setNewReview] = useState("");
-    const [newUser, setNewUser] = useState(currentUser?.displayName);
+    const [newUser, setNewUser] = useState("");
     const [review, setReview] = useState([]);
     const [voltage, setVoltage] = useState(0);
 
@@ -36,12 +36,27 @@ function ReviewForm({ user, currentUser }) {
         event.preventDefault();
         if (!newReview || !newUser) {
             alert('All fields are required')
-        } else {
+        } else if (currentUser) {
             const reviewData = collection(db, "users", `${id}`, "Reviews");
             addDoc(reviewData, {
-                user: currentUser?.displayName,
+                user: currentUser?.name,
                 rating: parseFloat(voltage),
                 avatar: currentUser?.photoURL,
+                review: newReview,
+                time: new Date().toLocaleDateString(),
+                id: v4()
+            });
+            // Clear form values after submitting review
+            setNewUser("");
+            setNewReview("");
+            setRating(null);
+        }
+        else {
+            const reviewData = collection(db, "users", `${id}`, "Reviews");
+            addDoc(reviewData, {
+                user: newUser,
+                rating: parseFloat(voltage),
+                avatar: "https://xsgames.co/randomusers/avatar.php?g=male",
                 review: newReview,
                 time: new Date().toLocaleDateString(),
                 id: v4()
@@ -128,8 +143,8 @@ function ReviewForm({ user, currentUser }) {
                         onChange={(event) => { setNewUser(event.target.value) }}
                         type='text'
                         name='user'
-                        placeholder={currentUser?.displayName}
-                        value={currentUser?.displayName} />
+                        placeholder={currentUser ? currentUser?.displayName : "Enter your name"}
+                        value={currentUser ? currentUser?.displayName : newUser} />
                     <textarea
                         onChange={(event) => { setNewReview(event.target.value) }}
                         className='reviewform__input'
@@ -137,7 +152,7 @@ function ReviewForm({ user, currentUser }) {
                         name='comment'
                         placeholder='Leave a review'
                         value={newReview} />
-                        <button onClick={createReview} type='submit' className='reviewform__button'>Submit</button>
+                    <button onClick={createReview} type='submit' className='reviewform__button'>Submit</button>
                 </form>
                 <div className='reviewform__review-section'>
                     {review?.map(rev => {
