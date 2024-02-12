@@ -126,7 +126,7 @@ function UploadMusicPage({ currentUser }) {
     return (
         <section className='uploadmusicpage'>
             <div className='uploadmusicpage__background-container'>
-                {thumbnail ? <> <video className='uploadmusicpage__vid' src={thumbnail} autoPlay loop muted></video>
+                {thumbnail ? <> <video className='uploadmusicpage__vid' src={thumbnail} poster={thumbnail} autoPlay loop muted></video>
                     <label className='uploadmusicpagea__upload-background' htmlFor='viz-input' id='viz-iput'>
                         <input
                             className='uploadmusicpage__upload-input'

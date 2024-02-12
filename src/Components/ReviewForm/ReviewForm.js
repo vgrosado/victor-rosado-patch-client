@@ -162,8 +162,8 @@ function ReviewForm({ user, currentUser }) {
                         return (
                             <div className='reviewform__review-div'>
                                 <div className='reviewform__user-div'>
-                                    {rev.avatar ? <img className='reviewform__avatar' src={rev?.avatar} alt='user avatar'></img> :
-                                        <img className='reviewform__avatar' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' alt='user avatar'></img>}
+                                    {rev?.avatar ? <img className='reviewform__avatar' src={rev?.avatar} alt='user avatar'></img> :
+                                        <img className='reviewform__avatar' src="https://source.boringavatars.com/beam/120/Zora%20Neale?colors=ff7b00,191919,ffffff?square" alt='user not found'></img>}
                                     <div className='reviewform__user-details'>
                                         <p className='reviewform__username'>{rev?.user}</p>
                                         <p className='reviewform__user-timestamp'>{new Date(rev?.time).toLocaleDateString()}</p>
