@@ -14,6 +14,7 @@ function Nav({ currentUser }) {
     async function handleLogOut() {
         try {
             await logOut();
+            alert('you have been successfully logged out')
             console.log("logged out => " + currentUser?.email)
         } catch {
             console.log('Error Loggin Out User')
@@ -46,10 +47,10 @@ function Nav({ currentUser }) {
                 <Link to={"/Discover"}><SlGlobe color='grey' size={24}/></Link>
                 <p className='nav__label'>Discover</p>
             </div> 
-            <div className='nav__div'>
+            {!currentUser ? <div className='nav__div'>
                 <Link to={"/"}><IoHomeOutline color='grey' size={24}/></Link>
                 <p className='nav__label' >Home</p>
-            </div>
+            </div> : <></>}
             {currentUser ? <div className='nav__div'>
                 <Link to={"/"}><IoLogOutOutline color='grey' size={24} onClick={handleLogOut} /></Link>
                 <p className='nav__label'>Log Out</p>

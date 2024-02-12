@@ -82,7 +82,7 @@ function SignUpForm() {
 				console.log('Sign-up error:', error.message);
 			} finally {
 				setLoading(false);
-				navigateTo('/Home');
+				navigateTo('/Discover');
 			}
 		}
 	};

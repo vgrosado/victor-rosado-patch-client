@@ -260,14 +260,14 @@
     }
 
     &__button {
-        background-color: $PatchGrey;
-        color: white;
+        background-color: $PatchOrange;
+        color: $PatchGrey;
         font-size: 1.25rem;
-        font-weight: 300;
+        font-weight: bold;
         align-self: center;
-        width: 80%;
-        border: 1px solid $PatchOrange;
-        border-radius: 1.25rem;
+        width: 100%;
+        border: none;
+        border-radius: .5rem;
         box-sizing: border-box;
         padding: 2vw;
         margin-top: 4vw;

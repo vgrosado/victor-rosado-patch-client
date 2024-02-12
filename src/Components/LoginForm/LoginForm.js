@@ -19,7 +19,7 @@ function LoginForm({ loading, setLoading}) {
 			try {
 				await login(emailRef.current.value, passwordRef.current.value);
 				setLoading(false);
-				navigateTo('/Home');
+				navigateTo('/Discover');
 			} catch (error) {
 				setLoading(false);
 				alert('Login error: User not found :(');

@@ -54,9 +54,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 3.5rem;
-        height: 3.5rem;
-        border: 1px solid $PatchOrange;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
         background-color: $PatchGrey;
     }
@@ -64,13 +63,13 @@
     &__avatar-placeholder {
         fill: $PatchOrange;
         border-radius: 20px;
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 4rem;
+        height: 4rem;
     }
 
     &__avatar {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
         background-color: $PatchGrey;
         background-position: center;
@@ -83,7 +82,7 @@
     }
 
     &__logo {
-        font-size: 2rem;
+        font-size: 2.5rem;
         color: #fff;
         text-shadow:
             0 0 0.033em #fff,
