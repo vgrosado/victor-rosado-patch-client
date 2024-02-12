@@ -7,8 +7,45 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        height: 100%;
+        height: 65vh;
         width: 100%;
+    }
+
+    &__time-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 15%;
+    }
+
+    &__time-label {
+        color: white;
+        font-weight: 300;
+        margin-top: .5rem;
+    }
+
+    &__time-label-end {
+        color: $PatchOrange;
+        font-weight: 300;
+        margin-top: .5rem;
+    }
+
+    &__time-input {
+        font-size: 1rem;
+        font-weight: 300;
+        color: white;
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        background: none;
+        color-scheme: dark;
+        border-bottom: .5px solid grey;
+        &::placeholder {
+            font-size: .875rem;
+            font-weight: 300;
+            color: white;
+        }
     }
 
     &__input {
@@ -19,53 +56,64 @@
         width: 100%;
         height: 10%;
         background: none;
-        border-bottom: .5px solid white;
+        border-bottom: .5px solid grey;
         &::placeholder {
             font-size: 1rem;
             font-weight: 300;
-            color: grey;
+            color: white;
         }
     }
 
     &__booking-type {
         font-size: 1rem;
         font-weight: 300;
-        color: grey;
+        color: white;
         border: none;
         outline: none;
         width: 100%;
-        height: 8%;
+        height: 10%;
         background: none;
-        border-bottom: .5px solid white;
+        border-bottom: .5px solid grey;
+        &::placeholder {
+            font-size: 1rem;
+            font-weight: 300;
+            color: white;
+        }
     }
 
     &__date-input {
         font-size: 1rem;
         font-weight: 300;
-        color: grey;
+        color: white;
         border: none;
         outline: none;
         width: 100%;
-        height: 8%;
+        height: 10%;
         background: none;
-        border-bottom: .5px solid white;
+        color-scheme: dark;
+        border-bottom: .5px solid grey;
         &::placeholder {
             font-size: .875rem;
             font-weight: 300;
-            color: grey;
+            color: white;
         }
     }
 
     &__region-select {
         font-size: 1rem;
         font-weight: 300;
-        color: grey;
+        color: white;
         border: none;
         outline: none;
         width: 100%;
-        height: 8%;
+        height: 10%;
         background: none;
-        border-bottom: .5px solid white;
+        border-bottom: .5px solid grey;
+        &::placeholder {
+            font-size: 1rem;
+            font-weight: 300;
+            color: white;
+        }
     }
 
     &__button {
@@ -75,7 +123,7 @@
         font-weight: 300;
         align-self: center;
         width: 80%;
-        border: none;
+        border: 1px solid $PatchOrange;
         border-radius: 1.25rem;
         box-sizing: border-box;
         padding: 2vw;

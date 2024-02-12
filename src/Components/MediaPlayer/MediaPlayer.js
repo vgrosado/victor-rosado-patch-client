@@ -1,33 +1,42 @@
 import '../MediaPlayer/MediaPlayer.scss';
+import EmptyMediaPlayer from '../EmptyMediaPlayer/EmptyMediaPlayer';
 import { AiFillPlayCircle, AiFillPauseCircle } from 'react-icons/ai'
 import { BiSkipPrevious, BiSkipNext } from 'react-icons/bi'
+import { TbVinyl } from "react-icons/tb";
 import { useState, useEffect, useRef, useCallback } from 'react';
+import TrackList from '../TrackList/Tracklist';
 
-function MediaPlayer({ music }) {
+function MediaPlayer({ music, currentUser, user, getUserMusic }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
-
+    const [musicIndex, setMusicIndex] = useState(0);
+    const [currentTrack, setCurrentTrack] = useState(music[musicIndex]);
     const playAnimationRef = useRef();
     const audioRef = useRef();
     const progressBarRef = useRef();
 
-    const handleProgressChange = () => {
+    function handleProgressChange() {
         audioRef.current.currentTime = progressBarRef.current.value;
     };
 
-    const onLoadedMetadata = () => {
+    useEffect(() => {
+        setCurrentTrack(music[musicIndex]);
+    }, [music, musicIndex]);
+
+
+    function onLoadedMetadata() {
         const seconds = audioRef.current.duration;
         setDuration(seconds);
         progressBarRef.current.max = seconds;
         audioRef.current.currentTime = 0;
     };
 
-    const togglePlay = () => {
+    function togglePlay() {
         setIsPlaying(!isPlaying)
     }
 
-    const formatTime = (time) => {
+    function formatTime(time) {
         if (time && !isNaN(time)) {
             const hours = Math.floor(time / 120);
             const formatHours =
@@ -61,67 +70,89 @@ function MediaPlayer({ music }) {
                 cancelAnimationFrame(playAnimationRef.current);
             }
         }
+        // Clean up function when component is unmounted
+        return () => {
+            cancelAnimationFrame(playAnimationRef.current);
+
+        };
     }, [isPlaying, audioRef, repeat]);
 
 
-    if (!music || music.length === 0) {
-        return ( <section className='mediaplayer'>
-        <div className='mediaplayer__card'>
-            <div className='mediaplayer__song-div'>
-                <p className='mediaplayer__song-title'></p>
-                <p className='mediaplayer__song-subtitle'></p>
-            </div>
-            <video className='mediaplayer__vid' src={null} autoPlay loop muted />
-            <div className="mediaplayer__controls">
-                <input className='mediaplayer__progress-bar' ref={progressBarRef}
-                    type="range"
-                    defaultValue="0"
-                    onChange={handleProgressChange} />
-                <div className='mediaplayer__time-div'>
-                    <span className="mediaplayer__time">{formatTime(timeProgress)}</span>
-                    <span className="mediaplayer__time">{formatTime(duration)}</span>
-                </div>
-                <audio ref={audioRef} type='audio/mp3' src={null} onLoadedMetadata={onLoadedMetadata} />
-                <div className='mediaplayer__icon-div'>
-                    <BiSkipPrevious className='mediaplayer__icons' />
-                    {isPlaying ? (<AiFillPauseCircle className='mediaplayer__play-pause' onClick={togglePlay} />)
-                        : (<AiFillPlayCircle className='mediaplayer__play-pause' onClick={togglePlay} />)}
-                    <BiSkipNext className='mediaplayer__icons' />
-                </div>
-            </div>
-        </div>
-    </section>)
+    function handlePrevious() {
+        if (musicIndex === 0) {
+            let lastTrackIndex = music.length - 1;
+            setMusicIndex(lastTrackIndex);
+            setCurrentTrack(music[lastTrackIndex]);
+        } else {
+            setMusicIndex((prev) => prev - 1);
+            setCurrentTrack(music[musicIndex - 1]);
+        }
+    };
+
+    function handleNext() {
+        if (musicIndex >= music.length - 1) {
+            setMusicIndex(0);
+            setCurrentTrack(music[0]);
+        } else {
+            setMusicIndex((prev) => prev + 1);
+        }
+    };
+
+    function handleSelectedTrack(trackObj) {
+        setCurrentTrack(trackObj);
+        console.log(currentTrack);
+    };
+
+    if (currentUser?.uid === user?.id && music?.length === 0) {
+        return (
+            <EmptyMediaPlayer
+                currentUser={currentUser}
+            />
+        )
     }
 
-    return (
+    else if (currentUser?.uid !== user?.id && music?.length === 0) {
+        return (
+            <section className='mediaplayer'>
+                <div className='mediaplayer__empty-alertdiv'>
+                    <p className='mediaplayer__empty-alert'><p className='mediaplayer__empty-alert-user'>{user?.displayName}</p>has not uploaded any music yet. Please check back soon!</p>
+                    <TbVinyl color='#ff7b00' size={80} />
+                </div>
+            </section>
+        )
 
-        <section className='mediaplayer'>
-            <div className='mediaplayer__card'>
-                <div className='mediaplayer__song-div'>
-                    <p className='mediaplayer__song-title'>{music[0].title}</p>
-                    <p className='mediaplayer__song-subtitle'>{music[0].artist}</p>
-                </div>
-                <video className='mediaplayer__vid' src={music[0].video} autoPlay loop muted />
-                <div className="mediaplayer__controls">
-                    <input className='mediaplayer__progress-bar' ref={progressBarRef}
-                        type="range"
-                        defaultValue="0"
-                        onChange={handleProgressChange} />
-                    <div className='mediaplayer__time-div'>
-                        <span className="mediaplayer__time">{formatTime(timeProgress)}</span>
-                        <span className="mediaplayer__time">{formatTime(duration)}</span>
+    } else
+        return (
+            <section className='mediaplayer'>
+                <div className='mediaplayer__card'>
+                    <div className='mediaplayer__song-div'>
+                        <p className='mediaplayer__song-title'>{currentTrack?.title}</p>
+                        <p className='mediaplayer__song-subtitle'>{currentTrack?.artist}</p>
                     </div>
-                    <audio ref={audioRef} type='audio/mp3' src={music[0].track} onLoadedMetadata={onLoadedMetadata} />
-                    <div className='mediaplayer__icon-div'>
-                        <BiSkipPrevious className='mediaplayer__icons' />
-                        {isPlaying ? (<AiFillPauseCircle className='mediaplayer__play-pause' onClick={togglePlay} />)
-                            : (<AiFillPlayCircle className='mediaplayer__play-pause' onClick={togglePlay} />)}
-                        <BiSkipNext className='mediaplayer__icons' />
+                    {currentTrack?.video === null ? <img className='mediaplayer__vid' src={user?.avatar}/> :
+                        <video className='mediaplayer__vid' src={currentTrack?.video} poster={currentTrack?.video} autoPlay loop muted controls={false} />
+                    }
+                    <div className="mediaplayer__controls">
+                        <input className='mediaplayer__progress-bar' ref={progressBarRef}
+                            type="range"
+                            defaultValue="0"
+                            onChange={handleProgressChange} />
+                        <div className='mediaplayer__time-div'>
+                            <span className="mediaplayer__time">{formatTime(timeProgress)}</span>
+                            <span className="mediaplayer__time">{formatTime(duration)}</span>
+                        </div>
+                        <audio ref={audioRef} type='audio/mp3' src={currentTrack?.track} onLoadedMetadata={onLoadedMetadata} />
+                        <div className='mediaplayer__icon-div'>
+                            <BiSkipPrevious onClick={handlePrevious} className='mediaplayer__icons' />
+                            {isPlaying ? (<AiFillPauseCircle className='mediaplayer__play-pause' onClick={togglePlay} />)
+                                : (<AiFillPlayCircle className='mediaplayer__play-pause' onClick={togglePlay} />)}
+                            {music.length > 1 ? <BiSkipNext onClick={handleNext} className='mediaplayer__icons' /> : <BiSkipNext className='mediaplayer__icons' />}
+                        </div>
                     </div>
+                    <TrackList handleSelectedTrack={handleSelectedTrack} user={user} currentUser={currentUser} getUserMusic={getUserMusic} music={music} />
                 </div>
-            </div>
-        </section>
-    )
-}
+            </section>
+        )
+};
 
 export default MediaPlayer;

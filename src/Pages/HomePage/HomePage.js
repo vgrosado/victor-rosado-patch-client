@@ -1,41 +1,76 @@
 import '../HomePage/HomePage.scss'
 import { AiOutlineSearch } from 'react-icons/ai';
-import { BiBell } from 'react-icons/bi';
-import { BiEnvelope } from 'react-icons/bi';
-import ArtistDiv from '../../Components/ArtistDiv/ArtistDiv';
 import Nav from '../../Components/Nav/Nav';
-import UploadImageModal from '../../Components/UploadImageModal/UploadImageModal';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import UserCard from '../../Components/UserCard/UserCard';
+import { useEffect, useState } from 'react';
+import GenreCard from '../../Components/GenreCard/GenreCard';
+import { BiBell} from 'react-icons/bi';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../Firebase';
 
+function HomePage({ currentUser, users, getUsers, bookingNotification, getBookings }) {
+    const [searchInput, setSearchInput] = useState([]);
+    const [sortBy, setSortBy] = useState("artist");
+    const filteredUsers = users.filter((user) => {
+        const searchData = `${user.displayName}`.toLowerCase();
+        return searchData.includes(String(searchInput).toLowerCase());
+    });
 
+    const newGenreArr = users.map((user) => {
+        return user.genre;
+    });
 
-function HomePage({ artists }) {
-    const [isModalOpen, setModalOpen] = useState(false);
+    const genresArr = [...new Set(newGenreArr)]
 
-    const openModal = () => {
-        setModalOpen(true);
+    const filteredGenres = genresArr.filter((genre) => {
+        if (genre === "") return;
+        const searchData = `${genre}`.toLowerCase();
+        return searchData.includes(String(searchInput).toLowerCase());
+    });
+
+    function handleFilter(event) {
+        setSortBy(event.target.value);
     };
 
-    const closeModal = () => {
-        setModalOpen(false);
+    useEffect(() => {
+        getUsers();
+    }, []);
+
+    function handleNotification(bookingId) {
+        alert(bookingNotification?.email + ' sent you a booking request!')
+        const bookingDocRef = doc(db, "users", `${currentUser?.uid}`, "Bookings", `${bookingId}`);
+        updateDoc(bookingDocRef, {
+            isRead: true
+        }).then(() => {
+            getBookings();
+            console.log('it worked');
+        }).catch((error) => {
+            console.log(error.message)
+        })
     };
 
-    console.log(artists)
 
     return (
         <main className='homepage'>
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
-                    <div className='homepage__header-container'>
-                        <div className='homepage__avatar-div'><div className='homepage__avatar'></div></div> 
-                        <h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2>
-                        <div className='homepage__icons-container'>
-                            <BiEnvelope className='homepage__header-icons' />
-                            <BiBell className='homepage__header-icons' />
-                        </div>
+                    <div className={!currentUser ? 'homepage__header-nouser' :'homepage__header-container'}>
+                        {!currentUser ? <></> : <Link to={`/Profile/${currentUser?.uid}`}>
+                            <div className='homepage__avatar-div'>
+                                {!currentUser?.photoURL ? (<img className='homepage__avatar-placeholder' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' />)
+                                    : (<img className='homepage__avatar' alt='avatar' src={currentUser?.photoURL} />)}
+                            </div>
+                        </Link>}
+                        <Link className='homepage__logo-link' to={'/'}><h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2></Link>
+                        {!currentUser ? <></> : <div className='homepage__icons-container'>
+                            {/* <BiEnvelope className='homepage__header-icons' /> */}
+                            <Link to={`/Notifications/${currentUser?.uid}`}><BiBell className='homepage__header-icons' /></Link>
+                            {bookingNotification?.isRead === false ? <div className='homepage__icon-notification' onClick={() => handleNotification(bookingNotification?.id)}></div> : ""}
+                        </div>}
                     </div>
                     <div className='homepage__input-div'>
-                        <input className='homepage__search-input' placeholder='Search'></input>
+                        <input className='homepage__search-input' placeholder='Search' value={searchInput} onChange={(event) => setSearchInput(event.target.value)}></input>
                         <AiOutlineSearch className='homepage__search-icon' />
                     </div>
                 </div>
@@ -43,21 +78,26 @@ function HomePage({ artists }) {
                     <h1 className='homepage__heading'>Discover</h1>
                     <div className='homepage__select-div'>
                         <label className='homepage__subheading'>Search By:</label>
-                        <select className='homepage__select'>
-                            <option className='homepage__option' value="" disabled hidden>Genre</option>
-                            <option className='homepage__option'>Genre</option>
-                            <option className='homepage__option'>Artist</option>
+                        <select className='homepage__select' value={sortBy} onChange={handleFilter}>
+                            <option className='homepage__option' value="" disabled hidden>Artist</option>
+                            <option className='homepage__option' value="artist">Artist</option>
+                            <option className='homepage__option' value="genre">Genre</option>
                         </select>
                     </div>
                 </div>
-                <section className='homepage__container'>
-                    {artists.map(artist => (
-                        <ArtistDiv key={artist.id} artists={artist} />
+                {sortBy === 'artist' ? <section className='homepage__container'>
+                    {filteredUsers.map((user, index) => (
+                        <UserCard key={index} currentUser={currentUser} user={user} />
                     ))}
-                </section>
+                </section> : <section className='homepage__container'>
+                    <div className='homepage__genrecontainer'>
+                        {filteredGenres.map((genre, index) =>
+                            <GenreCard key={index} genre={genre} users={users} />
+                        )}
+                    </div>
+                </section>}
             </article>
-            <UploadImageModal isOpen={isModalOpen} closeModal={closeModal}/>
-            <Nav openModal={openModal} />
+            <Nav currentUser={currentUser}/>
         </main>
     )
 };

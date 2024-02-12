@@ -1,180 +1,211 @@
 
 import '../UserProfile/UserProfile.scss';
 import { useEffect, useState } from 'react';
-import {doc, getDoc, getDocs, collection } from "firebase/firestore";
-import {db} from '../../Firebase';
-import { useParams } from 'react-router-dom';
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { db } from '../../Firebase';
+import { Link, useParams } from 'react-router-dom';
 import MediaPlayer from '../../Components/MediaPlayer/MediaPlayer';
 import Nav from '../../Components/Nav/Nav';
 import ReviewForm from '../../Components/ReviewForm/ReviewForm';
 import Booking from '../../Components/Booking/Booking';
-import UploadImageModal from '../../Components/UploadImageModal/UploadImageModal'
-import {FaUser} from 'react-icons/fa';
-// import {SlPencil} from 'react-icons/sl';
-// import {PiUserCirclePlusLight} from 'react-icons/pi';
-// // import {storage} from '../../Firebase';
-// // import {getDownloadURL, ref, uploadBytes} from 'firebase/storage';
-// // import {v4} from 'uuid';
+import { IoLocationOutline } from "react-icons/io5";
+import { LuLink } from "react-icons/lu";
+import { SlPencil } from 'react-icons/sl';
+import { BsLightningFill } from 'react-icons/bs';
+import { PiVinylRecord } from "react-icons/pi";
+import { IoLibrarySharp } from "react-icons/io5";
 
 
-function UserProfile() {
 
-    const {id} = useParams();
-    const artistId = id;
-    const [artist, setArtist] = useState({});
+function UserProfile({ currentUser, getBookings, bookings }) {
+    const { id } = useParams();
+    const [user, setUser] = useState({});
     const [encorePage, setEncorePage] = useState(false);
     const [musicPage, setMusicPage] = useState(true);
     const [bookingPage, setBookingPage] = useState(false);
     const [music, setMusic] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
-    
+
+
     useEffect(() => {
-        const artistDocRef = doc(db, "Artists", `${artistId}`)
-            getDoc(artistDocRef)
+        const userDocRef = doc(db, "users", `${id}`)
+        getDoc(userDocRef)
             .then((doc) => {
-            setArtist(doc.data(), doc.id)
-        })
-        .catch(error => {
-            console.log('error fetching video ID:s', error)
-        });
-    }, [])
+                setUser(doc.data(), doc.id)
+            })
+            .catch(error => {
+                console.log('error fetching video ID:s', error)
+            });
+    }, [id])
+
+    const getUserMusic = async () => {
+        const userMusicData = await getDocs(collection(db, "users", `${id}`, "Music",));
+        setMusic(userMusicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    };
 
     useEffect(() => {
-        const getArtists = async () => {
-            const musicData = await getDocs(collection(db, "Artists", `${artistId}`, "Music",));
-            setMusic(musicData.docs.map((doc) => ({...doc.data(), id: doc.id})))
-        };
-        getArtists();
-    }, [])
+        getUserMusic();
+    }, [id]);
 
 
-    function handleNavToEncore(){
+    function followFormatter(num) {
+        return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
+    };
+
+
+    function handleNavToEncore() {
         setEncorePage(true)
         setMusicPage(false)
         setBookingPage(false)
-	}
-	
-	function handleNavToMusic(){
-        setEncorePage(false)
-		setMusicPage(true)
-        setBookingPage(false)
-	}
-	
-    function handleNavToBooking(){
-        setEncorePage(false)
-		setMusicPage(false)
-        setBookingPage(true)
-	}
+    }
 
-    const openModal = () => {
+    function handleNavToMusic() {
+        setEncorePage(false)
+        setMusicPage(true)
+        setBookingPage(false)
+    }
+
+    function handleNavToBooking() {
+        setEncorePage(false)
+        setMusicPage(false)
+        setBookingPage(true)
+    }
+
+    function openModal() {
         setModalOpen(true);
     };
 
-    const closeModal = () => {
-        setModalOpen(false);
-    };
+    console.log(currentUser?.uid)
+    console.log(user?.id)
 
-    if ( !artist.image && !artist.backgroundimg) {
-        return ( <>
+    if (currentUser?.uid === user?.id) {
+        return (<>
             <section className='user'>
                 <div className='user__background-container'>
-                    <div className='user__header-background'></div>
-                        <div className='user__info-container'>
-                            <div className='user__avatar-div'>
-                                <div className='user__avatar-empty'><FaUser size={60} className='user__avatar-placeholder'/> </div>
-                            </div>
+                    {!user?.backgroundimg ? (<div className='user__header-background'></div>)
+                        : (<img className='user__header-background' src={user?.backgroundimg} alt='user background' />)}
+                    <div className='user__info-container'>
+                        <div className='user__avatar-div'>
+                            {!currentUser?.photoURL ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' /></div>)
+                                : (<img className='user__avatar' alt='avatar' src={currentUser?.photoURL} />)}
+                            <div className='user__banner-div'><h2 className='user__banner'>{user?.displayName}</h2></div>
                         </div>
+                    </div>
                 </div>
                 <article className='user__stats-container'>
                     <div className='user__details-container'>
                         <div className='user__info-div'>
-                            <p className='user__name'>{artist.name}</p>
-                            <p className='user__username'>{artist.username}</p>
-                            <p className='user__location'>{artist.location}</p>
+                            <h2 className='user__heading'>About</h2>
+                            <div className='user__button-div'>
+                                <Link className='user__button-link' to={`/EditProfile/${currentUser?.uid}`}>
+                                    <button className='user__button'>Edit Profile<SlPencil className='user__edit-icon' size={12} /></button>
+                                </Link>
+                            </div>
                         </div>
-                        <div className='user__button-div'>
-                            <button className='user__button'>+ Follow</button>
-                        </div>
-                    </div>
-                    <p className='user__bio'>{artist.description}</p>
+                        <p className='user__bio'>{user?.bio}</p>
                         <div className='user__stats'>
-                            <div className='user__nav-div'>
-                                <div className='user__rating-div'>
-                                    <p className='user__stats-title'>Voltage</p>
-                                    <p className='user__rating'>{artist.rating}</p>
-                                </div>
-                                <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
-                            </div>
-                        <div className='user__nav-div'>
-                            <div className='user__followers-div'>
-                                <p className='user__stats-title'>Followers</p>
-                                <p className='user__followers'>{artist.followers}</p>
-                            </div>
-                            <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
-                        </div>
-                        <div className='user__booking-div'>
-                        <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
-                        </div>
-                    </div>
-                    {musicPage && ( <MediaPlayer music={music}/>)}
-                    {encorePage && ( <ReviewForm artist={artist}/>)}
-                    {bookingPage && (<Booking artist={artist} />)}
-                </article>
-                <UploadImageModal isOpen={isModalOpen} closeModal={closeModal}/>
-                <Nav openModal={openModal} />
-            </section>
-            </>)
-    } 
-    return (
-        <>
-        <section className='user'>
-            <div className='user__background-container'>
-                <img className='user__header-background' src={artist.backgroundimg} alt='user background'/>
-                    <div className='user__info-container'>
-                        <div className='user__avatar-div'>
-                            <img className='user__avatar' alt='avatar'src={artist.image} />
-                        </div>
-                    </div>
-            </div>
-            <article className='user__stats-container'>
-                <div className='user__details-container'>
-                    <div className='user__info-div'>
-                        <p className='user__name'>{artist.name}</p>
-                        <p className='user__username'>{artist.username}</p>
-                        <p className='user__location'>{artist.location}</p>
-                    </div>
-                    <div className='user__button-div'>
-                        <button className='user__button'>+ Follow</button>
-                    </div>
-                </div>
-                <p className='user__bio'>{artist.description}</p>
-                    <div className='user__stats'>
-                        <div className='user__nav-div'>
                             <div className='user__rating-div'>
-                                <p className='user__stats-title'>Voltage</p>
-                                <p className='user__rating'>{artist.rating}</p>
+                                <BsLightningFill size={14} color='grey' /> <p className='user__stats-title'>Voltage</p>
+                                <p className='user__rating'>{user?.rating}</p>
                             </div>
-                            <p onClick={handleNavToMusic} className='user__nav-item'>Music</p>
+                            <div className='user__followers-div'>
+                                <IoLibrarySharp size={16} color='grey' /><p className='user__stats-title'>Bookings</p>
+                                <p className='user__followers'>{followFormatter(user?.bookings)}</p>
+                            </div>
                         </div>
+                    </div>
+                    {user?.genre === "" ? "" : <div className='user__genre-div'>
+                        <PiVinylRecord stroke='grey' fill='grey' size={14} />
+                        <p className='user__genre'>{user?.genre}</p>
+                    </div>}
+                    <div className='user__contacts-container'>
+                        <div className='user__location-div'>
+                            <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />
+                            <p className='user__location'>{user?.location}</p>
+                        </div>
+                        <div className='user__website-div'>
+                            <LuLink stroke='grey' strokeWidth={3} size={12} />
+                            <Link to={user?.website} className='user__website'>{user?.website}</Link>
+                        </div>
+                    </div>
+
                     <div className='user__nav-div'>
-                        <div className='user__followers-div'>
-                            <p className='user__stats-title'>Followers</p>
-                            <p className='user__followers'>{artist.followers}</p>
+                        <p onClick={handleNavToMusic} className={musicPage && !encorePage && !bookingPage ? 'user__nav-item-active' : 'user__nav-item'}>MUSIC</p>
+                        <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>ENCORE</p>
+                        <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>BOOKING</p>
+                    </div>
+                    {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
+                    {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
+                    {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} bookings={bookings} user={user} />)}
+                </article>
+                {!currentUser ? <></> : <Nav currentUser={currentUser} user={user} openModal={openModal} />}
+            </section >
+        </>)
+    }
+    else if (user?.id !== currentUser?.uid) {
+        return (
+            <>
+                <section className='user'>
+                    <div className='user__background-container'>
+                        {!user?.backgroundimg ? (<div className='user__header-background'></div>)
+                            : (<img className='user__header-background' src={user?.backgroundimg} alt='user background' />)}
+                        <div className='user__info-container'>
+                            <div className='user__avatar-div'>
+                                {!user?.avatar ? (<div className='user__avatar-empty'><img className='user__avatar' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' /></div>)
+                                    : (<img className='user__avatar' alt='avatar' src={user?.avatar} />)}
+                                <div className='user__banner-div'><h2 className='user__banner'>{user?.displayName}</h2></div>
+                            </div>
                         </div>
-                        <p onClick={handleNavToEncore} className='user__nav-item'>Encore</p>
                     </div>
-                    <div className='user__booking-div'>
-                    <p onClick={handleNavToBooking} className='user__nav-item'>Booking</p>
-                    </div>
-                </div>
-                {musicPage && ( <MediaPlayer music={music}/>)}
-                {encorePage && ( <ReviewForm artist={artist}/>)}
-                {bookingPage && (<Booking artist={artist} />)}
-            </article>
-            <UploadImageModal isOpen={isModalOpen} closeModal={closeModal}/>
-            <Nav openModal={openModal} />
-        </section>
-        </>
-    )
+
+                    <article className='user__stats-container'>
+                        <div className='user__details-container'>
+                            <div className='user__info-div'>
+                                <h2 className='user__heading'>About</h2>
+                                <div className='user__button-div'>
+                                    <button className='user__button' onClick={handleNavToBooking}>+ Book</button>
+                                </div>
+                            </div>
+                            <p className='user__bio'>{user?.bio}</p>
+                            <div className='user__stats'>
+                                <div className='user__rating-div'>
+                                    <BsLightningFill size={16} color='grey' /> <p className='user__stats-title'>Voltage</p>
+                                    <p className='user__rating'>{user?.rating}</p>
+                                </div>
+                                <div className='user__followers-div'>
+                                    <IoLibrarySharp size={16} color='grey' /> <p className='user__stats-title'>Bookings</p>
+                                    <p className='user__followers'>{followFormatter(user?.bookings)}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {user?.genre === "" ? "" : <div className='user__genre-div'>
+                            <PiVinylRecord stroke='grey' fill='grey' size={14} />
+                            <p className='user__genre'>{user?.genre}</p>
+                        </div>}
+                        <div className='user__contacts-container'>
+                            <div className='user__location-div'>
+                                <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />
+                                <p className='user__location'>{user?.location}</p>
+                            </div>
+                            <div className='user__website-div'>
+                                <LuLink stroke='grey' strokeWidth={3} size={12} />
+                                <Link to={user?.website} className='user__website'>{user?.website}</Link>
+                            </div>
+                        </div>
+
+                        <div className='user__nav-div'>
+                            <p onClick={handleNavToMusic} className={musicPage && !encorePage && !bookingPage ? 'user__nav-item-active' : 'user__nav-item'}>MUSIC</p>
+                            <p onClick={handleNavToEncore} className={encorePage && !bookingPage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>ENCORE</p>
+                            <p onClick={handleNavToBooking} className={bookingPage && !encorePage && !musicPage ? 'user__nav-item-active' : 'user__nav-item'}>BOOKING</p>
+                        </div>
+                        {musicPage && (<MediaPlayer currentUser={currentUser} user={user} music={music} getUserMusic={getUserMusic} />)}
+                        {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
+                        {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} bookings={bookings} user={user} />)}
+                    </article>
+                    <Nav currentUser={currentUser} user={user} openModal={openModal} />
+                </section >
+            </>
+        )
+    }
 };
 export default UserProfile;

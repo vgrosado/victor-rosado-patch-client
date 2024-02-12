@@ -8,20 +8,27 @@
 .signup-form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    height: 50%;
+    height: 85vh;
     width: 80%;
 
+    &__input-label {
+        color: white;
+        font-weight: 300;
+        font-size: .875rem;
+    }
+
 &__input-div {
-    height: 11%;
-    width: 15rem;
+    height: 6vh;
+    width: 60vw;
     border-radius: .25rem;
     display: flex;        
     align-items: center;
     background-color: $PatchGrey;
     box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
     padding: 0rem 1rem;
+    margin: .5rem 0rem;
 }
 
 &__input {
@@ -41,6 +48,19 @@
     }
 }
 
+&__input-error {
+    height: 6vh;
+    width: 60vw;
+    border-radius: .25rem;
+    border: 2px solid red;
+    display: flex;        
+    align-items: center;
+    background-color: $PatchGrey;
+    box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+    padding: 0rem 1rem;
+    margin: .5rem 0rem;
+}
+
 &__eye {
     fill: white;
 }
@@ -58,13 +78,15 @@
 }
 
 &__button {
-    border-radius: 1.25rem;
+    border-radius: 50px;
     font-weight: 300;
-    font-size: 16px;
-    color: $PatchOrange;
-    background-color: $PatchGrey;
+    font-size: 1rem;
+    color: white;
+    background-color: $PatchOrange;
     border: none;
-    padding: 1rem 5rem;
+    height: 6vh;
+    width: 55vw;
+    margin-bottom: 1rem;
     box-sizing: border-box;
     box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
 }

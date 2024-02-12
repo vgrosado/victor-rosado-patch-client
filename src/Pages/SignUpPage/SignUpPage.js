@@ -1,15 +1,20 @@
 import '../SignUpPage/SignUpPage.scss'
-// import backgroundVid from '../../Assets/Videos/LoginBackground3.mp4'
-// import {useNavigate } from 'react-router-dom';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpPage() {
-
+	const navigateTo = useNavigate();
+	function HandleSignIn(){
+		navigateTo('/Login');
+	}
 	return (
 		<section className="signup">
 			<div className="signup__container">
 				<h1 className='signup__header'>P<span className='signup__flicker'>A</span>TCH</h1>
 				<SignUpForm />
+				<div className='login__switch-container'>
+					<p onClick={HandleSignIn} className='login__button-2' id='switch-button'>Already have an account? Sign in.</p>
+				</div>
 			</div>
 		</section>
 	)

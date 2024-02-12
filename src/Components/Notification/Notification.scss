@@ -1,0 +1,46 @@
+@use '../../Styles/Partials/variable' as*;
+
+.notification {
+    height: 15vh;
+    width: 100%;
+    border-bottom: 1px solid $PatchGrey;
+    :hover {
+        background-color: rgba(128, 128, 128, 0.369);
+    }
+
+    &__container {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0rem 2rem;
+        :hover {
+            background: transparent;
+        }
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+
+    &__name {
+        color: $PatchOrange;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    &__subject {
+        color: white;
+        font-weight: 300;
+        margin-bottom: .5rem;
+    }
+
+    &__time {
+        color: grey;
+        font-weight: 300;
+        font-size: .875rem;
+    }
+};

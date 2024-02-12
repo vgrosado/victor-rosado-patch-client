@@ -1,0 +1,139 @@
+@use '../../Styles/Partials/variable' as*;
+
+.modal-overlay {
+    font-weight: 300;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: $PatchMedium-Grey;
+        opacity: .99;
+        position: relative;
+        top: -9vh;
+        height: 50vh;
+        width: 75%;
+        padding: 7.5vw;
+        box-shadow: 12px 12px 17px 6px rgba(0, 0, 0, 0.6901960784);
+        border-radius: 1rem;
+    }
+
+    &__avatar-div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__edit-avatar-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &__background-div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__input-button {
+        text-align: center;
+        background-color: $PatchGrey;
+        color: $PatchOrange;
+        font-size: 1.25rem;
+        font-weight: 300;
+        align-self: center;
+        width: 80%;
+        height: 6vh;
+        border: 1px solid $PatchOrange;
+        border-radius: .5rem;
+        box-sizing: border-box;
+        padding: .5rem;
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    &__upload-button {
+        background-color: $PatchOrange;
+        color: $PatchGrey;
+        font-size: 1.25rem;
+        font-weight: bold;
+        align-self: center;
+        width: 80%;
+        height: 6vh;
+        border: none;
+        border-radius: .5rem;
+        box-sizing: border-box;
+        padding: 2vw;
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+
+    &__close {
+        position: absolute;
+        top: 0vh;
+        right: 0vh;
+        height: 99%;
+        width: 99%;
+        z-index: -1;
+    }
+
+    &__upload-input {
+        display: none;
+    }
+
+    &__upload-avatar {
+        color: white;
+        width: 100%;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__user-avatar {
+        width: 13rem;
+        height: 13rem;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        background-color: $PatchMedium-Grey;
+    }
+
+    &__upload-background {
+        color: white;
+    }
+
+}

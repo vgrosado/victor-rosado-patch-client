@@ -2,22 +2,31 @@
 @use '../../Styles/Partials/variable' as*;
 @use '../../Styles/Partials/typography' as*;
 
-*{
+* {
     font-family: 'worksans';
 }
+
 .homepage {
     height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background: rgba(31, 31, 31, 1);
-    
+
 
     &__header-container {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: .5rem 0rem;
+    }
+
+    &__header-nouser {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: .5rem 0rem;
     }
 
@@ -28,8 +37,8 @@
 
     &__header-icons {
         fill: grey;
-        width: 6vw;
-        height: 6vw;
+        width: 30px;
+        height: 6vh;
         padding: 0rem 0rem 0rem .5rem;
     }
 
@@ -42,51 +51,88 @@
     }
 
     &__avatar-div {
-        width: 22.5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background-color: $PatchGrey;
+    }
+
+    &__avatar-placeholder {
+        fill: $PatchOrange;
+        border-radius: 20px;
+        width: 4rem;
+        height: 4rem;
     }
 
     &__avatar {
-        width: 12vw;
-        height: 12vw;
-        border-radius: 50px;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
         background-color: $PatchGrey;
-        background-image: url('../../Assets/Images/rickytinez.jpeg');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+        object-fit: cover;
+        object-position: center;
     }
 
+    &__logo-link {
+        text-decoration: none;
+    }
 
     &__logo {
-        font-size: 2rem;
+        font-size: 2.5rem;
         color: #fff;
-        text-shadow: 
-        0 0 0.033em #fff, 
-        0 0 0.08em #fff, 
-        0 0 0.1em #ff7b00,
-        0 0 0.2em #ff7b00, 
-        0 0 0.3em #ff7b00, 
-        0 0 1em #ff7b00, 
-        0 0 1.5em #ff7b00;
-        }
+        text-shadow:
+            0 0 0.033em #fff,
+            0 0 0.08em #fff,
+            0 0 0.1em #ff7b00,
+            0 0 0.2em #ff7b00,
+            0 0 0.3em #ff7b00,
+            0 0 1em #ff7b00,
+            0 0 1.5em #ff7b00;
+    }
 
-        &__flicker {
-            animation: flicker 3s linear forwards alternate infinite;
-            @keyframes flicker {
-            0%, 19.999%, 22%, 62.999%,64%, 64.999%, 72%, 100% {opacity: 1;}
-            20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
+    &__flicker {
+        animation: flicker 3s linear forwards alternate infinite;
+
+        @keyframes flicker {
+
+            0%,
+            19.999%,
+            22%,
+            62.999%,
+            64%,
+            64.999%,
+            72%,
+            100% {
+                opacity: 1;
+            }
+
+            20%,
+            21.999%,
+            63%,
+            63.999%,
+            65%,
+            71.999% {
+                opacity: 0.33;
             }
         }
+    }
 
     &__icons-container {
         display: flex;
-        justify-content: space-between;
-        width: 20%;
+        justify-content: flex-end;
+        width: fit-content;
     }
 
     &__search-input {
         @include Inputs;
-        height: 3rem;
+        font-weight: 300;
+        height: 2.5rem;
         width: 100%;
         padding: 0rem 1rem;
     }
@@ -94,19 +140,20 @@
     &__search-icon {
         padding-right: 1rem;
         fill: grey;
-        height: 2rem;
-        width: 2rem;
+        height: 1.5rem;
+        width: 1.5rem;
     }
 
 
     &__input-div {
-        height: 3rem;
+        height: 2.5rem;
         width: 100%;
         border-radius: .25rem;
         display: flex;
         align-items: center;
         background-color: $PatchGrey;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+        margin-top: .5rem;
     }
 
 
@@ -114,14 +161,28 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 20%;
-        margin-bottom: .5rem;
+        height: 2rem;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    &__icon-notification {
+        background-color: #ff7b00;
+        border: 2px solid #1f1f1f;
+        height: 0.625rem;
+        width: 0.625rem;
+        border-radius: 20px;
+        position: absolute;
+        z-index: 1;
+        right: 30px;
+        top: 55px;
     }
 
     &__heading {
         font-weight: 300;
         font-size: 2rem;
         color: $PatchOrange;
+        text-shadow: 2px 4px 8px black;
     }
 
     &__subheading {
@@ -142,7 +203,7 @@
     &__select-div {
         text-align: center;
         background-color: $PatchGrey;
-        border-radius: 1.25rem ;
+        border-radius: 1.25rem;
         width: 50%;
         padding: .3rem;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
@@ -161,17 +222,26 @@
     }
 
     &__container {
+        margin-top: .5rem;
         background: rgba(31, 31, 31, 1);
         height: 100vh;
         width: 100%;
         display: flex;
-        flex-wrap:wrap ;
+        flex-wrap: wrap;
         justify-content: space-between;
         overflow-x: auto;
         overflow-y: auto;
+
         &::-webkit-scrollbar {
             display: none;
         }
+    }
+
+    &__genrecontainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        overflow: auto;
     }
 
     &__container-1 {
@@ -198,93 +268,4 @@
         text-align: center;
     }
 
-    // &__artist-div-1 {
-    //     border-radius: .625rem;
-    //     height: 15%;
-    //     width: 100%;
-    //     background-color: #ffffff14;
-    //     background-position: center;
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    //     box-shadow: 0px 5px 8px 1px #000000;
-    // }
-    // &__artist-div-2 {
-    //     border-radius: .625rem;
-    //     height: 15%;
-    //     width: 100%;
-    //     background-color: #ffffff14;
-    //     background-image: url('../../Assets/Images/JeffMills.jpeg');
-    //     background-position: center;
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    //     box-shadow: 0px 5px 8px 1px #000000;;
-    // }
-    // &__artist-div-3 {
-    //     border-radius: .625rem;
-    //     height: 15%;
-    //     width: 100%;
-    //     background-color: #ffffff14;
-    //     background-image: url('../../Assets/Images/Chlar.webp');
-    //     background-position: center;
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    //     box-shadow: 0px 5px 8px 1px #000000;;
-    // }
-    // &__artist-div-4 {
-    //     border-radius: .625rem;
-    //     height: 15%;
-    //     width: 100%;
-    //     background-color: #ffffff14;
-    //     background-image: url('../../Assets/Images/ihatemodels.jpeg');
-    //     background-position: center;
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    //     box-shadow: 0px 5px 8px 1px #000000;;
-    // }
-    // &__artist-div-5 {
-    //     border-radius: .625rem;
-    //     height: 15%;
-    //     width: 100%;
-    //     background-color: #ffffff14;
-    //     background-image: url('../../Assets/Images/FJAAK.jpeg');
-    //     background-position: center;
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    //     box-shadow: 0px 5px 8px 1px #000000;;
-    // }
-    // &__artist-div-6 {
-    //     border-radius: .625rem;
-    //     height: 15%;
-    //     width: 100%;
-    //     background-color: $PatchOrange;
-    //     background-image: url('../../Assets/Images/LocoDice.jpg');
-    //     background-position: center;
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    //     box-shadow: 0px 5px 8px 1px #000000;;
-    // }
-    // &__artist-div-7 {
-    //     border-radius: .625rem;
-    //     height: 15%;
-    //     width: 100%;
-    //     background-color: $PatchOrange;
-    //     background-image: url('../../Assets/Images/rebekah.jpeg');
-    //     background-position: center;
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    //     box-shadow: 0px 5px 8px 1px #000000;;
-    // }
-    // &__artist-div-8 {
-    //     border-radius: .625rem;
-    //     height: 15%;
-    //     width: 100%;
-    //     background-color: #ffffff14;
-    //     background-image: url('../../Assets/Images/sweely.jpeg');
-    //     background-position: center;
-    //     background-size: cover;
-    //     background-repeat: no-repeat;
-    //     box-shadow: 0px 5px 8px 1px #000000;;
-    // }
-    
-
-    }
+}

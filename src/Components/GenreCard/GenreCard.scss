@@ -1,0 +1,78 @@
+@use '../../Styles/Partials/variable' as*;
+
+.genrecard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 10px;
+    background: linear-gradient(225deg, #f8f8f812, #191919, #ff7b0040);
+    box-sizing: border-box;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    &__div {
+        display: flex;
+        width: 100%;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__heading {
+        align-self: flex-start;
+        color: white;
+        margin-bottom: .5rem;
+        text-transform: capitalize;
+    }
+
+    &__link {
+        height: 20vh;
+        width: 10rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        padding: 0rem .5rem;
+        text-decoration: none;
+        color: $PatchOrange;
+    }
+
+    &__image-empty {
+        background-color: $PatchGrey;
+        height: 100%;
+        width: 100%;
+        border-radius: 0.625rem;
+        box-shadow: 0px 5px 8px 1px #000000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__placeholder {
+        color: $PatchOrange;
+    }
+
+    &__image {
+        object-fit: cover;
+        object-position: center;
+        height: 70%;
+        width: 100%;
+        border-radius: 0.625rem;
+        box-shadow: 7px 9px 8px 1px #000000;
+        background-color: $PatchGrey;
+    }
+
+    &__name {
+        color: white;
+        font-weight: 300;
+        font-size: .8rem;
+        padding: .5rem 0rem;
+        text-align: center;
+        text-shadow: 3px 3px #000000;
+        text-transform: capitalize;
+    }
+}

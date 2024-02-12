@@ -9,10 +9,29 @@
     justify-content: space-between;
     background-color: $PatchMedium-Grey;
     overflow-x: auto;
-        overflow-y: auto;
-        &::-webkit-scrollbar {
-            display: none;
-        }
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__edit-div {
+        background-color: $PatchMedium-Grey;
+        border: 2px solid $PatchOrange;
+        border-radius: 50%;
+        padding: 0.5rem;
+        align-self: end;
+        box-sizing: border-box;
+        width: 6vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__edit-icon {
+        margin-left: .5rem;
+        cursor: pointer;
+        fill: $PatchOrange;
+    }
 
     &__background-container {
         display: flex;
@@ -20,7 +39,7 @@
         box-sizing: border-box;
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
-        height: 40vw;
+        height: 22vh;
         width: 100%;
         background-color: grey;
     }
@@ -30,7 +49,8 @@
         object-position: center;
         height: 100%;
         width: 100%;
-        background-color: #191919;
+        background: black;
+        filter: brightness(0.5);
     }
 
     &__upload-icon {
@@ -46,6 +66,7 @@
     &__avatar-div {
         display: flex;
         justify-content: space-between;
+        height: 80%;
         width: 100%;
         align-items: center;
     }
@@ -53,16 +74,17 @@
     &__info-container {
         display: flex;
         position: absolute;
+        height: 20%;
         width: 100%;
         justify-content: space-between;
         box-sizing: border-box;
-        padding: 2rem 2rem 0rem 1rem;
+        padding: 2rem 1rem 0rem 1rem;
         align-items: center;
     }
 
     &__avatar {
-        width: 20vw;
-        height: 20vw;
+        width: 5rem;
+        height: 5rem;
         border-radius: 50px;
         object-fit: cover;
         object-position: center;
@@ -70,13 +92,13 @@
     }
 
     &__avatar-empty {
-        width: 20vw;
-        height: 20vw;
+        width: 5rem;
+        height: 5rem;
         border-radius: 50px;
         object-fit: cover;
         object-position: center;
         background-color: $PatchMedium-Grey;
-        align-items: last baseline;
+        align-items: center;
         justify-content: center;
         display: flex;
     }
@@ -87,40 +109,137 @@
     }
 
     &__name {
-        color: white;
-        font-weight: 300;
-        @include iphone12Pro {
-            font-size: 1.25rem;
-        }
+        color: $PatchOrange;
+        font-weight: bold;
+        font-size: 1.25rem;
     }
 
     &__username {
         font-weight: 300;
-        font-size: .75rem;
+        font-size: 1rem;
+        color: grey;
+    }
+
+    &__website-div {
+        display: flex;
+        align-items: center;
+        width: 63%;
+    }
+
+    &__website {
+        width: 80%;
         color: $PatchOrange;
-        @include iphone12Pro {
-            font-size: 1rem;
+        font-weight: 300;
+        text-decoration: none;
+        margin-left: .25rem;
+        word-break: break-all;
+        white-space: nowrap;
+        font-size: .850rem;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__location-div {
+        display: flex;
+        margin-right: 1rem;
+        align-items: center;
+    }
+
+    &__banner-div {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        height: 100%;
+        width: 80%;
+    }
+
+    &__banner {
+        text-wrap: wrap;
+        font-weight: bold;
+        color: white;
+        font-size: 2.5rem;
+        text-transform: capitalize;
+    }
+
+
+    &__location {
+        width: 34vw;
+        color: grey;
+        font-weight: 300;
+        word-break: keep-all;
+        white-space: normal;
+        margin-left: .25rem;
+        font-size: .850rem;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    &__heading {
+        color: white;
+        font-size: 2rem;
+        animation: flicker 8s linear forwards alternate infinite;
+        text-shadow: 0 0 0.033em #fff, 0 0 0.08em #fff, 0 0 0.1em #ff7b00, 0 0 0.2em #ff7b00, 0 0 0.3em #ff7b00, 0 0 1em #ff7b00, 0 0 1.5em #ff7b00;
+
+        @keyframes flicker {
+
+            0%,
+            19.999%,
+            22%,
+            62.999%,
+            64%,
+            64.999%,
+            72%,
+            100% {
+                opacity: 1;
+            }
+
+            20%,
+            21.999%,
+            63%,
+            63.999%,
+            65%,
+            71.999% {
+                opacity: 0.33;
+            }
         }
     }
 
     &__bio {
-        font-size: .625rem;
+        font-size: .875rem;
         font-weight: 300;
         color: white;
-        padding: .5rem 0rem;
+        padding: .25rem 0rem;
         letter-spacing: 0px;
-        @include iphone12Pro {
-            font-size: .875rem;
-        }
+        width: 100%;
+        text-wrap: wrap;
+        text-align: justify;
+    }
+
+    &__genre-div {
+        display: flex;
+        margin-right: 1rem;
+        align-items: center;
+    }
+
+    &__genre {
+        color: #ff7b00;
+        text-transform: capitalize;
+        font-weight: 300;
+        word-break: keep-all;
+        white-space: normal;
+        margin-left: .25rem;
+        font-size: .850rem;
+        font-weight: bold;
     }
 
     &__stats-container {
         position: absolute;
         z-index: 1;
         top: 9rem;
-        height: 70%;
+        height: 70vh;
         width: 100%;
-        background-color: rgb(31,31,31);
+        background-color: rgb(31, 31, 31);
         display: flex;
         flex-direction: column;
         padding: 1rem 1.5rem 0rem 1.5rem;
@@ -128,80 +247,77 @@
         border-top-left-radius: 1.25rem;
         border-top-right-radius: 1.25rem;
         overflow: auto;
-        @include iphone12Pro {
-            height: 72vh;
-        }
     }
 
     &__details-container {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
     }
 
     &__info-div {
         display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &__names {
+        display: flex;
         flex-direction: column;
+        text-transform: capitalize;
+    }
+
+    &__contacts-container {
+        display: flex;
+        width: 90%;
     }
 
     &__stats-title {
-        color: grey;
+        color: white;
         font-weight: 300;
-        font-size: 1rem;
-        @include iphone12Pro {
-            font-size: 1.25rem;
-        }
-    }   
+        font-size: 1.50rem;
+        margin-left: .25rem;
+    }
 
     &__stats {
+        width: 100%;
         display: flex;
         box-sizing: border-box;
         justify-content: space-between;
         align-items: center;
-        @include iphone12Pro {
-            height: 10%;
-        }
+        margin-top: .5rem;
     }
 
     &__rating-div {
         display: flex;
-        align-items: center;
+        align-items: baseline;
         padding-bottom: .5rem;
+        width: fit-content;
     }
 
     &__rating {
-        font-size: .9rem;
-        font-weight: 300;
+        font-size: 1.75rem;
+        font-weight: bold;
         color: $PatchOrange;
         padding: 0rem .5rem;
-        text-shadow: 0px 0px 11px  $PatchOrange;
-        animation: flicker 8s linear forwards alternate infinite;
-            @keyframes flicker {
-            0%, 19.999%, 22%, 62.999%,64%, 64.999%, 72%, 100% {opacity: 1;}
-            20%, 21.999%, 63%, 63.999%, 65%, 71.999% {opacity: 0.33;}
-            }
-            @include iphone12Pro {
-                font-size: .9rem;
-            }
-        }
-        
+    }
+
 
 
     &__followers-div {
         display: flex;
-        align-items: center;
+        align-items: baseline;
         font-size: .75rem;
         padding-bottom: .5rem;
+        width: fit-content;
     }
 
     &__followers {
-        font-size: .9rem;
-        font-weight: 300;
-        color: white;
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: $PatchOrange;
         padding: 0rem .5rem;
-        @include iphone12Pro {
-            font-size: 1.125rem;
-        }
     }
 
     &__button-div {
@@ -212,14 +328,21 @@
     }
 
     &__button {
-        border-radius: 1.25rem;
+        display: flex;
+        align-items: center;
+        border-radius: .5rem;
         font-weight: 300;
         color: $PatchOrange;
         background-color: $PatchGrey;
-        border: none;
+        border: 1px solid $PatchOrange;
         padding: 0.5rem 1rem;
         box-sizing: border-box;
-        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+        cursor: pointer;
+    }
+
+    &__button-link {
+        text-decoration: none;
     }
 
     &__nav {
@@ -228,32 +351,41 @@
     }
 
     &__nav-item {
-        font-weight: 300;
-        font-size: 1rem;
+        font-weight: bold;
+        font-size: 1.375rem;
         color: $PatchOrange;
+        box-sizing: border-box;
+        padding: 0.25rem;
+
         &:hover {
-        color: rgb(255, 255, 255);
-        text-shadow: 0px 0px 11px rgb(166, 166, 166);
-        }
-        @include iphone12Pro {
-            font-size: 1.375rem;
+            color: rgb(255, 255, 255);
+            text-shadow: 0px 0px 11px rgb(166, 166, 166);
         }
     }
 
+    &__nav-item-active {
+        font-size: 1.375rem;
+        font-weight: bold;
+        color: #191919;
+        background: #ff7b00;
+        border-radius: 6px;
+        box-sizing: border-box;
+        padding: 0.25rem;
+    }
+
     &__nav-div {
-        height: 100%;
-        width: 38%;
+        margin: 1rem 0rem;
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
     }
 
     &__booking-div {
         display: flex;
-        // height: 100%;
         flex-direction: column;
         align-self: flex-end;
-        
+
     }
 
 }

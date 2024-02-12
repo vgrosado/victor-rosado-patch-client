@@ -1,0 +1,147 @@
+@use '../../Styles/Partials/variable' as*;
+@use '../../Styles/Partials/breakpoints' as*;
+
+.emptymediaplayer {
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+
+    &__loading {
+        color: $PatchOrange;
+        font-weight: bold;
+    }
+
+    &__card {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        border-radius: 1.25rem;
+        width: 100%;
+        height: 40vh;
+
+    }
+
+    &__emptycontainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 28vh;
+        width: 92%;
+        object-fit: cover;
+        padding: 0.5rem;
+        border: 4px dashed grey;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    &__controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 12vh;
+        width: 100%;
+    }
+
+    &__time-div {
+        display: flex;
+        justify-content: space-between;
+        padding-top: .5rem;
+        width: 100%;
+    }
+
+    &__time {
+        font-size: .75rem;
+        font-weight: bold;
+        color: grey;
+    }
+
+    &__progress-bar {
+        -webkit-appearance: none;
+        --range-progress: 0;
+        background: #ccc;
+        width: 100%;
+        height: .125rem;
+        border-radius: .125rem;
+        cursor: pointer;
+        position: relative;
+
+        &:before {
+            content: '';
+            height: .125rem;
+            background: $PatchOrange;
+            width: var(--range-progress);
+            border-bottom-left-radius: 2px;
+            border-top-left-radius: 2px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: .5rem;
+            width: .5rem;
+            border-radius: 50%;
+            border: none;
+            background-color: $PatchOrange;
+            cursor: pointer;
+            position: relative;
+        }
+
+        &:active::-webkit-slider-thumb {
+            transform: scale(1.2);
+        }
+    }
+
+
+    &__upload-div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__upload-title {
+        align-self: center;
+        font-size: .9375rem;
+        font-weight: bold;
+        color: white;
+        font-size: 1.25rem;
+
+    }
+
+    &__upload-subtitle {
+        text-align: center;
+        box-sizing: border-box;
+        padding: .375rem;
+        font-weight: 300;
+        color: white;
+        border: 2px solid grey;
+        background-color: rgba(128, 128, 128, 0.193);
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+        &__icon-div {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+
+        &__icons {
+            height: 9vh;
+            width: 100%;
+            fill: $PatchOrange;
+        }
+
+        &__play-pause {
+            height: 9vh;
+            width: 100%;
+            fill: $PatchOrange;
+        }
+    }
