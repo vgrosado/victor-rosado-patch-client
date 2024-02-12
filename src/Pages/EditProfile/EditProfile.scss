@@ -134,7 +134,7 @@
 
     &__user-avatar {
         width: 4.5rem;
-        height: 9.5vh;
+        height: 4.5rem;
         border-radius: 50px;
         object-fit: cover;
         object-position: center;
@@ -213,7 +213,6 @@
         position: absolute;
         z-index: 1;
         top: 9rem;
-        height: 70%;
         width: 100%;
         background-color: rgb(31, 31, 31);
         display: flex;
@@ -223,10 +222,7 @@
         border-top-left-radius: 1.25rem;
         border-top-right-radius: 1.25rem;
         overflow: auto;
-
-        @include iphone12Pro {
-            height: 72vh;
-        }
+        height: 70vh;
     }
 
     &__form {

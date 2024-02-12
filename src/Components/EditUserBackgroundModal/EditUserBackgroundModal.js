@@ -47,7 +47,7 @@ function EditUserBackgroundModal({isBackgroundModalOpen, closeBackgroundModal, c
         <div className="edituserbackgroundmodal">
         <div className='edituserbackgroundmodal__content'>
             <div className='edituserbackgroundmodal__background-div'>
-                <div className='edituserbackgroundmodal__edit-background-div'><img className='edituserbackgroundmodal__user-background' alt='avatar' src={placeholder} />
+                <div className='edituserbackgroundmodal__edit-background-div'><img className='edituserbackgroundmodal__user-background' alt='background image' src={placeholder} />
                     <label className='edituserbackgroundmodal__upload-background' htmlFor='avatar-input' id='avatar'>
                         <div className='edituserbackgroundmodal__input-button'>Choose a new background</div>
                         <input className='edituserbackgroundmodal__upload-input' id='avatar-input' name='avatar-input' type='file' accept='image/*'

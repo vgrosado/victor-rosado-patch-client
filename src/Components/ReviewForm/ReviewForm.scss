@@ -59,7 +59,7 @@ input[type='radio'] {
     }
 
     &__username-input {
-        height: 2rem;
+        height: 2.5rem;
         width: 42%;
         outline: none;
         font-weight: 300;
@@ -101,13 +101,13 @@ input[type='radio'] {
     &__button {
         align-self: end;
         border-radius: 1.25rem;
-        font-weight: 300;
-        color: $PatchOrange;
-        background-color: $PatchGrey;
-        border: 1px solid $PatchOrange;
+        font-weight: bold;
+        color: #191919;
+        background-color: #ff7b00;
+        border: none;
         padding: 0.5rem 1rem;
         box-sizing: border-box;
-        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
     }
 
     &__delete-button {
@@ -139,7 +139,7 @@ input[type='radio'] {
     }
 
     &__review-container {
-        height: 8vh;
+        height: fit-content;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -148,6 +148,7 @@ input[type='radio'] {
     &__user-div {
         display: flex;
         align-items: center;
+        height: 10vh;
     }
 
     &__voltage-div {
@@ -191,6 +192,6 @@ input[type='radio'] {
         font-size: .75rem;
         color: white;
         font-weight: 300;
-        padding: 4vw 0vw;
+        padding: 1rem 0rem;
     }
 }
