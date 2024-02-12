@@ -22,6 +22,14 @@
         padding: .5rem 0rem;
     }
 
+    &__header-nouser {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: .5rem 0rem;
+    }
+
     &__header {
         color: white;
         font-weight: 300;
@@ -75,7 +83,6 @@
     }
 
     &__logo {
-        margin-left: 1.5rem;
         font-size: 2rem;
         color: #fff;
         text-shadow:
@@ -118,7 +125,7 @@
     &__icons-container {
         display: flex;
         justify-content: flex-end;
-        width: 20%;
+        width: fit-content;
     }
 
     &__search-input {

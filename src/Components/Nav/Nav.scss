@@ -8,26 +8,22 @@
     background-color: $PatchGrey;
     height: 8.5vh;
     padding: 0rem 1.5rem;
-    
 
 
-&__div {
-    display: flex;
-    flex-direction: column;        
-    align-items: center;
-}
 
-&__label {
-    font-size: .75rem;
-    color: grey;
-    font-weight: 300;
-    text-decoration: none;
-}
-
-&__icons {
-    fill: grey;
-    width: 1.25rem;
-    height: 1.25rem;
-    padding-bottom: .1rem;
+    &__div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 6vh;
     }
+
+    &__label {
+        font-size: .75rem;
+        color: grey;
+        font-weight: 300;
+        text-decoration: none;
+    }
+
 }

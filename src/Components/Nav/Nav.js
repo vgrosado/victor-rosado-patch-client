@@ -1,11 +1,12 @@
 import '../Nav/Nav.scss';
-import { SlUser } from 'react-icons/sl';
-import { SlHome } from 'react-icons/sl';
+import { FiUser } from "react-icons/fi";
+import { IoHomeOutline } from "react-icons/io5";
+import { SlGlobe } from "react-icons/sl";
 // import { PiBooks } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
-import { BiLogOut } from 'react-icons/bi';
+import { IoLogOutOutline } from "react-icons/io5";
 import { logOut } from '../../Firebase';
-import { RiUploadCloudLine } from "react-icons/ri";
+import { IoCloudUploadOutline } from "react-icons/io5";
 
 
 function Nav({ currentUser }) {
@@ -27,22 +28,34 @@ function Nav({ currentUser }) {
 
     return (
         <div className='nav'>
-            <div className='nav__div'>
-                <Link to={"/Home"}><SlHome className='nav__icons' /></Link>
-                <p className='nav__label' >Home</p>
-            </div>
-            {<div className='nav__div'>
-                <Link to={`/Profile/${currentUser?.uid}`}><SlUser className='nav__icons' /></Link>
+            {currentUser ? <div className='nav__div'>
+                <Link to={`/Profile/${currentUser?.uid}`}><FiUser color='grey' size={24} /></Link>
+                <p className='nav__label'>Profile</p>
+            </div> : <div onClick={handleGuest} className='nav__div'>
+                <FiUser color='grey' size={24}/>
                 <p className='nav__label'>Profile</p>
             </div>}
-            <div className='nav__div'>
-                <Link to={`/UploadMusic/${currentUser?.uid}`}><RiUploadCloudLine className='nav__icons' /></Link>
+            {currentUser ? <div className='nav__div'>
+                <Link to={`/UploadMusic/${currentUser?.uid}`}><IoCloudUploadOutline color='grey' size={24} /></Link>
                 <p className='nav__label'>Upload</p>
-            </div>
+            </div> : <div onClick={handleGuest} className='nav__div'>
+                <IoCloudUploadOutline color='grey'size={24} />
+                <p className='nav__label'>Upload</p>
+            </div>}
             <div className='nav__div'>
-                <Link to={"/"}><BiLogOut className='nav__icons' onClick={handleLogOut} /></Link>
-                <p className='nav__label'>Log Out</p>
+                <Link to={"/Discover"}><SlGlobe color='grey' size={24}/></Link>
+                <p className='nav__label'>Discover</p>
+            </div> 
+            <div className='nav__div'>
+                <Link to={"/"}><IoHomeOutline color='grey' size={24}/></Link>
+                <p className='nav__label' >Home</p>
             </div>
+            {currentUser ? <div className='nav__div'>
+                <Link to={"/"}><IoLogOutOutline color='grey' size={24} onClick={handleLogOut} /></Link>
+                <p className='nav__label'>Log Out</p>
+            </div> : 
+                <></>
+            }
         </div>
     )
 }

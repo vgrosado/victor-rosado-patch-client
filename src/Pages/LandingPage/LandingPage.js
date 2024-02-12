@@ -21,7 +21,7 @@ function LandingPage() {
                     <div className='landingpage__hero-overlaycontents'>
                         <h1 className='landingpage__hero-header'>Find your audience.</h1>
                         <Link className='landingpage__signup-link' to={'/SignUp'}><button className='landingpage__hero-signup'>Create a free account</button></Link>
-                        <Link className='landingpage__cwa-link' to={'/Home'}><p className='landingpage__hero-cwa'>Continue without an account</p></Link>
+                        <Link className='landingpage__cwa-link' to={'/Discover'}><p className='landingpage__hero-cwa'>Continue without an account</p></Link>
                     </div>
                 </div>
             </div>

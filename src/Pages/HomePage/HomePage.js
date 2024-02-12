@@ -55,19 +55,19 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
         <main className='homepage'>
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
-                    <div className='homepage__header-container'>
-                        <Link to={`/Profile/${currentUser?.uid}`}>
+                    <div className={!currentUser ? 'homepage__header-nouser' :'homepage__header-container'}>
+                        {!currentUser ? <></> : <Link to={`/Profile/${currentUser?.uid}`}>
                             <div className='homepage__avatar-div'>
                                 {!currentUser?.photoURL ? (<img className='homepage__avatar-placeholder' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' />)
                                     : (<img className='homepage__avatar' alt='avatar' src={currentUser?.photoURL} />)}
                             </div>
-                        </Link>
+                        </Link>}
                         <Link className='homepage__logo-link' to={'/'}><h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2></Link>
-                        <div className='homepage__icons-container'>
+                        {!currentUser ? <></> : <div className='homepage__icons-container'>
                             {/* <BiEnvelope className='homepage__header-icons' /> */}
                             <Link to={`/Notifications/${currentUser?.uid}`}><BiBell className='homepage__header-icons' /></Link>
                             {bookingNotification?.isRead === false ? <div className='homepage__icon-notification' onClick={() => handleNotification(bookingNotification?.id)}></div> : ""}
-                        </div>
+                        </div>}
                     </div>
                     <div className='homepage__input-div'>
                         <input className='homepage__search-input' placeholder='Search' value={searchInput} onChange={(event) => setSearchInput(event.target.value)}></input>
