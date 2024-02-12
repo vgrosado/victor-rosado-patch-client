@@ -2,7 +2,7 @@ import Nav from '../../Components/Nav/Nav';
 import Notification from '../../Components/Notification/Notification';
 import '../NotificationPage/NotificationPage.scss';
 
-function NotificationPage({ bookings}) {
+function NotificationPage({ bookings, currentUser}) {
     return (
         <>
             <main className='notificationpage'>
@@ -15,7 +15,7 @@ function NotificationPage({ bookings}) {
                     })}
                 </section>
             </main>
-            <Nav />
+            <Nav currentUser={currentUser} />
         </>
     )
 };
