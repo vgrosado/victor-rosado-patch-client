@@ -3,12 +3,12 @@ import {getFirestore} from "@firebase/firestore";
 import {getStorage} from "firebase/storage";
 import { createUserWithEmailAndPassword, onAuthStateChanged, getAuth, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
-const APIKEY = process.env.API_KEY;
-const AUTHDOMAIN = process.env.AUTH_DOMAIN;
-const PROJECTID = process.env.PROJECT_ID;
-const STORAGEBUCKET = process.env.STORAGE_BUCKET;
-const MESSENGERSENDERID = process.env.MESSENGER_SENDER_ID;
-const APPID = process.env.APP_ID;
+const APIKEY = process.env.REACT_APP_FIREBASE_API_KEY;
+const AUTHDOMAIN = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN;
+const PROJECTID = process.env.REACT_APP_FIREBASE_PROJECT_ID;
+const STORAGEBUCKET = process.env.REACT_APP_FIREBASE_STORAGE_BUCKET;
+const MESSENGERSENDERID = process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID;
+const APPID = process.env.REACT_APP_FIREBASE_APP_ID;
 
 const firebaseConfig = {
   apiKey: APIKEY,
