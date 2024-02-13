@@ -5,13 +5,20 @@ import {getStorage} from "firebase/storage";
 import { createUserWithEmailAndPassword, onAuthStateChanged, getAuth, signOut, signInWithEmailAndPassword, } from "firebase/auth";
 import { useEffect, useState } from "react";
 
+const key = process.env.API_KEY;
+const authdomain = process.env.AUTH_DOM;
+const projectid = process.env.PROJ_ID;
+const storagebucket = process.env.STRG_BUCKET;
+const messagingsenderid = process.env.MSG_SENDER_ID;
+const appid = process.env.APP_ID;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDFfDqHek8HcrYetw_Di-0eEnnu_CJU6s0",
-  authDomain: "patch-397bb.firebaseapp.com",
-  projectId: "patch-397bb",
-  storageBucket: "patch-397bb.appspot.com",
-  messagingSenderId: "789116654686",
-  appId: "1:789116654686:web:54b054c4b9a35d1cb050cf"
+  apiKey: key,
+  authDomain: authdomain,
+  projectId: projectid,
+  storageBucket: storagebucket,
+  messagingSenderId: messagingsenderid,
+  appId: appid 
 };
 
 
