@@ -1,23 +1,22 @@
-
 import { initializeApp } from "firebase/app";
 import {getFirestore} from "@firebase/firestore";
 import {getStorage} from "firebase/storage";
-import { createUserWithEmailAndPassword, onAuthStateChanged, getAuth, signOut, signInWithEmailAndPassword, } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, getAuth, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
-const apikey = process.env.API_KEY;
-const authdomain = process.env.AUTH_DOM;
-const projectid = process.env.PROJ_ID;
-const storagebucket = process.env.STRG_BUCKET;
-const messagingsenderid = process.env.MSG_SENDER_ID;
-const appid = process.env.APP_ID;
+const APIKEY = process.env.API_KEY;
+const AUTHDOMAIN = process.env.AUTH_DOMAIN;
+const PROJECTID = process.env.PROJECT_ID;
+const STORAGEBUCKET = process.env.STORAGE_BUCKET;
+const MESSENGERSENDERID = process.env.MESSENGER_SENDER_ID;
+const APPID = process.env.APP_ID;
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDFfDqHek8HcrYetw_Di-0eEnnu_CJU6s0",
-  authDomain: authdomain,
-  projectId: projectid,
-  storageBucket: storagebucket,
-  messagingSenderId: messagingsenderid,
-  appId: appid 
+  apiKey: APIKEY,
+  authDomain: AUTHDOMAIN,
+  projectId: PROJECTID,
+  storageBucket: STORAGEBUCKET,
+  messagingSenderId: MESSENGERSENDERID,
+  appId: APPID
 };
 
 
