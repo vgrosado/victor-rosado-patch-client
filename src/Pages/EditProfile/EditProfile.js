@@ -125,13 +125,13 @@ function EditProfile({ currentUser, loggedUser, getUser }) {
                     : (<img className='editprofile__header-background' src={loggedUser?.backgroundimg} alt='user background' />)}
                 <div className='editprofile__info-container'>
                     <div className='editprofile__avatar-div'>
-                        {!currentUser?.photoURL ?
+                        {!currentUser?.photoURL  ?
                             (<div className='editprofile__avatar-empty'><TbCameraPlus stroke='white' onClick={openModal} size={40} className='editprofile__edit-avatar' />
                                 <FaUser onClick={openModal} size={60} className='user__avatar-placeholder' /> </div>)
                             :
-                            (<div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={currentUser?.photoURL} />
+                            <div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={currentUser?.photoURL} />
                                 <TbCameraPlus stroke='white' onClick={openModal} size={30} className='editprofile__edit-avatar' />
-                            </div>)}
+                            </div>}
                             <div className='editprofile__edit-background' onClick={openBackgroundModal}><FaImage className='editprofile__background-icon' fill='white'/>Edit</div>
                     </div>
                 </div>
