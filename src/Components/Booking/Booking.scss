@@ -117,17 +117,17 @@
     }
 
     &__button {
-        background-color: $PatchGrey;
-        color: $PatchOrange;
+        background-color: #ff7b00;
+        color: #191919;
         font-size: 1.25rem;
         font-weight: 300;
         align-self: center;
-        width: 80%;
-        border: 1px solid $PatchOrange;
-        border-radius: 1.25rem;
+        width: 90%;
+        border: none;
+        border-radius: .5rem;
         box-sizing: border-box;
         padding: 2vw;
         margin-top: 4vw;
-        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216)
+        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
     }
 }
