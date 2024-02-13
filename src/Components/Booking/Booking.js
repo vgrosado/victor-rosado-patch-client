@@ -154,6 +154,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                         <option value='Open'>Open</option>
                         <option value='Support'>Support</option>
                     </select>
+                    <label className='booking__time-label'> Date </label>
                     <input
                         required={true}
                         autoComplete='off'
