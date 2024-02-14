@@ -51,8 +51,8 @@ function SignUpForm() {
 							id: user.uid,
 							email: emailRef,
 							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2FPatchStockBackground.jpeg?alt=media&token=40704bfb-4d34-4609-b5ab-38207e36aa24",
-							location: "Add a location",
-							website: "Add a website",
+							location: "Add your location",
+							website: "Add your website",
 							genre: ""
 						}
 						);
@@ -68,8 +68,8 @@ function SignUpForm() {
 							id: user.uid,
 							email: emailRef,
 							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2FPatchStockBackground.jpeg?alt=media&token=40704bfb-4d34-4609-b5ab-38207e36aa24",
-							location: "Add a location",
-							website: "Add a website",
+							location: "Add your location",
+							website: "Add your website",
 							genre: ""
 						});
 					}
