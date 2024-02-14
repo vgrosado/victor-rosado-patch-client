@@ -118,10 +118,12 @@
     &__empty-alert-user {
         color: $PatchOrange;
         font-weight: bold;
+        text-transform: capitalize;
     }
 
     &__empty-alert {
         text-wrap: balance;
+        text-align: center;
         color: white;
         font-weight: 300;
         font-size: 1.5rem;

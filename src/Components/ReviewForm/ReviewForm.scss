@@ -35,6 +35,7 @@ input[type='radio'] {
 
     &__displayName {
         color: $PatchOrange;
+        text-transform: capitalize;
     }
 
     &__form {
