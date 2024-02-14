@@ -1,5 +1,5 @@
-@mixin iphone12Pro {
-    @media (min-width: 390px) {
+@mixin iphone14ProMax {
+    @media (min-width: 430px) {
         @content;
     }
 }

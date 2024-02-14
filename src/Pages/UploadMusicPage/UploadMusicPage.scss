@@ -6,7 +6,7 @@
 .uploadmusicpage {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100dvh;
     justify-content: space-between;
     background-color: $PatchMedium-Grey;
     overflow-x: auto;
@@ -199,34 +199,23 @@
     &__name {
         color: white;
         font-weight: 300;
-
-        @include iphone12Pro {
-            font-size: 1.25rem;
-        }
+        font-size: 1.25rem;
     }
 
     &__username {
         font-weight: 300;
-        font-size: .75rem;
         color: $PatchOrange;
-
-        @include iphone12Pro {
-            font-size: 1rem;
-        }
+        font-size: 1rem;
     }
 
     &__bio {
-        font-size: .625rem;
         font-weight: 300;
         color: white;
         padding: .5rem 0rem;
         letter-spacing: 0px;
         text-wrap: pretty;
         width: 100%;
-
-        @include iphone12Pro {
-            font-size: .875rem;
-        }
+        font-size: .875rem;
     }
 
     &__uploadlabel-container {
@@ -316,7 +305,7 @@
         border-radius: 10px;
         border: none;
         box-sizing: border-box;
-        background-color:  #cb620023;
+        background-color: #cb620023;
         cursor: pointer;
     }
 

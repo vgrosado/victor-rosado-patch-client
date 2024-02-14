@@ -5,7 +5,7 @@
 .user {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100dvh;
     justify-content: space-between;
     background-color: $PatchMedium-Grey;
     overflow-x: auto;
@@ -39,7 +39,7 @@
         box-sizing: border-box;
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
-        height: 22vh;
+        height: 30vh;
         width: 100%;
         background-color: grey;
     }
@@ -68,13 +68,16 @@
         justify-content: space-between;
         height: 14vh;
         width: 100%;
-        align-items: center;
+        align-items: flex-end;
+        @include iphone14ProMax {
+            height: 5vh;
+        }
     }
 
     &__info-container {
         display: flex;
         position: absolute;
-        height: 20%;
+        height: 12vh;
         width: 100%;
         justify-content: space-between;
         box-sizing: border-box;
@@ -158,7 +161,7 @@
         text-wrap: wrap;
         font-weight: bold;
         color: white;
-        font-size: 2.5rem;
+        font-size: 2.3rem;
         text-transform: capitalize;
         width: max-content;
     }

@@ -5,7 +5,7 @@
 .editprofile {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100dvh;
     justify-content: space-between;
     background-color: $PatchMedium-Grey;
     overflow-x: auto;
@@ -179,102 +179,92 @@
     &__name {
         color: white;
         font-weight: 300;
-
-        @include iphone12Pro {
-            font-size: 1.25rem;
-        }
-    }
-
-    &__username {
-        font-weight: 300;
-        font-size: .75rem;
-        color: $PatchOrange;
-
-        @include iphone12Pro {
-            font-size: 1rem;
-        }
-    }
-
-    &__bio {
-        font-size: .625rem;
-        font-weight: 300;
-        color: white;
-        padding: .5rem 0rem;
-        letter-spacing: 0px;
-        text-wrap: pretty;
-        width: 100%;
-
-        @include iphone12Pro {
-            font-size: .875rem;
-        }
-    }
-
-    &__form-container {
-        position: absolute;
-        z-index: 1;
-        top: 9rem;
-        width: 100%;
-        background-color: rgb(31, 31, 31);
-        display: flex;
-        flex-direction: column;
-        padding: 1rem 1.5rem 0rem 1.5rem;
-        box-sizing: border-box;
-        border-top-left-radius: 1.25rem;
-        border-top-right-radius: 1.25rem;
-        overflow: auto;
-        height: 70vh;
-    }
-
-    &__form {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        height: 100%;
-        width: 100%;
-    }
-
-    &__input-label {
-        font-weight: 300;
-        color: $PatchOrange;
-    }
-
-    &__input {
-        font-weight: 300;
-        color: white;
-        border: none;
-        outline: none;
-        width: 100%;
-        height: 100%;
-        background: none;
-        border-bottom: .5px solid white;
-
-        &::placeholder {
-            font-size: 1rem;
-            font-weight: 300;
-            color: grey;
-        }
-    }
-
-    &__button {
-        background-color: $PatchOrange;
-        color: $PatchGrey;
         font-size: 1.25rem;
-        font-weight: bold;
-        align-self: center;
-        width: 100%;
-        border: none;
-        border-radius: .5rem;
-        box-sizing: border-box;
-        padding: 2vw;
-        margin-top: 4vw;
-        box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
-        cursor: pointer;
     }
 
-    &__delete-account {
-        color: red;
-        font-weight: 300;
-        text-align: center;
-    }
+        &__username {
+            font-weight: 300;
+            font-size: .75rem;
+            color: $PatchOrange;
+            font-size: 1rem;
 
-}
+            &__bio {
+                font-weight: 300;
+                color: white;
+                padding: .5rem 0rem;
+                letter-spacing: 0px;
+                text-wrap: pretty;
+                width: 100%;
+                font-size: .875rem;
+            }
+
+            &__form-container {
+                position: absolute;
+                z-index: 1;
+                top: 9rem;
+                width: 100%;
+                background-color: rgb(31, 31, 31);
+                display: flex;
+                flex-direction: column;
+                padding: 1rem 1.5rem 0rem 1.5rem;
+                box-sizing: border-box;
+                border-top-left-radius: 1.25rem;
+                border-top-right-radius: 1.25rem;
+                overflow: auto;
+                height: 70vh;
+            }
+
+            &__form {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                height: 100%;
+                width: 100%;
+            }
+
+            &__input-label {
+                font-weight: 300;
+                color: $PatchOrange;
+            }
+
+            &__input {
+                font-weight: 300;
+                color: white;
+                border: none;
+                outline: none;
+                width: 100%;
+                height: 100%;
+                background: none;
+                border-bottom: .5px solid white;
+
+                &::placeholder {
+                    font-size: 1rem;
+                    font-weight: 300;
+                    color: grey;
+                }
+            }
+
+            &__button {
+                background-color: $PatchOrange;
+                color: $PatchGrey;
+                font-size: 1.25rem;
+                font-weight: bold;
+                align-self: center;
+                width: 100%;
+                border: none;
+                border-radius: .5rem;
+                box-sizing: border-box;
+                padding: 2vw;
+                margin-top: 4vw;
+                box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+                cursor: pointer;
+            }
+
+            &__delete-account {
+                color: red;
+                font-weight: 300;
+                text-align: center;
+            }
+
+        }
+    }
