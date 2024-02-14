@@ -97,7 +97,7 @@
     }
 
     &__flicker {
-        animation: flicker 3s linear forwards alternate infinite;
+        -webkit-animation: flicker 3s linear forwards alternate infinite;
 
         @keyframes flicker {
 
@@ -198,6 +198,8 @@
         border: none;
         outline: none;
         background-color: $PatchGrey;
+        box-shadow: none !important;
+        -webkit-appearance: none;
     }
 
     &__select-div {

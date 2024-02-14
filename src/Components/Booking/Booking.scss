@@ -74,6 +74,7 @@
         height: 10%;
         background: none;
         border-bottom: .5px solid grey;
+        -webkit-appearance: none;
         &::placeholder {
             font-size: 1rem;
             font-weight: 300;
@@ -109,6 +110,7 @@
         height: 10%;
         background: none;
         border-bottom: .5px solid grey;
+        -webkit-appearance: none;
         &::placeholder {
             font-size: 1rem;
             font-weight: 300;
