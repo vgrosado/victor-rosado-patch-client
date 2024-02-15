@@ -29,32 +29,32 @@ function Nav({ currentUser }) {
 
     return (
         <div className='nav'>
-            {currentUser ? <div className='nav__div'>
-                <Link to={`/Profile/${currentUser?.uid}`}><FiUser color='grey' size={24} /></Link>
+            {currentUser ? <Link className='nav__link'  to={`/Profile/${currentUser?.uid}`}><div className='nav__div'>
+                <FiUser color='grey' size={24} />
                 <p className='nav__label'>Profile</p>
-            </div> : <div onClick={handleGuest} className='nav__div'>
+            </div></Link> : <div onClick={handleGuest} className='nav__div'>
                 <FiUser color='grey' size={24} />
                 <p className='nav__label'>Profile</p>
             </div>}
-            {currentUser ? <div className='nav__div'>
-                <Link to={`/UploadMusic/${currentUser?.uid}`}><IoCloudUploadOutline color='grey' size={24} /></Link>
+            {currentUser ? <Link className='nav__link'  to={`/UploadMusic/${currentUser?.uid}`}> <div className='nav__div'>
+                <IoCloudUploadOutline color='grey' size={24} />
                 <p className='nav__label'>Upload</p>
-            </div> : <div onClick={handleGuest} className='nav__div'>
+            </div></Link> : <div onClick={handleGuest} className='nav__div'>
                 <IoCloudUploadOutline color='grey' size={24} />
                 <p className='nav__label'>Upload</p>
             </div>}
-            <div className='nav__div'>
-                <Link to={"/Discover"}><SlGlobe color='grey' size={24} /></Link>
+            <Link className='nav__link'  to={"/Discover"}><div className='nav__div'>
+                <SlGlobe color='grey' size={24} />
                 <p className='nav__label'>Discover</p>
-            </div>
-            {!currentUser ? <div className='nav__div'>
-                <Link to={"/"}><IoHomeOutline color='grey' size={24} /></Link>
+            </div></Link>
+            {!currentUser ? <Link className='nav__link'  to={"/"}><div className='nav__div'>
+                <IoHomeOutline color='grey' size={24} />
                 <p className='nav__label' >Home</p>
-            </div> : <></>}
-            {currentUser ? <div className='nav__div'>
-                <Link to={"/"}><IoLogOutOutline color='grey' size={24} onClick={handleLogOut} /></Link>
+            </div></Link> : <></>}
+            {currentUser ? <Link className='nav__link' to={"/"}> <div className='nav__div'>
+                <IoLogOutOutline color='grey' size={24} onClick={handleLogOut} />
                 <p className='nav__label'>Log Out</p>
-            </div> :
+            </div></Link> :
                 <></>
             }
         </div>
