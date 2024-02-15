@@ -11,7 +11,7 @@ function LandingPage() {
     return (<>
         <body className='landingpage'>
             <nav className='landingpage__nav'>
-                <h1 className='landingpage__nav-logo'>P<span className='landingpage__logo-flicker'>A</span>TCH</h1>
+                <h1 className='landingpage__nav-logo'>PATCH</h1>
                 <div className='landingpage__nav-buttondiv'>
                     <Link className='landingpage__nav-link' to={'/Login'}><button className='landingpage__nav-signin'>Sign in</button></Link>
                 </div>

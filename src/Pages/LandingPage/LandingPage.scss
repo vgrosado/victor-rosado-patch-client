@@ -30,11 +30,7 @@
             0 0 1em #ff7b00,
             0 0 1.5em #ff7b00;
         font-size: 1.5rem;
-    }
-
-    &__logo-flicker {
-        animation: flicker 3s linear forwards alternate infinite;
-
+        animation: flicker 5s linear forwards alternate infinite;
         @keyframes flicker {
 
             0%,
@@ -127,6 +123,7 @@
     &__cwa-link {
         width: 100%;
         text-decoration: none;
+
         :hover {
             text-decoration: underline;
             color: #ff7b00;

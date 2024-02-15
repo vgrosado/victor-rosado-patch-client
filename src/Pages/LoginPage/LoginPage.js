@@ -14,7 +14,7 @@ function LoginPage({loading, getUser, setLoading}) {
 	return (
 		<section className="login">
 			<div className="login__container">
-				<h1 className='login__header'>P<span className='login__flicker'>A</span>TCH</h1>
+				<h1 className='login__header'>PATCH</h1>
 				<div className='login__subheader-div'>
 					<LoginForm getUser={getUser} loading={loading} setLoading={setLoading} />
 					<div className='login__switch-container'>
