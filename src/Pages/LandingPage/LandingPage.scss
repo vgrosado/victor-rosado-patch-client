@@ -14,9 +14,6 @@
         box-sizing: border-box;
         padding: 1rem 2rem;
         height: 9vh;
-        // position: sticky;
-        // top: 0;
-        // z-index: 1;
     }
 
     &__nav-logo {
@@ -150,13 +147,12 @@
         text-align: center;
         color: white;
         font-weight: lighter;
-        font-size: .875rem;
+        font-size: 0.875rem;
         width: 100%;
-        box-sizing: border-box;
         border: none;
         background-color: transparent;
         cursor: pointer;
-        padding: .5rem 0rem;
+        margin: 1rem 0rem 0rem 0rem;
     }
 
     &__hero-img {

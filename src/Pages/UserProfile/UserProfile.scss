@@ -178,7 +178,7 @@
 
     &__heading {
         color: white;
-        font-size: 2rem;
+        font-size: 2.5rem;
         animation: flicker 8s linear forwards alternate infinite;
         text-shadow: 0 0 0.033em #fff, 0 0 0.08em #fff, 0 0 0.1em #ff7b00, 0 0 0.2em #ff7b00, 0 0 0.3em #ff7b00, 0 0 1em #ff7b00, 0 0 1.5em #ff7b00;
 
@@ -334,15 +334,16 @@
     &__button {
         display: flex;
         align-items: center;
-        border-radius: .5rem;
-        font-weight: 300;
-        color: $PatchOrange;
-        background-color: $PatchGrey;
-        border: 1px solid $PatchOrange;
-        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: bold;
+        color: #ff7b00;
+        background-color: #191919;
+        border: 1px solid #ff7b00;
+        padding: 0.5rem 1.5rem;
         box-sizing: border-box;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
         cursor: pointer;
+        font-size: 1rem;
     }
 
     &__button-link {

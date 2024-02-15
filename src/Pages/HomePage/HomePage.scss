@@ -179,8 +179,8 @@
     }
 
     &__heading {
-        font-weight: 300;
-        font-size: 2rem;
+        font-weight: bold;
+        font-size: 2.5rem;
         color: $PatchOrange;
         text-shadow: 2px 4px 8px black;
     }
@@ -189,10 +189,11 @@
         font-weight: 300;
         font-size: .75rem;
         color: white;
+        margin-right: .25rem;
     }
 
     &__select {
-        font-weight: 300;
+        font-weight: bold;
         color: $PatchOrange;
         border-radius: 1.25rem;
         border: none;
@@ -206,7 +207,7 @@
         text-align: center;
         background-color: $PatchGrey;
         border-radius: 1.25rem;
-        width: 50%;
+        width: 42%;
         padding: .3rem;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
     }
