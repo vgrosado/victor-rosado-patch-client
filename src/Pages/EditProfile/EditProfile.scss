@@ -110,7 +110,7 @@
         width: 100%;
         justify-content: space-between;
         box-sizing: border-box;
-        padding: 2rem 2rem 0rem 1rem;
+        padding: 2rem 2rem 0rem 2rem;
         align-items: center;
         height: 17dvh;
     }
@@ -236,6 +236,7 @@
                 height: 100%;
                 background: none;
                 border-bottom: .5px solid white;
+                resize: none;
 
                 &::placeholder {
                     font-size: 1rem;
