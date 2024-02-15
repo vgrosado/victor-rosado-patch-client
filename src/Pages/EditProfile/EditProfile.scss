@@ -44,7 +44,6 @@
         border: 1px solid $PatchOrange;
         background-color: rgba(128, 128, 128, 0.193);
         border-radius: 5px;
-        border-radius: 5px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -102,6 +101,7 @@
         justify-content: space-between;
         width: 100%;
         align-items: self-end;
+        height: 100%;
     }
 
     &__info-container {
@@ -112,6 +112,7 @@
         box-sizing: border-box;
         padding: 2rem 2rem 0rem 1rem;
         align-items: center;
+        height: 18dvh;
     }
 
     &__avatar {
