@@ -247,9 +247,6 @@
         border-top-left-radius: 1.25rem;
         border-top-right-radius: 1.25rem;
         overflow: auto;
-        @include iphone14ProMax {
-            height: 75dvh;
-        }
     }
 
     &__details-container {
