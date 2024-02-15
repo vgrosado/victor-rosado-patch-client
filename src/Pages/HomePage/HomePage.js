@@ -62,7 +62,7 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
                                     : (<img className='homepage__avatar' alt='avatar' src={currentUser?.photoURL} />)}
                             </div>
                         </Link>}
-                        <Link className='homepage__logo-link' to={'/'}><h2 className='homepage__logo'>P<span className='homepage__flicker'>A</span>TCH</h2></Link>
+                        <Link className='homepage__logo-link' to={'/'}><h2 className='homepage__logo'>PATCH</h2></Link>
                         {!currentUser ? <></> : <div className='homepage__icons-container'>
                             {/* <BiEnvelope className='homepage__header-icons' /> */}
                             <Link to={`/Notifications/${currentUser?.uid}`}><BiBell className='homepage__header-icons' /></Link>
