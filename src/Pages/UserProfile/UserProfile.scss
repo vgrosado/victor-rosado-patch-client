@@ -142,7 +142,6 @@
 
     &__location-div {
         display: flex;
-        margin-right: 1rem;
         align-items: center;
     }
 
@@ -274,7 +273,8 @@
 
     &__contacts-container {
         display: flex;
-        width: 90%;
+        width: 100%;
+        justify-content: space-between;
     }
 
     &__stats-title {
