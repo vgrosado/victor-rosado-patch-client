@@ -26,8 +26,8 @@ function UserProfile({ currentUser, getBookings, bookings }) {
     const [music, setMusic] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
 
-
-    useEffect(() => {
+    //get singlular user per profile
+    async function getUser() {
         const userDocRef = doc(db, "users", `${id}`)
         getDoc(userDocRef)
             .then((doc) => {
@@ -36,14 +36,15 @@ function UserProfile({ currentUser, getBookings, bookings }) {
             .catch(error => {
                 console.log('error fetching video ID:s', error)
             });
-    }, [id])
+    }
 
-    const getUserMusic = async () => {
+    async function getUserMusic() {
         const userMusicData = await getDocs(collection(db, "users", `${id}`, "Music",));
         setMusic(userMusicData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     };
 
     useEffect(() => {
+        getUser();
         getUserMusic();
     }, [id]);
 

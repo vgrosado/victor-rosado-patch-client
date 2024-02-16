@@ -3,8 +3,8 @@ import Nav from '../../Components/Nav/Nav';
 import '../EditProfile/EditProfile.scss';
 import { FaImage, FaUser } from 'react-icons/fa6';
 import { TbCameraPlus } from "react-icons/tb";
-import {  useNavigate } from 'react-router-dom';
-import { doc, updateDoc } from 'firebase/firestore';
+import { useNavigate} from 'react-router-dom';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 import { updateProfile } from 'firebase/auth';
 import EditAvatarModal from '../../Components/EditAvatarModal/EditAvatarModal';
@@ -12,17 +12,20 @@ import DeleteUserModal from '../../Components/DeleteUserModal/DeleteUserModal';
 import EditUserBackgroundModal from '../../Components/EditUserBackgroundModal/EditUserBackgroundModal';
 
 
-function EditProfile({ currentUser, loggedUser, getUser }) {
+function EditProfile({ currentUser }) {
+
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true)
+    const [userInfo, setUserInfo] = useState({});
     const [isModalOpen, setModalOpen] = useState(false);
     const [isBackgroundModalOpen, setBackgroundModalOpen] = useState(false);
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [updateUserName, setUpdateUserName] = useState(currentUser?.displayName);
-    const [updateName, setUpdateName] = useState(loggedUser?.name);
-    const [updateWebsite, setUpdateWebsite] = useState(loggedUser?.website);
-    const [updateLocation, setUpdateLocation] = useState(loggedUser?.location);
-    const [updateGenre, setUpdateGenre] = useState(loggedUser?.genre);
-    const [updateBio, setUpdateBio] = useState(loggedUser?.bio);
+    const [updateName, setUpdateName] = useState(userInfo?.name);
+    const [updateWebsite, setUpdateWebsite] = useState(userInfo?.website);
+    const [updateLocation, setUpdateLocation] = useState(userInfo?.location);
+    const [updateGenre, setUpdateGenre] = useState(userInfo?.genre);
+    const [updateBio, setUpdateBio] = useState(userInfo?.bio);
     const formValues = {
         updateUserName,
         updateName,
@@ -31,26 +34,55 @@ function EditProfile({ currentUser, loggedUser, getUser }) {
         updateGenre,
         updateBio,
     };
-    const updatedUserData = {
+
+
+    const [updatedUserData, setUpdatedUserData] = useState({
         name: updateName,
         website: updateWebsite,
         location: updateLocation,
         genre: updateGenre,
         bio: updateBio,
         displayName: updateUserName
-    };
+    })
+
+    useEffect(() => {
+        setUpdatedUserData({
+            name: updateName,
+            website: updateWebsite,
+            location: updateLocation,
+            genre: updateGenre,
+            bio: updateBio,
+            displayName: updateUserName
+        })
+    }, [updateName, updateBio, updateGenre, updateLocation, updateUserName, updateWebsite])
+
+    //get singlular user per profile
+    async function getUserInfo() {
+        const userDocRef = doc(db, "users", `${currentUser?.uid}`)
+        getDoc(userDocRef)
+            .then((doc) => {
+                setUserInfo(doc.data(), doc.id)
+            })
+            .catch(error => {
+                console.log('error fetching video ID:s', error)
+            });
+    }
+
+    useEffect(() => {
+        getUserInfo();
+    }, [currentUser?.uid])
 
 
     useEffect(() => {
-        if (loggedUser) {
-            setUpdateUserName(loggedUser?.displayName || '');
-            setUpdateName(loggedUser?.name || '');
-            setUpdateWebsite(loggedUser?.website || '');
-            setUpdateLocation(loggedUser?.location || '');
-            setUpdateGenre(loggedUser?.genre || '');
-            setUpdateBio(loggedUser?.bio || '');
+        if (userInfo) {
+            setUpdateUserName(userInfo?.displayName || '');
+            setUpdateName(userInfo?.name || '');
+            setUpdateWebsite(userInfo?.website || '');
+            setUpdateLocation(userInfo?.location || '');
+            setUpdateGenre(userInfo?.genre || '');
+            setUpdateBio(userInfo?.bio || '');
         }
-    }, [loggedUser]);
+    }, [userInfo]);
 
     //update user profile information
     async function updateUser(event) {
@@ -121,18 +153,18 @@ function EditProfile({ currentUser, loggedUser, getUser }) {
     return (
         <section className='editprofile'>
             <div className='editprofile__background-container'>
-                {!loggedUser?.backgroundimg ? (<div className='user__header-background'></div>)
-                    : (<img className='editprofile__header-background' src={loggedUser?.backgroundimg} alt='user background' />)}
+                {!userInfo?.backgroundimg ? (<div className='user__header-background'></div>)
+                    : (<img className='editprofile__header-background' src={userInfo?.backgroundimg} alt='user background' />)}
                 <div className='editprofile__info-container'>
                     <div className='editprofile__avatar-div'>
-                        {!currentUser?.photoURL  ?
+                        {!currentUser?.photoURL ?
                             (<div className='editprofile__avatar-empty'><TbCameraPlus stroke='white' onClick={openModal} size={40} className='editprofile__edit-avatar' />
                                 <FaUser onClick={openModal} size={60} className='user__avatar-placeholder' /> </div>)
                             :
                             <div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={currentUser?.photoURL} />
                                 <TbCameraPlus stroke='white' onClick={openModal} size={30} className='editprofile__edit-avatar' />
                             </div>}
-                            <div className='editprofile__edit-background' onClick={openBackgroundModal}><FaImage className='editprofile__background-icon' fill='white'/>Update background image</div>
+                        <div className='editprofile__edit-background' onClick={openBackgroundModal}><FaImage className='editprofile__background-icon' fill='white' />Update background image</div>
                     </div>
                 </div>
             </div>
@@ -168,7 +200,7 @@ function EditProfile({ currentUser, loggedUser, getUser }) {
             </article>
             <DeleteUserModal isDeleteModalOpen={isDeleteModalOpen} closeDeleteModal={closeDeleteModal} currentUser={currentUser} />
             <EditAvatarModal isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
-            <EditUserBackgroundModal isBackgroundModalOpen={isBackgroundModalOpen} getUser={getUser} closeBackgroundModal={closeBackgroundModal} loggedUser={loggedUser} currentUser={currentUser}  />
+            <EditUserBackgroundModal isBackgroundModalOpen={isBackgroundModalOpen} loading={loading} setLoading={setLoading} getUser={getUserInfo} closeBackgroundModal={closeBackgroundModal} userInfo={userInfo} currentUser={currentUser} />
             <Nav currentUser={currentUser} />
         </section>
     )

@@ -91,7 +91,20 @@
         justify-content: center;
     }
 
-
+    &__upload-button-disabled {
+        text-align: center;
+        color: rgb(147, 147, 147);
+        font-weight: bold;
+        font-size: 1.25rem;
+        width: 80%;
+        height: 6vh;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        border: none;
+        box-sizing: border-box;
+        background-color: #cb620023;
+        cursor: pointer;
+    }
 
     &__section {
         display: flex;

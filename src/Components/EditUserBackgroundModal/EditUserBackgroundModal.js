@@ -4,11 +4,11 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { db, storage } from '../../Firebase';
 
-function EditUserBackgroundModal({isBackgroundModalOpen, closeBackgroundModal, currentUser, loggedUser, getUser}) {
-    console.log(loggedUser?.backgroundimg)
+function EditUserBackgroundModal({isBackgroundModalOpen, closeBackgroundModal, currentUser, userInfo, getUser, setLoading, loading}) {
+
     const [backgroundUpload, setBackgroundUpload] = useState("");
     const backgroundUrl = useRef();
-    const [placeholder, setPlaceHolder] = useState(loggedUser?.backgroundimg)
+    const [placeholder, setPlaceHolder] = useState();
 
     function uploadBackground() {
         if (backgroundUpload == null) return;
@@ -19,7 +19,7 @@ function EditUserBackgroundModal({isBackgroundModalOpen, closeBackgroundModal, c
                 getDownloadURL(backgroundRef)
                     .then((url) => {
                         backgroundUrl.current = url;
-                        console.log(backgroundUrl)
+                        // console.log(backgroundUrl)
                     }).then(() => {
                         updateDoc(userDocRef, {
                             backgroundimg: backgroundUrl.current
@@ -47,7 +47,7 @@ function EditUserBackgroundModal({isBackgroundModalOpen, closeBackgroundModal, c
         <div className="edituserbackgroundmodal">
         <div className='edituserbackgroundmodal__content'>
             <div className='edituserbackgroundmodal__background-div'>
-                <div className='edituserbackgroundmodal__edit-background-div'><img className='edituserbackgroundmodal__user-background' alt='background image' src={placeholder} />
+                <div className='edituserbackgroundmodal__edit-background-div'><img className='edituserbackgroundmodal__user-background' alt='background image' src={placeholder ? placeholder : userInfo?.backgroundimg} />
                     <label className='edituserbackgroundmodal__upload-background' htmlFor='avatar-input' id='avatar'>
                         <div className='edituserbackgroundmodal__input-button'>Choose a new background</div>
                         <input className='edituserbackgroundmodal__upload-input' id='avatar-input' name='avatar-input' type='file' accept='image/*'

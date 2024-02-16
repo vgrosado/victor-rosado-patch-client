@@ -5,13 +5,28 @@ import { Link } from 'react-router-dom';
 import UserCard from '../../Components/UserCard/UserCard';
 import { useEffect, useState } from 'react';
 import GenreCard from '../../Components/GenreCard/GenreCard';
-import { BiBell} from 'react-icons/bi';
-import { doc, updateDoc } from 'firebase/firestore';
+import { BiBell } from 'react-icons/bi';
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 
-function HomePage({ currentUser, users, getUsers, bookingNotification, getBookings }) {
+function HomePage({ currentUser, bookingNotification, getBookings }) {
+
     const [searchInput, setSearchInput] = useState([]);
     const [sortBy, setSortBy] = useState("artist");
+    const [users, setUsers] = useState([]);
+
+    //get all users from database for homepage
+    const usersCollectionRef = collection(db, "users")
+    async function getUsers() {
+        const Data = await getDocs(usersCollectionRef);
+        setUsers(Data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    };
+
+    useEffect(() => {
+        getUsers();
+    }, []);
+
+
     const filteredUsers = users.filter((user) => {
         const searchData = `${user.displayName}`.toLowerCase();
         return searchData.includes(String(searchInput).toLowerCase());
@@ -33,10 +48,6 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
         setSortBy(event.target.value);
     };
 
-    useEffect(() => {
-        getUsers();
-    }, []);
-
     function handleNotification(bookingId) {
         alert(bookingNotification?.email + ' sent you a booking request!')
         const bookingDocRef = doc(db, "users", `${currentUser?.uid}`, "Bookings", `${bookingId}`);
@@ -55,7 +66,7 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
         <main className='homepage'>
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
-                    <div className={!currentUser ? 'homepage__header-nouser' :'homepage__header-container'}>
+                    <div className={!currentUser ? 'homepage__header-nouser' : 'homepage__header-container'}>
                         {!currentUser ? <></> : <Link to={`/Profile/${currentUser?.uid}`}>
                             <div className='homepage__avatar-div'>
                                 {!currentUser?.photoURL ? (<img className='homepage__avatar-placeholder' alt='dj' src='https://source.boringavatars.com/beam/120/Maria%20Mitchell?colors=ff7b00,191919,ffffff?square' />)
@@ -97,7 +108,7 @@ function HomePage({ currentUser, users, getUsers, bookingNotification, getBookin
                     </div>
                 </section>}
             </article>
-            <Nav currentUser={currentUser}/>
+            <Nav currentUser={currentUser} />
         </main>
     )
 };
