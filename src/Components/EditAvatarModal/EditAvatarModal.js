@@ -1,5 +1,5 @@
 import './EditAvatarModal.scss'
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { db, storage } from '../../Firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';

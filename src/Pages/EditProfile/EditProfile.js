@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Nav from '../../Components/Nav/Nav';
 import '../EditProfile/EditProfile.scss';
 import { FaImage, FaUser } from 'react-icons/fa6';
