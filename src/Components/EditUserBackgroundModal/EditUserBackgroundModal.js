@@ -56,7 +56,9 @@ function EditUserBackgroundModal({ isBackgroundModalOpen, closeBackgroundModal, 
                                 }}
                             ></input>
                         </label>
+                        {backgroundUpload ?
                         <button className='edituserbackgroundmodal__upload-button' type='submit' onClick={() => uploadBackground()}>Upload</button>
+                        :<button className='edituserbackgroundmodal__upload-button-disabled' disabled type='submit'>Upload</button> }
                     </div>
                 </div>
             </div>

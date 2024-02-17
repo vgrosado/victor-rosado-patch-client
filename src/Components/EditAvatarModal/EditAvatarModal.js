@@ -59,7 +59,9 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser, setAvatarUrl, a
                                 }}
                             ></input>
                         </label>
+                        {avatarUpload ?
                         <button className='modal-overlay__upload-button' type='submit' onClick={() => uploadAvatar()}>Upload</button>
+                        :<button className='modal-overlay__upload-button-disabled' disabled type='submit'>Upload</button> }
                     </div>
                 </div>
             </div>
