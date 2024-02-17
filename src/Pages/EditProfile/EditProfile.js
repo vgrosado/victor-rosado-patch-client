@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Nav from '../../Components/Nav/Nav';
 import '../EditProfile/EditProfile.scss';
 import { FaImage, FaUser } from 'react-icons/fa6';
@@ -13,9 +13,8 @@ import EditUserBackgroundModal from '../../Components/EditUserBackgroundModal/Ed
 
 
 function EditProfile({ currentUser }) {
-
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true)
+    
     const [userInfo, setUserInfo] = useState({});
     const [isModalOpen, setModalOpen] = useState(false);
     const [isBackgroundModalOpen, setBackgroundModalOpen] = useState(false);
@@ -26,16 +25,8 @@ function EditProfile({ currentUser }) {
     const [updateLocation, setUpdateLocation] = useState(userInfo?.location);
     const [updateGenre, setUpdateGenre] = useState(userInfo?.genre);
     const [updateBio, setUpdateBio] = useState(userInfo?.bio);
-    const formValues = {
-        updateUserName,
-        updateName,
-        updateWebsite,
-        updateLocation,
-        updateGenre,
-        updateBio,
-    };
-
-
+	const [backgroundUrl, setBackgroundUrl] = useState(userInfo?.backgroundimg);
+	const [avatarUrl, setAvatarUrl] = useState(userInfo?.avatar);
     const [updatedUserData, setUpdatedUserData] = useState({
         name: updateName,
         website: updateWebsite,
@@ -44,6 +35,15 @@ function EditProfile({ currentUser }) {
         bio: updateBio,
         displayName: updateUserName
     })
+
+    const formValues = {
+        updateUserName,
+        updateName,
+        updateWebsite,
+        updateLocation,
+        updateGenre,
+        updateBio,
+    };
 
     useEffect(() => {
         setUpdatedUserData({
@@ -70,8 +70,11 @@ function EditProfile({ currentUser }) {
 
     useEffect(() => {
         getUserInfo();
-    }, [currentUser?.uid])
+    }, [currentUser?.uid, avatarUrl, backgroundUrl])
 
+	console.log(userInfo)
+	console.log(userInfo?.backgroundimg)
+	console.log(userInfo?.avatar)
 
     useEffect(() => {
         if (userInfo) {
@@ -148,8 +151,6 @@ function EditProfile({ currentUser }) {
         <>Loading</>
     };
 
-
-
     return (
         <section className='editprofile'>
             <div className='editprofile__background-container'>
@@ -157,11 +158,11 @@ function EditProfile({ currentUser }) {
                     : (<img className='editprofile__header-background' src={userInfo?.backgroundimg} alt='user background' />)}
                 <div className='editprofile__info-container'>
                     <div className='editprofile__avatar-div'>
-                        {!currentUser?.photoURL ?
+                        {!userInfo?.avatar ?
                             (<div className='editprofile__avatar-empty'><TbCameraPlus stroke='white' onClick={openModal} size={40} className='editprofile__edit-avatar' />
                                 <FaUser onClick={openModal} size={60} className='user__avatar-placeholder' /> </div>)
                             :
-                            <div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={currentUser?.photoURL} />
+                            <div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={userInfo?.avatar} />
                                 <TbCameraPlus stroke='white' onClick={openModal} size={30} className='editprofile__edit-avatar' />
                             </div>}
                         <div className='editprofile__edit-background' onClick={openBackgroundModal}><FaImage className='editprofile__background-icon' fill='white' />Update background image</div>
@@ -199,8 +200,8 @@ function EditProfile({ currentUser }) {
                 </div>
             </article>
             <DeleteUserModal isDeleteModalOpen={isDeleteModalOpen} closeDeleteModal={closeDeleteModal} currentUser={currentUser} />
-            <EditAvatarModal isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
-            <EditUserBackgroundModal isBackgroundModalOpen={isBackgroundModalOpen} loading={loading} setLoading={setLoading} getUser={getUserInfo} closeBackgroundModal={closeBackgroundModal} userInfo={userInfo} currentUser={currentUser} />
+            <EditAvatarModal setAvatarUrl={setAvatarUrl} avatarUrl={avatarUrl} isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
+            <EditUserBackgroundModal setBackgroundUrl={setBackgroundUrl} isBackgroundModalOpen={isBackgroundModalOpen} getUserInfo={getUserInfo} closeBackgroundModal={closeBackgroundModal} userInfo={userInfo} currentUser={currentUser} />
             <Nav currentUser={currentUser} />
         </section>
     )

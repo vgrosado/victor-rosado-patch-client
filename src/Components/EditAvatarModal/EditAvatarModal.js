@@ -5,9 +5,8 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { updateProfile } from 'firebase/auth';
 import { doc, updateDoc } from 'firebase/firestore';
 
-function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
+function EditAvatarModal({ isModalOpen, closeModal, currentUser, setAvatarUrl, avatarUrl }) {
     const [avatarUpload, setAvatarUpload] = useState("");
-    const avatarUrl = useRef();
     const [placeholder, setPlaceHolder] = useState(currentUser?.photoURL)
 
     function uploadAvatar() {
@@ -18,21 +17,21 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
             .then(() => {
                 getDownloadURL(avatarRef)
                     .then((url) => {
-                        avatarUrl.current = url;
-                        console.log(avatarUrl)
-                    }).then(() => {
+                        setAvatarUrl(url)
+                        console.log("child component " + url)
                         updateProfile(currentUser, {
-                            photoURL: avatarUrl.current
+                            photoURL: url
+                        })
+                        console.log(avatarUrl)
+                        updateDoc(userDocRef, {
+                            avatar: url
                         })
                     }).then(() => {
-                        updateDoc(userDocRef, {
-                            avatar: avatarUrl.current
-                        })
-                    });
+                        closeModal();
+                    })
             }).catch((error) => {
                 console.log(error.message);
             })
-            closeModal();
     };
 
     function placeHolderPreview(event) {
@@ -58,7 +57,7 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser }) {
                                     setAvatarUpload(event.target.files[0])
                                     placeHolderPreview(event)
                                 }}
-                                ></input>
+                            ></input>
                         </label>
                         <button className='modal-overlay__upload-button' type='submit' onClick={() => uploadAvatar()}>Upload</button>
                     </div>

@@ -68,7 +68,7 @@ function App() {
         <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/Discover" element={<HomePage getBookings={getBookings} bookingNotification={bookingNotification} currentUser={currentUser} />} />
         <Route path="/Profile/:id" element={<UserProfile currentUser={currentUser} bookings={bookings} getBookings={getBookings} />} />
-        <Route path="/EditProfile/:uid" element={<EditProfile currentUser={currentUser}/>} />
+        <Route path="/EditProfile/:id" element={<EditProfile currentUser={currentUser}/>} />
         <Route path="/UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser} />}></Route>
         <Route path="/Notifications/:id" element={<NotificationPage currentUser={currentUser} bookings={bookings} />}></Route>
       </Routes>

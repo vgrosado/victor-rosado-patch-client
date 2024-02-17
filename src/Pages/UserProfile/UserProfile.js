@@ -16,7 +16,6 @@ import { PiVinylRecord } from "react-icons/pi";
 import { IoLibrarySharp } from "react-icons/io5";
 
 
-
 function UserProfile({ currentUser, getBookings, bookings }) {
     const { id } = useParams();
     const [user, setUser] = useState({});
