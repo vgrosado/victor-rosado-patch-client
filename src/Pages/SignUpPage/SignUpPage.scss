@@ -4,9 +4,8 @@
     flex-direction: column;
     align-items: center;
 	height: 100dvh;
-    background-color:#191919 ;
-	
-	
+    backdrop-filter: blur(2px);
+    background: linear-gradient(180deg, rgb(0, 0, 0), #191919);
 
 	&__header {
         padding-top: 12.25rem;
@@ -28,16 +27,12 @@
         }
 
     &__container {
-        backdrop-filter: blur(2px);
-        opacity: .9;
-        background: linear-gradient(180deg,rgba(0, 0, 0, 0.51),#191919);
-        position: absolute;
         display: flex;
         box-sizing: border-box;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        height: 100dvh;
+        height: 100%;
         width: 100%;
         padding: 0rem 1rem;
 	}
