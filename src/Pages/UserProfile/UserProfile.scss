@@ -35,7 +35,7 @@
 
     &__background-container {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         box-sizing: border-box;
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
@@ -63,23 +63,23 @@
         display: none;
     }
 
+    &__info-container {
+        display: flex;
+        position: absolute;
+        height: 19vh;
+        width: 100%;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 0rem 1.5rem;
+        align-items: flex-start;
+    }
+
     &__avatar-div {
         display: flex;
         justify-content: space-between;
         height: 100%;
         width: 100%;
         align-items: flex-end;
-    }
-
-    &__info-container {
-        display: flex;
-        position: absolute;
-        height: 15vh;
-        width: 100%;
-        justify-content: space-between;
-        box-sizing: border-box;
-        padding: 2rem 1rem 0rem 1rem;
-        align-items: center;
     }
 
     &__avatar {
@@ -236,8 +236,8 @@
     &__stats-container {
         position: absolute;
         z-index: 0;
-        top: 9rem;
-        height: 70dvh;
+        top: 145px;
+        height: 72dvh;
         width: 100%;
         background-color: rgb(31, 31, 31);
         display: flex;
