@@ -1,7 +1,6 @@
 @use '../../Styles/Partials/variable' as*;
 
 .booking {
-    height: 100vh;
 
     &__form {
         display: flex;
@@ -124,12 +123,12 @@
         font-size: 1.25rem;
         font-weight: bold;
         align-self: center;
-        width: 90%;
+        width: 100%;
         border: none;
         border-radius: .5rem;
         box-sizing: border-box;
-        padding: 2vw;
-        margin-top: 4vw;
+        padding: .5rem;
+        margin: 1rem 0rem;
         box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
     }
 }

@@ -184,16 +184,15 @@ function UploadMusicPage({ currentUser }) {
                     </label>
                 </div>
                 <div className='uploadmusicpage__form'>
-                    <label className='uploadmusicpage__input-label' htmlFor='title'>Title
+                    <label className='uploadmusicpage__input-label' htmlFor='title'>Title</label>
                         <input autoComplete='off' className='uploadmusicpage__input' type='text' name='title' id='title' placeholder='Title...' value={updateTitle}
                             onChange={(event) => { setUpdateTitle(event.target.value) }}>
                         </input>
-                    </label>
-                    <label className='uploadmusicpage__input-label' htmlFor='artist'>Artist
+                    
+                    <label className='uploadmusicpage__input-label' htmlFor='artist'>Artist</label>
                         <input autoComplete='off' className='uploadmusicpage__input' type='text' name='Artist' id='Artist' placeholder='Artist...' value={updateArtist}
                             onChange={(event) => { setUpdateArtist(event.target.value) }}>
                         </input>
-                    </label>
                 </div>
                 {uploadProgress !== 100 ? <button className='uploadmusicpage__uploadbutton-disabled' disabled type='submit'
                     onClick={(e) => handleTrackUpload(e)}>Upload</button> : <button className='uploadmusicpage__uploadbutton' type='submit'
