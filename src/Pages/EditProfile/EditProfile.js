@@ -165,7 +165,7 @@ function EditProfile({ currentUser }) {
                             <div className='editprofile__edit-avatar-div'><img className='editprofile__user-avatar' alt='avatar' src={userInfo?.avatar} />
                                 <TbCameraPlus stroke='white' onClick={openModal} size={30} className='editprofile__edit-avatar' />
                             </div>}
-                        <div className='editprofile__edit-background' onClick={openBackgroundModal}><FaImage className='editprofile__background-icon' fill='white' />Update background image</div>
+                        <div className='editprofile__edit-background' onClick={openBackgroundModal}><FaImage className='editprofile__background-icon' fill='white' />Edit Background</div>
                     </div>
                 </div>
             </div>
