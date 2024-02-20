@@ -63,6 +63,7 @@ function HomePage({ currentUser, bookingNotification, getBookings }) {
 
 
     return (
+        <>
         <main className='homepage'>
             <article className='homepage__main-container'>
                 <div className='homepage__search-container'>
@@ -108,8 +109,9 @@ function HomePage({ currentUser, bookingNotification, getBookings }) {
                     </div>
                 </section>}
             </article>
-            <Nav currentUser={currentUser} />
         </main>
+        <Nav currentUser={currentUser} />
+        </>
     )
 };
 
