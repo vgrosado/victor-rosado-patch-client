@@ -45,7 +45,6 @@ function EditUserBackgroundModal({ isBackgroundModalOpen, closeBackgroundModal, 
     return (
         <div className="edituserbackgroundmodal">
             <div className='edituserbackgroundmodal__content'>
-                <div className='edituserbackgroundmodal__background-div'>
                     <div className='edituserbackgroundmodal__edit-background-div'><img className='edituserbackgroundmodal__user-background' alt='background image' src={placeholder ? placeholder : userInfo?.backgroundimg} />
                         <label className='edituserbackgroundmodal__upload-background' htmlFor='avatar-input' id='avatar'>
                             <div className='edituserbackgroundmodal__input-button'>Choose a new background</div>
@@ -61,7 +60,6 @@ function EditUserBackgroundModal({ isBackgroundModalOpen, closeBackgroundModal, 
                         :<button className='edituserbackgroundmodal__upload-button-disabled' disabled type='submit'>Upload</button> }
                     </div>
                 </div>
-            </div>
             <span className="edituserbackgroundmodal__close" onClick={closeBackgroundModal}>
             </span>
         </div>
