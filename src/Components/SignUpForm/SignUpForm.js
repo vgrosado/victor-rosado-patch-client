@@ -6,11 +6,10 @@ import { db, signUp } from '../../Firebase';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 
-function SignUpForm() {
+function SignUpForm({loading, setLoading}) {
 	const [passwordOff, setPasswordOff] = useState(true);
 	const [newName, setNewName] = useState("");
 	const [userName, setUserName] = useState("");
-	const [loading, setLoading] = useState(false);
 	const [emailRef, setEmailRef] = useState("");
 	const [passwordRef, setPasswordRef] = useState(0);
 	const [err, setError] = useState(false);
