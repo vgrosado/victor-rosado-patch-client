@@ -19,7 +19,6 @@ function DeleteUserModal({ isDeleteModalOpen, closeDeleteModal, currentUser }) {
         });
     };
 
-
     if (!isDeleteModalOpen) return null;
     return (
         <div className="deleteoverlay">

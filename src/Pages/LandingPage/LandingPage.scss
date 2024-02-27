@@ -4,6 +4,9 @@
     background-color: $PatchGrey;
     height: 100dvh;
     overflow: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     &__nav {
         display: flex;

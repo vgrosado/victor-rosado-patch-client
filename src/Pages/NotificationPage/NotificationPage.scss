@@ -7,6 +7,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     &__header-div {
         height: 20vh;

@@ -13,6 +13,9 @@
 	height: 100dvh;
     backdrop-filter: blur(2px);
     background: linear-gradient(180deg, rgb(0, 0, 0), #191919);
+    &::-webkit-scrollbar {
+        display: none;
+    }
 	
 	
 
