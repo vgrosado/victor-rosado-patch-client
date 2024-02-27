@@ -14,7 +14,7 @@ import EditUserBackgroundModal from '../../Components/EditUserBackgroundModal/Ed
 
 function EditProfile({ currentUser, setLoading }) {
     const navigate = useNavigate();
-    
+    const [backgroundPlaceHolder, setBackgroundPlaceHolder] = useState();
     const [userInfo, setUserInfo] = useState({});
     const [isModalOpen, setModalOpen] = useState(false);
     const [isBackgroundModalOpen, setBackgroundModalOpen] = useState(false);
@@ -70,7 +70,7 @@ function EditProfile({ currentUser, setLoading }) {
 
     useEffect(() => {
         getUserInfo();
-    }, [currentUser?.uid, avatarUrl, backgroundUrl])
+    }, [currentUser?.uid, avatarUrl, backgroundUrl, backgroundPlaceHolder])
 
 	console.log(userInfo)
 	console.log(userInfo?.backgroundimg)
@@ -193,9 +193,9 @@ function EditProfile({ currentUser, setLoading }) {
                     <p className='editprofile__delete-account' onClick={openDeleteModal}>Delete account</p>
                 </div>
             </article>
-            <DeleteUserModal isDeleteModalOpen={isDeleteModalOpen} closeDeleteModal={closeDeleteModal} currentUser={currentUser} />
+            <DeleteUserModal isDeleteModalOpen={isDeleteModalOpen} closeDeleteModal={closeDeleteModal} currentUser={currentUser} setLoading={setLoading}/>
             <EditAvatarModal setAvatarUrl={setAvatarUrl} avatarUrl={avatarUrl} isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
-            <EditUserBackgroundModal setBackgroundUrl={setBackgroundUrl} isBackgroundModalOpen={isBackgroundModalOpen} getUserInfo={getUserInfo} closeBackgroundModal={closeBackgroundModal} userInfo={userInfo} currentUser={currentUser} />
+            <EditUserBackgroundModal setBackgroundUrl={setBackgroundUrl} isBackgroundModalOpen={isBackgroundModalOpen} getUserInfo={getUserInfo} closeBackgroundModal={closeBackgroundModal} userInfo={userInfo} setBackgroundPlaceHolder={setBackgroundPlaceHolder} backgroundPlaceHolder={backgroundPlaceHolder} currentUser={currentUser} />
             <Nav setLoading={setLoading}  currentUser={currentUser} />
         </section>
     )
