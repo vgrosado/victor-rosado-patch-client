@@ -12,7 +12,7 @@ function DeleteUserModal({ isDeleteModalOpen, closeDeleteModal, currentUser }) {
         deleteDoc(deletedUserRef).then(() => {
             deleteUser(currentUser);
             alert('Your account has been deleted successfully')
-            navigateTo('/Login')
+            navigateTo('/')
             console.log('user has been delete');
         }).catch((error) => {
             console.log(error.message)

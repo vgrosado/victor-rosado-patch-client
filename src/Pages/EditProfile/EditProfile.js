@@ -12,7 +12,7 @@ import DeleteUserModal from '../../Components/DeleteUserModal/DeleteUserModal';
 import EditUserBackgroundModal from '../../Components/EditUserBackgroundModal/EditUserBackgroundModal';
 
 
-function EditProfile({ currentUser }) {
+function EditProfile({ currentUser, setLoading }) {
     const navigate = useNavigate();
     
     const [userInfo, setUserInfo] = useState({});
@@ -196,7 +196,7 @@ function EditProfile({ currentUser }) {
             <DeleteUserModal isDeleteModalOpen={isDeleteModalOpen} closeDeleteModal={closeDeleteModal} currentUser={currentUser} />
             <EditAvatarModal setAvatarUrl={setAvatarUrl} avatarUrl={avatarUrl} isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
             <EditUserBackgroundModal setBackgroundUrl={setBackgroundUrl} isBackgroundModalOpen={isBackgroundModalOpen} getUserInfo={getUserInfo} closeBackgroundModal={closeBackgroundModal} userInfo={userInfo} currentUser={currentUser} />
-            <Nav currentUser={currentUser} />
+            <Nav setLoading={setLoading}  currentUser={currentUser} />
         </section>
     )
 

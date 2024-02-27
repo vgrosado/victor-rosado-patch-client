@@ -3,15 +3,18 @@ import { FiUser } from "react-icons/fi";
 import { IoHomeOutline } from "react-icons/io5";
 import { SlGlobe } from "react-icons/sl";
 // import { PiBooks } from 'react-icons/pi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoLogOutOutline } from "react-icons/io5";
 import { logOut } from '../../Firebase';
 import { IoCloudUploadOutline } from "react-icons/io5";
 
 
-function Nav({ currentUser }) {
+function Nav({ currentUser, setLoading }) {
+
+    const navigateTo = useNavigate();
 
     async function handleLogOut() {
+        setLoading(true)
         try {
             await logOut();
             alert('you have been successfully logged out')
@@ -19,6 +22,8 @@ function Nav({ currentUser }) {
         } catch {
             console.log('Error Loggin Out User')
         }
+        setLoading(false);
+        navigateTo('/')
     }
 
     function handleGuest() {
@@ -51,10 +56,10 @@ function Nav({ currentUser }) {
                 <IoHomeOutline color='grey' size={24} />
                 <p className='nav__label' >Home</p>
             </div></Link> : <></>}
-            {currentUser ? <Link className='nav__link' to={"/"}> <div className='nav__div'>
+            {currentUser ? <div className='nav__div'>
                 <IoLogOutOutline color='grey' size={24} onClick={handleLogOut} />
                 <p className='nav__label'>Log Out</p>
-            </div></Link> :
+            </div>:
                 <></>
             }
         </div>

@@ -48,11 +48,11 @@ function App() {
         <Route path="/" element={<LandingPage/>}></Route>
         <Route path="/Login" element={<LoginPage loading={loading} setLoading={setLoading} />}></Route>
         <Route path="/SignUp" element={<SignUpPage loading={loading} setLoading={setLoading} />}></Route>
-        <Route path="/Discover" element={<HomePage getBookings={getBookings} bookingNotification={bookingNotification} currentUser={currentUser} />}></Route>
-        <Route path="/Profile/:id" element={<UserProfile currentUser={currentUser} bookings={bookings} getBookings={getBookings} />}></Route>
-        <Route path="/EditProfile/:id" element={<EditProfile currentUser={currentUser}/>}></Route>
-        <Route path="/UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser} />}></Route>
-        <Route path="/Notifications/:id" element={<NotificationPage currentUser={currentUser} bookings={bookings} />}></Route>
+        <Route path="/Discover" element={<HomePage getBookings={getBookings} bookingNotification={bookingNotification} currentUser={currentUser} setLoading={setLoading} />}></Route>
+        <Route path="/Profile/:id" element={<UserProfile currentUser={currentUser} bookings={bookings} getBookings={getBookings} setLoading={setLoading} />}></Route>
+        <Route path="/EditProfile/:id" element={<EditProfile currentUser={currentUser} setLoading={setLoading}/>}></Route>
+        <Route path="/UploadMusic/:id" element={<UploadMusicPage currentUser={currentUser} setLoading={setLoading} />}></Route>
+        <Route path="/Notifications/:id" element={<NotificationPage currentUser={currentUser} bookings={bookings} setLoading={setLoading} />}></Route>
       </Routes>
     </BrowserRouter>
   );

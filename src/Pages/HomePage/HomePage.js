@@ -9,7 +9,7 @@ import { BiBell } from 'react-icons/bi';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 
-function HomePage({ currentUser, bookingNotification, getBookings }) {
+function HomePage({ currentUser, bookingNotification, getBookings, setLoading }) {
 
     const [searchInput, setSearchInput] = useState([]);
     const [sortBy, setSortBy] = useState("artist");
@@ -110,7 +110,7 @@ function HomePage({ currentUser, bookingNotification, getBookings }) {
                 </section>}
             </article>
         </main>
-        <Nav currentUser={currentUser} />
+        <Nav setLoading={setLoading} currentUser={currentUser} />
         </>
     )
 };
