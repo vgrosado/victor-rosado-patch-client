@@ -7,11 +7,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoLogOutOutline } from "react-icons/io5";
 import { logOut } from '../../Firebase';
 import { IoCloudUploadOutline } from "react-icons/io5";
+import { useState } from 'react';
 
 
-function Nav({ currentUser, setLoading }) {
+function Nav({ currentUser, setLoading, active }) {
 
     const navigateTo = useNavigate();
+    // const [active, setActive] = useState(null);
 
     async function handleLogOut() {
         setLoading(true)
@@ -34,32 +36,32 @@ function Nav({ currentUser, setLoading }) {
 
     return (
         <div className='nav'>
-            {currentUser ? <Link className='nav__link'  to={`/Profile/${currentUser?.uid}`}><div className='nav__div'>
-                <FiUser color='grey' size={24} />
+            {currentUser ? <Link className='nav__link' to={`/Profile/${currentUser?.uid}`}><div className='nav__div'>
+                <FiUser color={active === 'profile' ? '#ff7b00' : 'grey'} size={24} />
                 <p className='nav__label'>Profile</p>
             </div></Link> : <div onClick={handleGuest} className='nav__div'>
-                <FiUser color='grey' size={24} />
+                <FiUser color={active === 'profile' ? '#ff7b00' : 'grey'} size={24} />
                 <p className='nav__label'>Profile</p>
             </div>}
-            {currentUser ? <Link className='nav__link'  to={`/UploadMusic/${currentUser?.uid}`}> <div className='nav__div'>
-                <IoCloudUploadOutline color='grey' size={24} />
+            {currentUser ? <Link className='nav__link' to={`/UploadMusic/${currentUser?.uid}`}> <div className='nav__div'>
+                <IoCloudUploadOutline color={active === 'upload' ? '#ff7b00' : 'grey'} size={24} />
                 <p className='nav__label'>Upload</p>
             </div></Link> : <div onClick={handleGuest} className='nav__div'>
-                <IoCloudUploadOutline color='grey' size={24} />
+                <IoCloudUploadOutline color={active === 'upload' ? '#ff7b00' : 'grey'} size={24} />
                 <p className='nav__label'>Upload</p>
             </div>}
-            <Link className='nav__link'  to={"/Discover"}><div className='nav__div'>
-                <SlGlobe color='grey' size={24} />
+            <Link className='nav__link' to={"/Discover"}><div className='nav__div'>
+                <SlGlobe color={active === 'discover' ? '#ff7b00' : 'grey'} size={24} />
                 <p className='nav__label'>Discover</p>
             </div></Link>
-            {!currentUser ? <Link className='nav__link'  to={"/"}><div className='nav__div'>
-                <IoHomeOutline color='grey' size={24} />
+            {!currentUser ? <Link className='nav__link' to={"/"}><div className='nav__div'>
+                <IoHomeOutline color={active === 'home' ? '#ff7b00' : 'grey'} size={24} />
                 <p className='nav__label' >Home</p>
             </div></Link> : <></>}
             {currentUser ? <div className='nav__div'>
-                <IoLogOutOutline color='grey' size={24} onClick={handleLogOut} />
+                <IoLogOutOutline color={active === 'logout' ? '#ff7b00' : 'grey'} size={24} onClick={handleLogOut} />
                 <p className='nav__label'>Log Out</p>
-            </div>:
+            </div> :
                 <></>
             }
         </div>

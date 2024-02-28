@@ -12,7 +12,7 @@ import DeleteUserModal from '../../Components/DeleteUserModal/DeleteUserModal';
 import EditUserBackgroundModal from '../../Components/EditUserBackgroundModal/EditUserBackgroundModal';
 
 
-function EditProfile({ currentUser, setLoading }) {
+function EditProfile({ currentUser, setLoading, setActive, active }) {
     const navigate = useNavigate();
     const [backgroundPlaceHolder, setBackgroundPlaceHolder] = useState();
     const [userInfo, setUserInfo] = useState({});
@@ -70,6 +70,7 @@ function EditProfile({ currentUser, setLoading }) {
 
     useEffect(() => {
         getUserInfo();
+        setActive('profile')
     }, [currentUser?.uid, avatarUrl, backgroundUrl, backgroundPlaceHolder])
 
 	console.log(userInfo)
@@ -195,7 +196,7 @@ function EditProfile({ currentUser, setLoading }) {
             <DeleteUserModal isDeleteModalOpen={isDeleteModalOpen} closeDeleteModal={closeDeleteModal} currentUser={currentUser} setLoading={setLoading}/>
             <EditAvatarModal setAvatarUrl={setAvatarUrl} avatarUrl={avatarUrl} isModalOpen={isModalOpen} closeModal={closeModal} currentUser={currentUser} />
             <EditUserBackgroundModal setBackgroundUrl={setBackgroundUrl} isBackgroundModalOpen={isBackgroundModalOpen} getUserInfo={getUserInfo} closeBackgroundModal={closeBackgroundModal} userInfo={userInfo} setBackgroundPlaceHolder={setBackgroundPlaceHolder} backgroundPlaceHolder={backgroundPlaceHolder} currentUser={currentUser} />
-            <Nav setLoading={setLoading}  currentUser={currentUser} />
+            <Nav active={active} setLoading={setLoading}  currentUser={currentUser} />
         </section>
     )
 

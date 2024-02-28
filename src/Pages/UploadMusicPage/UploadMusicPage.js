@@ -7,7 +7,7 @@ import { addDoc, collection} from 'firebase/firestore';
 import { FaPhotoVideo } from "react-icons/fa";
 import { v4 } from 'uuid';
 
-function UploadMusicPage({ currentUser, setLoading }) {
+function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
     const [uploadProgress, setUploadProgress] = useState(0);
     const [updateTitle, setUpdateTitle] = useState("");
     const [updateArtist, setUpdateArtist] = useState("");
@@ -110,6 +110,9 @@ function UploadMusicPage({ currentUser, setLoading }) {
         console.log(trackPreview)
     };
 
+    useEffect(() => {
+        setActive('upload')
+    },[])
 
     useEffect(() => {
         if (vizUpload) {
@@ -199,7 +202,7 @@ function UploadMusicPage({ currentUser, setLoading }) {
                     onClick={(e) => handleTrackUpload(e)}>Upload</button> : <button className='uploadmusicpage__uploadbutton' type='submit'
                     onClick={(e) => handleTrackUpload(e)}>Upload</button>}
             </article>
-            <Nav setLoading={setLoading} currentUser={currentUser} />
+            <Nav active={active} setLoading={setLoading} currentUser={currentUser} />
         </section>
     )
 };

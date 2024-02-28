@@ -16,7 +16,7 @@ import { PiVinylRecord } from "react-icons/pi";
 import { IoLibrarySharp } from "react-icons/io5";
 
 
-function UserProfile({ currentUser, getBookings, bookings, setLoading }) {
+function UserProfile({ currentUser, getBookings, bookings, setLoading, active, setActive }) {
     const { id } = useParams();
     const [user, setUser] = useState({});
     const [encorePage, setEncorePage] = useState(false);
@@ -45,6 +45,7 @@ function UserProfile({ currentUser, getBookings, bookings, setLoading }) {
     useEffect(() => {
         getUser();
         getUserMusic();
+        setActive('profile');
     }, [id]);
 
 
@@ -138,7 +139,7 @@ function UserProfile({ currentUser, getBookings, bookings, setLoading }) {
                     {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
                     {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} bookings={bookings} user={user} />)}
                 </article>
-                {!currentUser ? <></> : <Nav currentUser={currentUser} setLoading={setLoading}  user={user} openModal={openModal} />}
+                {!currentUser ? <></> : <Nav active={active} currentUser={currentUser} setLoading={setLoading}  user={user} openModal={openModal} />}
             </section >
         </>)
     }
@@ -202,7 +203,7 @@ function UserProfile({ currentUser, getBookings, bookings, setLoading }) {
                         {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
                         {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} bookings={bookings} user={user} />)}
                     </article>
-                    <Nav setLoading={setLoading} currentUser={currentUser} user={user} openModal={openModal} />
+                    <Nav setLoading={setLoading} active={active} currentUser={currentUser} user={user} openModal={openModal} />
                 </section >
             </>
         )
