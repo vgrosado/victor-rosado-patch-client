@@ -129,9 +129,7 @@ function MediaPlayer({ music, currentUser, user, getUserMusic }) {
                         <p className='mediaplayer__song-title'>{currentTrack?.title}</p>
                         <p className='mediaplayer__song-subtitle'>{currentTrack?.artist}</p>
                     </div>
-                    {currentTrack?.cover === null ? <img className='mediaplayer__vid' src={user?.avatar}/> :
-                        <img className='mediaplayer__vid' src={currentTrack?.cover}></img>
-                    }
+                        <video className='mediaplayer__vid' src={currentTrack?.viz ? currentTrack?.viz : user?.avatar} poster={user?.avatar} playsInline autoPlay muted controls={false}></video>
                     <div className="mediaplayer__controls">
                         <input className='mediaplayer__progress-bar' ref={progressBarRef}
                             type="range"
