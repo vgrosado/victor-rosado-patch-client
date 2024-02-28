@@ -13,7 +13,6 @@ import { useState } from 'react';
 function Nav({ currentUser, setLoading, active }) {
 
     const navigateTo = useNavigate();
-    // const [active, setActive] = useState(null);
 
     async function handleLogOut() {
         setLoading(true)
@@ -38,21 +37,21 @@ function Nav({ currentUser, setLoading, active }) {
         <div className='nav'>
             {currentUser ? <Link className='nav__link' to={`/Profile/${currentUser?.uid}`}><div className='nav__div'>
                 <FiUser color={active === 'profile' ? '#ff7b00' : 'grey'} size={24} />
-                <p className='nav__label'>Profile</p>
+                <p className={active === 'profile' ? 'nav__label-active' : 'nav__label'}>Profile</p>
             </div></Link> : <div onClick={handleGuest} className='nav__div'>
                 <FiUser color={active === 'profile' ? '#ff7b00' : 'grey'} size={24} />
-                <p className='nav__label'>Profile</p>
+                <p className={active === 'profile' ? 'nav__label-active' : 'nav__label'}>Profile</p>
             </div>}
             {currentUser ? <Link className='nav__link' to={`/UploadMusic/${currentUser?.uid}`}> <div className='nav__div'>
                 <IoCloudUploadOutline color={active === 'upload' ? '#ff7b00' : 'grey'} size={24} />
-                <p className='nav__label'>Upload</p>
+                <p className={active === 'upload' ? 'nav__label-active' : 'nav__label'}>Upload</p>
             </div></Link> : <div onClick={handleGuest} className='nav__div'>
                 <IoCloudUploadOutline color={active === 'upload' ? '#ff7b00' : 'grey'} size={24} />
                 <p className='nav__label'>Upload</p>
             </div>}
             <Link className='nav__link' to={"/Discover"}><div className='nav__div'>
                 <SlGlobe color={active === 'discover' ? '#ff7b00' : 'grey'} size={24} />
-                <p className='nav__label'>Discover</p>
+                <p className={active === 'discover' ? 'nav__label-active' : 'nav__label'}>Discover</p>
             </div></Link>
             {!currentUser ? <Link className='nav__link' to={"/"}><div className='nav__div'>
                 <IoHomeOutline color={active === 'home' ? '#ff7b00' : 'grey'} size={24} />

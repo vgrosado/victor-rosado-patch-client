@@ -30,4 +30,11 @@
         text-decoration: none;
     }
 
+    &__label-active {
+        font-size: .75rem;
+        color: $PatchOrange;
+        font-weight: 300;
+        text-decoration: none;
+    }
+
 }
