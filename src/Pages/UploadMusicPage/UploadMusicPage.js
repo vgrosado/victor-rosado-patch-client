@@ -9,6 +9,7 @@ import { v4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 
 function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
+
     const [uploadProgress, setUploadProgress] = useState(0);
     const [updateTitle, setUpdateTitle] = useState("");
     const [updateArtist, setUpdateArtist] = useState("");
@@ -20,7 +21,6 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
     const vizUrl = useRef(null);
     const trackUrl = useRef();
     const trackid = v4();
-
 
     function uploadViz(vizFile) {
         console.log("Inside uploadViz:", vizFile); // Debugging log
@@ -39,7 +39,6 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
             });
     };
 
-    
     //select mp3 file for media player
     function uploadTrack(trackFile) {
         console.log("Inside uploadViz:", trackFile); // Debugging log
@@ -83,7 +82,7 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
             title: updateTitle,
             artist: updateArtist,
             track: trackUrl.current,
-            cover: vizUrl.current,
+            viz: vizUrl.current,
             id: trackid
         })
         setUpdateArtist("")
@@ -98,10 +97,14 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
 
     // Update the previewUrl state
     function vizPreview(event) {
+        const maxFileSize = 20000; // max file size 60mb
         let selectedVid = event.target.files[0];
-        setThumbnail(selectedVid);
+        const vizFileSize = selectedVid.size / 1024;
 
-        if (selectedVid) {
+        if (vizFileSize > maxFileSize) {
+            return alert('File too large, please select a file 60MB or below')
+        } 
+        if (selectedVid || vizFileSize < maxFileSize) {
             const objectUrl = URL.createObjectURL(selectedVid);
             setThumbnail(objectUrl);
         }
@@ -133,14 +136,14 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
     return (
         <section className='uploadmusicpage'>
             <div className='uploadmusicpage__background-container'>
-                {thumbnail ? <> <img className='uploadmusicpage__vid' src={thumbnail}></img>
+                {thumbnail ? <> <video className='uploadmusicpage__vid' src={thumbnail} playsInline autoPlay muted controls={false}></video>
                     <label className='uploadmusicpagea__upload-background' htmlFor='viz-input' id='viz-iput'>
                         <input
                             className='uploadmusicpage__upload-input'
                             id='viz-input'
                             name='viz-input'
                             type='file'
-                            accept='image/*'
+                            accept='image/*, video/*'
                             onChange={(event) => {
                                 const vizFile = event.target.files[0];
                                 console.log("Selected file:", vizFile); // Debugging log
@@ -155,7 +158,7 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
                         <div className='uploadmusicpage__visualizer-div'>
                             <label className='uploadmusicpage__uploadlabel-container' htmlFor='viz-input' id='viz-iput'>
                             <FaPhotoVideo size={60} color='grey' className='uploadmusicpage__edit-background-icon' />
-                                <div className='uploadmusicpage__instructions'>Upload a cover for your track</div>
+                                <div className='uploadmusicpage__instructions'>Upload an image or video for your track</div>
                                 <input
                                     className='uploadmusicpage__upload-input'
                                     id='viz-input'

@@ -16,7 +16,7 @@
     }
 
     &__vid {
-        height: 45vh;
+        height: 100%;
         width: 100%;
         object-fit: cover;
     }
@@ -43,7 +43,8 @@
 
     &__background-container {
         display: flex;
-        justify-content: space-between;
+        position: relative;
+        // justify-content: space-between;
         box-sizing: border-box;
         height: 40vh;
         width: 100%;
@@ -114,7 +115,7 @@
         position: absolute;
         box-sizing: border-box;
         z-index: 1;
-        top: 38vh;
+        top: 34vh;
         left: 1.5rem;
         padding: .375rem;
         font-size: .750rem;
