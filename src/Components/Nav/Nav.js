@@ -39,8 +39,8 @@ function Nav({ currentUser, setLoading, active }) {
                 <FiUser color={active === 'profile' ? '#ff7b00' : 'grey'} size={24} />
                 <p className={active === 'profile' ? 'nav__label-active' : 'nav__label'}>Profile</p>
             </div></Link> : <div onClick={handleGuest} className='nav__div'>
-                <FiUser color={active === 'profile' ? '#ff7b00' : 'grey'} size={24} />
-                <p className={active === 'profile' ? 'nav__label-active' : 'nav__label'}>Profile</p>
+                <FiUser color='grey' size={24} />
+                <p className='nav__label'>Profile</p>
             </div>}
             {currentUser ? <Link className='nav__link' to={`/UploadMusic/${currentUser?.uid}`}> <div className='nav__div'>
                 <IoCloudUploadOutline color={active === 'upload' ? '#ff7b00' : 'grey'} size={24} />
