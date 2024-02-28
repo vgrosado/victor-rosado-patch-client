@@ -103,30 +103,32 @@ function UserProfile({ currentUser, getBookings, bookings, setLoading, active, s
                                 </Link>
                             </div>
                         </div>
-                        <p className='user__bio'>{user?.bio}</p>
+                        <p className='user__bio'>{user?.bio === null ? "Add a bio" : user?.bio}</p>
                         <div className='user__stats'>
                             <div className='user__rating-div'>
-                                <BsLightningFill size={14} color='grey' /> <p className='user__stats-title'>Voltage</p>
+                                <p className='user__stats-title'>Voltage</p>
                                 <p className='user__rating'>{user?.rating}</p>
                             </div>
                             <div className='user__followers-div'>
-                                <IoLibrarySharp size={16} color='grey' /><p className='user__stats-title'>Bookings</p>
+                                <p className='user__stats-title'>Bookings</p>
                                 <p className='user__followers'>{followFormatter(user?.bookings)}</p>
                             </div>
                         </div>
                     </div>
                     {user?.genre === "" ? "" : <div className='user__genre-div'>
                         <PiVinylRecord stroke='grey' fill='grey' size={14} />
-                        <p className='user__genre'>{user?.genre}</p>
+                        <p className='user__genre'>{user?.genre === null ? "Add a genre" : user?.genre}</p>
                     </div>}
                     <div className='user__contacts-container'>
                         <div className='user__location-div'>
                             <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />
-                            <p className='user__location'>{user?.location}</p>
+                            <p className='user__location'>{user?.location === null ? "Add your location" : user?.location}</p>
                         </div>
                         <div className='user__website-div'>
                             <LuLink stroke='grey' strokeWidth={3} size={12} />
-                            <Link to={user?.website} className='user__website'>{user?.website}</Link>
+                            {user?.website === null ? <p className='user__website'>Add a website</p> :
+                                <Link to={user?.website} className='user__website'>{user?.website === null ? "Add your website" : user?.website}</Link>
+                            }
                         </div>
                     </div>
 
@@ -139,7 +141,7 @@ function UserProfile({ currentUser, getBookings, bookings, setLoading, active, s
                     {encorePage && (<ReviewForm currentUser={currentUser} user={user} />)}
                     {bookingPage && (<Booking getBookings={getBookings} currentUser={currentUser} bookings={bookings} user={user} />)}
                 </article>
-                {!currentUser ? <></> : <Nav active={active} currentUser={currentUser} setLoading={setLoading}  user={user} openModal={openModal} />}
+                {!currentUser ? <></> : <Nav active={active} currentUser={currentUser} setLoading={setLoading} user={user} openModal={openModal} />}
             </section >
         </>)
     }
@@ -167,30 +169,32 @@ function UserProfile({ currentUser, getBookings, bookings, setLoading, active, s
                                     <button className='user__button' onClick={handleNavToBooking}>+ Book</button>
                                 </div>
                             </div>
-                            <p className='user__bio'>{user?.bio}</p>
+                            <p className='user__bio'>{user?.bio === null ? "Add a bio" : user?.bio}</p>
                             <div className='user__stats'>
                                 <div className='user__rating-div'>
-                                    <BsLightningFill size={16} color='grey' /> <p className='user__stats-title'>Voltage</p>
+                                    <p className='user__stats-title'>Voltage</p>
                                     <p className='user__rating'>{user?.rating}</p>
                                 </div>
                                 <div className='user__followers-div'>
-                                    <IoLibrarySharp size={16} color='grey' /> <p className='user__stats-title'>Bookings</p>
+                                    <p className='user__stats-title'>Bookings</p>
                                     <p className='user__followers'>{followFormatter(user?.bookings)}</p>
                                 </div>
                             </div>
                         </div>
                         {user?.genre === "" ? "" : <div className='user__genre-div'>
                             <PiVinylRecord stroke='grey' fill='grey' size={14} />
-                            <p className='user__genre'>{user?.genre}</p>
+                            <p className='user__genre'>{user?.genre === null ? "Add a genre" : user?.genre}</p>
                         </div>}
                         <div className='user__contacts-container'>
                             <div className='user__location-div'>
                                 <IoLocationOutline stroke='grey' strokeWidth={3} size={12} />
-                                <p className='user__location'>{user?.location}</p>
+                                <p className='user__location'>{user?.location === null ? "Add your location" : user?.location}</p>
                             </div>
                             <div className='user__website-div'>
                                 <LuLink stroke='grey' strokeWidth={3} size={12} />
-                                <Link to={user?.website} className='user__website'>{user?.website}</Link>
+                                {user?.website === null ? <p className='user__website'>Add a website</p> :
+                                    <Link to={user?.website} className='user__website'>{user?.website === null ? "Add your website" : user?.website}</Link>
+                                }
                             </div>
                         </div>
 

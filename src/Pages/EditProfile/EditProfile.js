@@ -178,16 +178,16 @@ function EditProfile({ currentUser, setLoading, setActive, active }) {
                         <input autoComplete='off' className='editprofile__input' type='text' name='username' id='username' onChange={(event) => { setUpdateUserName(event.target.value) }} value={updateUserName}>
                         </input>
                     <label className='editprofile__input-label' htmlFor='username'>Website</label>
-                        <input autoComplete='off' className='editprofile__input' type='url' name='website' id='website' onChange={(event) => { setUpdateWebsite(event.target.value) }} value={updateWebsite}>
+                        <input autoComplete='off' className='editprofile__input' placeholder='Add your website' type='url' name='website' id='website' onChange={(event) => { setUpdateWebsite(event.target.value) }} value={updateWebsite}>
                         </input>
                     <label className='editprofile__input-label' htmlFor='bio'>Location</label>
-                        <input autoComplete='off' className='editprofile__input' name='location' type='text' id='location' onChange={(event) => { setUpdateLocation(event.target.value) }} value={updateLocation}>
+                        <input autoComplete='off' className='editprofile__input' placeholder='Add your location' name='location' type='text' id='location' onChange={(event) => { setUpdateLocation(event.target.value) }} value={updateLocation}>
                         </input>
                     <label className='editprofile__input-label' htmlFor='bio'>Genre</label>
                         <input autoComplete='off' className='editprofile__input' placeholder='Add a genre so others can find you' name='genre' type='text' id='genre' onChange={(event) => { setUpdateGenre(event.target.value) }} value={updateGenre}>
                         </input>
                     <label className='editprofile__input-label' htmlFor='location'>Bio</label>
-                        <textarea autoComplete='off' className='editprofile__input-bio' name='bio' type='text' id='location' onChange={(event) => { setUpdateBio(event.target.value) }} value={updateBio}>
+                        <textarea autoComplete='off' className='editprofile__input-bio' placeholder='Add a bio' name='bio' type='text' id='location' onChange={(event) => { setUpdateBio(event.target.value) }} value={updateBio}>
                         </textarea>
                     <button autoComplete='off' type='submit' className='editprofile__button' onClick={updateUser}>Submit</button>
                     <p className='editprofile__delete-account' onClick={openDeleteModal}>Delete account</p>

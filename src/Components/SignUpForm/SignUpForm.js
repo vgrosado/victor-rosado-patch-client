@@ -42,7 +42,7 @@ function SignUpForm({loading, setLoading}) {
 						// If the user document doesn't exist, create it
 						setDoc(userRef, {
 							rating: 0,
-							bio: "Tell us about yourself",
+							bio: null,
 							bookings: 0,
 							name: newName,
 							displayName: userName,
@@ -50,8 +50,8 @@ function SignUpForm({loading, setLoading}) {
 							id: user.uid,
 							email: emailRef,
 							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2FPatchStockBackground.jpeg?alt=media&token=40704bfb-4d34-4609-b5ab-38207e36aa24",
-							location: "Add Your Location",
-							website: "Add Your Website",
+							location: null,
+							website: null,
 							genre: ""
 						}
 						);
@@ -59,7 +59,7 @@ function SignUpForm({loading, setLoading}) {
 						// If the user document exists, update it
 						updateDoc(userRef, {
 							rating: 0,
-							bio: "Tell us about yourself",
+							bio: null,
 							bookings: 0,
 							name: newName,
 							displayName: userName,
@@ -67,8 +67,8 @@ function SignUpForm({loading, setLoading}) {
 							id: user.uid,
 							email: emailRef,
 							backgroundimg: "https://firebasestorage.googleapis.com/v0/b/patch-397bb.appspot.com/o/userbackgroundimages%2FPatchStockBackground.jpeg?alt=media&token=40704bfb-4d34-4609-b5ab-38207e36aa24",
-							location: "Add Your Location",
-							website: "Add Your Website",
+							location: null,
+							website: null,
 							genre: ""
 						});
 					}
