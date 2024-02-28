@@ -83,7 +83,7 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
             title: updateTitle,
             artist: updateArtist,
             track: trackUrl.current,
-            video: vizUrl.current,
+            cover: vizUrl.current,
             id: trackid
         })
         setUpdateArtist("")
@@ -133,14 +133,14 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
     return (
         <section className='uploadmusicpage'>
             <div className='uploadmusicpage__background-container'>
-                {thumbnail ? <> <video className='uploadmusicpage__vid' src={thumbnail} poster={thumbnail} autoPlay loop muted></video>
+                {thumbnail ? <> <img className='uploadmusicpage__vid' src={thumbnail}></img>
                     <label className='uploadmusicpagea__upload-background' htmlFor='viz-input' id='viz-iput'>
                         <input
                             className='uploadmusicpage__upload-input'
                             id='viz-input'
                             name='viz-input'
                             type='file'
-                            accept='image/*,video/*'
+                            accept='image/*'
                             onChange={(event) => {
                                 const vizFile = event.target.files[0];
                                 console.log("Selected file:", vizFile); // Debugging log
@@ -155,7 +155,7 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
                         <div className='uploadmusicpage__visualizer-div'>
                             <label className='uploadmusicpage__uploadlabel-container' htmlFor='viz-input' id='viz-iput'>
                             <FaPhotoVideo size={60} color='grey' className='uploadmusicpage__edit-background-icon' />
-                                <div className='uploadmusicpage__instructions'>Upload an image or short video</div>
+                                <div className='uploadmusicpage__instructions'>Upload a cover for your track</div>
                                 <input
                                     className='uploadmusicpage__upload-input'
                                     id='viz-input'
