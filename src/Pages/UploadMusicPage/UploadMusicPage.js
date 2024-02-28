@@ -6,6 +6,7 @@ import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase
 import { addDoc, collection} from 'firebase/firestore';
 import { FaPhotoVideo } from "react-icons/fa";
 import { v4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
     const [uploadProgress, setUploadProgress] = useState(0);
@@ -15,6 +16,7 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
     const [trackUpload, setTrackUpload] = useState("");
     const [thumbnail, setThumbnail] = useState("");
     const [trackPreview, setTrackPreview] = useState("")
+    const navigateTo = useNavigate();
     const vizUrl = useRef(null);
     const trackUrl = useRef();
     const trackid = v4();
@@ -91,6 +93,7 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
         setUploadProgress(null)
         setTrackUpload(null)
         alert('Track successfully uploaded!')
+        navigateTo(`/Profile/${currentUser?.uid}`)
     };
 
     // Update the previewUrl state

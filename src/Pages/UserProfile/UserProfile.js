@@ -11,9 +11,7 @@ import Booking from '../../Components/Booking/Booking';
 import { IoLocationOutline } from "react-icons/io5";
 import { LuLink } from "react-icons/lu";
 import { SlPencil } from 'react-icons/sl';
-import { BsLightningFill } from 'react-icons/bs';
 import { PiVinylRecord } from "react-icons/pi";
-import { IoLibrarySharp } from "react-icons/io5";
 
 
 function UserProfile({ currentUser, getBookings, bookings, setLoading, active, setActive }) {
