@@ -10,13 +10,13 @@ function DeleteUserModal({ isDeleteModalOpen, closeDeleteModal, currentUser }) {
     async function deleteCurrentUser() {
         const deletedUserRef = doc(db, "users", `${currentUser?.uid}`)
         deleteDoc(deletedUserRef).then(() => {
-            deleteUser(currentUser);
+            deleteUser(currentUser)
             alert('Your account has been deleted successfully')
-            navigateTo('/')
             console.log('user has been delete');
         }).catch((error) => {
             console.log(error.message)
         });
+        navigateTo('/');
     };
 
     if (!isDeleteModalOpen) return null;
