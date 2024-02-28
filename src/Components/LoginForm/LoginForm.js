@@ -22,7 +22,7 @@ function LoginForm({ loading, setLoading}) {
 				navigateTo('/Discover');
 			} catch (error) {
 				setLoading(false);
-				alert('Login error: User not found :(');
+				alert('Login error: Incorrect email or password :(');
 			}
 		};
 

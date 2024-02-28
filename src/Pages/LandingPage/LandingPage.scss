@@ -126,13 +126,17 @@
     &__hero-cwa {
         text-align: center;
         color: white;
-        font-weight: lighter;
+        font-weight: 400;
         font-size: 0.875rem;
         width: 100%;
         border: none;
         background-color: transparent;
         cursor: pointer;
         margin: 1rem 0rem 0rem 0rem;
+        :hover {
+            color: $PatchOrange;
+            text-decoration: underline;
+        }
     }
 
     &__hero-img {

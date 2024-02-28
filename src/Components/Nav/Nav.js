@@ -7,8 +7,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoLogOutOutline } from "react-icons/io5";
 import { logOut } from '../../Firebase';
 import { IoCloudUploadOutline } from "react-icons/io5";
-import { useState } from 'react';
-
 
 function Nav({ currentUser, setLoading, active }) {
 
