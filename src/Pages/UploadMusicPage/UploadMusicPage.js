@@ -97,7 +97,7 @@ function UploadMusicPage({ currentUser, setLoading, active, setActive }) {
 
     // Update the previewUrl state
     function vizPreview(event) {
-        const maxFileSize = 20000; // max file size 60mb
+        const maxFileSize = 60000; // max file size 60mb
         let selectedVid = event.target.files[0];
         const vizFileSize = selectedVid.size / 1024;
 
