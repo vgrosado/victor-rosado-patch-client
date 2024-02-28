@@ -95,11 +95,10 @@ function EditProfile({ currentUser, setLoading }) {
         }).then(() => {
             const usersDocRef = doc(db, "users", `${currentUser?.uid}`);
             updateDoc(usersDocRef, updatedUserData);
-            console.log('it worked');
         }).catch((error) => {
             console.log(error.message);
         });
-
+        alert('Information successfully updated!')
         navigate(`/Profile/${currentUser?.uid}`);
     };
 

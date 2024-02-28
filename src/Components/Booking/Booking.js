@@ -105,6 +105,7 @@ function Booking({ getBookings, user, bookings, currentUser }) {
                 console.log(error.message)
             });
             // Clear form values after submitting Booking
+            alert('Booking complete! ' + user?.name + ' will contact via email!')
             setName("");
             setEmail("");
             setType("");

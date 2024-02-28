@@ -81,6 +81,7 @@ function SignUpForm({loading, setLoading}) {
 				console.log('Sign-up error:', error.message);
 			} finally {
 				setLoading(false);
+				alert('Account successfully created')
 				navigateTo('/Discover');
 			}
 		}

@@ -22,6 +22,7 @@ function EditUserBackgroundModal({ isBackgroundModalOpen, closeBackgroundModal, 
                 })
             })
             .then(() => {
+                alert('Image successfully uploaded!')
                 closeBackgroundModal();
             })
             .catch((error) => {

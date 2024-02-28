@@ -27,6 +27,7 @@ function EditAvatarModal({ isModalOpen, closeModal, currentUser, setAvatarUrl, a
                             avatar: url
                         })
                     }).then(() => {
+                        alert('Image successfully uploaded!')
                         closeModal();
                     })
             }).catch((error) => {

@@ -11,6 +11,7 @@ function TrackList({ music, getUserMusic, currentUser, user, handleSelectedTrack
     function deleteTrack(trackId) {
         const trackData = doc(db, "users", `${id}`, "Music", `${trackId}`)
         deleteDoc(trackData);
+        alert('Track successfully deleted!')
         getUserMusic();
     };
 

@@ -53,6 +53,7 @@ function ReviewForm({ user, currentUser }) {
             setNewUser("");
             setNewReview("");
             setRating(null);
+            alert('Review submitted!')
         }
         else {
             const reviewData = collection(db, "users", `${id}`, "Reviews");
@@ -68,6 +69,7 @@ function ReviewForm({ user, currentUser }) {
             setNewUser("");
             setNewReview("");
             setRating(null);
+            alert('Review submitted!')
         }
     };
 
@@ -75,6 +77,7 @@ function ReviewForm({ user, currentUser }) {
     async function deleteReview(reviewId) {
         const reviewData = doc(db, "users", `${id}`, "Reviews", `${reviewId}`);
         await deleteDoc(reviewData);
+        alert('Review successfully deleted!')
         getReviews();
     };
 

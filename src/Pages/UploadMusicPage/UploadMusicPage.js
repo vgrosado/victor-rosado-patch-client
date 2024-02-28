@@ -90,6 +90,7 @@ function UploadMusicPage({ currentUser, setLoading }) {
         setTrackPreview("")
         setUploadProgress(null)
         setTrackUpload(null)
+        alert('Track successfully uploaded!')
     };
 
     // Update the previewUrl state
