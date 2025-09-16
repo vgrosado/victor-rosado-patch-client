@@ -1,0 +1,55 @@
+.tracklist {
+  margin-top: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+}
+.tracklist__header {
+  color: white;
+  font-size: 2rem;
+}
+
+.track {
+  background-color: #191919;
+  box-sizing: border-box;
+  padding: 1rem;
+  margin: 0.5rem 0rem;
+  border-radius: 8px;
+  height: 8vh;
+  width: 100%;
+  border: 1px solid rgba(147, 147, 147, 0.4588235294);
+}
+.track__container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.track__icon {
+  background-color: #ff7b00;
+  border-radius: 2px;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.track__details-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.track__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin-left: 0.5rem;
+}
+.track__artist {
+  color: white;
+  font-weight: bold;
+}
+.track__title {
+  color: grey;
+  font-weight: 300;
+}/*# sourceMappingURL=Tracklist.css.map */

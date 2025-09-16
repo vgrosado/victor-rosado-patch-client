@@ -1,0 +1,39 @@
+.notification {
+  height: 15vh;
+  width: 100%;
+  border-bottom: 1px solid #191919;
+}
+.notification :hover {
+  background-color: rgba(128, 128, 128, 0.369);
+}
+.notification__container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0rem 2rem;
+}
+.notification__container :hover {
+  background: transparent;
+}
+.notification__details {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.notification__name {
+  color: #ff7b00;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.notification__subject {
+  color: white;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+.notification__time {
+  color: grey;
+  font-weight: 300;
+  font-size: 0.875rem;
+}/*# sourceMappingURL=Notification.css.map */

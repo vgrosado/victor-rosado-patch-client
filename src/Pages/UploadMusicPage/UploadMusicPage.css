@@ -1,0 +1,348 @@
+@font-face {
+  font-family: "worksans";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-Light.ttf") format("TrueType");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "inter";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-Thin.ttf") format("TrueType");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "worksans";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-Regular.ttf") format("TrueType");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "worksans";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-SemiBold.ttf") format("TrueType");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "worksans";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-ExtraBold.ttf") format("TrueType");
+  font-weight: bolder;
+}
+.uploadmusicpage {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  background-color: #1f1f1f;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.uploadmusicpage::-webkit-scrollbar {
+  display: none;
+}
+.uploadmusicpage__vid {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.uploadmusicpage__edit-div {
+  background-color: #1f1f1f;
+  border: 2px solid #ff7b00;
+  border-radius: 50%;
+  padding: 0.5rem;
+  align-self: end;
+  box-sizing: border-box;
+  width: 6vh;
+  display: flex;
+  justify-content: center;
+}
+.uploadmusicpage__edit-icon {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  fill: #ff7b00;
+}
+.uploadmusicpage__background-container {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  height: 40vh;
+  width: 100%;
+  background-color: #191919;
+}
+.uploadmusicpage__header-background {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  height: 100%;
+  width: 100%;
+  background-color: #191919;
+  filter: blur(1.5px) brightness(50%);
+}
+.uploadmusicpage__upload-icon {
+  display: flex;
+  align-self: center;
+  fill: white;
+}
+.uploadmusicpage__upload-input {
+  display: none;
+}
+.uploadmusicpage__upload-avatar {
+  z-index: 2;
+}
+.uploadmusicpage__edit-avatar-div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ff7b00;
+  border-radius: 50%;
+}
+.uploadmusicpage__visualizer-div {
+  box-sizing: border-box;
+  padding-top: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
+  height: 30vh;
+  border: 2px dashed grey;
+  border-radius: 20px;
+  align-items: center;
+}
+.uploadmusicpage__instructions {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: white;
+  border: 2px solid grey;
+  background-color: rgba(128, 128, 128, 0.193);
+  border-radius: 5px;
+}
+.uploadmusicpage__instructions-replace {
+  width: 20%;
+  text-align: center;
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 1;
+  top: 34vh;
+  left: 1.5rem;
+  padding: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  background-color: #ff7b00;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+.uploadmusicpage__info-container {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 2rem 2rem;
+  align-items: center;
+}
+.uploadmusicpage__avatar {
+  width: 5.125rem;
+  height: 10vh;
+  border-radius: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  background-color: #1f1f1f;
+}
+.uploadmusicpage__edit-avatar {
+  z-index: 1;
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1rem;
+}
+.uploadmusicpage__user-avatar {
+  width: 4.5rem;
+  height: 10vh;
+  border-radius: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  background-color: #1f1f1f;
+  filter: blur(1.5px) brightness(50%);
+}
+.uploadmusicpage__avatar-icon {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  background-color: #1f1f1f;
+}
+.uploadmusicpage__edit-icon {
+  position: absolute;
+  top: 25px;
+  left: 23px;
+}
+.uploadmusicpage__avatar-empty {
+  position: relative;
+  width: 20vw;
+  height: 20vw;
+  border: 1px solid #ff7b00;
+  border-radius: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  background-color: #1f1f1f;
+  align-items: last baseline;
+  justify-content: center;
+  display: flex;
+}
+.uploadmusicpage__avatar-placeholder {
+  color: #ff7b00;
+  border-radius: 24px;
+}
+.uploadmusicpage__name {
+  color: white;
+  font-weight: 300;
+  font-size: 1.25rem;
+}
+.uploadmusicpage__username {
+  font-weight: 300;
+  color: #ff7b00;
+  font-size: 1rem;
+}
+.uploadmusicpage__bio {
+  font-weight: 300;
+  color: white;
+  padding: 0.5rem 0rem;
+  letter-spacing: 0px;
+  text-wrap: pretty;
+  width: 100%;
+  font-size: 0.875rem;
+}
+.uploadmusicpage__uploadlabel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 23vh;
+}
+.uploadmusicpage__form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 52dvh;
+  width: 100%;
+  background-color: rgb(31, 31, 31);
+  padding: 1rem 1.5rem 0rem 1.5rem;
+  box-sizing: border-box;
+  overflow: auto;
+}
+.uploadmusicpage__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 25dvh;
+  width: 100%;
+}
+.uploadmusicpage__form-buttonscontainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.uploadmusicpage__form-musiclabel {
+  width: 100%;
+}
+.uploadmusicpage__form-inputbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+  width: 100%;
+  height: 7vh;
+  border-radius: 10px;
+  border: none;
+  box-sizing: border-box;
+  background-color: #ff7b00;
+  cursor: pointer;
+  box-shadow: 0px 7px 0px 0px #7f3e02;
+}
+.uploadmusicpage__uploadbutton {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+  width: 100%;
+  height: 7vh;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ff7b00;
+  box-sizing: border-box;
+  background-color: #ff7b00;
+  cursor: pointer;
+  box-shadow: 0px 7px 0px 0px #7f3e02;
+}
+.uploadmusicpage__uploadbutton-disabled {
+  text-align: center;
+  color: rgb(147, 147, 147);
+  font-weight: bold;
+  font-size: 1.25rem;
+  width: 100%;
+  height: 7vh;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: none;
+  box-sizing: border-box;
+  background-color: rgba(203, 98, 0, 0.137254902);
+  cursor: pointer;
+}
+.uploadmusicpage__form-musicinput {
+  display: none;
+}
+.uploadmusicpage__input-label {
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #ff7b00;
+}
+.uploadmusicpage__input {
+  font-weight: 300;
+  color: white;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 15%;
+  background: none;
+  border-bottom: 0.5px solid white;
+  font-size: 1.375rem;
+}
+.uploadmusicpage__input::-moz-placeholder {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: grey;
+}
+.uploadmusicpage__input::placeholder {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: grey;
+}
+.uploadmusicpage__progress-title {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+.uploadmusicpage__progress-container {
+  width: 100%;
+  border-radius: 50px;
+  background-color: rgba(203, 98, 0, 0.137254902);
+  margin: 0.2rem 0rem;
+}
+.uploadmusicpage__progress-bar {
+  height: 1vh;
+  width: 0;
+  border-radius: 50px;
+  background-color: #ff7b00;
+  transition: width 0.3s ease-in-out;
+}/*# sourceMappingURL=UploadMusicPage.css.map */

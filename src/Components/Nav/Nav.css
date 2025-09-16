@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "worksans";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-Light.ttf") format("TrueType");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "inter";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-Thin.ttf") format("TrueType");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "worksans";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-Regular.ttf") format("TrueType");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "worksans";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-SemiBold.ttf") format("TrueType");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "worksans";
+  src: url("../../Assets/Fonts/WorkSans/WorkSans-ExtraBold.ttf") format("TrueType");
+  font-weight: bolder;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #191919;
+  height: 8.5dvh;
+  box-sizing: border-box;
+  padding: 0rem 1.5rem;
+}
+.nav__link {
+  text-decoration: none;
+}
+.nav__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 6vh;
+}
+.nav__label {
+  font-size: 0.75rem;
+  color: grey;
+  font-weight: 300;
+  text-decoration: none;
+}
+.nav__label-active {
+  font-size: 0.75rem;
+  color: #ff7b00;
+  font-weight: 300;
+  text-decoration: none;
+}/*# sourceMappingURL=Nav.css.map */

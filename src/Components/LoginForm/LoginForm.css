@@ -1,0 +1,71 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 60%;
+  width: 100%;
+  align-items: center;
+}
+.form__input-label {
+  color: white;
+  font-weight: 300;
+  font-size: 0.875rem;
+}
+.form__input-div {
+  height: 6vh;
+  width: 60vw;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  background-color: #191919;
+  box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+  padding: 0rem 1rem;
+}
+.form__input {
+  font-weight: 300;
+  height: 90%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #191919;
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  outline: none;
+}
+.form__input::-moz-placeholder {
+  font-size: 1rem;
+  font-weight: 300;
+  color: grey;
+}
+.form__input::placeholder {
+  font-size: 1rem;
+  font-weight: 300;
+  color: grey;
+}
+.form__eye {
+  fill: white;
+}
+.form__rememberme-div {
+  display: flex;
+  color: grey;
+  margin-left: 2rem;
+}
+.form__rememberme-label {
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding-left: 0.5rem;
+}
+.form__button {
+  border-radius: 50px;
+  font-weight: 300;
+  font-size: 1rem;
+  color: white;
+  background-color: #ff7b00;
+  border: none;
+  height: 6vh;
+  width: 55vw;
+  margin-top: 1rem;
+  box-sizing: border-box;
+  box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+}/*# sourceMappingURL=LoginForm.css.map */

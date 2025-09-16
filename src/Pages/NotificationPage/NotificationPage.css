@@ -1,0 +1,33 @@
+.notificationpage {
+  height: 91.5dvh;
+  background: #191919;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.notificationpage::-webkit-scrollbar {
+  display: none;
+}
+.notificationpage__header-div {
+  height: 20vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem 2rem;
+}
+.notificationpage__header {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.notificationpage__container {
+  background: #1f1f1f;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}/*# sourceMappingURL=NotificationPage.css.map */

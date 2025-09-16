@@ -1,0 +1,128 @@
+.edituserbackgroundmodal {
+  font-weight: 300;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edituserbackgroundmodal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #1f1f1f;
+  opacity: 0.99;
+  position: relative;
+  top: 0vh;
+  height: 80vh;
+  width: 75%;
+  padding: 7.5vw;
+  box-shadow: 12px 12px 17px 6px rgba(0, 0, 0, 0.6901960784);
+  border-radius: 1rem;
+}
+.edituserbackgroundmodal__background-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.edituserbackgroundmodal__edit-background-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.edituserbackgroundmodal__input-button {
+  background-color: #1f1f1f;
+  color: #ff7b00;
+  font-size: 1.25rem;
+  font-weight: bold;
+  align-self: center;
+  width: 100%;
+  height: 6vh;
+  border: 2px solid #ff7b00;
+  border-radius: 8px;
+  box-sizing: border-box;
+  box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edituserbackgroundmodal__upload-button {
+  background-color: #ff7b00;
+  color: #1f1f1f;
+  font-size: 1.25rem;
+  font-weight: bold;
+  align-self: center;
+  width: 100%;
+  height: 7vh;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 6px 5px 8px 1px rgba(0, 0, 0, 0.3098039216);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edituserbackgroundmodal__upload-button-disabled {
+  text-align: center;
+  color: rgb(147, 147, 147);
+  font-weight: bold;
+  font-size: 1.25rem;
+  width: 100%;
+  height: 7vh;
+  border-radius: 0.5rem;
+  border: none;
+  box-sizing: border-box;
+  background-color: rgba(203, 98, 0, 0.137254902);
+  cursor: pointer;
+}
+.edituserbackgroundmodal__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.edituserbackgroundmodal__close {
+  position: absolute;
+  top: 0vh;
+  right: 0vh;
+  height: 99%;
+  width: 99%;
+  z-index: -1;
+}
+.edituserbackgroundmodal__upload-input {
+  display: none;
+}
+.edituserbackgroundmodal__upload-background {
+  color: white;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edituserbackgroundmodal__user-background {
+  width: 100%;
+  height: 80%;
+  border-radius: 5%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  background-color: #1f1f1f;
+}
+.edituserbackgroundmodal__upload-background {
+  color: white;
+}/*# sourceMappingURL=EditUserBackgroundModal.css.map */
