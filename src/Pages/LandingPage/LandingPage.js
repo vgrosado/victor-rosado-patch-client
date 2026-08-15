@@ -13,7 +13,7 @@ function LandingPage() {
           <h1 className="landingpage__nav-logo">PATCH</h1>
           <div className="landingpage__nav-buttondiv">
             <Link className="landingpage__nav-link" to={"/Login"}>
-              <button className="landingpage__nav-signin ">Sign in</button>
+              <button className="landingpage__nav-signin">Sign in</button>
             </Link>
           </div>
         </nav>
@@ -52,8 +52,8 @@ function LandingPage() {
           <article className="landingpage__desc">
             <h2 className="landingpage__desc-subheaderleft">DISCOVER</h2>
             <div className="landingpage__desc-textdiv">
-              <RiSearchEyeLine size={90} fill="#ff7b00 " />
-              <p className="landingpage__desc-text ">
+              <RiSearchEyeLine size={90} fill="#ff7b00" />
+              <p className="landingpage__desc-text">
                 Discover Dj's from around the world with an extensive catalog of
                 local and global talent right at your fingertips!
               </p>
