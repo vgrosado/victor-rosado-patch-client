@@ -52,7 +52,7 @@ function LandingPage() {
           <article className="landingpage__desc">
             <h2 className="landingpage__desc-subheaderleft">DISCOVER</h2>
             <div className="landingpage__desc-textdiv">
-              <RiSearchEyeLine size={90} fill="#ff7b00" />
+              <RiSearchEyeLine size={90} fill="#ff7b00 " />
               <p className="landingpage__desc-text ">
                 Discover Dj's from around the world with an extensive catalog of
                 local and global talent right at your fingertips!
