@@ -13,7 +13,7 @@ function LandingPage() {
           <h1 className="landingpage__nav-logo">PATCH</h1>
           <div className="landingpage__nav-buttondiv">
             <Link className="landingpage__nav-link" to={"/Login"}>
-              <button className="landingpage__nav-signin">Sign in</button>
+              <button className="landingpage__nav-signin ">Sign in</button>
             </Link>
           </div>
         </nav>
