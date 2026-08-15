@@ -2,9 +2,7 @@ import "../LandingPage/LandingPage.scss";
 import { RiSearchEyeLine } from "react-icons/ri";
 import { IoLibrarySharp } from "react-icons/io5";
 import { PiUserCircle } from "react-icons/pi";
-import { CiLinkedin } from "react-icons/ci";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import heroImg from "../../Assets/Images/Chlar.webp";
 import { Link } from "react-router-dom";
 
 function LandingPage() {
