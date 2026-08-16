@@ -23,7 +23,6 @@
     "react-icons": "^4.10.1",
     "react-resizable-panels": "^3.0.6",
     "react-router-dom": "^6.15.0",
-    "react-scripts": "5.0.1",
     "recharts": "^2.15.4",
     "sass": "^1.66.1",
     "shadcn": "^4.18.0",
@@ -37,10 +36,9 @@
     "zod": "^4.1.8"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -59,5 +57,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.5",
+    "vite": "^8.2.1"
   }
 }
