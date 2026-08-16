@@ -9,12 +9,12 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
-const APIKEY = import.meta.VITE_APP_FIREBASE_API_KEY;
-const AUTHDOMAIN = import.meta.VITE_APP_FIREBASE_AUTH_DOMAIN;
-const PROJECTID = import.meta.VITE_APP_FIREBASE_PROJECT_ID;
-const STORAGEBUCKET = import.meta.VITE_APP_FIREBASE_STORAGE_BUCKET;
-const MESSENGERSENDERID = import.meta.VITE_APP_FIREBASE_MESSAGING_SENDER_ID;
-const APPID = import.meta.VITE_APP_FIREBASE_APP_ID;
+const APIKEY = import.meta.env.VITE_APP_FIREBASE_API_KEY;
+const AUTHDOMAIN = import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN;
+const PROJECTID = import.meta.env.VITE_APP_FIREBASE_PROJECT_ID;
+const STORAGEBUCKET = import.meta.env.VITE_APP_FIREBASE_STORAGE_BUCKET;
+const MESSENGERSENDERID = import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID;
+const APPID = import.meta.env.VITE_APP_FIREBASE_APP_ID;
 
 const firebaseConfig = {
   apiKey: APIKEY,
